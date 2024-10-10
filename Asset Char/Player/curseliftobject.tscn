@@ -1,0 +1,12 @@
+<<<<<<< Updated upstream
+[gd_scene load_steps=2 format=3 uid="uid://b582uh6cwwfsb"]
+=======
+[gd_scene load_steps=2 format=3 uid="uid://ctu6ljmi4tfs7"]
+>>>>>>> Stashed changes
+
+[ext_resource type="Script" path="res://Asset Char/Player/curseliftobject.gd" id="1_3gre3"]
+
+[node name="Purify" type="Area3D"]
+script = ExtResource("1_3gre3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

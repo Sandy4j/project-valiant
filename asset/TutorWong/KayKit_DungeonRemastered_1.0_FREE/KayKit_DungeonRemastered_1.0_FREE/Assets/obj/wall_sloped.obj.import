@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cd4a41aouf0ku"
+path="res://.godot/imported/wall_sloped.obj-0b24730dd32c38f8aa56ec7a087b425e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall_sloped.obj-0b24730dd32c38f8aa56ec7a087b425e.mesh"]
+
+source_file="res://asset/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/obj/wall_sloped.obj"
+dest_files=["res://.godot/imported/wall_sloped.obj-0b24730dd32c38f8aa56ec7a087b425e.mesh", "res://.godot/imported/wall_sloped.obj-0b24730dd32c38f8aa56ec7a087b425e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
