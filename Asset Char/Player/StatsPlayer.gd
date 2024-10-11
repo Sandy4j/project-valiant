@@ -1,14 +1,13 @@
 extends Node
-
 class_name PlayerStats
 
 signal hp_changed(value)
 signal mana_changed(value)
 signal exp_changed(value)
 signal level_up(new_level)
-signal debuff_applied(debuff_value)
-signal debuff_healed
-signal player_died
+signal curse_applied(curse_value)
+signal curse_lifted
+signal Pdied
 
 var level: int = 1
 var base_max_hp: int = 100
@@ -19,14 +18,15 @@ var max_mana: int = 50
 var current_exp: int = 0
 var max_exp: int = 100
 
-var debuff_value: int = 0
-var max_debuff_percentage: float = 0.5  # 50% max debuff
+
+var curse_value: int = 0
+var max_curse_percentage: float = 0.5  # 50% max curse
 
 func _ready():
 	reset_stats()
 
 func reset_stats():
-	max_hp = base_max_hp - debuff_value
+	max_hp = base_max_hp - curse_value
 	current_hp = max_hp
 	current_mana = max_mana
 	emit_signal("hp_changed", current_hp)
@@ -36,21 +36,13 @@ func take_damage(amount: int):
 	current_hp = max(0, current_hp - amount)
 	emit_signal("hp_changed", current_hp)
 	if current_hp == 0:
-		apply_debuff()
-		reset_stats()
-		emit_signal("player_died")
+		die()
 
-func apply_debuff():
-	print("applied buff")
-	var new_debuff = int(base_max_hp * 0.1)  # 10% of base max HP
-	var max_debuff = int(base_max_hp * max_debuff_percentage)
-	debuff_value = min(debuff_value + new_debuff, max_debuff)
-	emit_signal("debuff_applied", debuff_value)
-
-func heal_debuff():
-	debuff_value = 0
+func die():
+	apply_curse()
 	reset_stats()
-	emit_signal("debuff_healed")
+	emit_signal("Pdied")
+	get_parent().respawn()
 
 func heal(amount: int):
 	current_hp = min(max_hp, current_hp + amount)
@@ -79,12 +71,29 @@ func levelup():
 	current_exp -= max_exp
 	max_exp = int(max_exp * 1.5)  # Increase max_exp by 50% each level
 	
-	base_max_hp += 10
+	# Increase stats
+	max_hp += 10
 	max_mana += 5
-	
-	reset_stats()
+	current_hp = max_hp
+	current_mana = max_mana
 	
 	emit_signal("level_up", level)
+	emit_signal("hp_changed", current_hp)
+	emit_signal("mana_changed", current_mana)
+	emit_signal("exp_changed", current_exp)
+	
+	reset_stats()
+
+func apply_curse():
+	var new_curse = int(base_max_hp * 0.1)  # 10% of base max HP
+	var max_curse = int(base_max_hp * max_curse_percentage)
+	curse_value = min(curse_value + new_curse, max_curse)
+	emit_signal("curse_applied", curse_value)
+
+func lift_curse():
+	curse_value = 0
+	reset_stats()
+	emit_signal("curse_lifted")
 
 func get_stats() -> Dictionary:
 	return {
@@ -95,5 +104,5 @@ func get_stats() -> Dictionary:
 		"max_mana": max_mana,
 		"exp": current_exp,
 		"max_exp": max_exp,
-		"debuff": debuff_value
+		"curse": curse_value
 	}

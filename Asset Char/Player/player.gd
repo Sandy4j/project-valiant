@@ -5,39 +5,20 @@ class_name Player
 @export var JUMP_VELOCITY = 4.5
 @export var MOUSE_SENSITIVITY = 0.05
 @export var ATTACK_RANGE = 2.0
-<<<<<<< Updated upstream
 
 
-=======
-@onready var animation_tree = get_node("AnimationTree")
-@onready var playback = animation_tree.get("parameters/playback")
->>>>>>> Stashed changes
-@onready var HP_BAR = $UI/IU/HP
-@onready var camera = $"Pivot Cam/Camera3D"
+@onready var HP_BAR = $"UI Player/IU/HP"
 @onready var attack_raycast = $AttackRaycast
 @onready var main = "res://main.tscn"
 @onready var stats: PlayerStats = $PlayerStats
+@onready var GlobalSignal = "res://GlobalSignal.gd"
 @onready var weapon_system: WeaponSystem = $WeaponSystem
-
-#Snimation Node
-var idle_node:String = "Idle"
-var walk_node:String = "Walk"
-var run_node:String = "Run"
-var jump_node:String = "Jump"
-var attack1_node:String = "Attack1"
-var death_node:String = "Death"
-
-#State Machine
-var is_attacking:bool
-var is_walking:bool
-var is_running:bool
-var is_dying:bool 
+@onready var dodge_component = $dodge
 
 var spawn_point = Vector3.ZERO
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	GlobalSignal.damaged.connect(self.Hited)
 	HP_BAR.max_value = stats.max_hp
 	HP_BAR.value = stats.current_hp
 	spawn_point = global_transform.origin
@@ -52,16 +33,20 @@ func _ready():
 	# Connect signals from PlayerStats
 	stats.connect("hp_changed", Callable(self, "_on_hp_changed"))
 	stats.connect("levelup", Callable(self, "_on_level_up"))
-	stats.connect("player_died", Callable(self, "died"))
-	stats.connect("debuff_applied", Callable(self, "_on_debuff_applied"))
-	stats.connect("debuff_healed", Callable(self, "_on_debuff_healed"))
+	stats.connect("curse_applied", Callable(self, "_on_curse_applied"))
+	stats.connect("curse_lifted", Callable(self, "_on_curse_lifted"))
+	
+	 # Connect dodge component signals
+	dodge_component.connect("dodge_started", Callable(self, "_on_dodge_started"))
+	dodge_component.connect("dodge_ended", Callable(self, "_on_dodge_ended"))
+	dodge_component.connect("iframe_ended", Callable(self, "_on_iframe_ended"))
 
 func _physics_process(delta):
 	var on_floor = is_on_floor()
 	# Add the gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and (!is_attacking):
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
@@ -69,95 +54,61 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-<<<<<<< Updated upstream
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	move_and_slide()
-	handle_weapon_system(delta)
-=======
-		var target_rotation = atan2(direction.x, direction.z)
-		rotation.y = lerp(rotation.y, target_rotation, MOUSE_SENSITIVITY * delta)
-		is_walking = true
-		if Input.is_action_just_pressed("sprint") and is_walking:
-			SPEED * 2
-			is_running = true
-		else:
-			SPEED / 2
-			is_running = false
+		
+	if dodge_component.is_dodging():
+		# The dodge component is handling movement
+		pass
+	elif direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-		is_walking = false
-		is_running = false
 
-	move_and_slide()
-	animation_tree["parameters/conditions/IsOnFloor"] = on_floor
-	animation_tree["parameters/conditions/IsInAir"] = !on_floor
-	animation_tree["parameters/conditions/IsWalking"] = is_walking
-	animation_tree["parameters/conditions/IsNotWalking"] = !is_walking
-	animation_tree["parameters/conditions/IsRunning"] = is_running
-	animation_tree["parameters/conditions/IsNotRunning"] = !is_running
-	animation_tree["parameters/conditions/is_dying"] = is_dying
-	handle_melee_attack(delta)
-
-
-func handle_melee_attack(delta):
-	# Update timers
-	combo_timer -= delta
-	attack_cooldown -= delta
->>>>>>> Stashed changes
+	if Input.is_action_just_pressed("dodge"):
+		dodge_component.dodge(direction)
 	
+	handle_weapon_system(delta)
+	move_and_slide()
+
+func _on_dodge_started():
+	print("Player started dodging!")
+
+func _on_dodge_ended():
+	print("Player finished dodging!")
+
+func _on_iframe_ended():
+	print("Player's invincibility frames ended!")
+
+func Hited(damage: int):
+	stats.take_damage(damage)
+
 func _on_hp_changed(new_hp):
 	HP_BAR.value = new_hp
-	if new_hp <= 0:
-		died()
-
-func died():
-	print("Player died")
-	respawn()
-
-func _on_level_up(new_level):
-	print("Player leveled up to level ", new_level)
-
-func _on_debuff_applied(debuff_value):
-	print("Debuff applied. Max HP reduced by ", debuff_value)
-	spawn_curselift()
-
-func _on_debuff_healed():
-	print("Debuff healed. Max HP restored.")
+	HP_BAR.max_value = stats.max_hp
 
 func respawn():
 	global_transform.origin = spawn_point
 	velocity = Vector3.ZERO
 	stats.reset_stats()
 	print("Player respawned at: ", spawn_point)
-
-func spawn_curselift():
-	var curselift_object = CurseliftObject.new()
-	curselift_object.global_transform.origin = global_transform.origin
-	get_parent().add_child(curselift_object)
-	curselift_object.connect("curselift", Callable(self, "_on_curselift_collected"))
-
-func _on_curselift_collected(body):
-	if body == self:
-		stats.heal_debuff()
-
-func curse_lift():
-	stats.heal_debuff()
+	
+func _on_level_up(new_level):
+	print("Player leveled up to level ", new_level)
 
 func handle_weapon_system(delta):
 	var current_weapon = weapon_system.get_current_weapon()
-	current_weapon.update(delta)
-	
+	current_weapon.update(delta)   
 	if Input.is_action_just_pressed("light attack"):
 		var damage = current_weapon.attack()
 		if damage > 0:
-			apply_damage_to_enemy(damage)
-	
-	if Input.is_action_just_pressed("switch_weapon"):
+			apply_damage_to_enemy(damage)   
+	if Input.is_action_just_pressed("swap weapon"):
 		weapon_system.switch_weapon()
-		update_attack_range()
+		set_attack_range(current_weapon.attack_range)
 
 func apply_damage_to_enemy(damage):
 	if attack_raycast and attack_raycast.is_colliding():
@@ -185,25 +136,25 @@ func connect_to_checkpoints():
 func update_spawn_point(new_spawn_point):
 	spawn_point = new_spawn_point
 	print("Spawn point updated to: ", spawn_point)
-
-<<<<<<< Updated upstream
-func Hited(damage: int):
-	stats.take_damage(damage)
-=======
-func die():
-	print("Player died!")
 	
-	respawn()
+func _on_curse_applied(curse_value):
+	print("Curse applied. Max HP reduced by ", curse_value)
+	spawn_curse_lift_object()
 
-func check_death():
-	if cur_hp <= 0:
-		is_dying
-		die()
+func _on_curse_lifted():
+	print("Curse lifted. Max HP restored.")
 
-func Hited(damage:int):
-	print("Current HP before hit:", cur_hp)
-	cur_hp -= damage
-	setHP(cur_hp)
->>>>>>> Stashed changes
-	print("Damage done:", damage)
-	print("Current HP after hit:", stats.current_hp)
+func spawn_curse_lift_object():
+	var curse_lift_object = CurseLiftObject.new()
+	curse_lift_object.global_transform.origin = global_transform.origin
+	add_child(curse_lift_object)
+	curse_lift_object.connect("curse_lift_collected", Callable(self, "_on_curse_lift_collected"))
+	print ("curse dropped")
+
+func _on_curse_lift_collected(body):
+	if body == self:
+		stats.lift_curse()
+
+func collect_curse_lift():
+	# This method is called by the CurseLiftObject when collected
+	stats.lift_curse()

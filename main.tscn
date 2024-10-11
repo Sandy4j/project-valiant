@@ -1,100 +1,68 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq8cigxq1xj0w"]
+[gd_scene load_steps=14 format=3 uid="uid://dl1iibmh6sl4i"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_dydyy"]
-[ext_resource type="PackedScene" uid="uid://jxcms5ny60y4" path="res://Asset Char/Enemy/dummy.tscn" id="2_jfh57"]
-[ext_resource type="Script" path="res://UI/checkpoint.gd" id="3_irkyj"]
-[ext_resource type="Script" path="res://UI/spawnpoint.gd" id="4_huql7"]
-[ext_resource type="PackedScene" uid="uid://bl1va2bgd5f11" path="res://Asset Char/Player/Player.tscn" id="5_apmyf"]
+[ext_resource type="Script" path="res://main.gd" id="1_bnc00"]
+[ext_resource type="PackedScene" uid="uid://b4y8r8anv6t2k" path="res://Asset Char/Enemy/dummy.tscn" id="2_aqdhm"]
+[ext_resource type="Script" path="res://spawn.gd" id="3_0rtrh"]
+[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/player.tscn" id="4_ase7n"]
+[ext_resource type="Script" path="res://checkpoint.gd" id="5_ar4w1"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1gco6"]
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
 
-[sub_resource type="Sky" id="Sky_863qk"]
-sky_material = SubResource("ProceduralSkyMaterial_1gco6")
+[sub_resource type="Sky" id="Sky_m2eo6"]
+sky_material = SubResource("PhysicalSkyMaterial_kr04x")
 
-[sub_resource type="Environment" id="Environment_t0cqi"]
+[sub_resource type="Environment" id="Environment_3tu5o"]
 background_mode = 2
-sky = SubResource("Sky_863qk")
+sky = SubResource("Sky_m2eo6")
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_lt3dt"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r7sh2"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_qqo5o"]
-size = Vector3(60, 2, 60)
+[sub_resource type="BoxMesh" id="BoxMesh_bdrps"]
+size = Vector3(35, 0.5, 20)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_iw7fg"]
-size = Vector3(60, 2, 60)
+[sub_resource type="BoxShape3D" id="BoxShape3D_exsen"]
+size = Vector3(35, 0.5, 20)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_jvwsk"]
-size = Vector3(1.0957, 1, 4.99805)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4upwp"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_enrd4"]
-size = Vector3(1, 1, 5)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lw3vy"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_gb7cu"]
+[node name="Main" type="WorldEnvironment"]
+environment = SubResource("Environment_3tu5o")
+script = ExtResource("1_bnc00")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_piblt"]
+[node name="Ground" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_r7sh2")
 
-[node name="Main" type="Node"]
-script = ExtResource("1_dydyy")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_t0cqi")
-camera_attributes = SubResource("CameraAttributesPractical_lt3dt")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="Ground" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_qqo5o")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_bdrps")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0750933, 0)
-shape = SubResource("BoxShape3D_iw7fg")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_exsen")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.744999, 0.667066, 0, -0.667066, 0.744999, -0.255194, 48.1041, 33.2383)
+transform = Transform3D(1, 0, 0, 0, -0.720103, 0.693867, 0, -0.693867, -0.720103, -11.4478, 23.2015, -33.7906)
 light_energy = 2.0
 shadow_enabled = true
 
-[node name="cd" type="Timer" parent="."]
+[node name="Dummy" parent="." instance=ExtResource("2_aqdhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.40318, 0, 1.37922)
+attack_range = 2.0
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 20.5834, 0.398454, 4.70833)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0309067)
-shape = SubResource("BoxShape3D_jvwsk")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.989465, 0, 0, 0)
-mesh = SubResource("BoxMesh_enrd4")
-skeleton = NodePath("../tes")
-
-[node name="tes" type="Area3D" parent="StaticBody3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/tes"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0478516, 0, 0.0240707)
-shape = SubResource("BoxShape3D_jvwsk")
+[node name="Spawn" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.4457, 0, -0.371678)
+script = ExtResource("3_0rtrh")
+player_scene = ExtResource("4_ase7n")
 
 [node name="Checkpoint" type="Area3D" parent="." groups=["checkpoints"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9622, 1.94558, -1.88582)
-script = ExtResource("3_irkyj")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21676, 0)
+script = ExtResource("5_ar4w1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Checkpoint"]
-mesh = SubResource("CapsuleMesh_gb7cu")
-skeleton = NodePath("")
+mesh = SubResource("CapsuleMesh_4upwp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Checkpoint"]
-shape = SubResource("CapsuleShape3D_piblt")
+shape = SubResource("CapsuleShape3D_lw3vy")
 
-[node name="Spawnpoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -17.1932)
-script = ExtResource("4_huql7")
-player_scene = ExtResource("5_apmyf")
-
-[node name="Dummy" parent="." instance=ExtResource("2_jfh57")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23755, 1.07509, -0.664033)
-
-[connection signal="timeout" from="cd" to="." method="_on_cd_timeout"]
-[connection signal="body_entered" from="StaticBody3D2/tes" to="." method="_on_tes_body_entered"]
-[connection signal="body_exited" from="StaticBody3D2/tes" to="." method="_on_tes_body_exited"]
 [connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
