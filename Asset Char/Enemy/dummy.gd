@@ -133,7 +133,7 @@ func die() -> void:
 	detection_area.set_deferred("monitoring", false)
 	print("%s defeated!" % name)
 	# Wait for death animation to finish before freeing
-	await animation_player.animation_finished
+	#await animation_plasyer.animation_finished
 	queue_free()
 
 func update_health_bar() -> void:

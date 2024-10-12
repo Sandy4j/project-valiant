@@ -138,23 +138,23 @@ func update_spawn_point(new_spawn_point):
 	print("Spawn point updated to: ", spawn_point)
 	
 func _on_curse_applied(curse_value):
-	print("Curse applied. Max HP reduced by ", curse_value)
 	spawn_curse_lift_object()
+	print("Curse applied. Max HP reduced by ", curse_value)
 
 func _on_curse_lifted():
 	print("Curse lifted. Max HP restored.")
 
 func spawn_curse_lift_object():
-	var curse_lift_object = CurseLiftObject.new()
-	curse_lift_object.global_transform.origin = global_transform.origin
-	add_child(curse_lift_object)
+	var curse_lift_object = preload("res://Asset Char/Player/curseliftobject.tscn").instantiate()
+	var spawn_offset = Vector3(randf_range(-3, 3), 1, randf_range(-3, 3))
+	curse_lift_object.global_position = global_position + spawn_offset
+	get_tree().current_scene.add_child(curse_lift_object)
 	curse_lift_object.connect("curse_lift_collected", Callable(self, "_on_curse_lift_collected"))
-	print ("curse dropped")
+	print("CurseLiftObject spawned at: ", curse_lift_object.global_position)
 
 func _on_curse_lift_collected(body):
 	if body == self:
 		stats.lift_curse()
 
 func collect_curse_lift():
-	# This method is called by the CurseLiftObject when collected
 	stats.lift_curse()
