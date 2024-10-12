@@ -19,7 +19,8 @@ var max_mana: int = 50
 var current_exp: int = 0
 var max_exp: int = 100
 var curse_value: int = 0
-var max_curse_percentage: float = 0.5  # 50% max curse
+var max_curse_percentage: float = 0.5
+var move_speed: float = 5.0
 
 var physical_atk: int = 10
 var physical_defense: int = 5
@@ -27,7 +28,6 @@ var magical_atk: int = 10
 var magical_defense: int = 5
 var crit_damage: float = 1.5
 var crit_chance: float = 0.1
-var move_speed: float = 100.0
 var max_stamina: int = 100
 var current_stamina: int
 var stamina_regen: float = 0.5
@@ -44,6 +44,7 @@ func _init():
 
 func _ready():
 	reset_stats()
+	
 
 func _process(delta):
 	regenerate_hp(delta)
@@ -67,7 +68,7 @@ func update_derived_stats():
 	max_mana = 50 + rpg_stats.get_max_mana_bonus()
 	mana_regen = 0.25 + rpg_stats.get_mana_regen_bonus()
 	crit_damage = 1.5 + rpg_stats.get_crit_damage_bonus()
-	move_speed = 100.0 + rpg_stats.get_move_speed_bonus()
+	move_speed = 5.0 + rpg_stats.get_move_speed_bonus()
 	max_stamina = 100 + rpg_stats.get_max_stamina_bonus()
 	stamina_regen = 0.5 + rpg_stats.get_stamina_regen_bonus()
 	max_hp = base_max_hp + rpg_stats.get_max_hp_bonus() - curse_value
@@ -144,16 +145,7 @@ func levelup():
 	level += 1
 	current_exp -= max_exp
 	max_exp = int(max_exp * 1.5)  # Increase max_exp by 50% each level
-	
-	# Increase stats
-	max_hp += 10
-	max_mana += 5
-	current_hp = max_hp
-	current_mana = max_mana
-	
 	emit_signal("level_up", level)
-	emit_signal("hp_changed", current_hp)
-	emit_signal("mana_changed", current_mana)
 	emit_signal("exp_changed", current_exp)
 	
 	reset_stats()
@@ -176,6 +168,8 @@ func get_stats() -> Dictionary:
 		"max_hp": max_hp,
 		"mana": current_mana,
 		"max_mana": max_mana,
+		"stamina": current_stamina,
+		"max_stamina": max_stamina,
 		"exp": current_exp,
 		"max_exp": max_exp,
 		"curse": curse_value,
@@ -186,8 +180,6 @@ func get_stats() -> Dictionary:
 		"crit_damage": crit_damage,
 		"crit_chance": crit_chance,
 		"move_speed": move_speed,
-		"stamina": current_stamina,
-		"max_stamina": max_stamina,
 		"stamina_regen": stamina_regen,
 		"mana_regen": mana_regen,
 		"hp_regen": hp_regen,

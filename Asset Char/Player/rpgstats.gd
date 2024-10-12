@@ -3,37 +3,37 @@ class_name RPGStats
 
 signal stat_changed(stat_name, new_value)
 
-var strength: int = 10:
+var strength: int = 1:
 	set(value):
 		strength = value
 		stat_changed.emit("strength", strength)
 
-var intelligence: int = 10:
+var intelligence: int = 1:
 	set(value):
 		intelligence = value
 		stat_changed.emit("intelligence", intelligence)
 
-var dexterity: int = 10:
+var dexterity: int = 1:
 	set(value):
 		dexterity = value
 		stat_changed.emit("dexterity", dexterity)
 
-var agility: int = 10:
+var agility: int = 1:
 	set(value):
 		agility = value
 		stat_changed.emit("agility", agility)
 
-var endurance: int = 10:
+var endurance: int = 1:
 	set(value):
 		endurance = value
 		stat_changed.emit("endurance", endurance)
 
-var luck: int = 10:
+var luck: int = 1:
 	set(value):
 		luck = value
 		stat_changed.emit("luck", luck)
 
-var vitality: int = 10:
+var vitality: int = 1:
 	set(value):
 		vitality = value
 		stat_changed.emit("vitality", vitality)
@@ -60,7 +60,7 @@ func get_crit_damage_bonus() -> float:
 	return dexterity * 0.01
 
 func get_move_speed_bonus() -> float:
-	return agility * 0.5
+	return agility * 0.1
 
 func get_max_stamina_bonus() -> int:
 	return endurance * 2

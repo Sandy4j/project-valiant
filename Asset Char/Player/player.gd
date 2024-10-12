@@ -1,7 +1,6 @@
 extends CharacterBody3D
 class_name Player
 
-@export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
 @export var MOUSE_SENSITIVITY = 0.05
 @export var ATTACK_RANGE = 2.0
@@ -52,21 +51,21 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(-input_dir.x, 0, -input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * stats.move_speed
+		velocity.z = direction.z * stats.move_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-		
+		velocity.x = move_toward(velocity.x, 0, stats.move_speed)
+		velocity.z = move_toward(velocity.z, 0, stats.move_speed)
+
 	if dodge_component.is_dodging():
 		# The dodge component is handling movement
 		pass
 	elif direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * stats.move_speed
+		velocity.z = direction.z * stats.move_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, stats.move_speed)
+		velocity.z = move_toward(velocity.z, 0, stats.move_speed)
 
 	if Input.is_action_just_pressed("dodge"):
 		dodge_component.dodge(direction)
