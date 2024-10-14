@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 GlobalSignal="*res://GlobalSignal.gd"
 
+[dotnet]
+
+project/assembly_name="Project Valiant"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/progress_bar_3d/plugin.cfg")
