@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://biyl3f2djo5dw"
+path="res://.godot/imported/wall_endcap.obj-6b7611f7c93e25ac6a77578a75c7e05e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall_endcap.obj-6b7611f7c93e25ac6a77578a75c7e05e.mesh"]
+
+source_file="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/obj/wall_endcap.obj"
+dest_files=["res://.godot/imported/wall_endcap.obj-6b7611f7c93e25ac6a77578a75c7e05e.mesh", "res://.godot/imported/wall_endcap.obj-6b7611f7c93e25ac6a77578a75c7e05e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

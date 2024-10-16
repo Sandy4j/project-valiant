@@ -19,7 +19,7 @@ func set_border_size(val : int)->void:
 @export var room_margin : int = 1
 @export var room_recursion : int = 15
 @export var min_room_size : int = 2 
-@export var max_room_size : int = 8
+@export var max_room_size : int = 4
 @export_multiline var custom_seed : String = "" : set = set_seed 
 func set_seed(val:String)->void:
 	custom_seed = val
@@ -33,24 +33,18 @@ var end_position : Vector3i
 func visualize_border():
 	grid_map.clear()
 	for i in range(-1,border_size+1):
-		grid_map.set_cell_item(Vector3i(i,0,-1),3)
-		grid_map.set_cell_item(Vector3i(i,0,border_size),3)
-		grid_map.set_cell_item(Vector3i(border_size,0,i),3)
-		grid_map.set_cell_item(Vector3i(-1,0,i),3)
+		grid_map.set_cell_item( Vector3i(i,0,-1),3)
+		grid_map.set_cell_item( Vector3i(i,0,border_size),3)
+		grid_map.set_cell_item( Vector3i(border_size,0,i),3)
+		grid_map.set_cell_item( Vector3i(-1,0,i),3)
 	
 func generate():
 	room_tiles.clear()
 	room_positions.clear()
 	if custom_seed : set_seed(custom_seed)
 	visualize_border()
-	
-	create_start_end_positions()
-	make_room_at_position(start_position, true)  # Create start room
-	
-	for i in range(room_number - 2):  # -2 because we're creating start and end rooms separately
+	for i in room_number:
 		make_room(room_recursion)
-	
-	make_room_at_position(end_position, true)  # Create end room
 	
 	var rpv2 : PackedVector2Array = []
 	var del_graph : AStar2D = AStar2D.new()
@@ -100,104 +94,8 @@ func generate():
 					if survival_chance > kill :
 						hallway_graph.connect_points(p,c)
 		create_hallways(hallway_graph)
-
-func create_start_end_positions():
-	var border_cells = {
-		"top": [],
-		"bottom": [],
-		"left": [],
-		"right": []
-	}
-	for i in range(border_size):
-		border_cells["top"].append(Vector3i(i, 0, 0))
-		border_cells["bottom"].append(Vector3i(i, 0, border_size - 1))
-		border_cells["left"].append(Vector3i(0, 0, i))
-		border_cells["right"].append(Vector3i(border_size - 1, 0, i))
-	var sides = ["top", "bottom", "left", "right"]
-	sides.shuffle()
-	for side in sides:
-		border_cells[side].shuffle()
-		for cell in border_cells[side]:
-			if is_valid_start_end_position(cell):
-				start_position = cell
-				var opposite_side
-				match side:
-					"top": opposite_side = "bottom"
-					"bottom": opposite_side = "top"
-					"left": opposite_side = "right"
-					"right": opposite_side = "left"
-				border_cells[opposite_side].shuffle()
-				for end_cell in border_cells[opposite_side]:
-					if is_valid_start_end_position(end_cell):
-						end_position = end_cell
-						return
-
-func is_valid_start_end_position(pos: Vector3i) -> bool:
-	# Check if the cell is empty and has enough space for a room
-	if grid_map.get_cell_item(pos) == -1:
-		var space_available = true
-		for x in range(pos.x, pos.x + min_room_size):
-			for z in range(pos.z, pos.z + min_room_size):
-				if x >= border_size or z >= border_size or grid_map.get_cell_item(Vector3i(x, 0, z)) != -1:
-					space_available = false
-					break
-			if not space_available:
-				break
-		return space_available
-	return false
-
-func make_room_at_position(pos: Vector3i, is_special_room: bool = false):
-	var width : int = (randi() % (max_room_size - min_room_size)) + min_room_size
-	var height : int = (randi() % (max_room_size - min_room_size)) + min_room_size
 	
-	var room : PackedVector3Array = []
-	for r in height:
-		for c in width:
-			var room_pos : Vector3i = pos + Vector3i(c, 0, r)
-			if room_pos.x < border_size and room_pos.z < border_size:
-				grid_map.set_cell_item(room_pos, 0)
-				room.append(room_pos)
-	
-	room_tiles.append(room)
-	var avg_x : float = pos.x + (float(width) / 2)
-	var avg_z : float = pos.z + (float(height) / 2)
-	var room_center : Vector3 = Vector3(avg_x, 0, avg_z)
-	room_positions.append(room_center)
-	
-	if is_special_room:
-		var special_tile = 4 if pos == start_position else 5
-		grid_map.set_cell_item(pos, special_tile)
-
-func make_room(rec:int):
-	if !rec>0:
-		return
-	
-	var width : int = (randi() % (max_room_size - min_room_size)) + min_room_size
-	var height : int = (randi() % (max_room_size - min_room_size)) + min_room_size
-	
-	var start_pos : Vector3i 
-	start_pos.x = randi() % (border_size - width + 1)
-	start_pos.z = randi() % (border_size - height + 1)
-	
-	for r in range(-room_margin,height+room_margin):
-		for c in range(-room_margin,width+room_margin):
-			var pos : Vector3i = start_pos + Vector3i(c,0,r)
-			if grid_map.get_cell_item(pos) == 0:
-				make_room(rec-1)
-				return
-	
-	var room : PackedVector3Array = []
-	for r in height:
-		for c in width:
-			var pos : Vector3i = start_pos + Vector3i(c,0,r)
-			grid_map.set_cell_item(pos,0)
-			room.append(pos)
-	room_tiles.append(room)
-	var avg_x : float = start_pos.x + (float(width)/2)
-	var avg_z : float = start_pos.z + (float(height)/2)
-	var pos : Vector3 = Vector3(avg_x,0,avg_z)
-	room_positions.append(pos)
-	print("start", start_position, "end", end_position)
+	create_start_end_positions()
 
 func create_hallways(hallway_graph:AStar2D):
 	var hallways :Array[PackedVector3Array] = []
@@ -240,3 +138,91 @@ func create_hallways(hallway_graph:AStar2D):
 			if grid_map.get_cell_item(pos) <0:
 				grid_map.set_cell_item(pos,1)
 		if _t%16 == 15: await  get_tree().create_timer(0).timeout
+
+func make_room(rec:int):
+	if !rec>0:
+		return
+	
+	var width : int = (randi() % (max_room_size - min_room_size)) + min_room_size
+	var height : int = (randi() % (max_room_size - min_room_size)) + min_room_size
+	
+	var start_pos : Vector3i 
+	start_pos.x = randi() % (border_size - width + 1)
+	start_pos.z = randi() % (border_size - height + 1)
+	
+	for r in range(-room_margin,height+room_margin):
+		for c in range(-room_margin,width+room_margin):
+			var pos : Vector3i = start_pos + Vector3i(c,0,r)
+			if grid_map.get_cell_item(pos) == 0:
+				make_room(rec-1)
+				return
+	
+	var room : PackedVector3Array = []
+	for r in height:
+		for c in width:
+			var pos : Vector3i = start_pos + Vector3i(c,0,r)
+			grid_map.set_cell_item(pos,0)
+			room.append(pos)
+	room_tiles.append(room)
+	var avg_x : float = start_pos.x + (float(width)/2)
+	var avg_z : float = start_pos.z + (float(height)/2)
+	var pos : Vector3 = Vector3(avg_x,0,avg_z)
+	room_positions.append(pos)
+
+func create_start_end_positions():
+	var room_indices = range(room_tiles.size())
+	room_indices.shuffle()
+	
+	# Pilih ruangan untuk posisi start
+	var start_room = room_tiles[room_indices[0]]
+	start_position = select_edge_position_near_border(start_room)
+	grid_map.set_cell_item(start_position, 4)  # Gunakan mesh index 4 untuk start
+	
+	# Pilih ruangan untuk posisi end (pastikan berbeda dengan ruangan start)
+	var end_room = room_tiles[room_indices[1]]
+	end_position = select_edge_position_near_border(end_room)
+	grid_map.set_cell_item(end_position, 5)  # Gunakan mesh index 5 untuk end
+	
+	print("Start position: ", start_position)
+	print("End position: ", end_position)
+
+func select_edge_position_near_border(room: PackedVector3Array) -> Vector3i:
+	var min_x = room[0].x
+	var max_x = room[0].x
+	var min_z = room[0].z
+	var max_z = room[0].z
+	
+	# Temukan batas-batas ruangan
+	for tile in room:
+		min_x = min(min_x, tile.x)
+		max_x = max(max_x, tile.x)
+		min_z = min(min_z, tile.z)
+		max_z = max(max_z, tile.z)
+	
+	# Hitung jarak ke border untuk setiap sisi
+	var distances = {
+		"top": min_z,
+		"right": border_size - max_x,
+		"bottom": border_size - max_z,
+		"left": min_x
+	}
+	
+	# Temukan sisi terdekat ke border
+	var closest_side = "top"
+	for side in distances:
+		if distances[side] < distances[closest_side]:
+			closest_side = side
+	
+	# Pilih posisi di sisi terdekat
+	match closest_side:
+		"top":
+			return Vector3i(randi_range(min_x, max_x), 0, min_z)
+		"right":
+			return Vector3i(max_x, 0, randi_range(min_z, max_z))
+		"bottom":
+			return Vector3i(randi_range(min_x, max_x), 0, max_z)
+		"left":
+			return Vector3i(min_x, 0, randi_range(min_z, max_z))
+	
+	# Seharusnya tidak pernah mencapai sini, tapi untuk jaga-jaga
+	return Vector3i(min_x, 0, min_z)
