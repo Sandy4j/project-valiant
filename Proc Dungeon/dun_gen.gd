@@ -3,10 +3,14 @@ extends Node3D
 
 @onready var grid_map : GridMap = $GridMap
 
+func _ready():
+	GlobalSignal.grid_map = grid_map
+
 @export var start : bool = false : set = set_start
 func set_start(val:bool)->void:
 	if Engine.is_editor_hint():
 		generate()
+		GlobalSignal.generate_layout()
 		
 @export_range(0,1) var survival_chance : float = 0.25
 @export var border_size : int = 20 : set = set_border_size
@@ -14,7 +18,14 @@ func set_border_size(val : int)->void:
 	border_size = val
 	if Engine.is_editor_hint():
 		visualize_border()
-		
+
+@onready var spawn_p_scene : PackedScene = preload("res://Proc Dungeon/level/spawnP.tscn")
+@onready var level_change_scene : PackedScene = preload("res://Proc Dungeon/level/levelchange.tscn")
+var room_tiles : Array[PackedVector3Array] = []
+var room_positions : PackedVector3Array = []
+var start_position : Vector3i
+var end_position : Vector3i
+
 @export var room_number : int = 4
 @export var room_margin : int = 1
 @export var room_recursion : int = 15
@@ -24,11 +35,6 @@ func set_border_size(val : int)->void:
 func set_seed(val:String)->void:
 	custom_seed = val
 	seed(val.hash())
-
-var room_tiles : Array[PackedVector3Array] = []
-var room_positions : PackedVector3Array = []
-var start_position : Vector3i
-var end_position : Vector3i
 
 func visualize_border():
 	grid_map.clear()
@@ -96,6 +102,8 @@ func generate():
 		create_hallways(hallway_graph)
 	
 	create_start_end_positions()
+	GlobalSignal.is_layout_generated = true
+	GlobalSignal.emit_signal("layout_generated")
 
 func create_hallways(hallway_graph:AStar2D):
 	var hallways :Array[PackedVector3Array] = []
@@ -185,35 +193,48 @@ func create_start_end_positions():
 	
 	print("Start position: ", start_position)
 	print("End position: ", end_position)
+	spawn_scene_at_position(spawn_p_scene, start_position)
+	var existing_spawn_points = get_tree().get_nodes_in_group("spawn_point")
+	for sp in existing_spawn_points:
+		sp.queue_free()
+	spawn_scene_at_position(spawn_p_scene, start_position)
+	
+	spawn_scene_at_position(level_change_scene, end_position)
+	
+func spawn_scene_at_position(scene: PackedScene, position: Vector3i):
+	if scene:
+		var instance = scene.instantiate()
+		if instance.is_in_group("spawn_point"):
+			# Pastikan hanya ada satu spawn point
+			var existing_spawn_points = get_tree().get_nodes_in_group("spawn_point")
+			for sp in existing_spawn_points:
+				sp.queue_free()
+		add_child(instance)
+		instance.global_transform.origin = Vector3(position.x, 0, position.z)
+	else:
+		print("Warning: Scene not assigned for position ", position)
 
 func select_edge_position_near_border(room: PackedVector3Array) -> Vector3i:
 	var min_x = room[0].x
 	var max_x = room[0].x
 	var min_z = room[0].z
 	var max_z = room[0].z
-	
-	# Temukan batas-batas ruangan
+
 	for tile in room:
 		min_x = min(min_x, tile.x)
 		max_x = max(max_x, tile.x)
 		min_z = min(min_z, tile.z)
 		max_z = max(max_z, tile.z)
-	
-	# Hitung jarak ke border untuk setiap sisi
 	var distances = {
 		"top": min_z,
 		"right": border_size - max_x,
 		"bottom": border_size - max_z,
 		"left": min_x
 	}
-	
-	# Temukan sisi terdekat ke border
 	var closest_side = "top"
 	for side in distances:
 		if distances[side] < distances[closest_side]:
 			closest_side = side
-	
-	# Pilih posisi di sisi terdekat
 	match closest_side:
 		"top":
 			return Vector3i(randi_range(min_x, max_x), 0, min_z)
@@ -223,6 +244,4 @@ func select_edge_position_near_border(room: PackedVector3Array) -> Vector3i:
 			return Vector3i(randi_range(min_x, max_x), 0, max_z)
 		"left":
 			return Vector3i(min_x, 0, randi_range(min_z, max_z))
-	
-	# Seharusnya tidak pernah mencapai sini, tapi untuk jaga-jaga
 	return Vector3i(min_x, 0, min_z)

@@ -1,0 +1,33 @@
+[gd_scene load_steps=9 format=3 uid="uid://chqs04p1lckav"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_xc63g"]
+[ext_resource type="PackedScene" uid="uid://cwb42usxfl5do" path="res://Proc Dungeon/LevelManager.tscn" id="2_vycgy"]
+[ext_resource type="PackedScene" uid="uid://cnd1v22yqgi2v" path="res://Proc Dungeon/DunGen.tscn" id="3_kotb4"]
+[ext_resource type="PackedScene" uid="uid://ycmyek3t7fsu" path="res://Proc Dungeon/dunmesh.tscn" id="4_yf0qq"]
+[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/player.tscn" id="5_3njsb"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
+
+[sub_resource type="Sky" id="Sky_m2eo6"]
+sky_material = SubResource("PhysicalSkyMaterial_kr04x")
+
+[sub_resource type="Environment" id="Environment_3tu5o"]
+background_mode = 2
+sky = SubResource("Sky_m2eo6")
+
+[node name="Main" type="WorldEnvironment"]
+environment = SubResource("Environment_3tu5o")
+script = ExtResource("1_xc63g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.720103, 0.693867, 0, -0.693867, -0.720103, -11.4478, 23.2015, -33.7906)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="LevelManager" parent="." instance=ExtResource("2_vycgy")]
+procedural_dungeon_scene = ExtResource("3_kotb4")
+mesh_generator_scene = ExtResource("4_yf0qq")
+player_scene = ExtResource("5_3njsb")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, 8.10169e-08, 0.926725, 0.375739, 3.28482e-08, 0.375739, -0.926725, 10, 10, -10)

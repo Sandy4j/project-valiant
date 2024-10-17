@@ -1,10 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwb42usxfl5do"]
+[gd_scene load_steps=2 format=3 uid="uid://cwb42usxfl5do"]
 
 [ext_resource type="Script" path="res://Proc Dungeon/level_manager.gd" id="1_x0eu8"]
-[ext_resource type="PackedScene" uid="uid://cnd1v22yqgi2v" path="res://Proc Dungeon/DunGen.tscn" id="2_a7rjl"]
-[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/player.tscn" id="3_y3har"]
 
 [node name="LevelManager" type="Node3D"]
 script = ExtResource("1_x0eu8")
-procedural_dungeon_scene = ExtResource("2_a7rjl")
-player_scene = ExtResource("3_y3har")

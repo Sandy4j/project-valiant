@@ -4,4 +4,3 @@
 
 [node name="Dunmesh" type="Node3D"]
 script = ExtResource("1_85dch")
-grid_map_path = NodePath("../GridMap")

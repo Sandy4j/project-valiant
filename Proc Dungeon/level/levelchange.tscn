@@ -21,3 +21,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_uroko")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00115967)
 shape = SubResource("BoxShape3D_i08i5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -3,12 +3,17 @@ extends Node3D
 
 @export var grid_map_path : NodePath
 @onready var grid_map : GridMap = get_node(grid_map_path)
+var dun_cell_scene : PackedScene = preload("res://Proc Dungeon/imports/DunCell.tscn")
+
+func _ready():
+	grid_map = GlobalSignal.grid_map
 
 @export var start : bool = false : set = set_start
 func set_start(val:bool)->void:
 	if Engine.is_editor_hint():
+		await GlobalSignal.layout_generated
 		create_dungeon()
-var dun_cell_scene : PackedScene = preload("res://Proc Dungeon/imports/DunCell.tscn")
+
 
 var directions : Dictionary = {
 	"up" : Vector3i.FORWARD,"down" : Vector3i.BACK,
@@ -56,15 +61,6 @@ func create_dungeon():
 			add_child(dun_cell)
 			dun_cell.set_owner(owner)
 			t += 1
-			
-			# Tambahkan logika khusus untuk start dan end position
-			if cell_index == 4:  # Start position
-				# Tambahkan visual atau logika khusus untuk start position
-				pass
-			elif cell_index == 5:  # End position
-				# Tambahkan visual atau logika khusus untuk end position
-				pass
-			
 			for i in 4:
 				var cell_n : Vector3i = cell + directions.values()[i]
 				var cell_n_index : int = grid_map.get_cell_item(cell_n)
@@ -73,6 +69,7 @@ func create_dungeon():
 				else:
 					var key : String = str(min(cell_index, 2)) + str(min(cell_n_index, 2))
 					call("handle_" + key, dun_cell, directions.keys()[i])
-		
 		if t % 10 == 9:
 			await get_tree().create_timer(0).timeout
+	GlobalSignal.is_mesh_generated = true
+	GlobalSignal.emit_signal("mesh_generated")

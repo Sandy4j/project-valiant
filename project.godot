@@ -32,6 +32,7 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addon
 
 player=""
 checkpoints=""
+dungeon_grid_map=""
 
 [input]
 

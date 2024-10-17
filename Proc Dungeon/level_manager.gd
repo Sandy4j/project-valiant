@@ -1,62 +1,80 @@
 extends Node3D
 
-class_name LevelManager
-
 @export var procedural_dungeon_scene: PackedScene
+@export var mesh_generator_scene: PackedScene
 @export var player_scene: PackedScene
 
 var current_dungeon: Node
+var current_mesh_generator: Node
 var player: Node
 
-signal level_completed
-
 func _ready():
-	start_game()
+	start_new_level()
 
-func start_game():
-	initialize_level()
+func clear_current_level():
+	for child in get_children():
+		child.queue_free()
+	
+	current_dungeon = null
+	current_mesh_generator = null
+	player = null
+	
+	GlobalSignal.reset()
+	await get_tree().process_frame
 
-func initialize_level():
-	if current_dungeon:
-		current_dungeon.queue_free()
+func start_new_level(custom_seed: String = ""):
+	await clear_current_level()
 	
 	current_dungeon = procedural_dungeon_scene.instantiate()
 	add_child(current_dungeon)
-	current_dungeon.generate()
 	
-	spawn_player()
-	connect_exit_signal()
-
-func spawn_player():
-	if player:
-		player.queue_free()
+	if current_dungeon.has_method("generate"):
+		current_dungeon.generate()
 	
-	player = player_scene.instantiate()
-	add_child(player)
+	await get_tree().process_frame
 	
-	var spawn_point = current_dungeon.get_node("SpawnPoint")
-	if spawn_point:
-		player.global_position = spawn_point.global_position
+	current_mesh_generator = mesh_generator_scene.instantiate()
+	add_child(current_mesh_generator)
+	
+	# Initialize DungeonManager with new instances
+	GlobalSignal.initialize(current_dungeon, current_mesh_generator)
+	
+	# Generate layout
+	GlobalSignal.generate_layout()
+	await GlobalSignal.layout_generated
+	
+	# Create mesh
+	GlobalSignal.create_mesh()
+	await GlobalSignal.mesh_generated
+	
+	await get_tree().process_frame
+	
+	# Spawn player logic
+	var spawn_points = get_tree().get_nodes_in_group("spawn_point")
+	if not spawn_points.is_empty():
+		var spawn_point = spawn_points[0]
+		spawn_player(spawn_point.global_transform.origin)
+	else:
+		push_error("No spawn points found in the scene!")
 
-func connect_exit_signal():
-	var exit_point = current_dungeon.get_node("ExitPoint")
-	if exit_point and exit_point.has_signal("player_entered"):
-		exit_point.connect("player_entered", _on_exit_point_entered)
+func spawn_player(spawn_position: Vector3):
+	if player_scene:
+		player = player_scene.instantiate()
+		add_child(player)
+		player.global_transform.origin = spawn_position
+	else:
+		push_error("Player scene not set!")
 
-func _on_exit_point_entered():
-	emit_signal("level_completed")
-	go_to_next_level()
+func restart_level():
+	start_new_level()
 
-func go_to_next_level():
-	# Simpan data yang diperlukan (misalnya, skor pemain)
-	initialize_level()
+func next_level():
+	# Implementasi untuk level berikutnya, bisa dengan menambah kesulitan, ukuran, dll.
+	# Misalnya, kita bisa menambah ukuran dungeon atau mengubah parameter lainnya
+	if current_dungeon and current_dungeon.has_method("increase_difficulty"):
+		current_dungeon.increase_difficulty()
+	start_new_level()
 
-func _process(delta):
-	if player and current_dungeon:
-		check_player_at_exit()
-
-func check_player_at_exit():
-	var exit_point = current_dungeon.get_node("ExitPoint")
-	if exit_point:
-		if player.global_position.distance_to(exit_point.global_position) < 1.0:
-			_on_exit_point_entered()
+# Fungsi ini bisa dipanggil ketika pemain mencapai level_change_scene
+func on_level_complete():
+	next_level()
