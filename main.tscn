@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_bnc00"]
 [ext_resource type="PackedScene" uid="uid://b4y8r8anv6t2k" path="res://Asset Char/Enemy/dummy.tscn" id="2_aqdhm"]
 [ext_resource type="Script" path="res://Proc Dungeon/level/spawn.gd" id="3_0rtrh"]
-[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/player.tscn" id="4_ase7n"]
+[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/Player.tscn" id="4_ase7n"]
 [ext_resource type="Script" path="res://Proc Dungeon/level/checkpoint.gd" id="5_ar4w1"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
