@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_67s7v")
 
 [node name="Grid" type="GridContainer" parent="."]
+layout_mode = 0
 offset_left = 143.0
 offset_top = 67.0
 offset_right = 965.0

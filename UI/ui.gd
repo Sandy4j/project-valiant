@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	pass
 
 func inv_open():
-	invt.visibility = true
+	invt.visible = true
 
 func inv_clos():
-	invt.visibility = false
+	invt.visible = false

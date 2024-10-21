@@ -60,8 +60,7 @@ offset_top = 13.0
 offset_right = 302.0
 offset_bottom = 40.0
 
-[node name="Inventory" parent="." instance=ExtResource("2_l2hto")]
-layout_mode = 1
+[node name="Inventory" parent="IU" instance=ExtResource("2_l2hto")]
 
 [node name="Statmenu" type="CanvasLayer" parent="."]
 visible = false
