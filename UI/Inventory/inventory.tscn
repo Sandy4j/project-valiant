@@ -12,13 +12,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_67s7v")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Grid" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(100, 500)
 layout_mode = 0
 offset_left = 25.0
 offset_top = 23.0
 offset_right = 548.0
 offset_bottom = 384.0
 
-[node name="Inventory_Slot" type="PanelContainer" parent="GridContainer"]
+[node name="Inventory_Slot" type="PanelContainer" parent="Grid"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("2_tcwce")

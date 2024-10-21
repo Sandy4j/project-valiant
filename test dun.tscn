@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cwb42usxfl5do" path="res://Proc Dungeon/LevelManager.tscn" id="2_vycgy"]
 [ext_resource type="PackedScene" uid="uid://cnd1v22yqgi2v" path="res://Proc Dungeon/DunGen.tscn" id="3_kotb4"]
 [ext_resource type="PackedScene" uid="uid://ycmyek3t7fsu" path="res://Proc Dungeon/dunmesh.tscn" id="4_yf0qq"]
-[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/player.tscn" id="5_3njsb"]
+[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/Player.tscn" id="5_3njsb"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
 

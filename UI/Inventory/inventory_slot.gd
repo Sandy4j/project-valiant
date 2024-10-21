@@ -27,6 +27,7 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 		if item == data:
 			return
 		item.reparent(data.get_parent)
+	data.reparent(self)
 
 func _physics_process(delta: float) -> void:
 	#check for equipment
