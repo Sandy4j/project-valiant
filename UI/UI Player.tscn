@@ -3,7 +3,9 @@
 [ext_resource type="Script" path="res://UI/ui.gd" id="1_ruohs"]
 [ext_resource type="PackedScene" uid="uid://brjxuorjpqc2s" path="res://UI/Inventory/inventory.tscn" id="2_l2hto"]
 
-[node name="UI Player" type="Node2D"]
+[node name="UI Player" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_ruohs")
 
 [node name="IU" type="CanvasLayer" parent="."]
@@ -59,10 +61,6 @@ offset_right = 302.0
 offset_bottom = 40.0
 
 [node name="Inventory" parent="IU" instance=ExtResource("2_l2hto")]
-offset_left = 1880.54
-offset_top = -3999.97
-offset_right = 1880.54
-offset_bottom = -3999.97
 
 [node name="Statmenu" type="CanvasLayer" parent="."]
 visible = false

@@ -15,9 +15,9 @@ class_name Player
 @onready var GlobalSignal = "res://GlobalSignal.gd"
 @onready var weapon_system: WeaponSystem = $WeaponSystem
 @onready var dodge_component = $dodge
-@onready var inv = $"UI Player/IU/Inventory"
+@onready var ui_player: UI = %"UI Player"
 
-var inv_open:bool
+var inv_op:bool = false
 var spawn_point = Vector3.ZERO
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -48,6 +48,7 @@ func _ready():
 	dodge_component.connect("dodge_started", Callable(self, "_on_dodge_started"))
 	dodge_component.connect("dodge_ended", Callable(self, "_on_dodge_ended"))
 	dodge_component.connect("iframe_ended", Callable(self, "_on_iframe_ended"))
+	
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
@@ -73,12 +74,12 @@ func _physics_process(delta):
 		dodge_component.dodge(direction)
 	
 	if Input.is_action_just_pressed("inven"):
-		inv_open = !inv_open
+		inv_op = !inv_op
+		if inv_op:
+			ui_player.inv_open()
+		else:
+			ui_player.inv_clos()
 	
-	if (inv_open):
-		inv.show()
-	else:
-		inv.hide()
 	
 	handle_weapon_system(delta)
 	move_and_slide()
@@ -94,8 +95,9 @@ func _on_iframe_ended():
 
 func Hited(damage: int):
 	stats.take_damage(damage)
-	if (inv_open):
-		inv_open = !inv_open
+	if (inv_op):
+		inv_op = !inv_op
+		ui_player.inv_clos()
 
 func _on_hp_changed(new_hp):
 	HP_BAR.value = new_hp

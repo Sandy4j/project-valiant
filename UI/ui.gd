@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 class_name  UI
 
 @onready var death = $IU/Death
@@ -7,6 +7,7 @@ class_name  UI
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	death.hide()
+	inv_clos()
 	#invt.hide()
 
 func hide_p():
@@ -18,3 +19,9 @@ func show_p():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func inv_open():
+	invt.visible = true
+
+func inv_clos():
+	invt.visible = false
