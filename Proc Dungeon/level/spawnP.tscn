@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ciq6t3b6qrhnh"]
 
 [ext_resource type="Script" path="res://Proc Dungeon/level/spawn.gd" id="1_eqktx"]
-[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/player.tscn" id="2_w16an"]
+[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Asset Char/Player/Player.tscn" id="2_w16an"]
 
 [node name="SpawnP" type="Marker3D"]
 script = ExtResource("1_eqktx")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://v31fojy235ao"]
+
+[ext_resource type="MeshLibrary" uid="uid://fq6she2myh7e" path="res://Proc Dungeon/Room/Library.tres" id="1_tafga"]
+
+[node name="Room8x" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(0, 0, 3, 0, 2, 3, 2, 4, 655363, 0, 4, 655363, 4, 4, 655363, 4, 2, 655363, 4, 0, 655363, 65534, 4, 655363, 2, 2, 655363, 65534, 2, 655363, 65534, 0, 655363, 65534, 6, 1441797, 0, 6, 655363, 2, 6, 655363, 4, 6, 655363, 2, 0, 3, 5, 65535, 2, 65533, 65535, 1048578, 65533, 7, 655362, 5, 7, 1441794, 2, 3, 1441797, 5, 1, 1441793, 5, 3, 1441793, 65533, 5, 1441793, 65533, 1, 1441793, 65535, 65535, 1, 1, 65535, 1, 65535, 7, 1, 3, 7, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="DoorWest" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02552, 0, 7.98971)
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(3, 1, 1441792)
+}
+
+[node name="WallWest" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02552, 0, 7.98971)
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(3, 1, 1441793)
+}
+
+[node name="DoorEast" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00812, 0, 3.9813)
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(65535, 1, 1441792)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="WallEast" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00812, 0, 3.9813)
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(65535, 1, 1441793)
+}
+
+[node name="DoorNorth" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97935, 0, 0)
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(1, 65535, 655360)
+}
+
+[node name="WallNorth" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.97935, 0, 0)
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(1, 65535, 655361)
+}
+
+[node name="DoorSouth" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117056, 0, 8)
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(1, 3, 655360)
+}
+
+[node name="WallSouth" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0117056, 0, 8)
+mesh_library = ExtResource("1_tafga")
+data = {
+"cells": PackedInt32Array(1, 3, 655361)
+}

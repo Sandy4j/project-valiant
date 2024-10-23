@@ -5,6 +5,8 @@ class_name Player
 @export var MOUSE_SENSITIVITY = 0.05
 @export var ATTACK_RANGE = 2.0
 
+#@export_node_path var PlayerCharacterMesh
+#@onready var player_mesh = get_node(PlayerCharacterMesh)
 
 @onready var HP_BAR = $"UI Player/IU/HP"
 @onready var attack_raycast = $AttackRaycast

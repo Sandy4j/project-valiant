@@ -1,8 +1,10 @@
 extends Node
 
-@onready var Player
-
-var is_damaging = false
+@onready var level_manager = $Levelmanager
 
 func _ready():
-	pass
+	level_manager.generate_level()
+	#level_manager.level_generated.connect(_on_level_generated)
+
+func _on_level_generated():
+	print("Level telah selesai di-generate!")

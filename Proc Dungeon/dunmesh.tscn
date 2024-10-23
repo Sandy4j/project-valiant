@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ycmyek3t7fsu"]
 
-[ext_resource type="Script" path="res://Proc Dungeon/dun_mesh.gd" id="1_85dch"]
+[ext_resource type="Script" path="res://Proc Dungeon/test dun/dun_mesh.gd" id="1_85dch"]
 
 [node name="Dunmesh" type="Node3D"]
 script = ExtResource("1_85dch")

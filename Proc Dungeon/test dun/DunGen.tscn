@@ -1,0 +1,138 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnd1v22yqgi2v"]
+
+[ext_resource type="Script" path="res://Proc Dungeon/test dun/dun_gen.gd" id="1_fl1ik"]
+[ext_resource type="MeshLibrary" uid="uid://b481jinxegk4e" path="res://Proc Dungeon/test dun/DungeonTiles.tres" id="2_1b24v"]
+[ext_resource type="PackedScene" uid="uid://ycmyek3t7fsu" path="res://Proc Dungeon/dunmesh.tscn" id="3_y8n3i"]
+[ext_resource type="PackedScene" uid="uid://cdh76gm5vwwb0" path="res://Proc Dungeon/test dun/mesh_dun.tscn" id="4_parul"]
+[ext_resource type="Script" path="res://Proc Dungeon/test dun/mesh_dun.gd" id="5_l6718"]
+
+[node name="DunGen" type="Node3D"]
+script = ExtResource("1_fl1ik")
+border_size = 10
+
+[node name="GridMap" type="GridMap" parent="."]
+visible = false
+mesh_library = ExtResource("2_1b24v")
+cell_size = Vector3(1, 1, 1)
+data = {
+"cells": PackedInt32Array(65535, 65535, 3, 65535, 10, 3, 10, 65535, 3, 0, 65535, 3, 0, 10, 3, 10, 0, 3, 65535, 0, 3, 1, 65535, 3, 1, 10, 3, 10, 1, 3, 65535, 1, 3, 2, 65535, 3, 2, 10, 3, 10, 2, 3, 65535, 2, 3, 3, 65535, 3, 3, 10, 3, 10, 3, 3, 65535, 3, 3, 4, 65535, 3, 4, 10, 3, 10, 4, 3, 65535, 4, 3, 5, 65535, 3, 5, 10, 3, 10, 5, 3, 65535, 5, 3, 6, 65535, 3, 6, 10, 3, 10, 6, 3, 65535, 6, 3, 7, 65535, 3, 7, 10, 3, 10, 7, 3, 65535, 7, 3, 8, 65535, 3, 8, 10, 3, 10, 8, 3, 65535, 8, 3, 9, 65535, 3, 9, 10, 3, 10, 9, 3, 65535, 9, 3, 10, 10, 3, 4, 2, 0, 5, 2, 0, 6, 2, 0, 4, 3, 0, 5, 3, 0, 6, 3, 0, 4, 4, 2, 5, 4, 0, 6, 4, 2, 0, 5, 0, 1, 5, 0, 2, 5, 2, 0, 6, 0, 1, 6, 0, 2, 6, 0, 0, 7, 0, 1, 7, 0, 2, 7, 0, 6, 8, 2, 7, 8, 0, 8, 8, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 6, 5, 1, 6, 6, 1, 6, 7, 1, 4, 5, 1, 3, 5, 1)
+}
+
+[node name="Dunmesh" parent="." instance=ExtResource("3_y8n3i")]
+grid_map_path = NodePath("../GridMap")
+
+[node name="MeshDun" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 2.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28529" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 2.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28530" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 2.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28531" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 3.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28532" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 3.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28533" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 3.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28534" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 4.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28535" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 4.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28536" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 4.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28537" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 5.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28538" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 5.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28539" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 5.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28540" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 6.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28541" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 6.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28542" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 6.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28543" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 7.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28544" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 7.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28545" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 7.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28546" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 8.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28547" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 8.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28548" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 8.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28549" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 9.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28550" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 9.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28551" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, 9.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28552" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 5.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28553" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 6.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28554" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 7.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28555" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 5.5)
+script = ExtResource("5_l6718")
+
+[node name="@Node3D@28556" type="Node3D" parent="Dunmesh" instance=ExtResource("4_parul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 5.5)
+script = ExtResource("5_l6718")
