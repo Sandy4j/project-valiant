@@ -3,9 +3,6 @@ extends Node
 signal layout_generated
 signal mesh_generated
 
-var items = {
-	"small potion": preload("res://UI/Inventory/Item/S_HP_Potion.tres"),
-}
 var grid_map: GridMap
 var procedural_dungeon: Node
 var dun_mesh: Node

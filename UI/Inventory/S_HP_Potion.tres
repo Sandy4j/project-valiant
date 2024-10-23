@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://du0fet52dusij"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://du0fet52dusij"]
 
-[ext_resource type="Texture2D" uid="uid://ddn4hsesxf1kt" path="res://icon.svg" id="1_jbsdi"]
 [ext_resource type="Script" path="res://UI/Inventory/item_data.gd" id="1_xjvjy"]
 
 [resource]
@@ -13,4 +12,3 @@ item_defense = 0
 stackable = true
 count = 0
 item_description = "This is small HP potion"
-item_texture = ExtResource("1_jbsdi")
