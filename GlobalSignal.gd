@@ -3,6 +3,12 @@ extends Node
 signal layout_generated
 signal mesh_generated
 
+@onready var Player = "res://Asset Char/Player/Player.tscn"
+@onready var Stats = "res://Asset Char/Player/StatsPlayer.gd"
+
+var items = {
+	"small potion": preload("res://UI/Inventory/Item/S_HP_Potion.tres"),
+}
 var grid_map: GridMap
 var procedural_dungeon: Node
 var dun_mesh: Node
@@ -37,3 +43,7 @@ func reset():
 	is_mesh_generated = false
 	if grid_map:
 		grid_map.clear()
+
+func heal_pot(amount: int):
+	#Stats.heal(amount)
+	pass
