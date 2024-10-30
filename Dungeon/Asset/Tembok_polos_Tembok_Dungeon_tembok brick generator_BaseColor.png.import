@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bk3rwwy1oi0p2"
+path.s3tc="res://.godot/imported/Tembok_polos_Tembok_Dungeon_tembok brick generator_BaseColor.png-70cd786a18f2d66179580d262953d055.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c5ffbb387dac70596bcd2a193de88738"
+}
+
+[deps]
+
+source_file="res://Dungeon/Asset/Tembok_polos_Tembok_Dungeon_tembok brick generator_BaseColor.png"
+dest_files=["res://.godot/imported/Tembok_polos_Tembok_Dungeon_tembok brick generator_BaseColor.png-70cd786a18f2d66179580d262953d055.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

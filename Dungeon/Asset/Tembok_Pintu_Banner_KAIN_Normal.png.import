@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d2d3jc1yej0kj"
+path.s3tc="res://.godot/imported/Tembok_Pintu_Banner_KAIN_Normal.png-e3c3167a17bf89f35f591367bdb2bbbe.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c3a11be075773736bc3c7b55317b2ec2"
+}
+
+[deps]
+
+source_file="res://Dungeon/Asset/Tembok_Pintu_Banner_KAIN_Normal.png"
+dest_files=["res://.godot/imported/Tembok_Pintu_Banner_KAIN_Normal.png-e3c3167a17bf89f35f591367bdb2bbbe.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Dungeon/Asset/Tembok_Pintu_Banner_KAIN_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

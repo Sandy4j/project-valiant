@@ -1,12 +1,12 @@
 extends Node
 
 
-@export var inventory_size = 24
+@export var inventory_size = 16
 @onready var grid = get_node("Grid")
 func _ready() -> void:
 	for i in (inventory_size):
 		var slot := Inventory_Slot.new()
-		slot.init(ItemData.Type.MAIN, Vector2(32, 32))
+		slot.init(ItemData.Type.MAIN, Vector2(120, 140))
 		grid.add_child(slot)
 	add_item("small potion")
 	

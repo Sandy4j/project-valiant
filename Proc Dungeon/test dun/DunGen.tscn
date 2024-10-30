@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnd1v22yqgi2v"]
 
-[ext_resource type="Script" path="res://Proc Dungeon/test dun/dun_gen.gd" id="1_fl1ik"]
+[ext_resource type="Script" path="res://Proc Dungeon/test dun/ProceduralLayout.gd" id="1_fl1ik"]
 [ext_resource type="MeshLibrary" uid="uid://b481jinxegk4e" path="res://Proc Dungeon/test dun/DungeonTiles.tres" id="2_1b24v"]
-[ext_resource type="PackedScene" uid="uid://ycmyek3t7fsu" path="res://Proc Dungeon/dunmesh.tscn" id="3_y8n3i"]
+[ext_resource type="PackedScene" path="res://Proc Dungeon/DungeonMesh.tscn" id="3_y8n3i"]
 [ext_resource type="PackedScene" uid="uid://cdh76gm5vwwb0" path="res://Proc Dungeon/test dun/mesh_dun.tscn" id="4_parul"]
 [ext_resource type="Script" path="res://Proc Dungeon/test dun/mesh_dun.gd" id="5_l6718"]
 
