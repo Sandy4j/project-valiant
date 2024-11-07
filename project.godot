@@ -23,6 +23,14 @@ GlobalSignal="*res://Skrip/GlobalSignal.gd"
 LevelManager="*res://Skrip/level_manager.gd"
 GameStateManager="*res://Skrip/GameStateManager.gd"
 
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_private_class_variable=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
+
 [dotnet]
 
 project/assembly_name="Project Valiant"
