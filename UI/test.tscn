@@ -13,6 +13,12 @@ script = ExtResource("1_htnye")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 230.0
+offset_top = 159.0
+offset_right = 388.0
+offset_bottom = 194.0
+
 [node name="Button" type="Button" parent="CanvasLayer"]
 offset_left = 269.0
 offset_top = 197.0

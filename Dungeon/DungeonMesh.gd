@@ -81,35 +81,30 @@ func create_dungeon():
 	for c in get_children():
 		remove_child(c)
 		c.queue_free()
-		
 	var t : int = 0
+	
 	var used_cells = grid_map.get_used_cells()
 	var start_cells = []
 	var end_cells = []
 	
-	# Cari posisi end room yang paling kanan
-	var rightmost_end_cell = null
-	var max_x = -999999  # Nilai awal yang sangat kecil
-	
 	# First pass: collect start and end room positions
+	var leftmost_start_x = 999999  # Nilai awal yang sangat besar
 	for cell in used_cells:
 		var cell_index = grid_map.get_cell_item(cell)
 		if cell_index == 4:  # Start room
 			start_cells.append(cell)
+			# Update leftmost_start_x
+			if cell.x < leftmost_start_x:
+				leftmost_start_x = cell.x
 		elif cell_index == 5:  # End room
-			# Perbarui rightmost_end_cell jika menemukan cell dengan x lebih besar
-			if cell.x > max_x:
-				max_x = cell.x
-				rightmost_end_cell = cell
 			end_cells.append(cell)
 	
-	# Instantiate start room
+	# Instantiate start and end rooms
 	if start_cells.size() > 0:
 		instantiate_start_room(Vector3(start_cells[0]))
 	
-	# Instantiate end room di posisi paling kanan
-	if rightmost_end_cell != null:
-		instantiate_end_room(Vector3(rightmost_end_cell))
+	if end_cells.size() > 0:
+		instantiate_end_room(Vector3(end_cells[0]))
 
 	for cell in used_cells:
 		var cell_index : int = grid_map.get_cell_item(cell)
@@ -128,17 +123,10 @@ func create_dungeon():
 				dun_cell.position = world_pos
 				dun_cell.scale = Vector3.ONE * 2.0
 
-			if cell_index == 4:
-				var is_leftmost = true
-				for start_cell in start_cells:
-					if start_cell.x < cell.x and start_cell.z == cell.z:
-						is_leftmost = false
-						break
-				
-				if is_leftmost:
-					dun_cell.call("remove_wall_right")
-					dun_cell.call("remove_door_right")
-				else:
+			if cell_index == 4:  # Untuk start room
+				# Cek apakah ini adalah cell paling kiri dari start room
+				if cell.x == leftmost_start_x:
+					# Hapus dinding kiri untuk start room paling kiri
 					dun_cell.call("remove_wall_left")
 					dun_cell.call("remove_door_left")
 
@@ -151,35 +139,28 @@ func create_dungeon():
 				var dir = directions.keys()[i]
 				var cell_n : Vector3i = cell + directions.values()[i]
 				var cell_n_index : int = grid_map.get_cell_item(cell_n)
-				
-				# Jika cell saat ini adalah end room dan tetangga di sisi kanan
+			
+				if cell_index == 4 and cell.x == leftmost_start_x and dir == "left":
+					continue
 				if cell_index == 5 and dir == "right":
-					# Cek apakah cell saat ini adalah tile paling kanan
 					if cell_n_index != 5:
-						# Jika bukan tile paling kanan, hapus dinding dan pintu di sisi kanan
 						dun_cell.call("remove_wall_" + dir)
 						dun_cell.call("remove_door_" + dir)
-					
-					# Lanjutkan ke loop berikutnya, tidak perlu lagi mengecek tetangga lain
 					continue
 				
 				if cell_n_index == -1 || cell_n_index == 3:
 					handle_none(dun_cell, dir)
 				else:
-					# Konversi tipe ruangan untuk penanganan
 					var current_type = cell_index
 					var neighbor_type = cell_n_index
-					
-					# Jika salah satu adalah special room (tipe 4 atau 5)
 					if current_type >= 4 or neighbor_type >= 4:
 						handle_special_room(dun_cell, dir, current_type, neighbor_type)
 					else:
-						# Untuk ruangan normal (tipe 0-2)
 						var key : String = str(min(current_type, 2)) + str(min(neighbor_type, 2))
 						call("handle_" + key, dun_cell, dir)
-						
-		if t % 10 == 9:
-			await get_tree().create_timer(0).timeout
+
+			if t % 10 == 9:
+				await get_tree().create_timer(0).timeout
 
 func handle_special_room(cell: Node3D, dir: String, current_type: int, neighbor_type: int):
 	# Handling untuk start room (tipe 4)
