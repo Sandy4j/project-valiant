@@ -4,6 +4,8 @@ extends Node
 @onready var Player
 @onready var Stats = "res://Actor/Player/StatsPlayer.gd"
 
+var intro:bool = true
+
 var items = {
 	"small potion": preload("res://UI/Inventory/Item/S_HP_Potion.tres"),
 }
