@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnbxgecr137wp"]
+
+[ext_resource type="Script" path="res://Skrip/test controll.gd" id="1_htnye"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_htnye")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 269.0
+offset_top = 197.0
+offset_right = 350.0
+offset_bottom = 229.0
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

@@ -1,10 +1,16 @@
 @tool
 extends Node3D
+class_name DungeonM
 
 signal custom_seed_changed(new_seed: String)
+signal new_floor_ready()
+
+func regenerate_for_new_floor() -> void:
+	generate_dungeon()
+	emit_signal("new_floor_ready")
 
 @export var start : bool = false : set = set_start
-func set_start(val:bool)->void:
+func set_start(_val:bool)->void:
 	if Engine.is_editor_hint():
 		generate_dungeon()
 
@@ -20,6 +26,7 @@ func set_border_size(val : int)->void:
 	border_size = val
 	if Engine.is_editor_hint():
 		grid_map.visualize_border()
+		
 
 @export_group("Layout Setting")
 @export_range(0, 1) var survival_chance: float = 0.25
@@ -42,56 +49,57 @@ func set_custom_seed(val: String) -> void:
 
 var player_instance: Node3D = null
 
-func start_dungeon() -> void:
-	if not Engine.is_editor_hint():
-		generate_dungeon()
-		await get_tree().create_timer(0.1).timeout
-		spawn_player()
+func _ready():
+	add_to_group("dungeon_manager")
 
 func generate_dungeon() -> void:
-	# Step 1: Generate the procedural layout using GridMap
 	if grid_map:
 		grid_map.generate()
 		await get_tree().create_timer(0.1).timeout
-		
-		# Step 2: Create the mesh dungeon using DunMesh
 		if dungeon_mesh:
 			dungeon_mesh.create_dungeon()
-			
-			# Step 3: Hide the GridMap after generation
 			grid_map.hide()
 
-func spawn_player() -> void:
-	if not player_scene:
-		push_warning("Player scene not set in DungeonManager!")
-		return
-		
-	# Remove existing player if any
+func new_floor() -> void:
+	regenerate()
+	emit_signal("new_floor_ready")
+
+func spawn_player(y_offset: float = 2.0) -> void:
+	# Remove existing player instance if it exists
 	if player_instance:
 		player_instance.queue_free()
 	
-	# Find start room position
-	var start_room_nodes = get_tree().get_nodes_in_group("start_room")
-	if start_room_nodes.is_empty():
+	# Make sure we have a player scenew
+	if !player_scene:
+		push_warning("Player scene not set!")
+		return
+	
+	# Find start room position (look for cells with item index 4)
+	var start_cells = grid_map.get_used_cells_by_item(4)
+	if start_cells.is_empty():
 		push_warning("No start room found!")
 		return
 		
-	# Get the first start room node
-	var start_room = start_room_nodes[0]
+	# Get the leftmost cell of the start room
+	var start_pos = start_cells[0]
+	for cell in start_cells:
+		if cell.x < start_pos.x:
+			start_pos = cell
 	
 	# Instance the player
 	player_instance = player_scene.instantiate()
 	add_child(player_instance)
 	
-	if Engine.is_editor_hint():
-		player_instance.owner = get_tree().edited_scene_root
+	# Calculate world position (using GridMap's cell size)
+	var world_pos = Vector3(
+		start_pos.x * grid_map.cell_size.x + grid_map.cell_size.x,
+		y_offset,  # Offset Y to ensure player spawns above the floor
+		start_pos.z * grid_map.cell_size.z + grid_map.cell_size.z * 0.5
+	)
 	
-	# Position player at start room with slight offset to ensure they're inside
-	player_instance.position = start_room.position + Vector3(1.0, 0.0, 0.0)
+	player_instance.position = world_pos
 
-# Optional: Function to manually trigger regeneration
 func regenerate() -> void:
-	if Engine.is_editor_hint():
 		generate_dungeon()
 		await get_tree().create_timer(0.1).timeout
 		spawn_player()

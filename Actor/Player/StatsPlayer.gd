@@ -20,7 +20,7 @@ var current_exp: int = 0
 var max_exp: int = 100
 var curse_value: int = 0
 var max_curse_percentage: float = 0.5
-var move_speed: float = 5.0
+var move_speed: float = 10.0
 
 var physical_atk: int = 10
 var physical_defense: int = 5
@@ -36,10 +36,18 @@ var hp_regen: float = 0.1
 var physical_penetration: float = 0.0
 var magical_penetration: float = 0.0
 
-var rpg_stats: RPGStats
+var rpg_stats: RPGstats
+
+func save_stats():
+	GameStateManager.save_player_stats(self)
+	GameStateManager.save_rpg_stats(rpg_stats)
+
+func load_stats():
+	GameStateManager.load_player_stats(self)
+	GameStateManager.load_rpg_stats(rpg_stats)
 
 func _init():
-	rpg_stats = RPGStats.new()
+	rpg_stats = RPGstats.new()
 	rpg_stats.connect("stat_changed", Callable (self, "_on_rpg_stat_changed"))
 
 func _ready():
@@ -68,7 +76,7 @@ func update_derived_stats():
 	max_mana = 50 + rpg_stats.get_max_mana_bonus()
 	mana_regen = 0.25 + rpg_stats.get_mana_regen_bonus()
 	crit_damage = 1.5 + rpg_stats.get_crit_damage_bonus()
-	move_speed = 5.0 + rpg_stats.get_move_speed_bonus()
+	move_speed + rpg_stats.get_move_speed_bonus()
 	max_stamina = 100 + rpg_stats.get_max_stamina_bonus()
 	stamina_regen = 0.5 + rpg_stats.get_stamina_regen_bonus()
 	max_hp = base_max_hp + rpg_stats.get_max_hp_bonus() - curse_value
@@ -87,10 +95,9 @@ func take_damage(amount: int):
 		die()
 
 func die():
-	apply_curse()
+	#apply_curse()
 	reset_stats()
 	emit_signal("Pdied")
-	get_parent().respawn()
 
 func heal(amount: int):
 	current_hp = min(max_hp, current_hp + amount)

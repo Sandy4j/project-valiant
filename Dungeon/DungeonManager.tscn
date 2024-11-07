@@ -1,1306 +1,168 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu182v5sdcr0i"]
+[gd_scene load_steps=10 format=3 uid="uid://cu182v5sdcr0i"]
 
 [ext_resource type="Script" path="res://Dungeon/DungeonManager.gd" id="1_m3o2n"]
 [ext_resource type="PackedScene" uid="uid://cqt5q34kl7voh" path="res://Dungeon/StartRoom.tscn" id="3_0mjxd"]
 [ext_resource type="MeshLibrary" uid="uid://b481jinxegk4e" path="res://Proc Dungeon/test dun/DungeonTiles.tres" id="3_j02a3"]
+[ext_resource type="PackedScene" uid="uid://fnupmlaosr48" path="res://Dungeon/Dungcell.tscn" id="3_leqe2"]
 [ext_resource type="Script" path="res://Dungeon/Procedural Layout.gd" id="4_5tfci"]
 [ext_resource type="PackedScene" uid="uid://cgfydcvolps5p" path="res://Dungeon/EndRoom.tscn" id="4_t5mm2"]
 [ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="4_wy08u"]
 [ext_resource type="Script" path="res://Dungeon/DungeonMesh.gd" id="5_hv7qj"]
-[ext_resource type="PackedScene" uid="uid://cdh76gm5vwwb0" path="res://Proc Dungeon/test dun/mesh_dun.tscn" id="8_n26ph"]
+[ext_resource type="Script" path="res://Dungeon/DungCell.gd" id="9_7cyhf"]
 
 [node name="DungeonManager" type="Node3D"]
 script = ExtResource("1_m3o2n")
 grid_map_path = NodePath("GridMap")
 dungeon_mesh_path = NodePath("DungeonMesh")
 player_scene = ExtResource("4_wy08u")
-border_size = 50
-dun_cell_scene = ExtResource("8_n26ph")
+border_size = 10
+room_number = 4
+max_room_size = 6
+dun_cell_scene = ExtResource("3_leqe2")
 start_room_scene = ExtResource("3_0mjxd")
 end_room_scene = ExtResource("4_t5mm2")
-
-[node name="Player" parent="." instance=ExtResource("4_wy08u")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 1, 6)
 
 [node name="GridMap" type="GridMap" parent="."]
 visible = false
 mesh_library = ExtResource("3_j02a3")
-cell_size = Vector3(4, 4, 4)
+cell_size = Vector3(12, 12, 12)
 data = {
-"cells": PackedInt32Array(65535, 65535, 3, 65535, 50, 3, 50, 65535, 3, 0, 65535, 3, 0, 50, 3, 50, 0, 3, 65535, 0, 3, 1, 65535, 3, 1, 50, 3, 50, 1, 3, 65535, 1, 3, 2, 65535, 3, 2, 50, 3, 50, 2, 3, 65535, 2, 3, 3, 65535, 3, 3, 50, 3, 50, 3, 3, 65535, 3, 3, 4, 65535, 3, 4, 50, 3, 50, 4, 3, 65535, 4, 3, 5, 65535, 3, 5, 50, 3, 50, 5, 3, 65535, 5, 3, 6, 65535, 3, 6, 50, 3, 50, 6, 3, 65535, 6, 3, 7, 65535, 3, 7, 50, 3, 50, 7, 3, 65535, 7, 3, 8, 65535, 3, 8, 50, 3, 50, 8, 3, 65535, 8, 3, 9, 65535, 3, 9, 50, 3, 50, 9, 3, 65535, 9, 3, 10, 65535, 3, 10, 50, 3, 50, 10, 3, 65535, 10, 3, 11, 65535, 3, 11, 50, 3, 50, 11, 3, 65535, 11, 3, 12, 65535, 3, 12, 50, 3, 50, 12, 3, 65535, 12, 3, 13, 65535, 3, 13, 50, 3, 50, 13, 3, 65535, 13, 3, 14, 65535, 3, 14, 50, 3, 50, 14, 3, 65535, 14, 3, 15, 65535, 3, 15, 50, 3, 50, 15, 3, 65535, 15, 3, 16, 65535, 3, 16, 50, 3, 50, 16, 3, 65535, 16, 3, 17, 65535, 3, 17, 50, 3, 50, 17, 3, 65535, 17, 3, 18, 65535, 3, 18, 50, 3, 50, 18, 3, 65535, 18, 3, 19, 65535, 3, 19, 50, 3, 50, 19, 3, 65535, 19, 3, 20, 65535, 3, 20, 50, 3, 50, 20, 3, 65535, 20, 3, 21, 65535, 3, 21, 50, 3, 50, 21, 3, 65535, 21, 3, 22, 65535, 3, 22, 50, 3, 50, 22, 3, 65535, 22, 3, 23, 65535, 3, 23, 50, 3, 50, 23, 3, 65535, 23, 3, 24, 65535, 3, 24, 50, 3, 50, 24, 3, 65535, 24, 3, 25, 65535, 3, 25, 50, 3, 50, 25, 3, 65535, 25, 3, 26, 65535, 3, 26, 50, 3, 50, 26, 3, 65535, 26, 3, 27, 65535, 3, 27, 50, 3, 50, 27, 3, 65535, 27, 3, 28, 65535, 3, 28, 50, 3, 50, 28, 3, 65535, 28, 3, 29, 65535, 3, 29, 50, 3, 50, 29, 3, 65535, 29, 3, 30, 65535, 3, 30, 50, 3, 50, 30, 3, 65535, 30, 3, 31, 65535, 3, 31, 50, 3, 50, 31, 3, 65535, 31, 3, 32, 65535, 3, 32, 50, 3, 50, 32, 3, 65535, 32, 3, 33, 65535, 3, 33, 50, 3, 50, 33, 3, 65535, 33, 3, 34, 65535, 3, 34, 50, 3, 50, 34, 3, 65535, 34, 3, 35, 65535, 3, 35, 50, 3, 50, 35, 3, 65535, 35, 3, 36, 65535, 3, 36, 50, 3, 50, 36, 3, 65535, 36, 3, 37, 65535, 3, 37, 50, 3, 50, 37, 3, 65535, 37, 3, 38, 65535, 3, 38, 50, 3, 50, 38, 3, 65535, 38, 3, 39, 65535, 3, 39, 50, 3, 50, 39, 3, 65535, 39, 3, 40, 65535, 3, 40, 50, 3, 50, 40, 3, 65535, 40, 3, 41, 65535, 3, 41, 50, 3, 50, 41, 3, 65535, 41, 3, 42, 65535, 3, 42, 50, 3, 50, 42, 3, 65535, 42, 3, 43, 65535, 3, 43, 50, 3, 50, 43, 3, 65535, 43, 3, 44, 65535, 3, 44, 50, 3, 50, 44, 3, 65535, 44, 3, 45, 65535, 3, 45, 50, 3, 50, 45, 3, 65535, 45, 3, 46, 65535, 3, 46, 50, 3, 50, 46, 3, 65535, 46, 3, 47, 65535, 3, 47, 50, 3, 50, 47, 3, 65535, 47, 3, 48, 65535, 3, 48, 50, 3, 50, 48, 3, 65535, 48, 3, 49, 65535, 3, 49, 50, 3, 50, 49, 3, 65535, 49, 3, 50, 50, 3, 0, 37, 4, 1, 37, 2, 48, 26, 2, 49, 26, 5, 48, 27, 2, 49, 27, 5, 5, 29, 0, 6, 29, 0, 7, 29, 0, 8, 29, 2, 5, 30, 0, 6, 30, 0, 7, 30, 0, 8, 30, 0, 5, 31, 0, 6, 31, 0, 7, 31, 0, 8, 31, 0, 5, 32, 2, 6, 32, 0, 7, 32, 0, 8, 32, 2, 12, 14, 0, 13, 14, 0, 14, 14, 0, 15, 14, 0, 16, 14, 0, 17, 14, 0, 18, 14, 2, 12, 15, 0, 13, 15, 0, 14, 15, 0, 15, 15, 0, 16, 15, 0, 17, 15, 0, 18, 15, 0, 12, 16, 0, 13, 16, 0, 14, 16, 0, 15, 16, 0, 16, 16, 0, 17, 16, 0, 18, 16, 0, 12, 17, 0, 13, 17, 0, 14, 17, 0, 15, 17, 0, 16, 17, 0, 17, 17, 0, 18, 17, 0, 12, 18, 2, 13, 18, 0, 14, 18, 0, 15, 18, 0, 16, 18, 0, 17, 18, 0, 18, 18, 0, 23, 3, 0, 24, 3, 0, 25, 3, 0, 26, 3, 0, 27, 3, 0, 23, 4, 0, 24, 4, 0, 25, 4, 0, 26, 4, 0, 27, 4, 0, 23, 5, 2, 24, 5, 0, 25, 5, 0, 26, 5, 0, 27, 5, 2, 34, 18, 2, 35, 18, 0, 36, 18, 0, 37, 18, 0, 34, 19, 2, 35, 19, 0, 36, 19, 0, 37, 19, 0, 34, 20, 0, 35, 20, 0, 36, 20, 0, 37, 20, 0, 34, 21, 0, 35, 21, 0, 36, 21, 0, 37, 21, 0, 34, 22, 0, 35, 22, 0, 36, 22, 0, 37, 22, 2, 25, 43, 2, 26, 43, 0, 27, 43, 0, 28, 43, 2, 25, 44, 2, 26, 44, 0, 27, 44, 0, 28, 44, 0, 25, 45, 0, 26, 45, 0, 27, 45, 0, 28, 45, 0, 25, 46, 0, 26, 46, 0, 27, 46, 0, 28, 46, 0, 25, 47, 0, 26, 47, 0, 27, 47, 0, 28, 47, 0, 43, 24, 2, 44, 24, 0, 45, 24, 0, 46, 24, 0, 47, 24, 0, 48, 24, 0, 43, 25, 2, 44, 25, 0, 45, 25, 0, 46, 25, 0, 47, 25, 0, 48, 25, 0, 43, 26, 0, 44, 26, 0, 45, 26, 0, 46, 26, 0, 47, 26, 0, 43, 27, 0, 44, 27, 0, 45, 27, 0, 46, 27, 0, 47, 27, 0, 43, 28, 2, 44, 28, 0, 45, 28, 0, 46, 28, 0, 47, 28, 0, 48, 28, 0, 9, 29, 2, 8, 28, 1, 9, 28, 1, 8, 27, 1, 9, 27, 1, 8, 26, 1, 9, 26, 1, 8, 25, 1, 9, 25, 1, 8, 24, 1, 9, 24, 1, 8, 23, 1, 9, 23, 1, 8, 22, 1, 9, 22, 1, 8, 21, 1, 9, 21, 1, 8, 20, 1, 9, 20, 1, 8, 19, 1, 9, 19, 1, 8, 18, 1, 9, 18, 1, 10, 18, 1, 10, 19, 1, 11, 18, 1, 11, 19, 1, 12, 19, 2, 8, 33, 2, 9, 32, 1, 9, 33, 1, 10, 32, 1, 10, 33, 1, 11, 32, 1, 11, 33, 1, 12, 32, 1, 12, 33, 1, 13, 32, 1, 13, 33, 1, 14, 32, 1, 14, 33, 1, 15, 32, 1, 15, 33, 1, 16, 32, 1, 16, 33, 1, 17, 32, 1, 17, 33, 1, 18, 32, 1, 18, 33, 1, 19, 32, 1, 19, 33, 1, 20, 32, 1, 20, 33, 1, 21, 32, 1, 21, 33, 1, 22, 32, 1, 22, 33, 1, 23, 32, 1, 23, 33, 1, 24, 32, 1, 24, 33, 1, 25, 32, 1, 26, 32, 1, 25, 33, 1, 26, 33, 1, 25, 34, 1, 26, 34, 1, 25, 35, 1, 26, 35, 1, 25, 36, 1, 26, 36, 1, 25, 37, 1, 26, 37, 1, 25, 38, 1, 26, 38, 1, 25, 39, 1, 26, 39, 1, 25, 40, 1, 26, 40, 1, 25, 41, 1, 26, 41, 1, 25, 42, 1, 26, 42, 1, 37, 23, 2, 38, 22, 1, 38, 23, 1, 39, 22, 1, 39, 23, 1, 40, 22, 1, 40, 23, 1, 41, 22, 1, 41, 23, 1, 42, 22, 1, 42, 23, 1, 43, 22, 1, 44, 22, 1, 43, 23, 1, 44, 23, 1, 2, 37, 2, 1, 36, 1, 2, 36, 1, 1, 35, 1, 2, 35, 1, 1, 34, 1, 2, 34, 1, 1, 33, 1, 2, 33, 1, 1, 32, 1, 2, 32, 1, 3, 32, 1, 3, 33, 1, 4, 32, 1, 4, 33, 1, 5, 33, 2, 1, 38, 2, 2, 38, 1, 3, 37, 1, 3, 38, 1, 4, 37, 1, 4, 38, 1, 5, 37, 1, 5, 38, 1, 6, 37, 1, 6, 38, 1, 7, 37, 1, 7, 38, 1, 8, 37, 1, 8, 38, 1, 9, 37, 1, 9, 38, 1, 10, 37, 1, 10, 38, 1, 11, 37, 1, 11, 38, 1, 12, 37, 1, 12, 38, 1, 13, 37, 1, 13, 38, 1, 14, 37, 1, 14, 38, 1, 15, 37, 1, 15, 38, 1, 16, 37, 1, 16, 38, 1, 17, 37, 1, 17, 38, 1, 18, 37, 1, 18, 38, 1, 19, 37, 1, 19, 38, 1, 20, 37, 1, 20, 38, 1, 21, 37, 1, 21, 38, 1, 22, 37, 1, 22, 38, 1, 23, 37, 1, 23, 38, 1, 24, 37, 1, 24, 38, 1, 19, 14, 2, 18, 13, 1, 19, 13, 1, 18, 12, 1, 19, 12, 1, 18, 11, 1, 19, 11, 1, 18, 10, 1, 19, 10, 1, 18, 9, 1, 19, 9, 1, 18, 8, 1, 19, 8, 1, 18, 7, 1, 19, 7, 1, 18, 6, 1, 19, 6, 1, 18, 5, 1, 19, 5, 1, 20, 5, 1, 20, 6, 1, 21, 5, 1, 21, 6, 1, 22, 5, 1, 22, 6, 1, 23, 6, 2, 29, 43, 2, 28, 42, 1, 29, 42, 1, 28, 41, 1, 29, 41, 1, 28, 40, 1, 29, 40, 1, 28, 39, 1, 29, 39, 1, 28, 38, 1, 29, 38, 1, 28, 37, 1, 29, 37, 1, 28, 36, 1, 29, 36, 1, 28, 35, 1, 29, 35, 1, 28, 34, 1, 29, 34, 1, 28, 33, 1, 29, 33, 1, 28, 32, 1, 29, 32, 1, 28, 31, 1, 29, 31, 1, 28, 30, 1, 29, 30, 1, 28, 29, 1, 29, 29, 1, 28, 28, 1, 29, 28, 1, 30, 28, 1, 30, 29, 1, 31, 28, 1, 31, 29, 1, 32, 28, 1, 32, 29, 1, 33, 28, 1, 33, 29, 1, 34, 28, 1, 34, 29, 1, 35, 28, 1, 35, 29, 1, 36, 28, 1, 36, 29, 1, 37, 28, 1, 37, 29, 1, 38, 28, 1, 38, 29, 1, 39, 28, 1, 39, 29, 1, 40, 28, 1, 40, 29, 1, 41, 28, 1, 41, 29, 1, 42, 28, 1, 42, 29, 1, 43, 29, 2, 27, 6, 2, 28, 5, 1, 28, 6, 1, 29, 5, 1, 29, 6, 1, 30, 5, 1, 30, 6, 1, 31, 5, 1, 31, 6, 1, 32, 5, 1, 32, 6, 1, 33, 5, 1, 33, 6, 1, 34, 5, 1, 35, 5, 1, 34, 6, 1, 35, 6, 1, 34, 7, 1, 35, 7, 1, 34, 8, 1, 35, 8, 1, 34, 9, 1, 35, 9, 1, 34, 10, 1, 35, 10, 1, 34, 11, 1, 35, 11, 1, 34, 12, 1, 35, 12, 1, 34, 13, 1, 35, 13, 1, 34, 14, 1, 35, 14, 1, 34, 15, 1, 35, 15, 1, 34, 16, 1, 35, 16, 1, 34, 17, 1, 35, 17, 1)
+"cells": PackedInt32Array(65535, 65535, 3, 65535, 10, 3, 10, 65535, 3, 0, 65535, 3, 0, 10, 3, 10, 0, 3, 65535, 0, 3, 1, 65535, 3, 1, 10, 3, 10, 1, 3, 65535, 1, 3, 2, 65535, 3, 2, 10, 3, 10, 2, 3, 65535, 2, 3, 3, 65535, 3, 3, 10, 3, 10, 3, 3, 65535, 3, 3, 4, 65535, 3, 4, 10, 3, 10, 4, 3, 65535, 4, 3, 5, 65535, 3, 5, 10, 3, 10, 5, 3, 65535, 5, 3, 6, 65535, 3, 6, 10, 3, 10, 6, 3, 65535, 6, 3, 7, 65535, 3, 7, 10, 3, 10, 7, 3, 65535, 7, 3, 8, 65535, 3, 8, 10, 3, 10, 8, 3, 65535, 8, 3, 9, 65535, 3, 9, 10, 3, 10, 9, 3, 65535, 9, 3, 10, 10, 3, 0, 5, 4, 1, 5, 2, 8, 3, 2, 9, 3, 5, 8, 4, 2, 9, 4, 5, 5, 6, 2, 6, 6, 0, 7, 6, 0, 8, 6, 2, 5, 7, 0, 6, 7, 0, 7, 7, 0, 8, 7, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 3, 2, 0, 4, 2, 0, 5, 2, 0, 3, 3, 2, 4, 3, 0, 5, 3, 2, 5, 5, 1, 5, 4, 1, 1, 4, 1, 1, 3, 1, 2, 3, 1, 7, 3, 1, 6, 3, 1, 8, 5, 1)
 }
 script = ExtResource("4_5tfci")
 dunmesh_path = NodePath("../DungeonMesh")
+metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="DungeonMesh" type="Node3D" parent="."]
 script = ExtResource("5_hv7qj")
 grid_map_path = NodePath("../GridMap")
 
-[node name="MeshDun" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 2, 2, 150)
+[node name="StartRoom" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_0mjxd")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 66)
 
-[node name="@Node3D@32380" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6, 2, 150)
-
-[node name="@Node3D@32381" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 194, 2, 106)
-
-[node name="@Node3D@32382" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 198, 2, 106)
-
-[node name="@Node3D@32383" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 194, 2, 110)
-
-[node name="@Node3D@32384" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 198, 2, 110)
-
-[node name="@Node3D@32385" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22, 2, 118)
-
-[node name="@Node3D@32386" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26, 2, 118)
-
-[node name="@Node3D@32387" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 30, 2, 118)
-
-[node name="@Node3D@32388" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 118)
-
-[node name="@Node3D@32389" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22, 2, 122)
-
-[node name="@Node3D@32390" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26, 2, 122)
-
-[node name="@Node3D@32391" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 30, 2, 122)
-
-[node name="@Node3D@32392" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 122)
-
-[node name="@Node3D@32393" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22, 2, 126)
-
-[node name="@Node3D@32394" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26, 2, 126)
-
-[node name="@Node3D@32395" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 30, 2, 126)
-
-[node name="@Node3D@32396" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 126)
-
-[node name="@Node3D@32397" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22, 2, 130)
-
-[node name="@Node3D@32398" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26, 2, 130)
-
-[node name="@Node3D@32399" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 30, 2, 130)
-
-[node name="@Node3D@32400" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 130)
-
-[node name="@Node3D@32401" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 58)
-
-[node name="@Node3D@32402" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 58)
-
-[node name="@Node3D@32403" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 58)
-
-[node name="@Node3D@32404" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 58)
-
-[node name="@Node3D@32405" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 58)
-
-[node name="@Node3D@32406" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 58)
-
-[node name="@Node3D@32407" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 58)
-
-[node name="@Node3D@32408" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 62)
-
-[node name="@Node3D@32409" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 62)
-
-[node name="@Node3D@32410" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 62)
-
-[node name="@Node3D@32411" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 62)
-
-[node name="@Node3D@32412" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 62)
-
-[node name="@Node3D@32413" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 62)
-
-[node name="@Node3D@32414" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 62)
-
-[node name="@Node3D@32415" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 66)
-
-[node name="@Node3D@32416" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 66)
-
-[node name="@Node3D@32417" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 66)
-
-[node name="@Node3D@32418" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 66)
-
-[node name="@Node3D@32419" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 66)
-
-[node name="@Node3D@32420" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 66)
-
-[node name="@Node3D@32421" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 66)
-
-[node name="@Node3D@32422" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 70)
-
-[node name="@Node3D@32423" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 70)
-
-[node name="@Node3D@32424" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 70)
-
-[node name="@Node3D@32425" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 70)
-
-[node name="@Node3D@32426" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 70)
-
-[node name="@Node3D@32427" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 70)
-
-[node name="@Node3D@32428" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 70)
-
-[node name="@Node3D@32429" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 74)
-
-[node name="@Node3D@32430" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 74)
-
-[node name="@Node3D@32431" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 74)
-
-[node name="@Node3D@32432" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 74)
-
-[node name="@Node3D@32433" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 74)
-
-[node name="@Node3D@32434" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 74)
-
-[node name="@Node3D@32435" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 74)
-
-[node name="@Node3D@32436" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 94, 2, 14)
-
-[node name="@Node3D@32437" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 98, 2, 14)
-
-[node name="@Node3D@32438" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 14)
-
-[node name="@Node3D@32439" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 14)
-
-[node name="@Node3D@32440" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 14)
-
-[node name="@Node3D@32441" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 94, 2, 18)
-
-[node name="@Node3D@32442" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 98, 2, 18)
-
-[node name="@Node3D@32443" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 18)
-
-[node name="@Node3D@32444" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 18)
-
-[node name="@Node3D@32445" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 18)
-
-[node name="@Node3D@32446" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 94, 2, 22)
-
-[node name="@Node3D@32447" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 98, 2, 22)
-
-[node name="@Node3D@32448" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 22)
-
-[node name="@Node3D@32449" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 22)
-
-[node name="@Node3D@32450" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 22)
-
-[node name="@Node3D@32451" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 74)
-
-[node name="@Node3D@32452" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 74)
-
-[node name="@Node3D@32453" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146, 2, 74)
-
-[node name="@Node3D@32454" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 150, 2, 74)
-
-[node name="@Node3D@32455" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 78)
-
-[node name="@Node3D@32456" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 78)
-
-[node name="@Node3D@32457" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146, 2, 78)
-
-[node name="@Node3D@32458" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 150, 2, 78)
-
-[node name="@Node3D@32459" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 82)
-
-[node name="@Node3D@32460" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 82)
-
-[node name="@Node3D@32461" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146, 2, 82)
-
-[node name="@Node3D@32462" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 150, 2, 82)
-
-[node name="@Node3D@32463" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 86)
-
-[node name="@Node3D@32464" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 86)
-
-[node name="@Node3D@32465" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146, 2, 86)
-
-[node name="@Node3D@32466" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 150, 2, 86)
-
-[node name="@Node3D@32467" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 90)
-
-[node name="@Node3D@32468" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 90)
-
-[node name="@Node3D@32469" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146, 2, 90)
-
-[node name="@Node3D@32470" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 150, 2, 90)
-
-[node name="@Node3D@32471" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 174)
-
-[node name="@Node3D@32472" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 174)
-
-[node name="@Node3D@32473" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 174)
-
-[node name="@Node3D@32474" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 174)
-
-[node name="@Node3D@32475" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 178)
-
-[node name="@Node3D@32476" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 178)
-
-[node name="@Node3D@32477" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 178)
-
-[node name="@Node3D@32478" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 178)
-
-[node name="@Node3D@32479" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 182)
-
-[node name="@Node3D@32480" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 182)
-
-[node name="@Node3D@32481" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 182)
-
-[node name="@Node3D@32482" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 182)
-
-[node name="@Node3D@32483" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 186)
-
-[node name="@Node3D@32484" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 186)
-
-[node name="@Node3D@32485" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 186)
-
-[node name="@Node3D@32486" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 186)
-
-[node name="@Node3D@32487" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 190)
-
-[node name="@Node3D@32488" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 190)
-
-[node name="@Node3D@32489" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 190)
-
-[node name="@Node3D@32490" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 190)
-
-[node name="@Node3D@32491" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 174, 2, 98)
-
-[node name="@Node3D@32492" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 178, 2, 98)
-
-[node name="@Node3D@32493" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 182, 2, 98)
-
-[node name="@Node3D@32494" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 186, 2, 98)
-
-[node name="@Node3D@32495" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 190, 2, 98)
-
-[node name="@Node3D@32496" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 194, 2, 98)
-
-[node name="@Node3D@32497" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 174, 2, 102)
-
-[node name="@Node3D@32498" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 178, 2, 102)
-
-[node name="@Node3D@32499" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 182, 2, 102)
-
-[node name="@Node3D@32500" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 186, 2, 102)
-
-[node name="@Node3D@32501" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 190, 2, 102)
-
-[node name="@Node3D@32502" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 194, 2, 102)
-
-[node name="@Node3D@32503" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 174, 2, 106)
-
-[node name="@Node3D@32504" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 178, 2, 106)
-
-[node name="@Node3D@32505" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 182, 2, 106)
-
-[node name="@Node3D@32506" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 186, 2, 106)
-
-[node name="@Node3D@32507" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 190, 2, 106)
-
-[node name="@Node3D@32508" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 174, 2, 110)
-
-[node name="@Node3D@32509" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 178, 2, 110)
-
-[node name="@Node3D@32510" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 182, 2, 110)
-
-[node name="@Node3D@32511" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 186, 2, 110)
-
-[node name="@Node3D@32512" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 190, 2, 110)
-
-[node name="@Node3D@32513" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 174, 2, 114)
-
-[node name="@Node3D@32514" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 178, 2, 114)
-
-[node name="@Node3D@32515" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 182, 2, 114)
-
-[node name="@Node3D@32516" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 186, 2, 114)
-
-[node name="@Node3D@32517" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 190, 2, 114)
-
-[node name="@Node3D@32518" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 194, 2, 114)
-
-[node name="@Node3D@32519" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 118)
-
-[node name="@Node3D@32520" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 114)
-
-[node name="@Node3D@32521" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 114)
-
-[node name="@Node3D@32522" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 110)
-
-[node name="@Node3D@32523" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 110)
-
-[node name="@Node3D@32524" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 106)
-
-[node name="@Node3D@32525" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 106)
-
-[node name="@Node3D@32526" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 102)
-
-[node name="@Node3D@32527" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 102)
-
-[node name="@Node3D@32528" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 98)
-
-[node name="@Node3D@32529" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 98)
-
-[node name="@Node3D@32530" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 94)
-
-[node name="@Node3D@32531" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 94)
-
-[node name="@Node3D@32532" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 90)
-
-[node name="@Node3D@32533" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 90)
-
-[node name="@Node3D@32534" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 86)
-
-[node name="@Node3D@32535" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 86)
-
-[node name="@Node3D@32536" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 82)
-
-[node name="@Node3D@32537" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 82)
-
-[node name="@Node3D@32538" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 78)
-
-[node name="@Node3D@32539" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 78)
-
-[node name="@Node3D@32540" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 74)
-
-[node name="@Node3D@32541" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 74)
-
-[node name="@Node3D@32542" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 42, 2, 74)
-
-[node name="@Node3D@32543" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 42, 2, 78)
-
-[node name="@Node3D@32544" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 46, 2, 74)
-
-[node name="@Node3D@32545" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 46, 2, 78)
-
-[node name="@Node3D@32546" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 78)
-
-[node name="@Node3D@32547" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 134)
-
-[node name="@Node3D@32548" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 130)
-
-[node name="@Node3D@32549" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 134)
-
-[node name="@Node3D@32550" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 42, 2, 130)
-
-[node name="@Node3D@32551" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 42, 2, 134)
-
-[node name="@Node3D@32552" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 46, 2, 130)
-
-[node name="@Node3D@32553" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 46, 2, 134)
-
-[node name="@Node3D@32554" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 130)
-
-[node name="@Node3D@32555" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 134)
-
-[node name="@Node3D@32556" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 130)
-
-[node name="@Node3D@32557" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 134)
-
-[node name="@Node3D@32558" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 130)
-
-[node name="@Node3D@32559" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 134)
-
-[node name="@Node3D@32560" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 130)
-
-[node name="@Node3D@32561" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 134)
-
-[node name="@Node3D@32562" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 130)
-
-[node name="@Node3D@32563" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 134)
-
-[node name="@Node3D@32564" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 130)
-
-[node name="@Node3D@32565" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 134)
-
-[node name="@Node3D@32566" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 130)
-
-[node name="@Node3D@32567" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 134)
-
-[node name="@Node3D@32568" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 130)
-
-[node name="@Node3D@32569" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 134)
-
-[node name="@Node3D@32570" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 82, 2, 130)
-
-[node name="@Node3D@32571" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 82, 2, 134)
-
-[node name="@Node3D@32572" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 86, 2, 130)
-
-[node name="@Node3D@32573" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 86, 2, 134)
-
-[node name="@Node3D@32574" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 90, 2, 130)
-
-[node name="@Node3D@32575" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 90, 2, 134)
-
-[node name="@Node3D@32576" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 94, 2, 130)
-
-[node name="@Node3D@32577" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 94, 2, 134)
-
-[node name="@Node3D@32578" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 98, 2, 130)
-
-[node name="@Node3D@32579" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 98, 2, 134)
-
-[node name="@Node3D@32580" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 130)
-
-[node name="@Node3D@32581" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 130)
-
-[node name="@Node3D@32582" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 134)
-
-[node name="@Node3D@32583" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 134)
-
-[node name="@Node3D@32584" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 138)
-
-[node name="@Node3D@32585" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 138)
-
-[node name="@Node3D@32586" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 142)
-
-[node name="@Node3D@32587" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 142)
-
-[node name="@Node3D@32588" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 146)
-
-[node name="@Node3D@32589" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 146)
-
-[node name="@Node3D@32590" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 150)
-
-[node name="@Node3D@32591" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 150)
-
-[node name="@Node3D@32592" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 154)
-
-[node name="@Node3D@32593" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 154)
-
-[node name="@Node3D@32594" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 158)
-
-[node name="@Node3D@32595" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 158)
-
-[node name="@Node3D@32596" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 162)
-
-[node name="@Node3D@32597" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 162)
-
-[node name="@Node3D@32598" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 166)
-
-[node name="@Node3D@32599" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 166)
-
-[node name="@Node3D@32600" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 102, 2, 170)
-
-[node name="@Node3D@32601" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 106, 2, 170)
-
-[node name="@Node3D@32602" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 150, 2, 94)
-
-[node name="@Node3D@32603" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 154, 2, 90)
-
-[node name="@Node3D@32604" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 154, 2, 94)
-
-[node name="@Node3D@32605" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 158, 2, 90)
-
-[node name="@Node3D@32606" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 158, 2, 94)
-
-[node name="@Node3D@32607" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 162, 2, 90)
-
-[node name="@Node3D@32608" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 162, 2, 94)
-
-[node name="@Node3D@32609" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 166, 2, 90)
-
-[node name="@Node3D@32610" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 166, 2, 94)
-
-[node name="@Node3D@32611" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 170, 2, 90)
-
-[node name="@Node3D@32612" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 170, 2, 94)
-
-[node name="@Node3D@32613" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 174, 2, 90)
-
-[node name="@Node3D@32614" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 178, 2, 90)
-
-[node name="@Node3D@32615" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 174, 2, 94)
-
-[node name="@Node3D@32616" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 178, 2, 94)
-
-[node name="@Node3D@32617" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10, 2, 150)
-
-[node name="@Node3D@32618" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6, 2, 146)
-
-[node name="@Node3D@32619" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10, 2, 146)
-
-[node name="@Node3D@32620" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6, 2, 142)
-
-[node name="@Node3D@32621" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10, 2, 142)
-
-[node name="@Node3D@32622" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6, 2, 138)
-
-[node name="@Node3D@32623" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10, 2, 138)
-
-[node name="@Node3D@32624" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6, 2, 134)
-
-[node name="@Node3D@32625" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10, 2, 134)
-
-[node name="@Node3D@32626" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6, 2, 130)
-
-[node name="@Node3D@32627" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10, 2, 130)
-
-[node name="@Node3D@32628" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14, 2, 130)
-
-[node name="@Node3D@32629" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14, 2, 134)
-
-[node name="@Node3D@32630" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 18, 2, 130)
-
-[node name="@Node3D@32631" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 18, 2, 134)
-
-[node name="@Node3D@32632" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22, 2, 134)
-
-[node name="@Node3D@32633" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6, 2, 154)
-
-[node name="@Node3D@32634" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10, 2, 154)
-
-[node name="@Node3D@32635" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14, 2, 150)
-
-[node name="@Node3D@32636" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14, 2, 154)
-
-[node name="@Node3D@32637" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 18, 2, 150)
-
-[node name="@Node3D@32638" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 18, 2, 154)
-
-[node name="@Node3D@32639" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22, 2, 150)
-
-[node name="@Node3D@32640" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 22, 2, 154)
-
-[node name="@Node3D@32641" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26, 2, 150)
-
-[node name="@Node3D@32642" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26, 2, 154)
-
-[node name="@Node3D@32643" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 30, 2, 150)
-
-[node name="@Node3D@32644" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 30, 2, 154)
-
-[node name="@Node3D@32645" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 150)
-
-[node name="@Node3D@32646" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 34, 2, 154)
-
-[node name="@Node3D@32647" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 150)
-
-[node name="@Node3D@32648" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 38, 2, 154)
-
-[node name="@Node3D@32649" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 42, 2, 150)
-
-[node name="@Node3D@32650" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 42, 2, 154)
-
-[node name="@Node3D@32651" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 46, 2, 150)
-
-[node name="@Node3D@32652" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 46, 2, 154)
-
-[node name="@Node3D@32653" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 150)
-
-[node name="@Node3D@32654" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 50, 2, 154)
-
-[node name="@Node3D@32655" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 150)
-
-[node name="@Node3D@32656" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 54, 2, 154)
-
-[node name="@Node3D@32657" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 150)
-
-[node name="@Node3D@32658" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 58, 2, 154)
-
-[node name="@Node3D@32659" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 150)
-
-[node name="@Node3D@32660" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 62, 2, 154)
-
-[node name="@Node3D@32661" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 150)
-
-[node name="@Node3D@32662" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 66, 2, 154)
-
-[node name="@Node3D@32663" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 150)
-
-[node name="@Node3D@32664" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 70, 2, 154)
-
-[node name="@Node3D@32665" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 150)
-
-[node name="@Node3D@32666" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 154)
-
-[node name="@Node3D@32667" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 150)
-
-[node name="@Node3D@32668" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 154)
-
-[node name="@Node3D@32669" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 82, 2, 150)
-
-[node name="@Node3D@32670" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 82, 2, 154)
-
-[node name="@Node3D@32671" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 86, 2, 150)
-
-[node name="@Node3D@32672" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 86, 2, 154)
-
-[node name="@Node3D@32673" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 90, 2, 150)
-
-[node name="@Node3D@32674" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 90, 2, 154)
-
-[node name="@Node3D@32675" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 94, 2, 150)
-
-[node name="@Node3D@32676" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 94, 2, 154)
-
-[node name="@Node3D@32677" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 98, 2, 150)
-
-[node name="@Node3D@32678" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 98, 2, 154)
-
-[node name="@Node3D@32679" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 58)
-
-[node name="@Node3D@32680" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 54)
-
-[node name="@Node3D@32681" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 54)
-
-[node name="@Node3D@32682" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 50)
-
-[node name="@Node3D@32683" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 50)
-
-[node name="@Node3D@32684" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 46)
-
-[node name="@Node3D@32685" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 46)
-
-[node name="@Node3D@32686" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 42)
-
-[node name="@Node3D@32687" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 42)
-
-[node name="@Node3D@32688" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 38)
-
-[node name="@Node3D@32689" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 38)
-
-[node name="@Node3D@32690" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 34)
-
-[node name="@Node3D@32691" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 34)
-
-[node name="@Node3D@32692" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 30)
-
-[node name="@Node3D@32693" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 30)
-
-[node name="@Node3D@32694" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 26)
-
-[node name="@Node3D@32695" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 26)
-
-[node name="@Node3D@32696" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 74, 2, 22)
-
-[node name="@Node3D@32697" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 78, 2, 22)
-
-[node name="@Node3D@32698" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 82, 2, 22)
-
-[node name="@Node3D@32699" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 82, 2, 26)
-
-[node name="@Node3D@32700" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 86, 2, 22)
-
-[node name="@Node3D@32701" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 86, 2, 26)
-
-[node name="@Node3D@32702" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 90, 2, 22)
-
-[node name="@Node3D@32703" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 90, 2, 26)
-
-[node name="@Node3D@32704" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 94, 2, 26)
-
-[node name="@Node3D@32705" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 174)
-
-[node name="@Node3D@32706" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 170)
-
-[node name="@Node3D@32707" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 170)
-
-[node name="@Node3D@32708" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 166)
-
-[node name="@Node3D@32709" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 166)
-
-[node name="@Node3D@32710" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 162)
-
-[node name="@Node3D@32711" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 162)
-
-[node name="@Node3D@32712" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 158)
-
-[node name="@Node3D@32713" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 158)
-
-[node name="@Node3D@32714" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 154)
-
-[node name="@Node3D@32715" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 154)
-
-[node name="@Node3D@32716" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 150)
-
-[node name="@Node3D@32717" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 150)
-
-[node name="@Node3D@32718" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 146)
-
-[node name="@Node3D@32719" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 146)
-
-[node name="@Node3D@32720" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 142)
-
-[node name="@Node3D@32721" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 142)
-
-[node name="@Node3D@32722" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 138)
-
-[node name="@Node3D@32723" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 138)
-
-[node name="@Node3D@32724" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 134)
-
-[node name="@Node3D@32725" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 134)
-
-[node name="@Node3D@32726" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 130)
-
-[node name="@Node3D@32727" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 130)
-
-[node name="@Node3D@32728" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 126)
-
-[node name="@Node3D@32729" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 126)
-
-[node name="@Node3D@32730" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 122)
-
-[node name="@Node3D@32731" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 122)
-
-[node name="@Node3D@32732" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 118)
-
-[node name="@Node3D@32733" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 118)
-
-[node name="@Node3D@32734" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 114)
-
-[node name="@Node3D@32735" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 114)
-
-[node name="@Node3D@32736" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 122, 2, 114)
-
-[node name="@Node3D@32737" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 122, 2, 118)
-
-[node name="@Node3D@32738" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 126, 2, 114)
-
-[node name="@Node3D@32739" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 126, 2, 118)
-
-[node name="@Node3D@32740" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 130, 2, 114)
-
-[node name="@Node3D@32741" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 130, 2, 118)
-
-[node name="@Node3D@32742" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 134, 2, 114)
-
-[node name="@Node3D@32743" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 134, 2, 118)
-
-[node name="@Node3D@32744" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 114)
-
-[node name="@Node3D@32745" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 118)
-
-[node name="@Node3D@32746" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 114)
-
-[node name="@Node3D@32747" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 118)
-
-[node name="@Node3D@32748" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146, 2, 114)
-
-[node name="@Node3D@32749" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 146, 2, 118)
-
-[node name="@Node3D@32750" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 150, 2, 114)
-
-[node name="@Node3D@32751" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 150, 2, 118)
-
-[node name="@Node3D@32752" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 154, 2, 114)
-
-[node name="@Node3D@32753" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 154, 2, 118)
-
-[node name="@Node3D@32754" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 158, 2, 114)
-
-[node name="@Node3D@32755" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 158, 2, 118)
-
-[node name="@Node3D@32756" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 162, 2, 114)
-
-[node name="@Node3D@32757" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 162, 2, 118)
-
-[node name="@Node3D@32758" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 166, 2, 114)
-
-[node name="@Node3D@32759" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 166, 2, 118)
-
-[node name="@Node3D@32760" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 170, 2, 114)
-
-[node name="@Node3D@32761" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 170, 2, 118)
-
-[node name="@Node3D@32762" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 174, 2, 118)
-
-[node name="@Node3D@32763" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 110, 2, 26)
-
-[node name="@Node3D@32764" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 22)
-
-[node name="@Node3D@32765" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 114, 2, 26)
-
-[node name="@Node3D@32766" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 22)
-
-[node name="@Node3D@32767" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 118, 2, 26)
-
-[node name="@Node3D@32768" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 122, 2, 22)
-
-[node name="@Node3D@32769" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 122, 2, 26)
-
-[node name="@Node3D@32770" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 126, 2, 22)
-
-[node name="@Node3D@32771" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 126, 2, 26)
-
-[node name="@Node3D@32772" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 130, 2, 22)
-
-[node name="@Node3D@32773" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 130, 2, 26)
-
-[node name="@Node3D@32774" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 134, 2, 22)
-
-[node name="@Node3D@32775" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 134, 2, 26)
-
-[node name="@Node3D@32776" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 22)
-
-[node name="@Node3D@32777" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 22)
-
-[node name="@Node3D@32778" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 26)
-
-[node name="@Node3D@32779" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 26)
-
-[node name="@Node3D@32780" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 30)
-
-[node name="@Node3D@32781" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 30)
-
-[node name="@Node3D@32782" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 34)
-
-[node name="@Node3D@32783" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 34)
-
-[node name="@Node3D@32784" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 38)
-
-[node name="@Node3D@32785" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 38)
-
-[node name="@Node3D@32786" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 42)
-
-[node name="@Node3D@32787" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 42)
-
-[node name="@Node3D@32788" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 46)
-
-[node name="@Node3D@32789" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 46)
-
-[node name="@Node3D@32790" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 50)
-
-[node name="@Node3D@32791" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 50)
-
-[node name="@Node3D@32792" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 54)
-
-[node name="@Node3D@32793" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 54)
-
-[node name="@Node3D@32794" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 58)
-
-[node name="@Node3D@32795" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 58)
-
-[node name="@Node3D@32796" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 62)
-
-[node name="@Node3D@32797" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 62)
-
-[node name="@Node3D@32798" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 66)
-
-[node name="@Node3D@32799" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 66)
-
-[node name="@Node3D@32800" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 138, 2, 70)
-
-[node name="@Node3D@32801" parent="DungeonMesh" instance=ExtResource("8_n26ph")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 142, 2, 70)
+[node name="EndRoom" type="Node3D" parent="DungeonMesh" instance=ExtResource("4_t5mm2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114, 0, 42)
+
+[node name="DungCell" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 6, 0, 66)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25281" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18, 0, 66)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25282" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 102, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25283" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25284" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 102, 0, 54)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25285" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 114, 0, 54)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25286" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 66, 0, 78)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25287" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 78, 0, 78)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25288" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, 0, 78)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25289" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 102, 0, 78)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25290" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 66, 0, 90)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25291" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 78, 0, 90)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25292" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, 0, 90)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25293" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 102, 0, 90)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25294" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42, 0, 18)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25295" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54, 0, 18)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25296" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 66, 0, 18)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25297" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42, 0, 30)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25298" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54, 0, 30)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25299" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 66, 0, 30)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25300" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 42, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25301" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25302" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 66, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25303" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 66, 0, 66)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25304" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 66, 0, 54)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25305" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18, 0, 54)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25306" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 18, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25307" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25308" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 90, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25309" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 78, 0, 42)
+script = ExtResource("9_7cyhf")
+
+[node name="@Node3D@25310" type="Node3D" parent="DungeonMesh" instance=ExtResource("3_leqe2")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 102, 0, 66)
+script = ExtResource("9_7cyhf")

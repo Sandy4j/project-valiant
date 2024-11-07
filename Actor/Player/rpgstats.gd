@@ -1,5 +1,5 @@
 extends Node
-class_name RPGStats
+class_name RPGstats
 
 signal stat_changed(stat_name, new_value)
 

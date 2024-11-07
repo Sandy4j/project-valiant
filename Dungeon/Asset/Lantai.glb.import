@@ -34,6 +34,7 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Lantai_dungeon": {
+"generate/navmesh": 1,
 "generate/physics": true,
 "physics/physics_material_override": Object(PhysicsMaterial,"resource_local_to_scene":false,"resource_name":"","friction":1.0,"rough":false,"bounce":0.0,"absorbent":false,"script":null)
 

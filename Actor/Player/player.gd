@@ -24,12 +24,11 @@ var is_hitted: bool
 @onready var HP_BAR = $"UI Player/IU/HP"
 @onready var attack_raycast = $AttackRaycast
 @onready var main = "res://main.tscn"
-@onready var stats: PlayerStats = $PlayerStats
 @onready var GlobalSignal = "res://GlobalSignal.gd"
 @onready var weapon_system: WeaponSystem = $WeaponSystem
-@onready var dodge_component = $dodge
 @onready var ui_player: UI = %"UI Player"
 
+@onready var stats: PlayerStats = $Node
 var inv_op:bool = false
 var spawn_point = Vector3.ZERO
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -51,15 +50,19 @@ func _ready():
 	stats.connect("hp_changed", Callable(self, "_on_hp_changed"))
 	stats.connect("curse_applied", Callable(self, "_on_curse_applied"))
 	stats.connect("curse_lifted", Callable(self, "_on_curse_lifted"))
+	stats.connect("Pdied", Callable(self, "died"))
 	
-	 # Connect dodge component signals
-	dodge_component.connect("dodge_started", Callable(self, "_on_dodge_started"))
-	dodge_component.connect("dodge_ended", Callable(self, "_on_dodge_ended"))
-	dodge_component.connect("iframe_ended", Callable(self, "_on_iframe_ended"))
-	
+
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("dodge"):
+		ui_player.update_floor_label(LevelManager.current_floor)
+	if Input.is_action_just_pressed("suicide"):
+		Hited(1000)
 
 func _physics_process(delta):
 	var on_floor = is_on_floor()
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(-input_dir.x, 0, -input_dir.y)).normalized()
 	if direction:
@@ -74,19 +77,7 @@ func _physics_process(delta):
 			is_attacking = true
 		else: 
 			is_attacking = false
-		
-	if dodge_component.is_dodging():
-		# The dodge component is handling movement
-		pass
-	elif direction:
-		velocity.x = direction.x * stats.move_speed
-		velocity.z = direction.z * stats.move_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, stats.move_speed)
-		velocity.z = move_toward(velocity.z, 0, stats.move_speed)
 
-	if Input.is_action_just_pressed("dodge"):
-		dodge_component.dodge(direction)
 	
 	if Input.is_action_just_pressed("inven"):
 		inv_op = !inv_op
@@ -107,15 +98,6 @@ func _physics_process(delta):
 	animation_tree["parameters/conditions/IsDying"] = is_dying
 	animation_tree["parameters/conditions/IsHitted"] = is_hitted
 
-func _on_dodge_started():
-	print("Player started dodging!")
-
-func _on_dodge_ended():
-	print("Player finished dodging!")
-
-func _on_iframe_ended():
-	print("Player's invincibility frames ended!")
-
 func Hited(damage: int):
 	stats.take_damage(damage)
 	if (inv_op):
@@ -126,11 +108,15 @@ func _on_hp_changed(new_hp):
 	HP_BAR.value = new_hp
 	HP_BAR.max_value = stats.max_hp
 
+func died():
+	stats.save_stats()
+	LevelManager.reset_to_checkpoint()
+
 func respawn():
-	global_transform.origin = spawn_point
+	stats.load_stats()
 	velocity = Vector3.ZERO
 	stats.reset_stats()
-	print("Player respawned at: ", spawn_point)
+
 	
 func _on_level_up(new_level):
 	print("Player leveled up to level ", new_level)

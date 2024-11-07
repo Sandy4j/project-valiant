@@ -188,22 +188,13 @@ func create_hallways(hallway_graph:AStar2D):
 
 		for i in range(hall.size()):
 			var current_pos = hall[i]
-			var is_vertical = i + 1 < hall.size() and hall[i].x == hall[i + 1].x
-			var pos1 : Vector3i = Vector3i(int(current_pos.x), 0, int(current_pos.y)) 
-			var pos2 : Vector3i
-			if is_vertical:
-				pos2 = Vector3i(int(current_pos.x) + 1, 0, int(current_pos.y))
-			else:
-				pos2 = Vector3i(int(current_pos.x), 0, int(current_pos.y) + 1) 
+			var pos1 : Vector3i = Vector3i(int(current_pos.x), 0, int(current_pos.y))
 			
 			if get_cell_item(pos1) < 0 or get_cell_item(pos1) == 1:
 				set_cell_item(pos1, 1)
-			if get_cell_item(pos2) < 0 or get_cell_item(pos2) == 1:
-				set_cell_item(pos2, 1) 
 
 			if i == 0 or i == hall.size() - 1:
 				set_cell_item(pos1, 2)
-				set_cell_item(pos2, 2) 
 		
 		if _t%16 == 15: 
 			await get_tree().create_timer(0).timeout
