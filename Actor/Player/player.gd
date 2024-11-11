@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+@export var inv: Inventory
 @export var JUMP_VELOCITY = 4.5
 @export var MOUSE_SENSITIVITY = 0.05
 @export var ATTACK_RANGE = 2.0

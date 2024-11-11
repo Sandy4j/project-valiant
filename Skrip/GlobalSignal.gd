@@ -8,6 +8,7 @@ var intro:bool = true
 
 var items = {
 	"small potion": preload("res://UI/Inventory/Item/S_HP_Potion.tres"),
+	"medium potion": preload("res://UI/Inventory/Item/M_HP_Potion.tres"),
 }
 
 func heal_pot(_amount: int):

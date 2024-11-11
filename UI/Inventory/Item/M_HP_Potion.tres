@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://qnqufgmm7w3n"]
+
+[ext_resource type="Script" path="res://UI/Inventory/item_data.gd" id="2_66ogy"]
+
+[resource]
+script = ExtResource("2_66ogy")
+type = 2
+item_name = "Medium_Potion"
+item_damage = 0
+item_health = 10
+item_defense = 0
+stackable = true
+count = 0
+item_description = "This is medium HP potion"

@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxxa6jjyncar0"]
+
+[ext_resource type="Script" path="res://UI/Inventory/inventory_slot_ui.gd" id="1_k50as"]
+[ext_resource type="Texture2D" uid="uid://ddn4hsesxf1kt" path="res://icon.svg" id="1_mebgf"]
+
+[node name="Inv_slot" type="Panel"]
+self_modulate = Color(1, 0, 0, 0.643137)
+custom_minimum_size = Vector2(120, 140)
+offset_right = 120.0
+offset_bottom = 140.0
+script = ExtResource("1_k50as")
+type = 2
+
+[node name="Bg" type="Sprite2D" parent="."]
+scale = Vector2(0.9375, 1.09375)
+texture = ExtResource("1_mebgf")
+centered = false
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 140.0
+
+[node name="Panel" type="Panel" parent="Center"]
+layout_mode = 2
+
+[node name="itm" type="Sprite2D" parent="Center/Panel"]
+position = Vector2(-60, -70)
+
+[node name="Count" type="Label" parent="Center/Panel"]
+custom_minimum_size = Vector2(62, 67)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 13.0
+offset_right = 64.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "12"
+horizontal_alignment = 2

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://brjxuorjpqc2s"]
+[gd_scene load_steps=3 format=3 uid="uid://brjxuorjpqc2s"]
 
-[ext_resource type="Script" path="res://UI/Inventory/inventory_main.gd" id="1_67s7v"]
+[ext_resource type="Script" path="res://UI/Inventory/inventory.gd" id="1_lvyar"]
+[ext_resource type="PackedScene" uid="uid://bxxa6jjyncar0" path="res://UI/Inventory/inv_slot.tscn" id="2_6atyy"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -9,25 +10,86 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_67s7v")
+script = ExtResource("1_lvyar")
 
-[node name="Grid" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(150, 100)
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -411.0
-offset_top = -265.0
-offset_right = 44.0
-offset_bottom = 266.0
+anchors_preset = -1
+anchor_left = 0.0737847
+anchor_top = 0.058642
+anchor_right = 0.929688
+anchor_bottom = 0.941358
 grow_horizontal = 2
 grow_vertical = 2
 columns = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Inv_slot1" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot2" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot3" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot4" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot5" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot6" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot7" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot8" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot9" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot10" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot11" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot12" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot13" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot14" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot15" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot16" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
