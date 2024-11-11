@@ -186,3 +186,7 @@ func _on_curse_lift_collected(body):
 
 func collect_curse_lift():
 	stats.lift_curse()
+
+func _on_col_disc_area_entered(area: Area3D) -> void:
+	if area.has_method("collect"):
+		area.collect(inv)

@@ -6,14 +6,23 @@ signal  update
 @export var slots: Array[Inv_Slots]
 
 func add(item:ItemData):
-	var itemslots = slots.filter(func (slot): return slot.item == item)
-	if !itemslots.is_empty():
-		itemslots[0].amount += 1
+	#aliran 1
+	var Slot = slots.filter(func(slot): return slot.item == item)
+	if !Slot.is_empty():
+		Slot[0].count += 1
 	else :
-		var emptyslots = slots.filter(func(slot): return slot.item == null)
-		if !emptyslots.is_empty():
-			emptyslots[0].item = item
-			emptyslots[0].amount = 1
+		var emptySlot = slots.filter(func (slot): return slot.item == null)
+		if !emptySlot.is_empty():
+			emptySlot[0].item = item
+			emptySlot[0].count = 1
+	#ngalir dewe
+	#for i in range(slots.size()):
+		#if slots[i].item == item:
+			#slots[i].count += 1
+			#break
+		#if !slots[i].item :
+			#slots[i].item = item
+			#break
 	update.emit()
 
 func _gui_input(event: InputEvent) -> void:

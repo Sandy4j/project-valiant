@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brjxuorjpqc2s"]
+[gd_scene load_steps=4 format=3 uid="uid://brjxuorjpqc2s"]
 
 [ext_resource type="Script" path="res://UI/Inventory/inventory.gd" id="1_lvyar"]
 [ext_resource type="PackedScene" uid="uid://bxxa6jjyncar0" path="res://UI/Inventory/inv_slot.tscn" id="2_6atyy"]
+[ext_resource type="Texture2D" uid="uid://64evpbhpw54f" path="res://UI/Inventory/bg_desc.png" id="3_440fw"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -12,17 +13,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lvyar")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0737847
-anchor_top = 0.058642
-anchor_right = 0.929688
-anchor_bottom = 0.941358
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.372549)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(412, 492)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -246.0
+offset_right = -22.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 4
-metadata/_edit_use_anchors_ = true
 
 [node name="Inv_slot1" parent="GridContainer" instance=ExtResource("2_6atyy")]
 layout_mode = 2
@@ -88,12 +102,22 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
+[node name="Container" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(419, 492)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -250.0
+offset_right = 684.0
+offset_bottom = 596.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.372549)
+scale = Vector2(0.643075, 0.595424)
+
+[node name="TextureRect" type="TextureRect" parent="Container"]
+layout_mode = 2
+texture = ExtResource("3_440fw")

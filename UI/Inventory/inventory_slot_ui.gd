@@ -1,4 +1,4 @@
-extends Panel
+extends Button
 
 @export var type: ItemData.Type
 @onready var ItemTxt = $Center/Panel/itm

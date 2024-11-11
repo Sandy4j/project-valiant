@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://bdv5viod0ycty"]
+
+[ext_resource type="Script" path="res://Proc Dungeon/level/spawn.gd" id="1_bnkub"]
+[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="2_4vcqa"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/collectable.gd" id="3_2cwqo"]
+[ext_resource type="Resource" uid="uid://du0fet52dusij" path="res://UI/Inventory/Item/S_HP_Potion.tres" id="4_jmlnr"]
+[ext_resource type="Resource" uid="uid://qnqufgmm7w3n" path="res://UI/Inventory/Item/M_HP_Potion.tres" id="5_q5ccw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqsm7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1qkaw"]
+size = Vector3(35, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iuyvd"]
+size = Vector3(35, 0.5, 20)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uhilu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wnbg5"]
+radius = 0.585406
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_gqsm7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_1qkaw")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_iuyvd")
+
+[node name="Spawn" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.4457, 0, -0.371678)
+script = ExtResource("1_bnkub")
+player_scene = ExtResource("2_4vcqa")
+
+[node name="S_pot" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513547, 0)
+script = ExtResource("3_2cwqo")
+itemres = ExtResource("4_jmlnr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="S_pot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265768, 0)
+mesh = SubResource("SphereMesh_uhilu")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="S_pot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301701, 0)
+shape = SubResource("SphereShape3D_wnbg5")
+
+[node name="M_pot" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675653, 3.34218)
+script = ExtResource("3_2cwqo")
+itemres = ExtResource("5_q5ccw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="M_pot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265768, 0)
+mesh = SubResource("SphereMesh_uhilu")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="M_pot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301701, 0)
+shape = SubResource("SphereShape3D_wnbg5")
