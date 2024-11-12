@@ -106,3 +106,7 @@ suicide={
 [navigation]
 
 3d/merge_rasterizer_cell_scale=0.001
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"

@@ -171,7 +171,8 @@ func create_hallways(hallway_graph:AStar2D):
 				set_cell_item(tile_to,2) 
 	
 	var astar : AStarGrid2D = AStarGrid2D.new()
-	astar.size = Vector2i.ONE * parent.border_size
+	var grid_size = Vector2i.ONE * parent.border_size
+	astar.region = Rect2i(Vector2i.ZERO, grid_size)
 	astar.update()
 	astar.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
 	astar.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN

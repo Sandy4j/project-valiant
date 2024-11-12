@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://chqs04p1lckav"]
+
+[ext_resource type="Script" path="res://Dungeon/test_dung.gd" id="1_kk72n"]
+[ext_resource type="PackedScene" uid="uid://cu182v5sdcr0i" path="res://Dungeon/DungeonManager.tscn" id="2_1h4pl"]
+[ext_resource type="Script" path="res://Skrip/enemy_spawner.gd" id="3_q4ynd"]
+[ext_resource type="PackedScene" uid="uid://b4y8r8anv6t2k" path="res://Actor/Enemy/dummy.tscn" id="4_gpsvy"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
+
+[sub_resource type="Sky" id="Sky_m2eo6"]
+sky_material = SubResource("PhysicalSkyMaterial_kr04x")
+
+[sub_resource type="Environment" id="Environment_3tu5o"]
+background_mode = 2
+sky = SubResource("Sky_m2eo6")
+
+[node name="Floor1" type="WorldEnvironment"]
+environment = SubResource("Environment_3tu5o")
+script = ExtResource("1_kk72n")
+
+[node name="DungeonManager" parent="." instance=ExtResource("2_1h4pl")]
+border_size = 20
+room_number = 6
+min_room_size = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.258819, -0.670224, -0.695566, -1.43934e-08, -0.720103, 0.693867, -0.965926, -0.179586, -0.186376, -11.4478, 48.2015, 31.2094)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("3_q4ynd")
+dungeon_manager_path = NodePath("../DungeonManager")
+grid_map_path = NodePath("../DungeonManager/GridMap")
+enemy_scenes = Array[PackedScene]([ExtResource("4_gpsvy")])
+spawn_chance_per_cell = 0.5
+y_offset = 1.0
+min_distance_between_enemies = 1.0
