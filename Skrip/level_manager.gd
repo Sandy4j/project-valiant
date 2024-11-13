@@ -12,12 +12,12 @@ var current_scene: Node = null
 var player: Player = null
 var dungeon_manager: DungeonM = null  # Referensi ke DungeonManager
 
-func _ready() -> void:
-	load_floor(current_floor)
+#func _ready() -> void:
+	#load_floor(current_floor)
 	# Tunggu satu frame untuk memastikan scene sudah dimuat
-	await get_tree().process_frame
-	dungeon_manager = get_tree().get_first_node_in_group("dungeon_manager") # Pastikan DungeonManager ada di group "dungeon_manager"
-	player = get_tree().get_first_node_in_group("player")
+	#await get_tree().process_frame
+	#dungeon_manager = get_tree().get_first_node_in_group("dungeon_manager") # Pastikan DungeonManager ada di group "dungeon_manager"
+	#player = get_tree().get_first_node_in_group("player")
 
 func advance_floor() -> void:
 	if player:

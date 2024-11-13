@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+@export var inv: Inventory
 @export var JUMP_VELOCITY = 4.5
 @export var MOUSE_SENSITIVITY = 0.05
 @export var ATTACK_RANGE = 2.0
@@ -58,6 +59,16 @@ func _unhandled_input(event):
 		ui_player.update_floor_label(LevelManager.current_floor)
 	if Input.is_action_just_pressed("suicide"):
 		Hited(1000)
+	if Input.is_action_just_pressed("inven"):
+		inv_op = !inv_op
+		if inv_op:
+			ui_player.inv_open()
+		else:
+			ui_player.inv_clos()
+	if Input.is_action_just_pressed("pause"):
+		if inv_op:
+			ui_player.inv_clos()
+		ui_player.paused()
 
 func _physics_process(delta):
 	var on_floor = is_on_floor()
@@ -79,12 +90,6 @@ func _physics_process(delta):
 			is_attacking = false
 
 	
-	if Input.is_action_just_pressed("inven"):
-		inv_op = !inv_op
-		if inv_op:
-			ui_player.inv_open()
-		else:
-			ui_player.inv_clos()
 	
 	
 	handle_weapon_system(delta)
@@ -117,7 +122,6 @@ func respawn():
 	velocity = Vector3.ZERO
 	stats.reset_stats()
 
-	
 func _on_level_up(new_level):
 	print("Player leveled up to level ", new_level)
 
@@ -185,3 +189,7 @@ func _on_curse_lift_collected(body):
 
 func collect_curse_lift():
 	stats.lift_curse()
+
+func _on_col_disc_area_entered(area: Area3D) -> void:
+	if area.has_method("collect"):
+		area.collect(inv)

@@ -33,3 +33,6 @@ func inv_open():
 
 func inv_clos():
 	invt.visible = false
+
+func paused():
+	
