@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b8a8xplnw60gn"
-path="res://.godot/imported/Obor 99.glb-a547308741647234c39a760e6bb7cec7.scn"
+path="res://.godot/imported/Obor 99.glb-33fc14aa44ed3d79b198cac1292b4918.scn"
 
 [deps]
 
-source_file="res://aset ril/Obor 99.glb"
-dest_files=["res://.godot/imported/Obor 99.glb-a547308741647234c39a760e6bb7cec7.scn"]
+source_file="res://aset ril/aset envi/Obor 99.glb"
+dest_files=["res://.godot/imported/Obor 99.glb-33fc14aa44ed3d79b198cac1292b4918.scn"]
 
 [params]
 

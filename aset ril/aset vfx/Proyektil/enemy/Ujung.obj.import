@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c0byh8i1klv2r"
+path="res://.godot/imported/Ujung.obj-1f7a546804cecd40fb49d8303232283d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Ujung.obj-1f7a546804cecd40fb49d8303232283d.mesh"]
+
+source_file="res://aset ril/aset vfx/Proyektil/enemy/Ujung.obj"
+dest_files=["res://.godot/imported/Ujung.obj-1f7a546804cecd40fb49d8303232283d.mesh", "res://.godot/imported/Ujung.obj-1f7a546804cecd40fb49d8303232283d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

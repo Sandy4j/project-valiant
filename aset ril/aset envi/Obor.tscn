@@ -36,7 +36,7 @@ height = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849586, -0.0278163, -4.26386)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1.93571, -0.00284521, 0.00441633, 0.0018112, 5.23147, -0.36215, -0.00406562, 0.975907, 1.94136, 0.0580389, 10.0898, -4.87605)
+transform = Transform3D(1.93454, -0.00236965, 0.00547844, 0.0018101, 4.35706, -0.449245, -0.00406315, 0.812792, 2.40825, 0.0580389, 10.0898, -4.87605)
 amount = 140
 lifetime = 1.17
 process_material = SubResource("ParticleProcessMaterial_f7pgc")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dl1iibmh6sl4i"]
+[gd_scene load_steps=12 format=3 uid="uid://dl1iibmh6sl4i"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_bnc00"]
 [ext_resource type="Script" path="res://Proc Dungeon/level/spawn.gd" id="3_0rtrh"]
 [ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="4_ase7n"]
-[ext_resource type="PackedScene" uid="uid://csbleyqdl1j3o" path="res://Actor/Enemy/Enemy_Ranged.tscn" id="5_uxjvs"]
 [ext_resource type="PackedScene" uid="uid://43otwk7lfe2r" path="res://Actor/Enemy/enemy_melee.tscn" id="5_x2ige"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
@@ -51,8 +50,5 @@ shadow_enabled = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.4457, 0, -0.371678)
 script = ExtResource("3_0rtrh")
 player_scene = ExtResource("4_ase7n")
-
-[node name="EnemyRanged" parent="." instance=ExtResource("5_uxjvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.64151, 0.676625, 0)
 
 [node name="EnemyMelee" parent="." instance=ExtResource("5_x2ige")]

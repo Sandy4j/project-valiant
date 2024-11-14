@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd240ore0uv20"
-path.s3tc="res://.godot/imported/Obor 99_wooden-brown-striped-textured-background.jpg-44cc9781f778a5516cb6f6b49c07bb88.s3tc.ctex"
+uid="uid://volxb5t2rbl"
+path.s3tc="res://.godot/imported/T_VFX_basic1.PNG-5c6d51d04fb02fe9c3fae3f2c81273c7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "33893ea50d9d4938f9b1a3da89c6f051"
-}
 
 [deps]
 
-source_file="res://aset ril/Obor 99_wooden-brown-striped-textured-background.jpg"
-dest_files=["res://.godot/imported/Obor 99_wooden-brown-striped-textured-background.jpg-44cc9781f778a5516cb6f6b49c07bb88.s3tc.ctex"]
+source_file="res://aset ril/aset vfx/Referensi/T_VFX_basic1.PNG"
+dest_files=["res://.godot/imported/T_VFX_basic1.PNG-5c6d51d04fb02fe9c3fae3f2c81273c7.s3tc.ctex"]
 
 [params]
 

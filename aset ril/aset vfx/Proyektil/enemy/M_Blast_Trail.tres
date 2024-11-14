@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dxua71q5nsj6q"]
+
+[ext_resource type="Shader" uid="uid://cmij6rkmm3yx1" path="res://aset ril/aset vfx/Proyektil/enemy/Blast_Trail.tres" id="1_p0dyy"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_p0dyy")
+shader_parameter/Scale = Vector2(0.2, 1)
+shader_parameter/Trail_speed = Vector2(-1, 0)

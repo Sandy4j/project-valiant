@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbpxaqyq3p2ib"
-path.s3tc="res://.godot/imported/Obor 99_gold-metallic-background-vector-8393061.jpg-f11588d4efbf8ba8588773eddb606347.s3tc.ctex"
+uid="uid://bd240ore0uv20"
+path.s3tc="res://.godot/imported/Obor 99_wooden-brown-striped-textured-background.jpg-b80c74e4b63c49c00a4afb8ad6e9cf47.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "3a30e29ecee269db9a9b64a4e64869cf"
+"md5": "33893ea50d9d4938f9b1a3da89c6f051"
 }
 
 [deps]
 
-source_file="res://aset ril/Obor 99_gold-metallic-background-vector-8393061.jpg"
-dest_files=["res://.godot/imported/Obor 99_gold-metallic-background-vector-8393061.jpg-f11588d4efbf8ba8588773eddb606347.s3tc.ctex"]
+source_file="res://aset ril/aset envi/Obor 99_wooden-brown-striped-textured-background.jpg"
+dest_files=["res://.godot/imported/Obor 99_wooden-brown-striped-textured-background.jpg-b80c74e4b63c49c00a4afb8ad6e9cf47.s3tc.ctex"]
 
 [params]
 
