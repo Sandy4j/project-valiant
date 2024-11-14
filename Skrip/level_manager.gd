@@ -70,12 +70,28 @@ func save_checkpoint() -> void:
 
 func reset_to_checkpoint() -> void:
 	current_floor = last_checkpoint_floor
+<<<<<<< Updated upstream
 	
 	# Get player node
 	var player = get_tree().get_first_node_in_group("player")
 	player.respawn()
 	
+=======
+
+>>>>>>> Stashed changes
 	load_floor(current_floor)
+	await get_tree().process_frame
+
+	if current_floor == 1:
+		if dungeon_manager:
+			if player:
+				player.queue_free()
+				await player.tree_exited
+			dungeon_manager.regenerate()
+			await dungeon_manager.new_floor_ready
+	if player:
+		player.respawn()
+	
 	floor_changed.emit(current_floor)
 
 func get_current_floor() -> int:

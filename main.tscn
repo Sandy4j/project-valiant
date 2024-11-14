@@ -1,10 +1,18 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=14 format=3 uid="uid://dl1iibmh6sl4i"]
+=======
+[gd_scene load_steps=12 format=3 uid="uid://dl1iibmh6sl4i"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://main.gd" id="1_bnc00"]
 [ext_resource type="PackedScene" uid="uid://b4y8r8anv6t2k" path="res://Actor/Enemy/dummy.tscn" id="2_aqdhm"]
 [ext_resource type="Script" path="res://Proc Dungeon/level/spawn.gd" id="3_0rtrh"]
 [ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="4_ase7n"]
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://Proc Dungeon/level/checkpoint.gd" id="5_ar4w1"]
+=======
+[ext_resource type="PackedScene" uid="uid://43otwk7lfe2r" path="res://Actor/Enemy/enemy_melee.tscn" id="5_x2ige"]
+>>>>>>> Stashed changes
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
 
@@ -55,6 +63,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.445
 script = ExtResource("3_0rtrh")
 player_scene = ExtResource("4_ase7n")
 
+<<<<<<< Updated upstream
 [node name="Checkpoint" type="Area3D" parent="." groups=["checkpoints"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21676, 0)
 script = ExtResource("5_ar4w1")
@@ -66,3 +75,6 @@ mesh = SubResource("CapsuleMesh_4upwp")
 shape = SubResource("CapsuleShape3D_lw3vy")
 
 [connection signal="body_entered" from="Checkpoint" to="Checkpoint" method="_on_body_entered"]
+=======
+[node name="EnemyMelee" parent="." instance=ExtResource("5_x2ige")]
+>>>>>>> Stashed changes

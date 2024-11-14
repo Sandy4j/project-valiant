@@ -9,7 +9,14 @@ var pitch := 0.0
 var rotation_smoothness := 10.0
 
 func _ready():
+<<<<<<< Updated upstream
 	# Mengatur mouse mode
+=======
+	yaw = -90
+	yaw_node.rotation_degrees.y = yaw
+	player.update_camera_rotation(yaw_node.rotation.y) 
+	set_cam_rotation.connect(player.update_camera_rotation)
+>>>>>>> Stashed changes
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	# Reset rotasi awal
