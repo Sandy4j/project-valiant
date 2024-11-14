@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk030o77an8rp"]
+
+[ext_resource type="PackedScene" uid="uid://b8a8xplnw60gn" path="res://aset ril/Obor 99.glb" id="1_iobw1"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f7pgc"]
+lifetime_randomness = 0.09
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 1
+emission_sphere_radius = 0.5
+inherit_velocity_ratio = 0.072
+direction = Vector3(0, 1, 0)
+spread = 0.0
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 553.85
+gravity = Vector3(0, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gp1a7"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.783645, 0.388822, 9.62615e-07, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="SphereMesh" id="SphereMesh_nsa2n"]
+material = SubResource("StandardMaterial3D_gp1a7")
+radius = 1.5
+height = 3.0
+
+[node name="Obor" type="Node3D"]
+
+[node name="Obor 99" parent="." instance=ExtResource("1_iobw1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0849586, -0.0278163, -4.26386)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1.93571, -0.00284521, 0.00441633, 0.0018112, 5.23147, -0.36215, -0.00406562, 0.975907, 1.94136, 0.0580389, 10.0898, -4.87605)
+amount = 140
+lifetime = 1.17
+process_material = SubResource("ParticleProcessMaterial_f7pgc")
+draw_passes = 4
+draw_pass_1 = SubResource("SphereMesh_nsa2n")
+draw_pass_2 = null
+draw_pass_3 = null
+draw_pass_4 = null
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.585804, 8.63664, -4.64705)
+light_color = Color(0.874487, 0.74301, 0.0985576, 1)
+light_energy = 1.323

@@ -1,118 +1,111 @@
-@tool
-extends Node3D
-class_name SpawnManager
+extends Node
+class_name EnemySpawner
 
-@export var dungeon_manager_path: NodePath
-@onready var dungeon_manager: DungeonM = get_node(dungeon_manager_path)
+signal enemies_spawned(count: int)
+signal floor_enemies_cleared
 
-@export_group("Spawn Settings")
-@export var min_enemy: int = 2
-@export var max_enemy: int = 4
-@export var spawn_points_per_room: int = 2
-@export var exclusion_radius: int = 2  # New parameter to control exclusion zone size
+@export var grid_map_path: NodePath
 
-signal spawn_points_generated(points: Array[Vector3])
+@export_group("Enemy Settings")
+@export var enemy_scenes: Array[PackedScene] = []
+@export var min_enemies_per_room: int = 1
+@export var max_enemies_per_room: int = 3
+@export var spawn_height: float = 1.0
+@export var edge_margin: float = 1.0  # Distance from room edges
 
-var spawn_points: Array[Vector3] = []
+var grid_map: GridMap
+var level_manager: LevelManager
+var enemy_container: Node3D
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
-	if dungeon_manager:
-		dungeon_manager.new_floor_ready.connect(_on_new_floor_ready)
-		await get_tree().create_timer(0.2).timeout
-		generate_spawn_points()
+	add_to_group("enemy_spawner")
+	setup_references()
+	setup_connections()
+	setup_container()
 
-func _on_new_floor_ready() -> void:
-	await get_tree().create_timer(0.2).timeout
-	generate_spawn_points()
+func setup_references() -> void:
+	if !grid_map_path.is_empty():
+		grid_map = get_node(grid_map_path)
+	else:
+		push_warning("GridMap path not set in EnemySpawner!")
 
-func generate_spawn_points() -> void:
-	spawn_points.clear()
-	
-	var grid_map = dungeon_manager.grid_map
-	if !grid_map:
-		push_error("GridMap not found!")
+func setup_connections() -> void:
+	if level_manager:
+		level_manager.floor_changed.connect(_on_floor_changed)
+
+func setup_container() -> void:
+	enemy_container = Node3D.new()
+	enemy_container.name = "EnemyContainer"
+	add_child(enemy_container)
+
+func _on_floor_changed(new_floor: int) -> void:
+	clear_enemies()
+	# Wait a bit for the new floor to fully generate
+	await get_tree().create_timer(0.3).timeout
+	spawn_enemies_in_rooms()
+
+func clear_enemies() -> void:
+	for child in enemy_container.get_children():
+		child.queue_free()
+	floor_enemies_cleared.emit()
+
+func spawn_enemies_in_rooms() -> void:
+	if !is_instance_valid(grid_map):
+		push_error("GridMap reference is invalid!")
 		return
-	
-	# Get all normal room cells (index 0)
-	var room_cells = grid_map.get_used_cells_by_item(0)
-	print("Found ", room_cells.size(), " room cells")
-	
-	# Get start and end room cells
-	var start_room_cells = grid_map.get_used_cells_by_item(4)
-	var end_room_cells = grid_map.get_used_cells_by_item(5)
-	
-	# Create smaller exclusion zones
-	var exclusion_cells = []
-	for special_cells in [start_room_cells, end_room_cells]:
-		for special_cell in special_cells:
-			# Add debug print for special cells
-			print("Special cell found at: ", special_cell)
-			for x in range(-exclusion_radius, exclusion_radius + 1):
-				for z in range(-exclusion_radius, exclusion_radius + 1):
-					var excluded_cell = Vector3i(special_cell.x + x, 0, special_cell.z + z)
-					exclusion_cells.append(excluded_cell)
-	
-	# Debug print for exclusion cells
-	print("Created ", exclusion_cells.size(), " exclusion cells")
-	
-	# Remove excluded cells and keep track of how many are removed
-	var initial_count = room_cells.size()
-	room_cells = room_cells.filter(func(cell): return cell not in exclusion_cells)
-	print("Removed ", initial_count - room_cells.size(), " cells due to exclusion")
-	print("After exclusion: ", room_cells.size(), " valid room cells")
-	
-	# Group cells into rooms with additional debugging
-	var rooms = group_cells_by_rooms(room_cells)
-	print("Found ", rooms.size(), " distinct rooms")
-	
-	# Print room sizes for debugging
-	for i in range(rooms.size()):
-		print("Room ", i, " size: ", rooms[i].size(), " cells")
-	
-	# Generate spawn points for each room
-	for room in rooms:
-		if room.size() >= 4:  # Only generate spawn points in rooms big enough
-			var room_spawn_points = generate_room_spawn_points(room)
-			spawn_points.append_array(room_spawn_points)
-	
-	print("Generated ", spawn_points.size(), " total spawn points")
-	emit_signal("spawn_points_generated", spawn_points)
-
-func group_cells_by_rooms(cells: Array) -> Array[Array]:
-	var rooms: Array[Array] = []
-	var processed_cells = []
-	
-	for cell in cells:
-		if cell in processed_cells:
-			continue
 		
-		var room = []
-		var to_check = [cell]
+	if enemy_scenes.is_empty():
+		push_warning("No enemy scenes configured in EnemySpawner!")
+		return
 		
-		while to_check.size() > 0:
-			var current = to_check.pop_front()
-			if current in processed_cells:
-				continue
-				
-			room.append(current)
-			processed_cells.append(current)
+	var normal_rooms = get_normal_room_cells()
+	var total_enemies = 0
+	
+	for room_cells in normal_rooms:
+		var enemy_count = rng.randi_range(min_enemies_per_room, max_enemies_per_room)
+		var spawn_positions = calculate_spawn_positions(room_cells, enemy_count)
+		
+		for pos in spawn_positions:
+			spawn_enemy(pos)
+			total_enemies += 1
 			
-			# Check all adjacent cells
-			for offset in [
-				Vector3i(1, 0, 0), Vector3i(-1, 0, 0),  # Left/Right
-				Vector3i(0, 0, 1), Vector3i(0, 0, -1),  # Forward/Back
-			]:
-				var neighbor = current + offset
-				if neighbor in cells and neighbor not in processed_cells and neighbor not in to_check:
-					to_check.append(neighbor)
-		
-		if room.size() > 0:
-			rooms.append(room)
-	
-	return rooms
+	enemies_spawned.emit(total_enemies)
+	print("Spawned ", total_enemies, " enemies across ", normal_rooms.size(), " rooms")
 
-func generate_room_spawn_points(room_cells: Array) -> Array[Vector3]:
-	var room_spawn_points: Array[Vector3] = []
+func get_normal_room_cells() -> Array:
+	var used_cells = grid_map.get_used_cells()
+	var room_cells = {}
+	
+	# Filter out non-normal room cells first
+	var normal_cells = used_cells.filter(func(cell): 
+		var cell_type = grid_map.get_cell_item(cell)
+		return cell_type == 0 # Only normal room cells
+	)
+	
+	# Group cells by their connected regions
+	for cell in normal_cells:
+		var room_id = find_room_id(cell, room_cells)
+		if room_id == -1:
+			room_id = room_cells.size()
+			room_cells[room_id] = []
+		room_cells[room_id].append(cell)
+	
+	return room_cells.values()
+
+func find_room_id(cell: Vector3i, room_cells: Dictionary) -> int:
+	for room_id in room_cells:
+		for room_cell in room_cells[room_id]:
+			if are_cells_adjacent(cell, room_cell):
+				return room_id
+	return -1
+
+func are_cells_adjacent(cell1: Vector3i, cell2: Vector3i) -> bool:
+	return cell1.distance_squared_to(cell2) <= 1
+
+func calculate_spawn_positions(room_cells: Array, enemy_count: int) -> Array:
+	var positions = []
+	var cell_size = grid_map.cell_size
 	
 	# Calculate room bounds
 	var min_x = INF
@@ -126,90 +119,35 @@ func generate_room_spawn_points(room_cells: Array) -> Array[Vector3]:
 		min_z = min(min_z, cell.z)
 		max_z = max(max_z, cell.z)
 	
-	# Calculate room center
-	var center = Vector3(
-		(min_x + max_x) / 2.0,
-		0,
-		(min_z + max_z) / 2.0
-	)
+	# Calculate spawn area with margins
+	var spawn_min_x = min_x * cell_size.x + edge_margin
+	var spawn_max_x = (max_x + 1) * cell_size.x - edge_margin
+	var spawn_min_z = min_z * cell_size.z + edge_margin
+	var spawn_max_z = (max_z + 1) * cell_size.z - edge_margin
 	
-	var cell_size = dungeon_manager.grid_map.cell_size
-	var points_to_generate = spawn_points_per_room
-	var attempts = 0
-	var max_attempts = 50
-	
-	while points_to_generate > 0 and attempts < max_attempts:
-		var random_cell = room_cells.pick_random()
-		var spawn_point = Vector3(
-			random_cell.x * cell_size.x + cell_size.x * 0.5,
-			1.0,  # Slightly above ground
-			random_cell.z * cell_size.z + cell_size.z * 0.5
+	# Generate random positions within the room
+	for i in enemy_count:
+		var spawn_pos = Vector3(
+			rng.randf_range(spawn_min_x, spawn_max_x),
+			spawn_height,
+			rng.randf_range(spawn_min_z, spawn_max_z)
 		)
-		
-		# Check if point is far enough from other spawn points
-		var is_valid = true
-		for existing_point in room_spawn_points:
-			if spawn_point.distance_to(existing_point) < cell_size.x * 1.2:
-				is_valid = false
-				break
-		
-		# Ensure point isn't too close to room edges (relaxed to 0.5 cell size)
-		if is_valid:
-			var distance_from_edge = min(
-				spawn_point.x - min_x * cell_size.x,
-				max_x * cell_size.x - spawn_point.x,
-				spawn_point.z - min_z * cell_size.z,
-				max_z * cell_size.z - spawn_point.z
-			)
-			if distance_from_edge < cell_size.x * 0.5:
-				is_valid = false
-		
-		if is_valid:
-			room_spawn_points.append(spawn_point)
-			points_to_generate -= 1
-			print("Added spawn point at: ", spawn_point)
-		
-		attempts += 1
+		positions.append(spawn_pos)
 	
-	return room_spawn_points
+	return positions
 
-func get_random_spawn_points(count: int = -1) -> Array[Vector3]:
-	print("Total available spawn points: ", spawn_points.size())
-	
-	if spawn_points.is_empty():
-		print("Warning: No spawn points available!")
-		return []
-	
-	if count == -1:
-		count = randi_range(min_enemy, max_enemy)
-	
-	print("Attempting to get ", count, " spawn points")
-	
-	var selected_points: Array[Vector3] = []
-	var available_points = spawn_points.duplicate()
-	
-	for i in range(min(count, available_points.size())):
-		var random_index = randi() % available_points.size()
-		selected_points.append(available_points[random_index])
-		available_points.remove_at(random_index)
-	
-	print("Selected ", selected_points.size(), " spawn points")
-	return selected_points
+func spawn_enemy(pos: Vector3) -> void:
+	var enemy_scene = enemy_scenes.pick_random()
+	if enemy_scene:
+		var enemy = enemy_scene.instantiate()
+		enemy_container.add_child(enemy)
+		enemy.global_position = pos
 
-# Debug function to visualize spawn points
-func debug_draw_spawn_points() -> void:
-	for point in spawn_points:
-		var debug_mesh = MeshInstance3D.new()
-		var sphere = SphereMesh.new()
-		sphere.radius = 0.3
-		sphere.height = 0.6
-		debug_mesh.mesh = sphere
-		debug_mesh.position = point
-		add_child(debug_mesh)
-		
-		# Create material
-		var material = StandardMaterial3D.new()
-		material.albedo_color = Color.RED
-		material.emission_enabled = true
-		material.emission = Color.RED
-		debug_mesh.material_override = material
+# Optional: Method to get current enemy count
+func get_enemy_count() -> int:
+	return enemy_container.get_child_count()
+
+# Optional: Method to manually trigger enemy spawning (useful for testing)
+func debug_spawn_enemies() -> void:
+	clear_enemies()
+	spawn_enemies_in_rooms()

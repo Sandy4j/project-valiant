@@ -866,6 +866,8 @@ physics_material_override = SubResource("PhysicsMaterial_kpjwu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_up/Torch2/Sphere/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ebfnh")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_up"]
+
 [node name="door_up" type="Node3D" parent="."]
 transform = Transform3D(2.78181e-08, 0, 1, 0, 1, 0, -1, 0, 2.78181e-08, 0, 1, -2.6)
 
@@ -911,6 +913,8 @@ physics_material_override = SubResource("PhysicsMaterial_lja5p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_up/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_up"]
 
 [node name="wall_down" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.5, 3)
@@ -1039,6 +1043,8 @@ light_color = Color(0.862745, 0.333333, 0.109804, 1)
 light_energy = 10.0
 distance_fade_enabled = true
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_down"]
+
 [node name="door_down" type="Node3D" parent="."]
 transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, 0, 1, 2.6)
 
@@ -1084,6 +1090,8 @@ physics_material_override = SubResource("PhysicsMaterial_lja5p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_down/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_down"]
 
 [node name="wall_right" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 2.98024e-08, 0, 1, 0, -2.98024e-08, 0, 1, 3, 2.5, 0)
@@ -1212,6 +1220,8 @@ light_color = Color(0.862745, 0.333333, 0.109804, 1)
 light_energy = 10.0
 distance_fade_enabled = true
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_right"]
+
 [node name="door_right" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1, 0)
 
@@ -1258,6 +1268,8 @@ physics_material_override = SubResource("PhysicsMaterial_lja5p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_right/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_right"]
+
 [node name="door_left" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.609, 1, 0)
 
@@ -1303,6 +1315,8 @@ physics_material_override = SubResource("PhysicsMaterial_lja5p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_left/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_left"]
 
 [node name="wall_left" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3, 2.5, 0)
@@ -1430,6 +1444,8 @@ transform = Transform3D(5.68434e-14, 0, 3.40402, 0, 3.31275, 0, -3.5569, 0, 1.13
 light_color = Color(0.86159, 0.334331, 0.10879, 1)
 light_energy = 10.0
 distance_fade_enabled = true
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_left"]
 
 [node name="Lantai" type="Node3D" parent="."]
 

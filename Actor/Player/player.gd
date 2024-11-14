@@ -41,11 +41,14 @@ func _ready():
 	HP_BAR.value = stats.current_hp
 <<<<<<< Updated upstream
 	spawn_point = global_transform.origin
+<<<<<<< HEAD
 	call_deferred("connect_to_checkpoints")
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
 	
-	attack_raycast.target_position = Vector3(0, 0, -ATTACK_RANGE)
+	attack_raycast.target_position = Vector3(0, 0, ATTACK_RANGE)
 	attack_raycast.enabled = true
 	attack_raycast.add_exception(self)
 	weapon_system = WeaponSystem.new()
@@ -143,7 +146,6 @@ func respawn() -> void:
 				current_parent.remove_child(self)
 		dungeon_manager.spawn_player()
 
-	
 func _on_level_up(new_level):
 	print("Player leveled up to level ", new_level)
 
@@ -158,10 +160,17 @@ func handle_weapon_system(delta):
 		set_attack_range(current_weapon.attack_range)
 
 func apply_damage_to_enemy(damage):
-	if (idle_node_name in playback.get_current_node() or walk_node_name in playback.get_current_node()) and is_on_floor():
-		if (is_attacking == false):
+	if (idle_node_name in playback.get_current_node() or 
+		walk_node_name in playback.get_current_node()) and is_on_floor():
+		
+		if not is_attacking:
 			playback.travel(attacku1_node_name)
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+			is_attacking = true
+			
+>>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
 		if attack_raycast and attack_raycast.is_colliding():
 =======
 			is_attacking = true
@@ -171,15 +180,20 @@ func apply_damage_to_enemy(damage):
 			var collider = attack_raycast.get_collider()
 			if  collider.has_method("take_damage"):
 				collider.take_damage(damage)
-				print("Dealt ", damage, " damage to enemy with ", weapon_system.get_current_weapon().weapon_name)
-				
+				print("Dealt ", damage, " damage to enemy with ", 
+					  weapon_system.get_current_weapon().weapon_name)
 		else:
 			print("No enemy in range")
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
 		await get_tree().create_timer(0.1).timeout
 		is_attacking = false
 >>>>>>> Stashed changes
+=======
+		await get_tree().create_timer(0.5).timeout
+		is_attacking = false
+>>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
 
 func update_attack_range():
 	var current_weapon = weapon_system.get_current_weapon()
@@ -187,6 +201,7 @@ func update_attack_range():
 
 func set_attack_range(new_range: float):
 	if attack_raycast:
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 		attack_raycast.target_position = Vector3(0, 0, -new_range)
 		print("Attack range updated to: ", new_range)
@@ -225,3 +240,7 @@ func collect_curse_lift():
 		attack_raycast.target_position = Vector3(0, 0, new_range)
 		print("Attack range updated to: ", -new_range)
 >>>>>>> Stashed changes
+=======
+		attack_raycast.target_position = Vector3(0, 0, new_range)
+		print("Attack range updated to: ", new_range)
+>>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
