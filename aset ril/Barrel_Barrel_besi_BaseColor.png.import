@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bo21ypi3wv1f1"
-path.s3tc="res://.godot/imported/Barrel_Barrel_besi_BaseColor.png-5683ff8b32a16c3bbc751fc828e5bf3d.s3tc.ctex"
+path.s3tc="res://.godot/imported/Barrel_Barrel_besi_BaseColor.png-8624a5808aa13c007eeaee7eb463213f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Barrel_Barrel_besi_BaseColor.png"
-dest_files=["res://.godot/imported/Barrel_Barrel_besi_BaseColor.png-5683ff8b32a16c3bbc751fc828e5bf3d.s3tc.ctex"]
+source_file="res://aset ril/Barrel_Barrel_besi_BaseColor.png"
+dest_files=["res://.godot/imported/Barrel_Barrel_besi_BaseColor.png-8624a5808aa13c007eeaee7eb463213f.s3tc.ctex"]
 
 [params]
 

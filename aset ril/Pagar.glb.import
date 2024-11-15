@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://2t6x7ryrg6ie"
-path="res://.godot/imported/Pagar.glb-e46601c5d5c4c04ef746fbca169e7f1c.scn"
+path="res://.godot/imported/Pagar.glb-1b1cae80ec8adedfa30e065b644ddbe9.scn"
 
 [deps]
 
-source_file="res://Dungeon/Acc/Pagar.glb"
-dest_files=["res://.godot/imported/Pagar.glb-e46601c5d5c4c04ef746fbca169e7f1c.scn"]
+source_file="res://aset ril/Pagar.glb"
+dest_files=["res://.godot/imported/Pagar.glb-1b1cae80ec8adedfa30e065b644ddbe9.scn"]
 
 [params]
 

@@ -432,7 +432,7 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_qpila")
 
 [node name="spawnpoint" type="Marker3D" parent="din/pintu"]
-transform = Transform3D(1, 0, 0, 0, 0.944269, 0, 0, 0, 0.950037, -0.5, -0.969, 0)
+transform = Transform3D(1, 0, 0, 0, 0.944269, 0, 0, 0, 0.950037, -0.752861, -0.969, -2.10013e-08)
 
 [node name="Cube_001" type="MeshInstance3D" parent="din"]
 transform = Transform3D(0, 0.1, 0, -2, 0, 0, 0, 0, 3.12644, 0.175195, 1.49091, 0.00657977)

@@ -32,23 +32,23 @@ func advance_floor() -> void:
 	if current_floor % CHECKPOINT_INTERVAL == 0:
 		save_checkpoint()
 
-
 func load_floor(floor_number: int) -> void:
-	var cleanup_and_load = func():
-		if current_scene and is_instance_valid(current_scene):
-			current_scene.queue_free()
-			await current_scene.tree_exited
+	cleanup_current_scene()
+
+	var floor_path = FLOOR_SCENE_PATH % floor_number
+	var floor_scene = load(floor_path)
 	
-		var floor_path = FLOOR_SCENE_PATH % floor_number
-		var floor_scene = load(floor_path)
-		
-		if floor_scene:
-			current_scene = floor_scene.instantiate()
-			get_tree().root.call_deferred("add_child", current_scene)
-			await get_tree().process_frame
-		else:
-			push_error("Could not load floor scene: " + floor_path)
-	cleanup_and_load.call()
+	if floor_scene:
+		current_scene = floor_scene.instantiate()
+		get_tree().root.call_deferred("add_child", current_scene)
+		await get_tree().process_frame
+	else:
+		push_error("Could not load floor scene: " + floor_path)
+
+func cleanup_current_scene() -> void:
+	if current_scene and is_instance_valid(current_scene):
+		current_scene.queue_free()
+		await current_scene.tree_exited
 
 func save_checkpoint() -> void:
 	last_checkpoint_floor = current_floor
@@ -57,21 +57,10 @@ func save_checkpoint() -> void:
 
 func reset_to_checkpoint() -> void:
 	current_floor = last_checkpoint_floor
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-	
-	# Get player node
-	var player = get_tree().get_first_node_in_group("player")
-=======
->>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
-	player.respawn()
-	
-=======
 
->>>>>>> Stashed changes
 	load_floor(current_floor)
 	await get_tree().process_frame
-
+	
 	if current_floor == 1:
 		if dungeon_manager:
 			if player:
@@ -79,8 +68,6 @@ func reset_to_checkpoint() -> void:
 				await player.tree_exited
 			dungeon_manager.regenerate()
 			await dungeon_manager.new_floor_ready
-	if player:
-		player.respawn()
 	
 	floor_changed.emit(current_floor)
 

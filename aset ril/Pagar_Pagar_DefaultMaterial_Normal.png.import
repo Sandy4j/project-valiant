@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://i6rddtitpov7"
-path.s3tc="res://.godot/imported/Pagar_Pagar_DefaultMaterial_Normal.png-ad7ffd2b9260b7f7c96109fc6780944a.s3tc.ctex"
+path.s3tc="res://.godot/imported/Pagar_Pagar_DefaultMaterial_Normal.png-35a148c50ca4f41276db31f7b191335c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Pagar_Pagar_DefaultMaterial_Normal.png"
-dest_files=["res://.godot/imported/Pagar_Pagar_DefaultMaterial_Normal.png-ad7ffd2b9260b7f7c96109fc6780944a.s3tc.ctex"]
+source_file="res://aset ril/Pagar_Pagar_DefaultMaterial_Normal.png"
+dest_files=["res://.godot/imported/Pagar_Pagar_DefaultMaterial_Normal.png-35a148c50ca4f41276db31f7b191335c.s3tc.ctex"]
 
 [params]
 

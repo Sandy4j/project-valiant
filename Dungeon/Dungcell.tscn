@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=4 uid="uid://fnupmlaosr48"]
+[gd_scene load_steps=111 format=4 uid="uid://fnupmlaosr48"]
 
 [ext_resource type="Script" path="res://Dungeon/DungCell.gd" id="1_vn2o7"]
 [ext_resource type="Texture2D" uid="uid://b5dpopeit1d33" path="res://Dungeon/Asset/Tembok_polos_Tembok_Dungeon_DBingkai batu_BaseColor.png" id="2_knktr"]
@@ -732,10 +732,6 @@ shadow_mesh = SubResource("ArrayMesh_gnyu5")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nyf65"]
 data = PackedVector3Array(-1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, 1, -1, 1, 1, -1)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_01c78"]
-vertices = PackedVector3Array(-1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, 1)
-polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 3, 1), PackedInt32Array(4, 5, 6), PackedInt32Array(4, 7, 5), PackedInt32Array(6, 3, 4), PackedInt32Array(6, 1, 3), PackedInt32Array(2, 7, 0), PackedInt32Array(2, 5, 7), PackedInt32Array(4, 0, 7), PackedInt32Array(4, 3, 0), PackedInt32Array(5, 1, 6), PackedInt32Array(5, 2, 1)]
-
 [node name="DungCell" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_vn2o7")
@@ -1459,6 +1455,3 @@ physics_material_override = SubResource("PhysicsMaterial_n64io")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lantai/Lantai_dungeon/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_nyf65")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Lantai/Lantai_dungeon"]
-navigation_mesh = SubResource("NavigationMesh_01c78")

@@ -21,9 +21,10 @@ script = ExtResource("1_kk72n")
 
 [node name="DungeonManager" parent="." instance=ExtResource("2_1h4pl")]
 
+[node name="@NavigationRegion3D@17409" type="NavigationRegion3D" parent="DungeonManager"]
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.258819, -0.670224, -0.695566, -1.43934e-08, -0.720103, 0.693867, -0.965926, -0.179586, -0.186376, -11.4478, 48.2015, 31.2094)
-visible = false
 light_energy = 2.0
 shadow_enabled = true
 

@@ -12,11 +12,8 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_1y2dt")
 
 [node name="Projectile" type="Area3D"]
-<<<<<<< HEAD
 collision_layer = 2
 collision_mask = 3
-=======
->>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
 script = ExtResource("1_uccxb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -25,12 +22,9 @@ shape = SubResource("SphereShape3D_f5xeb")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_fuff3")
 
-<<<<<<< HEAD
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0489948)
 light_color = Color(1, 0.02, 0.02, 1)
 omni_range = 10.0
 
-=======
->>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

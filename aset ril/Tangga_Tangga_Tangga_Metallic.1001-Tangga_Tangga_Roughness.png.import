@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdx3vrktif3hr"
-path.s3tc="res://.godot/imported/Tangga_Tangga_Tangga_Metallic.1001-Tangga_Tangga_Roughness.png-90a5e5a9445afc94341e6392b85963c1.s3tc.ctex"
+path.s3tc="res://.godot/imported/Tangga_Tangga_Tangga_Metallic.1001-Tangga_Tangga_Roughness.png-a11b3e0f1c46146dc10d9860be1b2033.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Tangga_Tangga_Tangga_Metallic.1001-Tangga_Tangga_Roughness.png"
-dest_files=["res://.godot/imported/Tangga_Tangga_Tangga_Metallic.1001-Tangga_Tangga_Roughness.png-90a5e5a9445afc94341e6392b85963c1.s3tc.ctex"]
+source_file="res://aset ril/Tangga_Tangga_Tangga_Metallic.1001-Tangga_Tangga_Roughness.png"
+dest_files=["res://.godot/imported/Tangga_Tangga_Tangga_Metallic.1001-Tangga_Tangga_Roughness.png-a11b3e0f1c46146dc10d9860be1b2033.s3tc.ctex"]
 
 [params]
 

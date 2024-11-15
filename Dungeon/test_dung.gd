@@ -6,5 +6,5 @@ extends WorldEnvironment
 
 func _ready():
 	DungMan.regenerate()
-	enemyp.debug_spawn_enemies()
+	#enemyp.debug_spawn_enemies()
 	

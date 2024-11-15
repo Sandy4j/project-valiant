@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bu86pyd60878i"
-path.s3tc="res://.godot/imported/Barrel_Barrel_juga besi_Metallic.1001-Barrel_juga besi_Roughness.png-57750060982c7982b3bca1018f033c7d.s3tc.ctex"
+path.s3tc="res://.godot/imported/Barrel_Barrel_juga besi_Metallic.1001-Barrel_juga besi_Roughness.png-05fe3ede1f63b84042fb82b467b7a4e2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Barrel_Barrel_juga besi_Metallic.1001-Barrel_juga besi_Roughness.png"
-dest_files=["res://.godot/imported/Barrel_Barrel_juga besi_Metallic.1001-Barrel_juga besi_Roughness.png-57750060982c7982b3bca1018f033c7d.s3tc.ctex"]
+source_file="res://aset ril/Barrel_Barrel_juga besi_Metallic.1001-Barrel_juga besi_Roughness.png"
+dest_files=["res://.godot/imported/Barrel_Barrel_juga besi_Metallic.1001-Barrel_juga besi_Roughness.png-05fe3ede1f63b84042fb82b467b7a4e2.s3tc.ctex"]
 
 [params]
 
