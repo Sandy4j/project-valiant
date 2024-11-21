@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crrp1gre0sj1d"
-path.s3tc="res://.godot/imported/Flare01.png-7e1df6a91b2bb9af3e922bab47333004.s3tc.ctex"
+uid="uid://mmk7r7kt6qdh"
+path.s3tc="res://.godot/imported/level up.png-200296c6523b2abd1fd2e0f90e4f53f2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://aset ril/aset vfx/Referensi/Flare01.png"
-dest_files=["res://.godot/imported/Flare01.png-7e1df6a91b2bb9af3e922bab47333004.s3tc.ctex"]
+source_file="res://aset ril/aset vfx/Referensi/level up.png"
+dest_files=["res://.godot/imported/level up.png-200296c6523b2abd1fd2e0f90e4f53f2.s3tc.ctex"]
 
 [params]
 
