@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dngve3u68oid6"]
+
+[ext_resource type="ArrayMesh" uid="uid://cstlwmw75gp6c" path="res://aset ril/aset vfx/Proyektil/player/Thunder_Edit.tres" id="1_m57ou"]
+
+[sub_resource type="Gradient" id="Gradient_0c4gn"]
+offsets = PackedFloat32Array(0, 0.395349, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hmy7u"]
+gradient = SubResource("Gradient_0c4gn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5i44o"]
+lifetime_randomness = 0.1
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 0, 4)
+angle_min = -180.0
+angle_max = 180.0
+gravity = Vector3(0, 0, 0)
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_hmy7u")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(4.65697, 0, 0, 0, 1, 0, 0, 0, 4.07112, 0, 0, 0)
+amount = 10
+lifetime = 0.15
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
