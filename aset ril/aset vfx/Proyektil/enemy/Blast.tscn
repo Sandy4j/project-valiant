@@ -37,7 +37,7 @@ albedo_texture = ExtResource("5_27jem")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_swmoo"]
+[sub_resource type="CurveTexture" id="CurveTexture_xirlm"]
 curve = SubResource("Curve_1l0td")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o2b75"]
@@ -52,35 +52,35 @@ radial_velocity_min = 0.999978
 radial_velocity_max = 1.99998
 gravity = Vector3(0, 0, 0)
 scale_max = 1.5
-scale_curve = SubResource("CurveTexture_swmoo")
+scale_curve = SubResource("CurveTexture_xirlm")
 color = Color(2, 1.3, 0.5, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_f3g1k"]
 size = Vector2(0.1, 0.5)
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_bva16"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_n0es8"]
 
 [node name="Blast" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64458, 1.83651, 22.1688)
 
 [node name="Ujung" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.178553, 0.812588, 0.865625)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.178553, -0.454643, 2.19261)
 material_override = SubResource("ShaderMaterial_srplh")
 cast_shadow = 0
 mesh = ExtResource("2_jr4ds")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.168178, 0.812322, 1.02197)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.168178, -0.454909, 2.34896)
 material_override = SubResource("ShaderMaterial_wkqod")
 mesh = SubResource("SphereMesh_62fr8")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.44157e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 3.29793, -4.37114e-08, 1.91069e-15, 0, 0.779071, -0.449185)
+transform = Transform3D(-1.44157e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 3.29793, -4.37114e-08, 1.91069e-15, 4.76837e-07, -0.488159, 0.877804)
 visible = false
 mesh = SubResource("QuadMesh_yhkds")
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.203457, 0.792843, 0.150231)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.203456, -0.474387, 1.47722)
 material_override = SubResource("StandardMaterial3D_tekit")
 lifetime = 0.3
 explosiveness = 0.4
@@ -88,9 +88,9 @@ process_material = SubResource("ParticleProcessMaterial_o2b75")
 draw_pass_1 = SubResource("QuadMesh_f3g1k")
 
 [node name="Trail3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.677326, 0.735683, 0, -0.735683, -0.677326, 0, 0, 0, 1, -0.231214, 0.81409, 0.923677)
+transform = Transform3D(-0.677326, 0.735683, 0, -0.735683, -0.677326, 0, 0, 0, 1, -0.231214, -0.45314, 2.25067)
 material_override = ExtResource("5_744ag")
-mesh = SubResource("ImmediateMesh_bva16")
+mesh = SubResource("ImmediateMesh_n0es8")
 script = ExtResource("6_xk3rd")
 toWidth = 1.0
 lifespan = 0.3

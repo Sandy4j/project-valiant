@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dngve3u68oid6"]
+[gd_scene load_steps=8 format=3 uid="uid://dngve3u68oid6"]
 
 [ext_resource type="ArrayMesh" uid="uid://cstlwmw75gp6c" path="res://aset ril/aset vfx/Proyektil/player/Thunder_Edit.tres" id="1_m57ou"]
 
@@ -20,11 +20,78 @@ gravity = Vector3(0, 0, 0)
 scale_max = 1.5
 color_ramp = SubResource("GradientTexture1D_hmy7u")
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="Animation" id="Animation_15dfe"]
+resource_name = "Bledek"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 3, 4, 5, 6, 7, 8, 9, 20]
+}
+
+[sub_resource type="Animation" id="Animation_yvng7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86usa"]
+_data = {
+"Bledek": SubResource("Animation_15dfe"),
+"RESET": SubResource("Animation_yvng7")
+}
+
+[node name="Lightning" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(4.65697, 0, 0, 0, 1, 0, 0, 0, 4.07112, 0, 0, 0)
-amount = 10
+transform = Transform3D(3.69506, 0, 0, 0, 1, 0, 0, 0, 4.07112, 0.302526, 0, 0)
+amount = 2
 lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_5i44o")
 draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_86usa")
+}
