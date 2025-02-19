@@ -20,11 +20,18 @@ func initialize(dir: Vector3, spd: float, dmg: float) -> void:
 	look_at(global_position + direction)
 
 func _physics_process(delta: float) -> void:
+<<<<<<< HEAD
+=======
 	# Move projectile
+>>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
 	global_position += direction * speed * delta
 
 func _on_body_entered(body: Node3D) -> void:
 	if body == player:
 		print("player kenek")
+<<<<<<< HEAD
+		#body.Hited(damage)
+=======
 		body.Hited(damage)
+>>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
 	queue_free()

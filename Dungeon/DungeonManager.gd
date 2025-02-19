@@ -69,35 +69,34 @@ func spawn_player(y_offset: float = 2.0) -> void:
 	if player_instance:
 		player_instance.queue_free()
 	
-	# Make sure we have a player scenew
+	# Make sure we have a player scene
 	if !player_scene:
 		push_warning("Player scene not set!")
 		return
 	
-	# Find start room position (look for cells with item index 4)
-	var start_cells = grid_map.get_used_cells_by_item(4)
-	if start_cells.is_empty():
-		push_warning("No start room found!")
+	# Get reference to start room instance from dungeon mesh
+	var start_room = dungeon_mesh.start_room_instance
+	if !start_room:
+		push_warning("Start room instance not found!")
 		return
 		
-	# Get the leftmost cell of the start room
-	var start_pos = start_cells[0]
-	for cell in start_cells:
-		if cell.x < start_pos.x:
-			start_pos = cell
+	# Get spawn point node from start room
+	var spawn_point = start_room.get_node_or_null("din/pintu/spawnpoint")
+	if !spawn_point:
+		push_warning("SpawnPoint node not found in start room!")
+		return
 	
 	# Instance the player
 	player_instance = player_scene.instantiate()
 	add_child(player_instance)
 	
-	# Calculate world position (using GridMap's cell size)
-	var world_pos = Vector3(
-		start_pos.x * grid_map.cell_size.x + grid_map.cell_size.x,
-		y_offset,  # Offset Y to ensure player spawns above the floor
-		start_pos.z * grid_map.cell_size.z + grid_map.cell_size.z * 0.5
-	)
-	
-	player_instance.position = world_pos
+	# Set player position to spawn point's global position
+	player_instance.global_position = spawn_point.global_position
+	var model = player_instance.get_node_or_null("Rogue")
+	if model:
+		# Rotasi model 90 derajat ke kanan
+		model.rotation.y = deg_to_rad(90)
+
 
 func regenerate() -> void:
 		generate_dungeon()

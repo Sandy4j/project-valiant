@@ -20,6 +20,17 @@ var position_offset_target : Vector3 = Vector3(0, 1.3, 0)
 
 
 func _ready():
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+	# Mengatur mouse mode
+=======
+	yaw = -90
+	yaw_node.rotation_degrees.y = yaw
+	player.update_camera_rotation(yaw_node.rotation.y) 
+	set_cam_rotation.connect(player.update_camera_rotation)
+>>>>>>> Stashed changes
+=======
+>>>>>>> a4c5b3381e7ad774742250367db6ebbaeb5e3799
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	spring_arm.add_excluded_object(player.get_rid())
 	top_level = true

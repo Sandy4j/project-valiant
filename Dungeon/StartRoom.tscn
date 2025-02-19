@@ -415,66 +415,69 @@ data = PackedVector3Array(0.290306, 0.506759, -0.612233, -0.0042008, 0.568829, -
 [node name="StartRoom" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="pintu_tembok_dungeon2" type="Node3D" parent="."]
+[node name="din" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, 0)
 
-[node name="pintu" type="MeshInstance3D" parent="pintu_tembok_dungeon2"]
+[node name="pintu" type="MeshInstance3D" parent="din"]
 transform = Transform3D(-1, 0, -9.202e-08, 0, 1.05902, 0, 8.74228e-08, 0, -1.05259, 0.467851, 0.0260116, 0)
 mesh = SubResource("ArrayMesh_y0x3i")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="pintu_tembok_dungeon2/pintu"]
+[node name="StaticBody3D" type="StaticBody3D" parent="din/pintu"]
 visible = false
 physics_material_override = SubResource("PhysicsMaterial_e4a8b")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pintu_tembok_dungeon2/pintu/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="din/pintu/StaticBody3D"]
 visible = false
 shape = SubResource("ConcavePolygonShape3D_qpila")
 
-[node name="Cube_001" type="MeshInstance3D" parent="pintu_tembok_dungeon2"]
+[node name="spawnpoint" type="Marker3D" parent="din/pintu"]
+transform = Transform3D(1, 0, 0, 0, 0.944269, 0, 0, 0, 0.950037, -0.5, -0.969, 0)
+
+[node name="Cube_001" type="MeshInstance3D" parent="din"]
 transform = Transform3D(0, 0.1, 0, -2, 0, 0, 0, 0, 3.12644, 0.175195, 1.49091, 0.00657977)
 mesh = SubResource("ArrayMesh_spek3")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="pintu_tembok_dungeon2/Cube_001"]
+[node name="StaticBody3D" type="StaticBody3D" parent="din/Cube_001"]
 visible = false
 physics_material_override = SubResource("PhysicsMaterial_gtsxu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pintu_tembok_dungeon2/Cube_001/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="din/Cube_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vapws")
 
-[node name="Cube_003" type="MeshInstance3D" parent="pintu_tembok_dungeon2"]
+[node name="Cube_003" type="MeshInstance3D" parent="din"]
 transform = Transform3D(1.32313, 0, 0, 0, 1, 0, 0, 0, 1.04215, 0.175194, 1.50698, 0.00852303)
 mesh = SubResource("ArrayMesh_ot1ft")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="pintu_tembok_dungeon2/Cube_003"]
+[node name="StaticBody3D" type="StaticBody3D" parent="din/Cube_003"]
 visible = false
 physics_material_override = SubResource("PhysicsMaterial_jepio")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pintu_tembok_dungeon2/Cube_003/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="din/Cube_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_l157u")
 
-[node name="Cube_004" type="MeshInstance3D" parent="pintu_tembok_dungeon2"]
+[node name="Cube_004" type="MeshInstance3D" parent="din"]
 transform = Transform3D(2.778, 0, 0, 0, 1.43235, 0, 0, 0, 1.04215, 0.14223, 1.49342, -0.00300484)
 mesh = SubResource("ArrayMesh_vjray")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="pintu_tembok_dungeon2/Cube_004"]
+[node name="StaticBody3D" type="StaticBody3D" parent="din/Cube_004"]
 visible = false
 physics_material_override = SubResource("PhysicsMaterial_65fv8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pintu_tembok_dungeon2/Cube_004/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="din/Cube_004/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3w0aa")
 
-[node name="gate batu" type="MeshInstance3D" parent="pintu_tembok_dungeon2"]
+[node name="gate batu" type="MeshInstance3D" parent="din"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.408758, 0, 0)
 mesh = SubResource("ArrayMesh_a50p3")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="pintu_tembok_dungeon2/gate batu"]
+[node name="StaticBody3D" type="StaticBody3D" parent="din/gate batu"]
 visible = false
 physics_material_override = SubResource("PhysicsMaterial_lja5p")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pintu_tembok_dungeon2/gate batu/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="din/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")

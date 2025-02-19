@@ -87,19 +87,16 @@ func create_dungeon():
 	var start_cells = []
 	var end_cells = []
 	
-	# First pass: collect start and end room positions
-	var leftmost_start_x = 999999  # Nilai awal yang sangat besar
+	var leftmost_start_x = 999999
 	for cell in used_cells:
 		var cell_index = grid_map.get_cell_item(cell)
-		if cell_index == 4:  # Start room
+		if cell_index == 4:
 			start_cells.append(cell)
-			# Update leftmost_start_x
 			if cell.x < leftmost_start_x:
 				leftmost_start_x = cell.x
-		elif cell_index == 5:  # End room
+		elif cell_index == 5:
 			end_cells.append(cell)
 	
-	# Instantiate start and end rooms
 	if start_cells.size() > 0:
 		instantiate_start_room(Vector3(start_cells[0]))
 	
@@ -124,9 +121,7 @@ func create_dungeon():
 				dun_cell.scale = Vector3.ONE * 2.0
 
 			if cell_index == 4:  # Untuk start room
-				# Cek apakah ini adalah cell paling kiri dari start room
 				if cell.x == leftmost_start_x:
-					# Hapus dinding kiri untuk start room paling kiri
 					dun_cell.call("remove_wall_left")
 					dun_cell.call("remove_door_left")
 
@@ -134,7 +129,6 @@ func create_dungeon():
 			dun_cell.set_owner(owner)
 			t += 1
 			
-			# Cek tetangga untuk setiap arah
 			for i in 4:
 				var dir = directions.keys()[i]
 				var cell_n : Vector3i = cell + directions.values()[i]
@@ -163,7 +157,6 @@ func create_dungeon():
 				await get_tree().create_timer(0).timeout
 
 func handle_special_room(cell: Node3D, dir: String, current_type: int, neighbor_type: int):
-	# Handling untuk start room (tipe 4)
 	if current_type == 4:
 		# Koneksi start room ke ruangan normal
 		cell.call("remove_wall_" + dir)
@@ -180,7 +173,6 @@ func handle_special_room(cell: Node3D, dir: String, current_type: int, neighbor_
 		cell.call("remove_door_" + dir)
 		return
 
-	# Konversi untuk tipe ruangan normal
 	var converted_current = min(current_type, 2)
 	var converted_neighbor = min(neighbor_type, 2)
 	var key : String = str(converted_current) + str(converted_neighbor)
@@ -192,11 +184,11 @@ func handle_00(cell:Node3D,dir:String):
 	cell.call("remove_wall_"+dir)
 	cell.call("remove_door_"+dir)
 func handle_01(cell:Node3D,dir:String):
-	pass
+	cell.call("remove_wall_"+dir)
 func handle_02(cell:Node3D,dir:String):
 	cell.call("remove_wall_"+dir)
 func handle_10(cell:Node3D,dir:String):
-	pass
+	cell.call("remove_wall_"+dir)
 func handle_11(cell:Node3D,dir:String):
 	cell.call("remove_wall_"+dir)
 	cell.call("remove_door_"+dir)
