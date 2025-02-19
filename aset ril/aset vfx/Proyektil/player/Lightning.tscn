@@ -25,34 +25,7 @@ resource_name = "Bledek"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles3D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, true, true, true, true, true, true, true, true, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles3D:amount")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [2, 3, 4, 3, 4, 5, 6, 7, 8, 9, 20]
-}
-
-[sub_resource type="Animation" id="Animation_yvng7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/path = NodePath("Lightning1:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,14 +37,233 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles3D:amount")
+tracks/1/path = NodePath("Lightning2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lightning3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lightning4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Lightning5:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Lightning6:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Lightning7:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Lightning8:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Lightning9:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Lightning10:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yvng7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Lightning1:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Lightning2:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Lightning3:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lightning4:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Lightning5:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Lightning6:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Lightning7:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Lightning8:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Lightning9:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Lightning10:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86usa"]
@@ -82,9 +274,100 @@ _data = {
 
 [node name="Lightning" type="Node3D"]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(3.69506, 0, 0, 0, 1, 0, 0, 0, 4.07112, 0.302526, 0, 0)
-amount = 2
+[node name="Lightning1" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, 0.302526, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning2" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -2.791, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning3" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -5.8668, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning4" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -8.77396, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning5" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -11.7333, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning6" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -14.5585, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning7" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -17.4339, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning8" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -20.1738, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning9" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -22.8674, 0, 0)
+emitting = false
+amount = 1
+lifetime = 0.15
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5i44o")
+draw_pass_1 = ExtResource("1_m57ou")
+
+[node name="Lightning10" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.361995, 0, 0, 0, 1, 0, 0, 0, 0.362713, -25.8452, 0, 0)
+emitting = false
+amount = 1
 lifetime = 0.15
 one_shot = true
 explosiveness = 1.0
