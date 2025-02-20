@@ -1,14 +1,9 @@
 extends Button
 
 @export var type: ItemData.Type
-@onready var ItemTxt = $Center/Panel/itm
-@onready var Count = $Center/Panel/Count
 
-#func init(t: ItemData.Type, cms:Vector2) -> void:
-	#type = t
-	#custom_minimum_size = cms
 
-func update(slot: Inv_Slots):
+func insert(slot: Inv_Slots):
 	if !slot.item:
 		ItemTxt.visible = false 
 		Count.visible = false

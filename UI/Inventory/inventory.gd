@@ -11,9 +11,9 @@ func _ready():
 
 func connectSlots():
 	for slot in slots:
-		var cal = Callable(onSlotClicked)
-		cal = cal.bind(slot)
-		slot.pressed.connect(cal)
+		if slot and slot.has_signal("pressed"): 
+			var cal = Callable(onSlotClicked).bind(slot)
+			slot.pressed.connect(cal)
 
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
@@ -23,5 +23,5 @@ func update_slots():
 func _process(delta: float) -> void:
 	pass
 
-func onSlotClicked():
-	pass
+func onSlotClicked(slot):
+	slot.inv

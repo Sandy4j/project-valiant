@@ -12,12 +12,15 @@ script = ExtResource("1_ruohs")
 
 [node name="IU" type="CanvasLayer" parent="."]
 
+[node name="Inventory" parent="IU" instance=ExtResource("2_l2hto")]
+
 [node name="Death" type="ColorRect" parent="IU"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.12549)
 
 [node name="Label" type="Label" parent="IU/Death"]
@@ -60,8 +63,6 @@ offset_left = 11.0
 offset_top = 13.0
 offset_right = 302.0
 offset_bottom = 40.0
-
-[node name="Inventory" parent="IU" instance=ExtResource("2_l2hto")]
 
 [node name="FLoorLabel" type="Label" parent="IU"]
 offset_left = 16.0
