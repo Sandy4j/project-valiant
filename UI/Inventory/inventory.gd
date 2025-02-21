@@ -3,7 +3,7 @@ extends Node
 @onready var inv: Inventory = preload("res://UI/Inventory/Player_Inventory.tres")
 @onready var itemclass = preload("res://UI/Inventory/Item/inv_item.tscn")
 @onready var slots:Array = $GridContainer.get_children() 
-@onready var grid = get_node("Grid")
+
 
 func _ready(): 
 	connectSlots()
@@ -18,17 +18,19 @@ func connectSlots():
 
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
-		var slot:Inv_Slots = inv.slots[i]
+		var i_slot:Inv_Slots = inv.slots[i]
 		
-		if !slot.item:continue
+		if !i_slot.item:continue
 		
 		var ui_item:Inv_Item = slots[i].item
 		if !ui_item:
 			ui_item = itemclass.instantiate()
 			slots[i].insert(ui_item)
-		ui_item.slot = slot
-		ui_item.update()
-		print(slot,slot.item)
+		
+		ui_item.slot = i_slot
+		ui_item.check()
+		print(i_slot.item.item_name,i_slot.count)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

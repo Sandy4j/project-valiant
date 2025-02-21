@@ -10,11 +10,12 @@ var slot:Inv_Slots
 func _ready() -> void:
 	pass # Replace with function body.
 
-func update():
-	if !slot || slot.item:return 
+func check():
+	if !slot || slot.item:return
 	ItemTxt.visible = true
 	ItemTxt.texture = slot.item.item_texture
 	Count.text = str(slot.count)
+	print("item:",slot.item.item_name,",jumlah:",slot.count)
 	if slot.count > 1:
 		Count.visible = true
 	else :
