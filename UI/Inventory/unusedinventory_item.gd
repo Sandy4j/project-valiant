@@ -1,4 +1,4 @@
-class_name  Inventory_Item
+
 extends TextureRect
 
 @export var data: ItemData

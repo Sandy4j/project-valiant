@@ -1,4 +1,4 @@
-class_name  Inventory_Slot
+class_name  Inventory_Slot_unused
 extends PanelContainer
 
 @export var type: ItemData.Type

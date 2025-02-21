@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://biefsucepxvxh"]
 
-[ext_resource type="Script" path="res://UI/Inventory/inv_item.gd" id="1_bllnq"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/inv_item.gd" id="1_0ll5x"]
 [ext_resource type="Texture2D" uid="uid://denq553o3cmin" path="res://UI/Inventory/Item/sword_icon.png" id="1_ibj5e"]
 
 [node name="Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(100, 120)
 mouse_filter = 1
-script = ExtResource("1_bllnq")
+script = ExtResource("1_0ll5x")
 
 [node name="itm" type="Sprite2D" parent="."]
 texture = ExtResource("1_ibj5e")
