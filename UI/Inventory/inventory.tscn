@@ -18,8 +18,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.372549)
 
 [node name="GridContainer" type="GridContainer" parent="."]
@@ -41,6 +44,7 @@ columns = 4
 [node name="Inv_slot1" parent="GridContainer" instance=ExtResource("2_6atyy")]
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 1
 
 [node name="Inv_slot2" parent="GridContainer" instance=ExtResource("2_6atyy")]
 layout_mode = 2
@@ -117,6 +121,70 @@ offset_bottom = 596.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.643075, 0.595424)
+
+[node name="Item_desc" type="Control" parent="Container"]
+layout_mode = 2
+
+[node name="item_name" type="Label" parent="Container/Item_desc"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 260.0
+offset_right = 461.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "MAMAK KAU"
+horizontal_alignment = 1
+
+[node name="bg" type="ColorRect" parent="Container/Item_desc"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 161.0
+offset_top = 260.0
+offset_right = 461.0
+offset_bottom = 320.0
+
+[node name="item_desc" type="Label" parent="Container/Item_desc"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 355.0
+offset_right = 613.0
+offset_bottom = 567.0
+theme_override_font_sizes/font_size = 20
+text = "MAMAK KAU"
+
+[node name="Con" type="GridContainer" parent="Container/Item_desc"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 570.0
+offset_right = 613.0
+offset_bottom = 705.0
+columns = 2
+
+[node name="PhysAttack" type="Label" parent="Container/Item_desc/Con"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Physical attack: +10"
+
+[node name="Healing" type="Label" parent="Container/Item_desc/Con"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Physical attack: +10"
+
+[node name="Speed" type="Label" parent="Container/Item_desc/Con"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Speed: Medium"
+
+[node name="Speed2" type="Label" parent="Container/Item_desc/Con"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Speed: Medium"
+
+[node name="Range" type="Label" parent="Container/Item_desc/Con"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Attack range: Medium"
 
 [node name="TextureRect" type="TextureRect" parent="Container"]
 layout_mode = 2

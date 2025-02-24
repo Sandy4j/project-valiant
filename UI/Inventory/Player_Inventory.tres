@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=20 format=3 uid="uid://tlrcgvt877or"]
 
 [ext_resource type="Script" path="res://UI/Inventory/inventory_slot.gd" id="2_jshga"]
-[ext_resource type="Resource" uid="uid://qnqufgmm7w3n" path="res://UI/Inventory/Item/M_HP_Potion.tres" id="3_xqayr"]
+[ext_resource type="Resource" path="res://UI/Inventory/Item/M_HP_Potion.tres" id="3_xqayr"]
 [ext_resource type="Script" path="res://UI/Inventory/inventory_main.gd" id="4_64vkp"]
 
 [sub_resource type="Resource" id="Resource_3s4q2"]

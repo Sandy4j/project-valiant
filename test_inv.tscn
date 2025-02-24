@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="2_4vcqa"]
 [ext_resource type="Script" path="res://UI/Inventory/Item/collectable.gd" id="3_2cwqo"]
 [ext_resource type="Resource" uid="uid://du0fet52dusij" path="res://UI/Inventory/Item/S_HP_Potion.tres" id="4_jmlnr"]
-[ext_resource type="Resource" uid="uid://qnqufgmm7w3n" path="res://UI/Inventory/Item/M_HP_Potion.tres" id="5_q5ccw"]
+[ext_resource type="Resource" path="res://UI/Inventory/Item/M_HP_Potion.tres" id="5_q5ccw"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqsm7"]
 

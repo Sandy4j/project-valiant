@@ -5,19 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://denq553o3cmin" path="res://UI/Inventory/Item/sword_icon.png" id="3_sa5ee"]
 
 [node name="Inv_slot" type="Button"]
-self_modulate = Color(1, 0, 0, 0)
 custom_minimum_size = Vector2(100, 120)
 offset_right = 100.0
 offset_bottom = 120.0
+mouse_default_cursor_shape = 2
 script = ExtResource("1_k50as")
 type = 2
 
 [node name="Bg" type="Sprite2D" parent="."]
+show_behind_parent = true
 scale = Vector2(0.673333, 0.615385)
 texture = ExtResource("2_2b68y")
 centered = false
 
 [node name="Center" type="CenterContainer" parent="."]
+show_behind_parent = true
 custom_minimum_size = Vector2(100, 120)
 layout_mode = 0
 offset_right = 100.0
@@ -25,8 +27,10 @@ offset_bottom = 120.0
 
 [node name="Panel" type="Panel" parent="Center"]
 self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
 custom_minimum_size = Vector2(100, 120)
 layout_mode = 2
+mouse_filter = 1
 
 [node name="itm" type="Sprite2D" parent="Center/Panel"]
 texture = ExtResource("3_sa5ee")
