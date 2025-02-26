@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c4jss7p1i05m4"
-path="res://.godot/imported/Penghubung_Pillar.glb-00c2bc7a4c4cb5e8342e3b6a5be4a653.scn"
+path="res://.godot/imported/Penghubung_Pillar.glb-7d90c7c0c7d07a6b5a44d3c310a5fe15.scn"
 
 [deps]
 
-source_file="res://Dungeon/Acc/Penghubung_Pillar.glb"
-dest_files=["res://.godot/imported/Penghubung_Pillar.glb-00c2bc7a4c4cb5e8342e3b6a5be4a653.scn"]
+source_file="res://aset ril/Penghubung_Pillar.glb"
+dest_files=["res://.godot/imported/Penghubung_Pillar.glb-7d90c7c0c7d07a6b5a44d3c310a5fe15.scn"]
 
 [params]
 

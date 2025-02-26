@@ -13,6 +13,7 @@ shader = ExtResource("2_jjucd")
 shader_parameter/circle_color = Color(0.9, 0.407, 0, 1)
 shader_parameter/extra_opacity = 0.0
 shader_parameter/speed = Vector2(0, -1)
+shader_parameter/Vanish = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6soa"]
 render_priority = 0
@@ -188,6 +189,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [0.0, 1.0, 1.0, 0.0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CircleMesh:material_override:shader_parameter/Vanish")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 4.76667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_mc4ep"]
 length = 0.001
@@ -298,6 +311,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CircleMesh:material_override:shader_parameter/Vanish")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ci0fe"]

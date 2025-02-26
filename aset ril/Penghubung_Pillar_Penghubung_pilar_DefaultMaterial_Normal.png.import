@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c85lle5cb1g16"
-path.s3tc="res://.godot/imported/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png-4bffeebec054f42e6f3aa66342eaeda8.s3tc.ctex"
+path.s3tc="res://.godot/imported/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png-7b6935c6794fbd1363d44c0850d898b2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png"
-dest_files=["res://.godot/imported/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png-4bffeebec054f42e6f3aa66342eaeda8.s3tc.ctex"]
+source_file="res://aset ril/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png"
+dest_files=["res://.godot/imported/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png-7b6935c6794fbd1363d44c0850d898b2.s3tc.ctex"]
 
 [params]
 

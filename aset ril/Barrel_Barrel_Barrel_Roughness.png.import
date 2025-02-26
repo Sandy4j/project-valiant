@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5hgrvcg4q0hl"
-path.s3tc="res://.godot/imported/Barrel_Barrel_Barrel_Roughness.png-b61e7a79b4fb8353942cebbc759a337e.s3tc.ctex"
+path.s3tc="res://.godot/imported/Barrel_Barrel_Barrel_Roughness.png-26055547c28fea3d950f6d28d2388060.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Barrel_Barrel_Barrel_Roughness.png"
-dest_files=["res://.godot/imported/Barrel_Barrel_Barrel_Roughness.png-b61e7a79b4fb8353942cebbc759a337e.s3tc.ctex"]
+source_file="res://aset ril/Barrel_Barrel_Barrel_Roughness.png"
+dest_files=["res://.godot/imported/Barrel_Barrel_Barrel_Roughness.png-26055547c28fea3d950f6d28d2388060.s3tc.ctex"]
 
 [params]
 

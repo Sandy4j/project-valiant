@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bgnqkumrc3r1n"
-path="res://.godot/imported/Tangga.glb-acdfdd334880fbb97371cda7553b8389.scn"
+path="res://.godot/imported/Tangga.glb-e33b4f8b2edff21254a5fd33db60d7de.scn"
 
 [deps]
 
-source_file="res://Dungeon/Acc/Tangga.glb"
-dest_files=["res://.godot/imported/Tangga.glb-acdfdd334880fbb97371cda7553b8389.scn"]
+source_file="res://aset ril/Tangga.glb"
+dest_files=["res://.godot/imported/Tangga.glb-e33b4f8b2edff21254a5fd33db60d7de.scn"]
 
 [params]
 

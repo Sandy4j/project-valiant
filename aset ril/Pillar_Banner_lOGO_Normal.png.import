@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbn2w25vwhnfh"
-path.s3tc="res://.godot/imported/Pillar_Banner_lOGO_Normal.png-7da2670249365f148047f484e70aba6d.s3tc.ctex"
+path.s3tc="res://.godot/imported/Pillar_Banner_lOGO_Normal.png-547a6f717699e6d26434e9f25e15d65e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Pillar_Banner_lOGO_Normal.png"
-dest_files=["res://.godot/imported/Pillar_Banner_lOGO_Normal.png-7da2670249365f148047f484e70aba6d.s3tc.ctex"]
+source_file="res://aset ril/Pillar_Banner_lOGO_Normal.png"
+dest_files=["res://.godot/imported/Pillar_Banner_lOGO_Normal.png-547a6f717699e6d26434e9f25e15d65e.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3vr1r8qisb8l"
-path.s3tc="res://.godot/imported/Tangga_Tangga_Tembok_BaseColor.png-05f7b90083bbbf6b106e30e57d94f06a.s3tc.ctex"
+path.s3tc="res://.godot/imported/Tangga_Tangga_Tembok_BaseColor.png-29a831fc61ae3e3671b824a663ac469c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Tangga_Tangga_Tembok_BaseColor.png"
-dest_files=["res://.godot/imported/Tangga_Tangga_Tembok_BaseColor.png-05f7b90083bbbf6b106e30e57d94f06a.s3tc.ctex"]
+source_file="res://aset ril/Tangga_Tangga_Tembok_BaseColor.png"
+dest_files=["res://.godot/imported/Tangga_Tangga_Tembok_BaseColor.png-29a831fc61ae3e3671b824a663ac469c.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8qsapm787345"
-path.s3tc="res://.godot/imported/Pillar_Pilar_dueon_Normal.png-81bc4cafb1f69d546d3a72d970395141.s3tc.ctex"
+path.s3tc="res://.godot/imported/Pillar_Pilar_dueon_Normal.png-e3f1deea71e0d18c7e3d98fd3c105d32.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Pillar_Pilar_dueon_Normal.png"
-dest_files=["res://.godot/imported/Pillar_Pilar_dueon_Normal.png-81bc4cafb1f69d546d3a72d970395141.s3tc.ctex"]
+source_file="res://aset ril/Pillar_Pilar_dueon_Normal.png"
+dest_files=["res://.godot/imported/Pillar_Pilar_dueon_Normal.png-e3f1deea71e0d18c7e3d98fd3c105d32.s3tc.ctex"]
 
 [params]
 

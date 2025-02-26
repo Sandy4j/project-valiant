@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6fg2cwhhrey"
-path.s3tc="res://.godot/imported/Tangga_Tangga_Tangga_BaseColor.png-312c87851ba7d616ab10fee472464021.s3tc.ctex"
+path.s3tc="res://.godot/imported/Tangga_Tangga_Tangga_BaseColor.png-923df675a4f5fcfcbecf7e0d962fc695.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Dungeon/Acc/Tangga_Tangga_Tangga_BaseColor.png"
-dest_files=["res://.godot/imported/Tangga_Tangga_Tangga_BaseColor.png-312c87851ba7d616ab10fee472464021.s3tc.ctex"]
+source_file="res://aset ril/Tangga_Tangga_Tangga_BaseColor.png"
+dest_files=["res://.godot/imported/Tangga_Tangga_Tangga_BaseColor.png-923df675a4f5fcfcbecf7e0d962fc695.s3tc.ctex"]
 
 [params]
 
