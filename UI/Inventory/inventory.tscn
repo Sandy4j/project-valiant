@@ -1,8 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://brjxuorjpqc2s"]
+[gd_scene load_steps=10 format=3 uid="uid://brjxuorjpqc2s"]
 
 [ext_resource type="Script" path="res://UI/Inventory/inventory.gd" id="1_lvyar"]
 [ext_resource type="PackedScene" uid="uid://bxxa6jjyncar0" path="res://UI/Inventory/inv_slot.tscn" id="2_6atyy"]
 [ext_resource type="Texture2D" uid="uid://64evpbhpw54f" path="res://UI/Inventory/bg_desc.png" id="3_440fw"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/item_desc.gd" id="3_y4eek"]
+[ext_resource type="Texture2D" uid="uid://ddn4hsesxf1kt" path="res://icon.svg" id="5_23rnm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ydsr"]
+bg_color = Color(0.641934, 0.641934, 0.641934, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogwar"]
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8me3"]
+bg_color = Color(0.400697, 0.400698, 0.400697, 1)
+
+[sub_resource type="Theme" id="Theme_1eeaa"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 25
+Button/styles/hover = SubResource("StyleBoxFlat_4ydsr")
+Button/styles/normal = SubResource("StyleBoxFlat_ogwar")
+Button/styles/pressed = SubResource("StyleBoxFlat_n8me3")
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -124,6 +142,27 @@ scale = Vector2(0.643075, 0.595424)
 
 [node name="Item_desc" type="Control" parent="Container"]
 layout_mode = 2
+script = ExtResource("3_y4eek")
+
+[node name="bg" type="ColorRect" parent="Container/Item_desc"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 161.0
+offset_top = 260.0
+offset_right = 461.0
+offset_bottom = 320.0
+
+[node name="bg2" type="TextureRect" parent="Container/Item_desc"]
+visibility_layer = 524288
+layout_mode = 2
+offset_right = 644.0
+offset_bottom = 831.0
+texture = ExtResource("3_440fw")
+
+[node name="item_texture" type="Sprite2D" parent="Container/Item_desc"]
+position = Vector2(305.116, 128.537)
+scale = Vector2(2, 2)
+texture = ExtResource("5_23rnm")
 
 [node name="item_name" type="Label" parent="Container/Item_desc"]
 layout_mode = 0
@@ -136,56 +175,37 @@ theme_override_font_sizes/font_size = 35
 text = "MAMAK KAU"
 horizontal_alignment = 1
 
-[node name="bg" type="ColorRect" parent="Container/Item_desc"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = 161.0
-offset_top = 260.0
-offset_right = 461.0
-offset_bottom = 320.0
-
-[node name="item_desc" type="Label" parent="Container/Item_desc"]
+[node name="item_desc" type="RichTextLabel" parent="Container/Item_desc"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 355.0
 offset_right = 613.0
 offset_bottom = 567.0
-theme_override_font_sizes/font_size = 20
 text = "MAMAK KAU"
 
-[node name="Con" type="GridContainer" parent="Container/Item_desc"]
+[node name="efcon" type="VBoxContainer" parent="Container/Item_desc"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 570.0
 offset_right = 613.0
 offset_bottom = 705.0
-columns = 2
 
-[node name="PhysAttack" type="Label" parent="Container/Item_desc/Con"]
+[node name="Effect_tx1" type="Label" parent="Container/Item_desc/efcon"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Physical attack: +10"
 
-[node name="Healing" type="Label" parent="Container/Item_desc/Con"]
+[node name="Effect_tx4" type="Label" parent="Container/Item_desc/efcon"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
-text = "Physical attack: +10"
+text = "0"
 
-[node name="Speed" type="Label" parent="Container/Item_desc/Con"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Speed: Medium"
-
-[node name="Speed2" type="Label" parent="Container/Item_desc/Con"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Speed: Medium"
-
-[node name="Range" type="Label" parent="Container/Item_desc/Con"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "Attack range: Medium"
-
-[node name="TextureRect" type="TextureRect" parent="Container"]
-layout_mode = 2
-texture = ExtResource("3_440fw")
+[node name="item_btn" type="Button" parent="Container/Item_desc"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 0
+offset_left = 244.47
+offset_top = 758.341
+offset_right = 394.47
+offset_bottom = 797.341
+theme = SubResource("Theme_1eeaa")
+text = "ENTAH"

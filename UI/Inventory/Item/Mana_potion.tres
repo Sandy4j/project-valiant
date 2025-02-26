@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://c2pj44sgpia2f"]
+
+[ext_resource type="Texture2D" uid="uid://d1c1xohmxx855" path="res://UI/Inventory/Item/syg.jpeg" id="1_jp3fe"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/item_data.gd" id="2_3ib68"]
+
+[resource]
+script = ExtResource("2_3ib68")
+type = 1
+item_name = "Mana Potion"
+health = 0
+mana = 25
+stackable = true
+count = 1
+item_description = "Ini namanya item potion untuk mana"
+item_texture = ExtResource("1_jp3fe")

@@ -1,12 +1,11 @@
 class_name ItemData
 extends Resource
 
-enum Type{MAIN, EQUIPMENT, MISC,}
-@export var type: Type
+enum Kelas {MAIN, CONSUMABLE, MISC,}
+@export var type: Kelas
 @export var item_name: String
-@export var item_damage: int
-@export var item_health: int
-@export var item_defense: int
+@export var health: int
+@export var mana: int
 @export var stackable: bool
 @export var count: int
 @export_multiline var item_description: String

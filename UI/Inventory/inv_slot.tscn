@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/Inventory/inventory_slot_ui.gd" id="1_k50as"]
 [ext_resource type="Texture2D" uid="uid://ddoxufw1yhq6a" path="res://UI/Inventory/bg_slot.png" id="2_2b68y"]
-[ext_resource type="Texture2D" uid="uid://denq553o3cmin" path="res://UI/Inventory/Item/sword_icon.png" id="3_sa5ee"]
+[ext_resource type="Texture2D" uid="uid://d1c1xohmxx855" path="res://UI/Inventory/Item/syg.jpeg" id="3_uthnu"]
 
 [node name="Inv_slot" type="Button"]
 custom_minimum_size = Vector2(100, 120)
@@ -10,7 +10,6 @@ offset_right = 100.0
 offset_bottom = 120.0
 mouse_default_cursor_shape = 2
 script = ExtResource("1_k50as")
-type = 2
 
 [node name="Bg" type="Sprite2D" parent="."]
 show_behind_parent = true
@@ -33,7 +32,7 @@ layout_mode = 2
 mouse_filter = 1
 
 [node name="itm" type="Sprite2D" parent="Center/Panel"]
-texture = ExtResource("3_sa5ee")
+texture = ExtResource("3_uthnu")
 centered = false
 
 [node name="Count" type="Label" parent="Center/Panel"]

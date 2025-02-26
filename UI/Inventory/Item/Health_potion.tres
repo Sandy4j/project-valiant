@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bm0eivccpinja"]
+
+[ext_resource type="Texture2D" uid="uid://bq45s3k8lsmmc" path="res://UI/Inventory/Item/seng.jpeg" id="1_6xiv8"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/item_data.gd" id="2_30jap"]
+
+[resource]
+script = ExtResource("2_30jap")
+type = 1
+item_name = "Health Potion"
+health = 35
+mana = 0
+stackable = true
+count = 1
+item_description = "Ini namanya item potion untuk healing"
+item_texture = ExtResource("1_6xiv8")

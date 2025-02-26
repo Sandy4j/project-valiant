@@ -1,20 +1,36 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=20 format=3 uid="uid://tlrcgvt877or"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=24 format=3 uid="uid://tlrcgvt877or"]
 
 [ext_resource type="Script" path="res://UI/Inventory/inventory_slot.gd" id="2_jshga"]
-[ext_resource type="Resource" path="res://UI/Inventory/Item/M_HP_Potion.tres" id="3_xqayr"]
+[ext_resource type="Resource" uid="uid://bm0eivccpinja" path="res://UI/Inventory/Item/Health_potion.tres" id="3_h1f5f"]
 [ext_resource type="Script" path="res://UI/Inventory/inventory_main.gd" id="4_64vkp"]
+[ext_resource type="Resource" uid="uid://c2pj44sgpia2f" path="res://UI/Inventory/Item/Mana_potion.tres" id="4_4674t"]
+[ext_resource type="Texture2D" uid="uid://cg3latg8bd8xs" path="res://UI/Inventory/Item/bebeb.jpg" id="5_1s1eu"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/item_data.gd" id="5_6pllc"]
 
 [sub_resource type="Resource" id="Resource_3s4q2"]
 script = ExtResource("2_jshga")
-item = ExtResource("3_xqayr")
+item = ExtResource("3_h1f5f")
 count = 3
 
 [sub_resource type="Resource" id="Resource_katv8"]
 script = ExtResource("2_jshga")
+item = ExtResource("4_4674t")
+count = 2
+
+[sub_resource type="Resource" id="Resource_le1fo"]
+script = ExtResource("5_6pllc")
+type = 1
+item_name = "All mighty"
+health = 5
+mana = 5
+stackable = true
 count = 0
+item_description = "My only healer cus she's only mine"
+item_texture = ExtResource("5_1s1eu")
 
 [sub_resource type="Resource" id="Resource_tl4ol"]
 script = ExtResource("2_jshga")
+item = SubResource("Resource_le1fo")
 count = 0
 
 [sub_resource type="Resource" id="Resource_nmqq2"]

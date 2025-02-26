@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Proc Dungeon/level/spawn.gd" id="1_bnkub"]
 [ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="2_4vcqa"]
 [ext_resource type="Script" path="res://UI/Inventory/Item/collectable.gd" id="3_2cwqo"]
-[ext_resource type="Resource" uid="uid://du0fet52dusij" path="res://UI/Inventory/Item/S_HP_Potion.tres" id="4_jmlnr"]
-[ext_resource type="Resource" path="res://UI/Inventory/Item/M_HP_Potion.tres" id="5_q5ccw"]
+[ext_resource type="Resource" uid="uid://bm0eivccpinja" path="res://UI/Inventory/Item/Health_potion.tres" id="4_inb2b"]
+[ext_resource type="Resource" uid="uid://c2pj44sgpia2f" path="res://UI/Inventory/Item/Mana_potion.tres" id="5_06yp6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqsm7"]
 
@@ -32,14 +32,14 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_iuyvd")
 
 [node name="Spawn" type="Marker3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.4457, 0, -0.371678)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.47179, 0, -0.371678)
 script = ExtResource("1_bnkub")
 player_scene = ExtResource("2_4vcqa")
 
 [node name="S_pot" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513547, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.275575, 0.513547, -3.67957)
 script = ExtResource("3_2cwqo")
-itemres = ExtResource("4_jmlnr")
+itemres = ExtResource("4_inb2b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="S_pot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265768, 0)
@@ -53,7 +53,7 @@ shape = SubResource("SphereShape3D_wnbg5")
 [node name="M_pot" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675653, 3.34218)
 script = ExtResource("3_2cwqo")
-itemres = ExtResource("5_q5ccw")
+itemres = ExtResource("5_06yp6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="M_pot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265768, 0)
