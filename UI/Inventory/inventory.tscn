@@ -209,3 +209,5 @@ offset_right = 394.47
 offset_bottom = 797.341
 theme = SubResource("Theme_1eeaa")
 text = "ENTAH"
+
+[connection signal="pressed" from="Container/Item_desc/item_btn" to="." method="_on_item_btn_pressed"]

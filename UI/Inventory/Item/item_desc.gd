@@ -24,6 +24,11 @@ func hide_ui():
 		i.hide()
 
 func show_ui(item:ItemData):
+	Name.show()
+	txt.show()
+	desc.show()
+	btn.show()
+	$bg.show()
 	Name.text = item.item_name
 	txt.texture = item.item_texture
 	desc.text = item.item_description
@@ -33,7 +38,7 @@ func show_ui(item:ItemData):
 	elif item.type == ItemData.Kelas.CONSUMABLE:
 		btn.text = "Consume"
 	else:
-		btn.text = "kontol"
+		btn.hide()
 	if item.type == ItemData.Kelas.CONSUMABLE:
 		if item.health > 0 && item.mana > 0:
 			effect[0].text = "Merestorasi " + str(item.health) + " HP yang hilang"
@@ -47,8 +52,4 @@ func show_ui(item:ItemData):
 			effect[0].text = "Memulihkan " + str(item.mana) + " Mana"
 			effect[0].show()
 	
-	Name.show()
-	txt.show()
-	desc.show()
-	btn.show()
-	$bg.show()
+	

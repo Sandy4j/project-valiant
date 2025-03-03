@@ -11,6 +11,8 @@ var items = {
 	"medium potion": preload("res://UI/Inventory/Item/Mana_potion.tres"),
 }
 
-func heal_pot(_amount: int):
-	#Stats.heal(amount)
-	pass
+func healt_pot(amount: int):
+	Stats.heal(amount)
+
+func mana_pot(amount: int):
+	Stats.restore_mana(amount)
