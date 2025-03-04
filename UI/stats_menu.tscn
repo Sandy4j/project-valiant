@@ -1,0 +1,364 @@
+[gd_scene load_steps=11 format=3 uid="uid://71u7x87ne3qt"]
+
+[ext_resource type="Texture2D" uid="uid://dal2y41ltd8b1" path="res://UI/stat_bg.png" id="1_qmop1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmdaw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rrvw"]
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[sub_resource type="Theme" id="Theme_tb18b"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_mmdaw")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_8rrvw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqxe0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_as8yp"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_x5yls"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_yqxe0")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_as8yp")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rdra"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_puebd"]
+bg_color = Color(0.658824, 0.92549, 1, 1)
+
+[sub_resource type="Theme" id="Theme_qrfmd"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_8rdra")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_puebd")
+
+[node name="Stats" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="temp" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = -237.0
+offset_right = 475.0
+offset_bottom = 237.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.196078)
+
+[node name="bar_cont" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 34.0
+offset_right = 385.0
+offset_bottom = 283.0
+
+[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont"]
+layout_mode = 2
+
+[node name="Cur_Lvl" type="Label" parent="ColorRect/bar_cont/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Lv 0"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cur_Exp" type="Label" parent="ColorRect/bar_cont/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "1423123123"
+horizontal_alignment = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "/"
+clip_text = true
+
+[node name="Max_Exp" type="Label" parent="ColorRect/bar_cont/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "142"
+horizontal_alignment = 2
+
+[node name="EXP" type="ProgressBar" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(350, 20)
+layout_mode = 2
+theme = SubResource("Theme_tb18b")
+value = 50.0
+show_percentage = false
+
+[node name="con2" type="HBoxContainer" parent="ColorRect/bar_cont"]
+layout_mode = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/con2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "HP"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/con2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cur_Hp" type="Label" parent="ColorRect/bar_cont/con2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "2421"
+horizontal_alignment = 2
+
+[node name="ph2" type="Label" parent="ColorRect/bar_cont/con2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "/"
+clip_text = true
+
+[node name="Max_Hp" type="Label" parent="ColorRect/bar_cont/con2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "14231"
+horizontal_alignment = 2
+
+[node name="HP" type="ProgressBar" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+theme = SubResource("Theme_x5yls")
+value = 50.0
+show_percentage = false
+
+[node name="con3" type="HBoxContainer" parent="ColorRect/bar_cont"]
+layout_mode = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/con3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "Mana"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/con3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cur_Mana" type="Label" parent="ColorRect/bar_cont/con3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "123123"
+horizontal_alignment = 2
+
+[node name="ph2" type="Label" parent="ColorRect/bar_cont/con3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "/"
+clip_text = true
+
+[node name="Max_Mana" type="Label" parent="ColorRect/bar_cont/con3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "14231"
+horizontal_alignment = 2
+
+[node name="Mana" type="ProgressBar" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+theme = SubResource("Theme_qrfmd")
+value = 50.0
+show_percentage = false
+
+[node name="Spacer" type="Control" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Box1" type="TextureRect" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("1_qmop1")
+
+[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box1"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/Box1/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/Box1/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/bar_cont/Box1/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="Box2" type="TextureRect" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("1_qmop1")
+
+[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/Box2/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/Box2/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/bar_cont/Box2/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="Box3" type="TextureRect" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("1_qmop1")
+
+[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/Box3/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/Box3/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/bar_cont/Box3/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="Box4" type="TextureRect" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("1_qmop1")
+
+[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/Box4/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/Box4/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/bar_cont/Box4/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="Box5" type="TextureRect" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("1_qmop1")
+
+[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box5"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/Box5/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/Box5/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/bar_cont/Box5/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="Box6" type="TextureRect" parent="ColorRect/bar_cont"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+texture = ExtResource("1_qmop1")
+
+[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box6"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/bar_cont/Box6/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/bar_cont/Box6/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/bar_cont/Box6/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"

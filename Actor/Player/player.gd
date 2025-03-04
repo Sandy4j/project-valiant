@@ -23,6 +23,9 @@ var is_hitted: bool
 @onready var animation_tree = get_node("AnimationTree")
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var HP_BAR = $"UI Player/IU/HP"
+@onready var MANA_BAR = $"UI Player/IU/Mana"
+@onready var EXP_BAR = $"UI Player/IU/Exp_Bar"
+@onready var Lvl = $"UI Player/IU/Exp_Bar/Lvl"
 @onready var attack_raycast = $AttackRaycast
 @onready var main = "res://main.tscn"
 @onready var GlobalSignal = "res://GlobalSignal.gd"
@@ -36,8 +39,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	add_to_group("player")
-	HP_BAR.max_value = stats.max_hp
-	HP_BAR.value = stats.current_hp
+	connect_stats()
 	spawn_point = global_transform.origin
 	call_deferred("connect_to_checkpoints")
 	
@@ -52,6 +54,15 @@ func _ready():
 	stats.connect("curse_applied", Callable(self, "_on_curse_applied"))
 	stats.connect("curse_lifted", Callable(self, "_on_curse_lifted"))
 	stats.connect("Pdied", Callable(self, "died"))
+
+func connect_stats():
+	EXP_BAR.max_value = stats.max_exp
+	EXP_BAR.value = stats.current_exp
+	Lvl.text = str(stats.level)
+	HP_BAR.max_value = stats.max_hp
+	HP_BAR.value = stats.current_hp
+	MANA_BAR.max_value = stats.max_mana
+	MANA_BAR.value = stats.current_mana
 	
 
 func _unhandled_input(event):

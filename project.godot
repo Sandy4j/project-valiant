@@ -37,7 +37,7 @@ project/assembly_name="Project Valiant"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/YouCanDoIt/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/progress_bar_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg", "res://addons/progress_bar_3d/plugin.cfg")
 
 [global_group]
 
