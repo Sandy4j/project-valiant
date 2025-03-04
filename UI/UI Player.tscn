@@ -124,6 +124,7 @@ offset_bottom = 74.0
 label_settings = SubResource("LabelSettings_e141l")
 
 [node name="Stats" parent="IU" instance=ExtResource("10_eqmgj")]
+visible = false
 
 [node name="Statmenu" type="CanvasLayer" parent="."]
 visible = false

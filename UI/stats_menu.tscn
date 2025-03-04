@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://71u7x87ne3qt"]
+[gd_scene load_steps=16 format=3 uid="uid://71u7x87ne3qt"]
 
-[ext_resource type="Texture2D" uid="uid://dal2y41ltd8b1" path="res://UI/stat_bg.png" id="1_qmop1"]
+[ext_resource type="Texture2D" uid="uid://dal2y41ltd8b1" path="res://UI/bg/stat_bg.png" id="1_qmop1"]
+[ext_resource type="Texture2D" uid="uid://dh5ck0nqdht0r" path="res://UI/bg/bgx3.png" id="2_ikg76"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmdaw"]
 
@@ -29,6 +30,20 @@ bg_color = Color(0.658824, 0.92549, 1, 1)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_8rdra")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_puebd")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rwin"]
+bg_color = Color(0.169245, 0.169245, 0.169245, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gklow"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnqoo"]
+bg_color = Color(0.273873, 0.273873, 0.273873, 1)
+
+[sub_resource type="Theme" id="Theme_qp4q0"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_1rwin")
+Button/styles/normal = SubResource("StyleBoxEmpty_gklow")
+Button/styles/pressed = SubResource("StyleBoxFlat_fnqoo")
+
 [node name="Stats" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -53,154 +68,161 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -475.0
-offset_top = -237.0
-offset_right = 475.0
-offset_bottom = 237.0
+offset_left = -490.0
+offset_top = -266.5
+offset_right = 490.0
+offset_bottom = 266.5
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0.196078)
 
-[node name="bar_cont" type="VBoxContainer" parent="ColorRect"]
-layout_mode = 0
-offset_left = 35.0
-offset_top = 34.0
-offset_right = 385.0
-offset_bottom = 283.0
+[node name="left_cont" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.5
+offset_top = -229.0
+offset_right = -43.5
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont"]
+[node name="con" type="HBoxContainer" parent="ColorRect/left_cont"]
 layout_mode = 2
 
-[node name="Cur_Lvl" type="Label" parent="ColorRect/bar_cont/con"]
+[node name="Cur_Lvl" type="Label" parent="ColorRect/left_cont/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "Lv 0"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/con"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/con"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Cur_Exp" type="Label" parent="ColorRect/bar_cont/con"]
+[node name="Cur_Exp" type="Label" parent="ColorRect/left_cont/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "1423123123"
 horizontal_alignment = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/con"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "/"
 clip_text = true
 
-[node name="Max_Exp" type="Label" parent="ColorRect/bar_cont/con"]
+[node name="Max_Exp" type="Label" parent="ColorRect/left_cont/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "142"
 horizontal_alignment = 2
 
-[node name="EXP" type="ProgressBar" parent="ColorRect/bar_cont"]
+[node name="EXP" type="ProgressBar" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(350, 20)
 layout_mode = 2
 theme = SubResource("Theme_tb18b")
 value = 50.0
 show_percentage = false
 
-[node name="con2" type="HBoxContainer" parent="ColorRect/bar_cont"]
+[node name="con2" type="HBoxContainer" parent="ColorRect/left_cont"]
 layout_mode = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/con2"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/con2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "HP"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/con2"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/con2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Cur_Hp" type="Label" parent="ColorRect/bar_cont/con2"]
+[node name="Cur_Hp" type="Label" parent="ColorRect/left_cont/con2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "2421"
 horizontal_alignment = 2
 
-[node name="ph2" type="Label" parent="ColorRect/bar_cont/con2"]
+[node name="ph2" type="Label" parent="ColorRect/left_cont/con2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "/"
 clip_text = true
 
-[node name="Max_Hp" type="Label" parent="ColorRect/bar_cont/con2"]
+[node name="Max_Hp" type="Label" parent="ColorRect/left_cont/con2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "14231"
 horizontal_alignment = 2
 
-[node name="HP" type="ProgressBar" parent="ColorRect/bar_cont"]
+[node name="HP" type="ProgressBar" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
 theme = SubResource("Theme_x5yls")
 value = 50.0
 show_percentage = false
 
-[node name="con3" type="HBoxContainer" parent="ColorRect/bar_cont"]
+[node name="con3" type="HBoxContainer" parent="ColorRect/left_cont"]
 layout_mode = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/con3"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/con3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "Mana"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/con3"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/con3"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Cur_Mana" type="Label" parent="ColorRect/bar_cont/con3"]
+[node name="Cur_Mana" type="Label" parent="ColorRect/left_cont/con3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "123123"
 horizontal_alignment = 2
 
-[node name="ph2" type="Label" parent="ColorRect/bar_cont/con3"]
+[node name="ph2" type="Label" parent="ColorRect/left_cont/con3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "/"
 clip_text = true
 
-[node name="Max_Mana" type="Label" parent="ColorRect/bar_cont/con3"]
+[node name="Max_Mana" type="Label" parent="ColorRect/left_cont/con3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 13
 text = "14231"
 horizontal_alignment = 2
 
-[node name="Mana" type="ProgressBar" parent="ColorRect/bar_cont"]
+[node name="Mana" type="ProgressBar" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(300, 20)
 layout_mode = 2
 theme = SubResource("Theme_qrfmd")
 value = 50.0
 show_percentage = false
 
-[node name="Spacer" type="Control" parent="ColorRect/bar_cont"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Spacer" type="Control" parent="ColorRect/left_cont"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
-[node name="Box1" type="TextureRect" parent="ColorRect/bar_cont"]
+[node name="Box1" type="TextureRect" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 texture = ExtResource("1_qmop1")
 
-[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box1"]
+[node name="con" type="HBoxContainer" parent="ColorRect/left_cont/Box1"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -209,26 +231,30 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/Box1/con"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/Box1/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "STR"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/Box1/con"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/Box1/con"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="STR" type="Label" parent="ColorRect/bar_cont/Box1/con"]
+[node name="STR" type="Label" parent="ColorRect/left_cont/Box1/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "123"
 
-[node name="Box2" type="TextureRect" parent="ColorRect/bar_cont"]
+[node name="Spacer2" type="Control" parent="ColorRect/left_cont"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Box2" type="TextureRect" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 texture = ExtResource("1_qmop1")
 
-[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box2"]
+[node name="con" type="HBoxContainer" parent="ColorRect/left_cont/Box2"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -237,26 +263,30 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/Box2/con"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/Box2/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "STR"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/Box2/con"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/Box2/con"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="STR" type="Label" parent="ColorRect/bar_cont/Box2/con"]
+[node name="STR" type="Label" parent="ColorRect/left_cont/Box2/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "123"
 
-[node name="Box3" type="TextureRect" parent="ColorRect/bar_cont"]
+[node name="Spacer3" type="Control" parent="ColorRect/left_cont"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Box3" type="TextureRect" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 texture = ExtResource("1_qmop1")
 
-[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box3"]
+[node name="con" type="HBoxContainer" parent="ColorRect/left_cont/Box3"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -265,26 +295,30 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/Box3/con"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/Box3/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "STR"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/Box3/con"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/Box3/con"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="STR" type="Label" parent="ColorRect/bar_cont/Box3/con"]
+[node name="STR" type="Label" parent="ColorRect/left_cont/Box3/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "123"
 
-[node name="Box4" type="TextureRect" parent="ColorRect/bar_cont"]
+[node name="Spacer4" type="Control" parent="ColorRect/left_cont"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Box4" type="TextureRect" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 texture = ExtResource("1_qmop1")
 
-[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box4"]
+[node name="con" type="HBoxContainer" parent="ColorRect/left_cont/Box4"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -293,26 +327,47 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/Box4/con"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/Box4/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "STR"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/Box4/con"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/Box4/con"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="STR" type="Label" parent="ColorRect/bar_cont/Box4/con"]
+[node name="STR" type="Label" parent="ColorRect/left_cont/Box4/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "123"
 
-[node name="Box5" type="TextureRect" parent="ColorRect/bar_cont"]
+[node name="Spacer5" type="Control" parent="ColorRect/left_cont"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Box5" type="TextureRect" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 texture = ExtResource("1_qmop1")
 
-[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box5"]
+[node name="btn" type="Button" parent="ColorRect/left_cont/Box5"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -13.0
+offset_right = 12.0
+offset_bottom = 13.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_qp4q0")
+action_mode = 0
+text = "+"
+
+[node name="con" type="HBoxContainer" parent="ColorRect/left_cont/Box5"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -321,26 +376,30 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/Box5/con"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/Box5/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "STR"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/Box5/con"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/Box5/con"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="STR" type="Label" parent="ColorRect/bar_cont/Box5/con"]
+[node name="STR" type="Label" parent="ColorRect/left_cont/Box5/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "123"
 
-[node name="Box6" type="TextureRect" parent="ColorRect/bar_cont"]
+[node name="Spacer6" type="Control" parent="ColorRect/left_cont"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Box6" type="TextureRect" parent="ColorRect/left_cont"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 texture = ExtResource("1_qmop1")
 
-[node name="con" type="HBoxContainer" parent="ColorRect/bar_cont/Box6"]
+[node name="con" type="HBoxContainer" parent="ColorRect/left_cont/Box6"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -349,16 +408,265 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ph" type="Label" parent="ColorRect/bar_cont/Box6/con"]
+[node name="ph" type="Label" parent="ColorRect/left_cont/Box6/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "STR"
 
-[node name="Control" type="Control" parent="ColorRect/bar_cont/Box6/con"]
+[node name="Control" type="Control" parent="ColorRect/left_cont/Box6/con"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="STR" type="Label" parent="ColorRect/bar_cont/Box6/con"]
+[node name="STR" type="Label" parent="ColorRect/left_cont/Box6/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="right3_cont" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = 41.5
+offset_right = 445.0
+offset_bottom = 221.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left1_con" type="TextureRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -218.0
+offset_right = 455.0
+offset_bottom = -91.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ikg76")
+
+[node name="gcon" type="GridContainer" parent="ColorRect/Left1_con"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -215.0
+offset_top = -51.0
+offset_right = 215.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="con1" type="ColorRect" parent="ColorRect/Left1_con/gcon"]
+custom_minimum_size = Vector2(210, 30)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="con" type="HBoxContainer" parent="ColorRect/Left1_con/gcon/con1"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/Left1_con/gcon/con1/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/Left1_con/gcon/con1/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/Left1_con/gcon/con1/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="con4" type="ColorRect" parent="ColorRect/Left1_con/gcon"]
+custom_minimum_size = Vector2(210, 30)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="con" type="HBoxContainer" parent="ColorRect/Left1_con/gcon/con4"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/Left1_con/gcon/con4/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/Left1_con/gcon/con4/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/Left1_con/gcon/con4/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="con2" type="ColorRect" parent="ColorRect/Left1_con/gcon"]
+custom_minimum_size = Vector2(210, 30)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="con" type="HBoxContainer" parent="ColorRect/Left1_con/gcon/con2"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -17.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/Left1_con/gcon/con2/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/Left1_con/gcon/con2/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/Left1_con/gcon/con2/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="con5" type="ColorRect" parent="ColorRect/Left1_con/gcon"]
+custom_minimum_size = Vector2(210, 30)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="con" type="HBoxContainer" parent="ColorRect/Left1_con/gcon/con5"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/Left1_con/gcon/con5/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/Left1_con/gcon/con5/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/Left1_con/gcon/con5/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="con3" type="ColorRect" parent="ColorRect/Left1_con/gcon"]
+custom_minimum_size = Vector2(210, 30)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="con" type="HBoxContainer" parent="ColorRect/Left1_con/gcon/con3"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/Left1_con/gcon/con3/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/Left1_con/gcon/con3/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/Left1_con/gcon/con3/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="con6" type="ColorRect" parent="ColorRect/Left1_con/gcon"]
+custom_minimum_size = Vector2(210, 30)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="con" type="HBoxContainer" parent="ColorRect/Left1_con/gcon/con6"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/Left1_con/gcon/con6/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/Left1_con/gcon/con6/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/Left1_con/gcon/con6/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "123"
+
+[node name="Box7" type="TextureRect" parent="ColorRect"]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+offset_left = 497.0
+offset_top = 62.5
+offset_right = 902.0
+offset_bottom = 92.5
+texture = ExtResource("1_qmop1")
+
+[node name="con" type="HBoxContainer" parent="ColorRect/Box7"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ph" type="Label" parent="ColorRect/Box7/con"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "STR"
+
+[node name="Control" type="Control" parent="ColorRect/Box7/con"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="STR" type="Label" parent="ColorRect/Box7/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "123"
