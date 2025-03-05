@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk11uugcq4tls"
+uid="uid://cg7j0871hnkgw"
 path.s3tc="res://.godot/imported/Tembok_polos_Obor_Dungeon_obor_BaseColor.png-dce2f838154491d16fdd55c3bede1aec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "85c1e8ec785c9ce26f19ba8da0e268de"
 }
 
 [deps]

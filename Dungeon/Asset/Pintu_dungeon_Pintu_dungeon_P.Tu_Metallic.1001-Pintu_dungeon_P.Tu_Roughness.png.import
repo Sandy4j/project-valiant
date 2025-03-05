@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8x7id4k1emy6"
+uid="uid://clihsws3x26lo"
 path.s3tc="res://.godot/imported/Pintu_dungeon_Pintu_dungeon_P.Tu_Metallic.1001-Pintu_dungeon_P.Tu_Roughness.png-f544190c568ae79bb65f44ef5593368a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "f5209ffa58559792ee14b64ca11c04fb"
 }
 
 [deps]

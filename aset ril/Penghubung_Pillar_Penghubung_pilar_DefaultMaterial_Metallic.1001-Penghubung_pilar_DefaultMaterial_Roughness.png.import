@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcnegflh2pkcm"
+uid="uid://hfkctr83sri6"
 path.s3tc="res://.godot/imported/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Metallic.1001-Penghubung_pilar_DefaultMaterial_Roughness.png-77372627a9038d020b6c37daf1c1d73d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "398d06e6a11fe16b95cd759594c8a004"
 }
 
 [deps]

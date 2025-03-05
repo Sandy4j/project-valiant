@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deaemptd8xoh5"
+uid="uid://ch5kxamd7jmrx"
 path.s3tc="res://.godot/imported/Tangga_Tangga_Tembok_Normal.png-862a0d9dc7eabf95d626389a2f8f0b70.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "37f10cdd0a63d1420764239a3e385191"
 }
 
 [deps]
@@ -28,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Dungeon/Acc/Tangga_Tangga_Tembok_Normal.png"
+roughness/src_normal="res://aset ril/Tangga_Tangga_Tembok_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

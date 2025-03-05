@@ -7,17 +7,11 @@ class_name LevelDoor
 
 var can_interact = false
 var is_door_open = false
-var level_manager: LevelManager
 
 func _ready():
 	# Sembunyikan marker interaksi saat mulai
 	if interaction_marker:
 		interaction_marker.hide()
-	
-	# Dapatkan referensi ke LevelManager
-	level_manager = get_node_or_null("/root/LevelManager")
-	if not level_manager:
-		push_error("LevelManager not found!")
 
 func _input(event):
 	if can_interact and event.is_action_pressed("interact"):
@@ -43,6 +37,7 @@ func hide_interaction_marker():
 		interaction_marker.hide()
 
 func interact():
+	var level_manager = get_tree().get_first_node_in_group("level_manager")
 	if is_door_open or not can_interact:
 		return
 	

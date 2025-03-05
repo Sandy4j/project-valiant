@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn263ppmqe06g"
+uid="uid://dqv8bpkci5km5"
 path.s3tc="res://.godot/imported/Pillar_Banner_lOGO_BaseColor.png-b72c8932e884686573e1c9250f151586.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "36d16ebb31b8de4ebd618b222f406a63"
 }
 
 [deps]

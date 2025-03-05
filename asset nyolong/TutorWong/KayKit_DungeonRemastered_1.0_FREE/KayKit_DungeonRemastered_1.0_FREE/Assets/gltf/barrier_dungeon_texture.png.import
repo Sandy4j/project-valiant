@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck4ewlmwkpvvd"
+uid="uid://ut3mecbs0r4t"
 path.s3tc="res://.godot/imported/barrier_dungeon_texture.png-f6bf6b56233867d61cacf88a0d1527b1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "9a714bc33f4314ea4520009f20b048a8"
 }
 
 [deps]

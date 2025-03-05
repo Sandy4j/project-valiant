@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://r8ph1bmqpfcp"]
 
-[ext_resource type="Script" path="res://addons/progress_bar_3d/progress_bar_3d.gd" id="2_nso13"]
+[ext_resource type="Script" uid="uid://8uax05sdugx5" path="res://addons/progress_bar_3d/progress_bar_3d.gd" id="2_nso13"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_71102"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

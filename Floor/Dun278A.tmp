@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://chqs04p1lckav"]
+
+[ext_resource type="Script" path="res://Dungeon/test_dung.gd" id="1_jtj4d"]
+[ext_resource type="Script" path="res://Skrip/level_manager.gd" id="2_aqih3"]
+[ext_resource type="PackedScene" uid="uid://cu182v5sdcr0i" path="res://Dungeon/DungeonManager.tscn" id="3_q1v2f"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
+
+[sub_resource type="Sky" id="Sky_m2eo6"]
+sky_material = SubResource("PhysicalSkyMaterial_kr04x")
+
+[sub_resource type="Environment" id="Environment_3tu5o"]
+background_mode = 2
+sky = SubResource("Sky_m2eo6")
+
+[node name="Dungeon" type="WorldEnvironment"]
+environment = SubResource("Environment_3tu5o")
+script = ExtResource("1_jtj4d")
+
+[node name="LevelManager" type="Node3D" parent="."]
+script = ExtResource("2_aqih3")
+
+[node name="DungeonManager" parent="." instance=ExtResource("3_q1v2f")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.258819, -0.670224, -0.695566, -1.43934e-08, -0.720103, 0.693867, -0.965926, -0.179586, -0.186376, -11.4478, 48.2015, 31.2094)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FloorLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 132.0
+offset_bottom = 35.0

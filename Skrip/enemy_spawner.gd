@@ -11,7 +11,7 @@ signal floor_enemies_cleared
 @export var min_enemies_per_room: int = 1
 @export var max_enemies_per_room: int = 3
 @export var spawn_height: float = 1.0
-@export var edge_margin: float = 1.0  # Distance from room edges
+@export var edge_margin: float = 1.0
 
 var grid_map: GridMap
 var level_manager: LevelManager
@@ -41,7 +41,6 @@ func setup_container() -> void:
 
 func _on_floor_changed(new_floor: int) -> void:
 	clear_enemies()
-	# Wait a bit for the new floor to fully generate
 	await get_tree().create_timer(0.3).timeout
 	spawn_enemies_in_rooms()
 
@@ -77,13 +76,13 @@ func get_normal_room_cells() -> Array:
 	var used_cells = grid_map.get_used_cells()
 	var room_cells = {}
 	
-	# Filter out non-normal room cells first
+
 	var normal_cells = used_cells.filter(func(cell): 
 		var cell_type = grid_map.get_cell_item(cell)
-		return cell_type == 0 # Only normal room cells
+		return cell_type == 0
 	)
 	
-	# Group cells by their connected regions
+	
 	for cell in normal_cells:
 		var room_id = find_room_id(cell, room_cells)
 		if room_id == -1:
@@ -107,7 +106,7 @@ func calculate_spawn_positions(room_cells: Array, enemy_count: int) -> Array:
 	var positions = []
 	var cell_size = grid_map.cell_size
 	
-	# Calculate room bounds
+
 	var min_x = INF
 	var max_x = -INF
 	var min_z = INF
@@ -119,13 +118,13 @@ func calculate_spawn_positions(room_cells: Array, enemy_count: int) -> Array:
 		min_z = min(min_z, cell.z)
 		max_z = max(max_z, cell.z)
 	
-	# Calculate spawn area with margins
+	
 	var spawn_min_x = min_x * cell_size.x + edge_margin
 	var spawn_max_x = (max_x + 1) * cell_size.x - edge_margin
 	var spawn_min_z = min_z * cell_size.z + edge_margin
 	var spawn_max_z = (max_z + 1) * cell_size.z - edge_margin
 	
-	# Generate random positions within the room
+
 	for i in enemy_count:
 		var spawn_pos = Vector3(
 			rng.randf_range(spawn_min_x, spawn_max_x),
@@ -143,11 +142,10 @@ func spawn_enemy(pos: Vector3) -> void:
 		enemy_container.add_child(enemy)
 		enemy.global_position = pos
 
-# Optional: Method to get current enemy count
+
 func get_enemy_count() -> int:
 	return enemy_container.get_child_count()
 
-# Optional: Method to manually trigger enemy spawning (useful for testing)
 func debug_spawn_enemies() -> void:
 	clear_enemies()
 	spawn_enemies_in_rooms()

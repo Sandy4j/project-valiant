@@ -88,7 +88,7 @@ func create_dungeon():
 	var end_cells = []
 	
 	var leftmost_start_x = 999999
-	var rightmost_end_x = -999999  # Tambahkan variabel untuk mencari posisi x paling kanan
+	var rightmost_end_x = -999999
 	
 	for cell in used_cells:
 		var cell_index = grid_map.get_cell_item(cell)

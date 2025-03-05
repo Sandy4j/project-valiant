@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5vprr4tafkh3"
+uid="uid://b5cffumqq3prx"
 path.s3tc="res://.godot/imported/trunk_small_B_dungeon_texture.png-c19eb50a42c1ddecd32b734d23599466.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "9a714bc33f4314ea4520009f20b048a8"
 }
 
 [deps]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0fxria3rbfu4"]
 
-[ext_resource type="Script" path="res://Scene/loading.gd" id="1_wu1yo"]
+[ext_resource type="Script" uid="uid://cihx34msp7rnb" path="res://Scene/loading.gd" id="1_wu1yo"]
 
 [sub_resource type="Animation" id="Animation_now3g"]
 length = 0.001
@@ -37,8 +37,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jwt12"]
 _data = {
-"RESET": SubResource("Animation_now3g"),
-"loding": SubResource("Animation_yj5rh")
+&"RESET": SubResource("Animation_now3g"),
+&"loding": SubResource("Animation_yj5rh")
 }
 
 [node name="Loading" type="Control"]

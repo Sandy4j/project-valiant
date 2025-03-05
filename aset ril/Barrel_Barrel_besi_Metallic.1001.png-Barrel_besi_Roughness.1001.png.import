@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coms14egeqjby"
+uid="uid://gns288jrdkdq"
 path.s3tc="res://.godot/imported/Barrel_Barrel_besi_Metallic.1001.png-Barrel_besi_Roughness.1001.png-55fce324534cbf2db8e74ad592767c5b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "746117738ae1a20dde071e07e3a8b23b"
 }
 
 [deps]

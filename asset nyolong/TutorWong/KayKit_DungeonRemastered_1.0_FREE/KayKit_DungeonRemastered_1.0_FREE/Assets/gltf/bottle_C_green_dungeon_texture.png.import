@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx0xnxeaj5xw6"
+uid="uid://dwhet4s8rv2kw"
 path.s3tc="res://.godot/imported/bottle_C_green_dungeon_texture.png-65cd7885c0a75c80cd4f997f1e76792c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "9a714bc33f4314ea4520009f20b048a8"
 }
 
 [deps]

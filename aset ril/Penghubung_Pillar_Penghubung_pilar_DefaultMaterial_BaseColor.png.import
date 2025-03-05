@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lqef3b1tt12s"
+uid="uid://bqpbxu6g78jo7"
 path.s3tc="res://.godot/imported/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_BaseColor.png-9d8272374b76cee172efc252f54cae0e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "d76d896a7e3b53ccdeff2cb6adf3df06"
 }
 
 [deps]

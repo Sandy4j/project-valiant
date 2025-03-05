@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=4 uid="uid://d07ait8ps6fa5"]
 
 [ext_resource type="Texture2D" uid="uid://cyovvol1okvrc" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/wall_doorway_dungeon_texture.png" id="2_c61o4"]
-[ext_resource type="Texture2D" uid="uid://dqw7h40jiff8b" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/wall_arched_dungeon_texture.png" id="4_65iu6"]
+[ext_resource type="Texture2D" uid="uid://t3wp8pric2n6" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/wall_arched_dungeon_texture.png" id="4_65iu6"]
 [ext_resource type="Texture2D" uid="uid://yvwncjy4pru0" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/wall_corner_dungeon_texture.png" id="5_cgnv2"]
 [ext_resource type="Texture2D" uid="uid://cega3f4646can" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/stairs_walled_dungeon_texture.png" id="5_xe7of"]
 [ext_resource type="Texture2D" uid="uid://426bnrrm8fgf" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/floor_tile_large_dungeon_texture.png" id="6_3mpum"]

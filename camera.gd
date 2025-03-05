@@ -3,8 +3,8 @@ extends Node3D
 signal set_cam_rotation(_cam_rotation : float)
 
 @export var player : Player
-@onready var yaw_node = $CamYaw
-@onready var pitch_node = $CamYaw/CamPitch
+@onready var yaw_node =$CamYaw
+@onready var pitch_node =$CamYaw/CamPitch
 @onready var spring_arm = $CamYaw/CamPitch/SpringArm3D
 @onready var camera = $CamYaw/CamPitch/SpringArm3D/Camera3D
 var yaw : float = 0

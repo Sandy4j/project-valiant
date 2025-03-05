@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbn2w25vwhnfh"
+uid="uid://dj55yq7j8ufda"
 path.s3tc="res://.godot/imported/Pillar_Banner_lOGO_Normal.png-547a6f717699e6d26434e9f25e15d65e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "2901414b6070741bf08b4ece98ea1f21"
 }
 
 [deps]
@@ -28,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Dungeon/Acc/Pillar_Banner_lOGO_Normal.png"
+roughness/src_normal="res://aset ril/Pillar_Banner_lOGO_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

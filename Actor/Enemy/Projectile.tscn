@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://0w4ml57kcrn4"]
 
-[ext_resource type="Script" path="res://Actor/Enemy/Script/proyektil.gd" id="1_uccxb"]
+[ext_resource type="Script" uid="uid://6g8g67w8gpon" path="res://Actor/Enemy/Script/proyektil.gd" id="1_uccxb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f5xeb"]
 radius = 0.540857
