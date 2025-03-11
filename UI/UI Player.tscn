@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxri7toy8d8gj"]
+[gd_scene load_steps=3 format=3 uid="uid://bxri7toy8d8gj"]
 
-[ext_resource type="Script" uid="uid://cskp68o0o11mt" path="res://UI/ui.gd" id="1_ruohs"]
+[ext_resource type="Script" uid="uid://cnwaoryu7751r" path="res://UI/ui.gd" id="1_ruohs"]
 [ext_resource type="PackedScene" uid="uid://brjxuorjpqc2s" path="res://UI/Inventory/inventory.tscn" id="2_l2hto"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_e141l"]
 
 [node name="UI Player" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_left = 50.0
+offset_right = 280.0
+offset_bottom = 157.0
 script = ExtResource("1_ruohs")
 
 [node name="IU" type="CanvasLayer" parent="."]
 
 [node name="Death" type="ColorRect" parent="IU"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,36 +64,3 @@ offset_right = 302.0
 offset_bottom = 40.0
 
 [node name="Inventory" parent="IU" instance=ExtResource("2_l2hto")]
-
-[node name="FLoorLabel" type="Label" parent="IU"]
-offset_left = 16.0
-offset_top = 51.0
-offset_right = 113.0
-offset_bottom = 74.0
-label_settings = SubResource("LabelSettings_e141l")
-
-[node name="Statmenu" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Statmenu"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-color = Color(0.133196, 0.133196, 0.133196, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Statmenu/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ExpHpManaStam" type="HBoxContainer" parent="Statmenu/ColorRect/VBoxContainer"]
-layout_mode = 2
-
-[node name="StatEtc" type="HBoxContainer" parent="Statmenu/ColorRect/VBoxContainer"]
-layout_mode = 2

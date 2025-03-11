@@ -1,6 +1,6 @@
 [gd_scene load_steps=112 format=4 uid="uid://fnupmlaosr48"]
 
-[ext_resource type="Script" uid="uid://gfmhb60pu8wm" path="res://Dungeon/DungCell.gd" id="1_vn2o7"]
+[ext_resource type="Script" uid="uid://t75hodd4ngrc" path="res://Dungeon/DungCell.gd" id="1_xj5ts"]
 [ext_resource type="Texture2D" uid="uid://b5dpopeit1d33" path="res://Dungeon/Asset/Tembok_polos_Tembok_Dungeon_DBingkai batu_BaseColor.png" id="2_knktr"]
 [ext_resource type="Texture2D" uid="uid://dxdjne33440ja" path="res://Dungeon/Asset/Tembok_polos_Tembok_Dungeon_DBingkai batu_Emissive.png" id="3_uhcwm"]
 [ext_resource type="Texture2D" uid="uid://bwjo1ljsngjeg" path="res://Dungeon/Asset/Tembok_polos_Tembok_Dungeon_DBingkai batu_Metallic.1001-Tembok_Dungeon_DBingkai batu_Roughness.png" id="4_p64r5"]
@@ -21,9 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://di36htwq2c5i2" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_penahan_Emissive.png" id="19_f3r1p"]
 [ext_resource type="Texture2D" uid="uid://deog32vgqnwk4" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_penahan_Metallic.1001-Obor_Dungeon_penahan_Roughness.png" id="20_bclbf"]
 [ext_resource type="Texture2D" uid="uid://bxve6l6c1x507" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_penahan_Normal.png" id="21_xnfka"]
-[ext_resource type="Texture2D" uid="uid://dk11uugcq4tls" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_obor_BaseColor.png" id="22_w8nu7"]
-[ext_resource type="Texture2D" uid="uid://but1fgksf7210" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_obor_Emissive.png" id="23_ekurl"]
-[ext_resource type="Texture2D" uid="uid://bmjcgrtmkwut7" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_obor_Metallic.1001-Obor_Dungeon_obor_Roughness.png" id="24_8dbi8"]
+[ext_resource type="Texture2D" uid="uid://cg7j0871hnkgw" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_obor_BaseColor.png" id="22_w8nu7"]
+[ext_resource type="Texture2D" uid="uid://dy7tnn87a7af6" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_obor_Emissive.png" id="23_ekurl"]
+[ext_resource type="Texture2D" uid="uid://cqpgli1b84vr2" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_obor_Metallic.1001-Obor_Dungeon_obor_Roughness.png" id="24_8dbi8"]
 [ext_resource type="Texture2D" uid="uid://d12o1k5ut4fnf" path="res://Dungeon/Asset/Tembok_polos_Obor_Dungeon_obor_Normal.png" id="25_f11mv"]
 [ext_resource type="Texture2D" uid="uid://6np172u63tm6" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Tembok_Dungeon_pintu_tembok brick generator.001_BaseColor.png" id="26_uh6ag"]
 [ext_resource type="Texture2D" uid="uid://c3lbl2qivo1gm" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Tembok_Dungeon_pintu_tembok brick generator.001_Emissive.png" id="27_4mfth"]
@@ -44,11 +44,11 @@
 [ext_resource type="Texture2D" uid="uid://cw5xucrmvfia5" path="res://Dungeon/Asset/Lantai_Lantai_Dungeon_Dlantai_Metallic.1001-Lantai_Dungeon_Dlantai_Roughness.png" id="40_7nq1k"]
 [ext_resource type="Texture2D" uid="uid://chxidlco01mn1" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Pintu_dungeon_dueon_Metallic.1001-Pintu_dungeon_dueon_Roughness.png" id="40_fbils"]
 [ext_resource type="Texture2D" uid="uid://ct2m83n0jyu0y" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Pintu_dungeon_dueon_Normal.png" id="41_g1p75"]
-[ext_resource type="Texture2D" uid="uid://8nnk0dslbpdm" path="res://Dungeon/Asset/Lantai_Lantai_Dungeon_Dlantai_Normal.png" id="41_q84rn"]
-[ext_resource type="Texture2D" uid="uid://cqccl7jqko7nl" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_BaseColor.png" id="42_yguyr"]
-[ext_resource type="Texture2D" uid="uid://co11xq6evru2x" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Emissive.png" id="43_huilf"]
-[ext_resource type="Texture2D" uid="uid://dr0bvha0l6bc5" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Metallic.1001-Banner_lOGO_Roughness.png" id="44_3jmq2"]
-[ext_resource type="Texture2D" uid="uid://basg6834fflmi" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Normal.png" id="45_0lhcc"]
+[ext_resource type="Texture2D" uid="uid://dy1bwio57wuqi" path="res://Dungeon/Asset/Lantai_Lantai_Dungeon_Dlantai_Normal.png" id="41_q84rn"]
+[ext_resource type="Texture2D" uid="uid://bgntyo5wx52cg" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_BaseColor.png" id="42_yguyr"]
+[ext_resource type="Texture2D" uid="uid://cupnshslal0vq" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Emissive.png" id="43_huilf"]
+[ext_resource type="Texture2D" uid="uid://dhbkhqc7iheva" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Metallic.1001-Banner_lOGO_Roughness.png" id="44_3jmq2"]
+[ext_resource type="Texture2D" uid="uid://bdswntqt7owbr" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Normal.png" id="45_0lhcc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuphm"]
 resource_name = "DBingkai batu"
@@ -732,13 +732,11 @@ shadow_mesh = SubResource("ArrayMesh_gnyu5")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nyf65"]
 data = PackedVector3Array(-1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, 1, 1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, 1, -1, 1, 1, -1)
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_01c78"]
-vertices = PackedVector3Array(-1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, 1)
-polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 3, 1), PackedInt32Array(4, 5, 6), PackedInt32Array(4, 7, 5), PackedInt32Array(6, 3, 4), PackedInt32Array(6, 1, 3), PackedInt32Array(2, 7, 0), PackedInt32Array(2, 5, 7), PackedInt32Array(4, 0, 7), PackedInt32Array(4, 3, 0), PackedInt32Array(5, 1, 6), PackedInt32Array(5, 2, 1)]
+[sub_resource type="NavigationMesh" id="NavigationMesh_pmsym"]
 
 [node name="DungCell" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-script = ExtResource("1_vn2o7")
+script = ExtResource("1_xj5ts")
 
 [node name="wall_up" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.5, -3)
@@ -869,7 +867,7 @@ shape = SubResource("ConcavePolygonShape3D_ebfnh")
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_up"]
 
 [node name="door_up" type="Node3D" parent="."]
-transform = Transform3D(2.78181e-08, 0, 1, 0, 1, 0, -1, 0, 2.78181e-08, 0, 1, -2.6)
+transform = Transform3D(2.78181e-08, 0, 1, 0, 1, 0, -1, 0, 2.78181e-08, 0, 1, -8.6)
 
 [node name="Cube_001" type="MeshInstance3D" parent="door_up"]
 transform = Transform3D(0, 0.1, 0, -2, 0, 0, 0, 0, 3.12644, 0.175195, 1.49091, 0.00657977)
@@ -882,6 +880,8 @@ physics_material_override = SubResource("PhysicsMaterial_gtsxu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_up/Cube_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vapws")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_up/Cube_001"]
+
 [node name="Cube_003" type="MeshInstance3D" parent="door_up"]
 transform = Transform3D(1.32313, 0, 0, 0, 1, 0, 0, 0, 1.04215, 0.175194, 1.50698, 0.00852303)
 mesh = SubResource("ArrayMesh_ot1ft")
@@ -892,6 +892,8 @@ physics_material_override = SubResource("PhysicsMaterial_jepio")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_up/Cube_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_l157u")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_up/Cube_003"]
 
 [node name="Cube_004" type="MeshInstance3D" parent="door_up"]
 transform = Transform3D(2.778, 0, 0, 0, 1.43235, 0, 0, 0, 1.04215, 0.14223, 1.49342, -0.00300484)
@@ -904,6 +906,8 @@ physics_material_override = SubResource("PhysicsMaterial_65fv8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_up/Cube_004/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3w0aa")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_up/Cube_004"]
+
 [node name="gate batu" type="MeshInstance3D" parent="door_up"]
 mesh = SubResource("ArrayMesh_a50p3")
 skeleton = NodePath("")
@@ -914,7 +918,7 @@ physics_material_override = SubResource("PhysicsMaterial_lja5p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_up/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_up"]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_up/gate batu"]
 
 [node name="wall_down" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.5, 3)
@@ -930,6 +934,9 @@ physics_material_override = SubResource("PhysicsMaterial_wu5pr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_down/Cube_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_m7uve")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_down/Cube_002"]
+transform = Transform3D(0.755784, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0304475, 0)
 
 [node name="Torch" type="Node3D" parent="wall_down"]
 transform = Transform3D(0, 0, -0.292589, 0, 0.314153, 0, 0.30573, 0, 0, -0.637415, 0.000200689, -1.35074)
@@ -1043,8 +1050,6 @@ light_color = Color(0.862745, 0.333333, 0.109804, 1)
 light_energy = 10.0
 distance_fade_enabled = true
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_down"]
-
 [node name="door_down" type="Node3D" parent="."]
 transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, 0, 1, 2.6)
 
@@ -1059,6 +1064,8 @@ physics_material_override = SubResource("PhysicsMaterial_gtsxu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_down/Cube_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vapws")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_down/Cube_001"]
+
 [node name="Cube_003" type="MeshInstance3D" parent="door_down"]
 transform = Transform3D(1.32313, 0, 0, 0, 1, 0, 0, 0, 1.04215, 0.175194, 1.50698, 0.00852303)
 mesh = SubResource("ArrayMesh_ot1ft")
@@ -1069,6 +1076,8 @@ physics_material_override = SubResource("PhysicsMaterial_jepio")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_down/Cube_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_l157u")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_down/Cube_003"]
 
 [node name="Cube_004" type="MeshInstance3D" parent="door_down"]
 transform = Transform3D(2.778, 0, 0, 0, 1.43235, 0, 0, 0, 1.04215, 0.14223, 1.49342, -0.00300484)
@@ -1081,6 +1090,8 @@ physics_material_override = SubResource("PhysicsMaterial_65fv8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_down/Cube_004/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3w0aa")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_down/Cube_004"]
+
 [node name="gate batu" type="MeshInstance3D" parent="door_down"]
 mesh = SubResource("ArrayMesh_a50p3")
 skeleton = NodePath("")
@@ -1091,7 +1102,7 @@ physics_material_override = SubResource("PhysicsMaterial_lja5p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_down/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_down"]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_down/gate batu"]
 
 [node name="wall_right" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 2.98024e-08, 0, 1, 0, -2.98024e-08, 0, 1, 3, 2.5, 0)
@@ -1107,6 +1118,9 @@ physics_material_override = SubResource("PhysicsMaterial_wu5pr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_right/Cube_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_m7uve")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_right/Cube_002"]
+transform = Transform3D(0.755784, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Torch" type="Node3D" parent="wall_right"]
 transform = Transform3D(0, 0, -0.292589, 0, 0.314153, 0, 0.30573, 0, 0, -0.637415, 0.000200689, -1.35074)
@@ -1220,8 +1234,6 @@ light_color = Color(0.862745, 0.333333, 0.109804, 1)
 light_energy = 10.0
 distance_fade_enabled = true
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_right"]
-
 [node name="door_right" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 1, 0)
 
@@ -1236,6 +1248,8 @@ physics_material_override = SubResource("PhysicsMaterial_gtsxu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_right/Cube_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vapws")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_right/Cube_001"]
+
 [node name="Cube_003" type="MeshInstance3D" parent="door_right"]
 transform = Transform3D(1.32313, 0, 0, 0, 1, 0, 0, 0, 1.04215, 0.175194, 1.50698, 0.00852303)
 mesh = SubResource("ArrayMesh_ot1ft")
@@ -1246,6 +1260,8 @@ physics_material_override = SubResource("PhysicsMaterial_jepio")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_right/Cube_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_l157u")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_right/Cube_003"]
 
 [node name="Cube_004" type="MeshInstance3D" parent="door_right"]
 transform = Transform3D(2.778, 0, 0, 0, 1.43235, 0, 0, 0, 1.04215, 0.14223, 1.49342, -0.00300484)
@@ -1258,6 +1274,8 @@ physics_material_override = SubResource("PhysicsMaterial_65fv8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_right/Cube_004/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3w0aa")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_right/Cube_004"]
+
 [node name="gate batu" type="MeshInstance3D" parent="door_right"]
 mesh = SubResource("ArrayMesh_a50p3")
 skeleton = NodePath("")
@@ -1268,7 +1286,7 @@ physics_material_override = SubResource("PhysicsMaterial_lja5p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_right/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_right"]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_right/gate batu"]
 
 [node name="door_left" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.609, 1, 0)
@@ -1284,6 +1302,8 @@ physics_material_override = SubResource("PhysicsMaterial_gtsxu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_left/Cube_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vapws")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_left/Cube_001"]
+
 [node name="Cube_003" type="MeshInstance3D" parent="door_left"]
 transform = Transform3D(1.32313, 0, 0, 0, 1, 0, 0, 0, 1.04215, 0.175194, 1.50698, 0.00852303)
 mesh = SubResource("ArrayMesh_ot1ft")
@@ -1294,6 +1314,8 @@ physics_material_override = SubResource("PhysicsMaterial_jepio")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_left/Cube_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_l157u")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_left/Cube_003"]
 
 [node name="Cube_004" type="MeshInstance3D" parent="door_left"]
 transform = Transform3D(2.778, 0, 0, 0, 1.43235, 0, 0, 0, 1.04215, 0.14223, 1.49342, -0.00300484)
@@ -1306,6 +1328,8 @@ physics_material_override = SubResource("PhysicsMaterial_65fv8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_left/Cube_004/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_3w0aa")
 
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_left/Cube_004"]
+
 [node name="gate batu" type="MeshInstance3D" parent="door_left"]
 mesh = SubResource("ArrayMesh_a50p3")
 skeleton = NodePath("")
@@ -1316,7 +1340,7 @@ physics_material_override = SubResource("PhysicsMaterial_lja5p")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door_left/gate batu/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5vqbe")
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_left"]
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="door_left/gate batu"]
 
 [node name="wall_left" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3, 2.5, 0)
@@ -1332,6 +1356,9 @@ physics_material_override = SubResource("PhysicsMaterial_wu5pr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="wall_left/Cube_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_m7uve")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_left/Cube_002"]
+transform = Transform3D(0.755784, 0, 0, 0, 1, 0, 0, 0, 1, 0.147006, 0, 2.93699e-08)
 
 [node name="Torch2" type="Node3D" parent="wall_left"]
 transform = Transform3D(0, 0, -0.292589, 0, 0.314153, 0, 0.30573, 0, 0, -0.637415, 0.000200689, -1.35074)
@@ -1445,8 +1472,6 @@ light_color = Color(0.86159, 0.334331, 0.10879, 1)
 light_energy = 10.0
 distance_fade_enabled = true
 
-[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="wall_left"]
-
 [node name="Lantai" type="Node3D" parent="."]
 
 [node name="Lantai_dungeon" type="MeshInstance3D" parent="Lantai"]
@@ -1461,4 +1486,5 @@ physics_material_override = SubResource("PhysicsMaterial_n64io")
 shape = SubResource("ConcavePolygonShape3D_nyf65")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="Lantai/Lantai_dungeon"]
-navigation_mesh = SubResource("NavigationMesh_01c78")
+transform = Transform3D(0.333333, 0, 0, 0, 20, 0, 0, 0, 0.333333, 0, 0, 0)
+navigation_mesh = SubResource("NavigationMesh_pmsym")

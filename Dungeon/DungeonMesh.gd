@@ -88,6 +88,8 @@ func create_dungeon():
 	var end_cells = []
 	
 	var leftmost_start_x = 999999
+	var rightmost_end_x = -999999
+	
 	for cell in used_cells:
 		var cell_index = grid_map.get_cell_item(cell)
 		if cell_index == 4:
@@ -96,12 +98,21 @@ func create_dungeon():
 				leftmost_start_x = cell.x
 		elif cell_index == 5:
 			end_cells.append(cell)
+			if cell.x > rightmost_end_x:  # Cari posisi x paling kanan untuk end room
+				rightmost_end_x = cell.x
 	
 	if start_cells.size() > 0:
 		instantiate_start_room(Vector3(start_cells[0]))
 	
 	if end_cells.size() > 0:
-		instantiate_end_room(Vector3(end_cells[0]))
+		# Cari end cell yang memiliki posisi x paling kanan
+		var rightmost_end_cell = null
+		for end_cell in end_cells:
+			if end_cell.x == rightmost_end_x:
+				rightmost_end_cell = end_cell
+				break
+		if rightmost_end_cell:
+			instantiate_end_room(Vector3(rightmost_end_cell))
 
 	for cell in used_cells:
 		var cell_index : int = grid_map.get_cell_item(cell)
@@ -124,6 +135,10 @@ func create_dungeon():
 				if cell.x == leftmost_start_x:
 					dun_cell.call("remove_wall_left")
 					dun_cell.call("remove_door_left")
+			elif cell_index == 5:  # Untuk end room
+				if cell.x == rightmost_end_x:
+					dun_cell.call("remove_wall_right")  # Hapus dinding kanan untuk end room paling kanan
+					dun_cell.call("remove_door_right")
 
 			add_child(dun_cell)
 			dun_cell.set_owner(owner)
@@ -136,10 +151,7 @@ func create_dungeon():
 			
 				if cell_index == 4 and cell.x == leftmost_start_x and dir == "left":
 					continue
-				if cell_index == 5 and dir == "right":
-					if cell_n_index != 5:
-						dun_cell.call("remove_wall_" + dir)
-						dun_cell.call("remove_door_" + dir)
+				if cell_index == 5 and cell.x == rightmost_end_x and dir == "right":  # Kondisi khusus untuk end room paling kanan
 					continue
 				
 				if cell_n_index == -1 || cell_n_index == 3:
@@ -167,8 +179,8 @@ func handle_special_room(cell: Node3D, dir: String, current_type: int, neighbor_
 		cell.call("remove_wall_" + dir)
 		cell.call("remove_door_" + dir)
 		return
-	elif neighbor_type == 5:
-		# Koneksi ke end room
+	elif current_type == 5 or neighbor_type == 5:
+		# Koneksi ke/dari end room
 		cell.call("remove_wall_" + dir)
 		cell.call("remove_door_" + dir)
 		return
@@ -183,24 +195,25 @@ func handle_none(cell:Node3D,dir:String):
 func handle_00(cell:Node3D,dir:String):
 	cell.call("remove_wall_"+dir)
 	cell.call("remove_door_"+dir)
-func handle_01(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
+func handle_01(cell:Node3D, dir:String):
+	cell.call("remove_door_" + dir)
+func handle_10(cell:Node3D, dir:String):
+	cell.call("remove_wall_" + dir)
+	cell.call("remove_door_" + dir)
 func handle_02(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-func handle_10(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
+	cell.call("remove_wall_" + dir)
+	cell.call("remove_door_" + dir)
 func handle_11(cell:Node3D,dir:String):
 	cell.call("remove_wall_"+dir)
 	cell.call("remove_door_"+dir)
-func handle_12(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
-func handle_20(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
-func handle_21(cell:Node3D,dir:String):
-	cell.call("remove_wall_"+dir)
-	cell.call("remove_door_"+dir)
+func handle_12(cell:Node3D, dir:String):
+	cell.call("remove_wall_" + dir)
+func handle_20(cell:Node3D, dir:String):
+	cell.call("remove_wall_" + dir)
+	cell.call("remove_door_" + dir)
+func handle_21(cell:Node3D, dir:String):
+	cell.call("remove_wall_" + dir)
+	cell.call("remove_door_" + dir)
 func handle_22(cell:Node3D,dir:String):
 	cell.call("remove_wall_"+dir)
 	cell.call("remove_door_"+dir)

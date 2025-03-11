@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8nnk0dslbpdm"
+uid="uid://dy1bwio57wuqi"
 path.s3tc="res://.godot/imported/Lantai_Lantai_Dungeon_Dlantai_Normal.png-5c5e30e7739ace9cf36b6c2634fc3348.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "9e405f2a7a0810112648a3ddbb00de9e"
 }
 
 [deps]

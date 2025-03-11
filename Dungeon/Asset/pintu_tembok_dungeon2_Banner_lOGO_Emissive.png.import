@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co11xq6evru2x"
+uid="uid://cupnshslal0vq"
 path.s3tc="res://.godot/imported/pintu_tembok_dungeon2_Banner_lOGO_Emissive.png-ce9f3e524188f36b32d3878dd88d5eab.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "d1dd210d6b1312cb342b56d02bd5e651"
 }
 
 [deps]

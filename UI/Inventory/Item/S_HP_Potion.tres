@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://du0fet52dusij"]
 
-[ext_resource type="Texture2D" uid="uid://d1bcw2brgaaii" path="res://icon.svg" id="1_jbsdi"]
-[ext_resource type="Script" uid="uid://emp14p2k25hm" path="res://UI/Inventory/item_data.gd" id="1_xjvjy"]
+[ext_resource type="Script" uid="uid://ckfg0wvnliljh" path="res://UI/Inventory/item_data.gd" id="1_xjvjy"]
+
+[sub_resource type="Resource" id="Resource_xvjad"]
+metadata/__load_path__ = "res://icon.svg"
 
 [resource]
 script = ExtResource("1_xjvjy")
@@ -13,4 +15,4 @@ item_defense = 0
 stackable = true
 count = 1
 item_description = "This is small HP potion"
-item_texture = ExtResource("1_jbsdi")
+item_texture = SubResource("Resource_xvjad")

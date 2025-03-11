@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://but1fgksf7210"
+uid="uid://dy7tnn87a7af6"
 path.s3tc="res://.godot/imported/Tembok_polos_Obor_Dungeon_obor_Emissive.png-d29566e59b259be900dc360f429baabb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "d1dd210d6b1312cb342b56d02bd5e651"
 }
 
 [deps]
