@@ -32,6 +32,9 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("inven"):
 		inventory_open = !inventory_open
 		emit_signal("toggle_inventory", inventory_open)
+	if Input.is_action_just_pressed("stats"):
+		
+		pass
 
 func get_movement_direction(cam_rotation: float) -> Vector3:
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")

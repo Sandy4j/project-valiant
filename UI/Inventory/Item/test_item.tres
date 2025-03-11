@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dkdw01y5vajfi"]
+
+[ext_resource type="Texture2D" uid="uid://eyas5v3x6skc" path="res://UI/Inventory/Item/bebeb3.jpg" id="1_48oxh"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/item_data.gd" id="2_jv4a4"]
+
+[resource]
+script = ExtResource("2_jv4a4")
+type = 2
+item_name = "Penyemangat"
+health = 0
+mana = 0
+stackable = false
+count = 0
+item_description = "Meningkatkan kekuatan player ketika di miliki di dalam inventory"
+item_texture = ExtResource("1_48oxh")

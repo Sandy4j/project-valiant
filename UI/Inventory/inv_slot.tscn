@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxxa6jjyncar0"]
+
+[ext_resource type="Script" uid="uid://b5uiqb54aigo7" path="res://UI/Inventory/inventory_slot_ui.gd" id="1_k50as"]
+[ext_resource type="Texture2D" uid="uid://ddoxufw1yhq6a" path="res://UI/Inventory/bg_slot.png" id="2_2b68y"]
+[ext_resource type="Texture2D" uid="uid://eyas5v3x6skc" path="res://UI/Inventory/Item/bebeb3.jpg" id="3_bvvfq"]
+
+[node name="Inv_slot" type="Button"]
+custom_minimum_size = Vector2(100, 120)
+offset_right = 100.0
+offset_bottom = 120.0
+mouse_default_cursor_shape = 2
+script = ExtResource("1_k50as")
+
+[node name="Bg" type="Sprite2D" parent="."]
+show_behind_parent = true
+scale = Vector2(0.673333, 0.615385)
+texture = ExtResource("2_2b68y")
+centered = false
+
+[node name="Center" type="CenterContainer" parent="."]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 120.0
+
+[node name="Panel" type="Panel" parent="Center"]
+self_modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="itm" type="Sprite2D" parent="Center/Panel"]
+texture = ExtResource("3_bvvfq")
+centered = false
+
+[node name="Count" type="Label" parent="Center/Panel"]
+custom_minimum_size = Vector2(62, 67)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 40
+text = "12"
+horizontal_alignment = 2

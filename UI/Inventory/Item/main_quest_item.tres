@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://co15xpsda7yt1"]
+
+[ext_resource type="Texture2D" uid="uid://5ypmcffe7cmc" path="res://UI/Inventory/Item/bebeb2.jpg" id="1_7mmm7"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/item_data.gd" id="1_jnv8f"]
+
+[resource]
+script = ExtResource("1_jnv8f")
+type = 0
+item_name = "Key To My Teart"
+health = 0
+mana = 0
+stackable = false
+count = 0
+item_description = "Kunci untuk membuka hati ku (aduh iya iya)"
+item_texture = ExtResource("1_7mmm7")

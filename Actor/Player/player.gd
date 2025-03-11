@@ -20,11 +20,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	add_to_group("player")
 	
-	magic_system.stats_controller = stats_controller
+	#magic_system.stats_controller = stats_controller
 	stats_controller.connect("Pdied", Callable(self, "died"))
 	input_controller.connect("camera_rotated", Callable(self, "update_camera_rotation"))
 	combat_controller.connect("attack_performed", Callable(animation_controller, "play_attack"))
-	
+
 func _physics_process(delta):
 	# Terapkan gravitasi
 	if not is_on_floor():

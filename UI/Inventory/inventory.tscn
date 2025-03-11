@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://brjxuorjpqc2s"]
+[gd_scene load_steps=10 format=3 uid="uid://brjxuorjpqc2s"]
 
-[ext_resource type="Script" uid="uid://ynawf6p03udr" path="res://UI/Inventory/inventory_main.gd" id="1_67s7v"]
+[ext_resource type="Script" uid="uid://ciujmlugvftw1" path="res://UI/Inventory/inventory.gd" id="1_lvyar"]
+[ext_resource type="PackedScene" uid="uid://bxxa6jjyncar0" path="res://UI/Inventory/inv_slot.tscn" id="2_6atyy"]
+[ext_resource type="Texture2D" uid="uid://64evpbhpw54f" path="res://UI/Inventory/bg_desc.png" id="3_440fw"]
+[ext_resource type="Script" uid="uid://dchk8a4vmnjxi" path="res://UI/Inventory/Item/item_desc.gd" id="3_y4eek"]
+[ext_resource type="Texture2D" uid="uid://ddn4hsesxf1kt" path="res://icon.svg" id="5_23rnm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ydsr"]
+bg_color = Color(0.641934, 0.641934, 0.641934, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogwar"]
+bg_color = Color(0.85098, 0.85098, 0.85098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8me3"]
+bg_color = Color(0.400697, 0.400698, 0.400697, 1)
+
+[sub_resource type="Theme" id="Theme_1eeaa"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 25
+Button/styles/hover = SubResource("StyleBoxFlat_4ydsr")
+Button/styles/normal = SubResource("StyleBoxFlat_ogwar")
+Button/styles/pressed = SubResource("StyleBoxFlat_n8me3")
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -9,29 +29,194 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_67s7v")
-
-[node name="Grid" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(150, 100)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -411.0
-offset_top = -265.0
-offset_right = 44.0
-offset_bottom = 266.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 4
+script = ExtResource("1_lvyar")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.372549)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(412, 492)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -246.0
+offset_right = -22.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="Inv_slot1" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 1
+
+[node name="Inv_slot2" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot3" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot4" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot5" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot6" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot7" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot8" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot9" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot10" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot11" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot12" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot13" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot14" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot15" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Inv_slot16" parent="GridContainer" instance=ExtResource("2_6atyy")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Container" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(419, 492)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 22.0
+offset_top = -250.0
+offset_right = 684.0
+offset_bottom = 596.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.643075, 0.595424)
+
+[node name="Item_desc" type="Control" parent="Container"]
+layout_mode = 2
+script = ExtResource("3_y4eek")
+
+[node name="bg" type="ColorRect" parent="Container/Item_desc"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 161.0
+offset_top = 260.0
+offset_right = 461.0
+offset_bottom = 320.0
+
+[node name="bg2" type="TextureRect" parent="Container/Item_desc"]
+visibility_layer = 524288
+layout_mode = 2
+offset_right = 644.0
+offset_bottom = 831.0
+texture = ExtResource("3_440fw")
+
+[node name="item_texture" type="Sprite2D" parent="Container/Item_desc"]
+position = Vector2(305.116, 128.537)
+scale = Vector2(2, 2)
+texture = ExtResource("5_23rnm")
+
+[node name="item_name" type="Label" parent="Container/Item_desc"]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 260.0
+offset_right = 461.0
+offset_bottom = 320.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 35
+text = "MAMAK KAU"
+horizontal_alignment = 1
+
+[node name="item_desc" type="RichTextLabel" parent="Container/Item_desc"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 355.0
+offset_right = 613.0
+offset_bottom = 567.0
+text = "MAMAK KAU"
+
+[node name="efcon" type="VBoxContainer" parent="Container/Item_desc"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 570.0
+offset_right = 613.0
+offset_bottom = 705.0
+
+[node name="Effect_tx1" type="Label" parent="Container/Item_desc/efcon"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Physical attack: +10"
+
+[node name="Effect_tx4" type="Label" parent="Container/Item_desc/efcon"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "0"
+
+[node name="item_btn" type="Button" parent="Container/Item_desc"]
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 0
+offset_left = 244.47
+offset_top = 758.341
+offset_right = 394.47
+offset_bottom = 797.341
+theme = SubResource("Theme_1eeaa")
+text = "ENTAH"
+
+[node name="Save_btn" type="Button" parent="Container/Item_desc"]
+layout_mode = 0
+offset_left = 29.8757
+offset_top = 46.2432
+offset_right = 92.8757
+offset_bottom = 85.2432
+text = "SAVE"
+
+[connection signal="pressed" from="Container/Item_desc/item_btn" to="." method="_on_item_btn_pressed"]
+[connection signal="pressed" from="Container/Item_desc/Save_btn" to="." method="_on_save_btn_pressed"]

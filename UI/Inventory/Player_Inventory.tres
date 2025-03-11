@@ -1,0 +1,94 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=26 format=3 uid="uid://dft2i8qnn6cwt"]
+
+[ext_resource type="Script" uid="uid://caku4fapr8360" path="res://UI/Inventory/inventory_slot.gd" id="2_jshga"]
+[ext_resource type="Resource" uid="uid://bm0eivccpinja" path="res://UI/Inventory/Item/Health_potion.tres" id="3_h1f5f"]
+[ext_resource type="Script" uid="uid://bsrcxhtd5vyfq" path="res://UI/Inventory/inventory_main.gd" id="4_64vkp"]
+[ext_resource type="Resource" uid="uid://c2pj44sgpia2f" path="res://UI/Inventory/Item/Mana_potion.tres" id="4_4674t"]
+[ext_resource type="Texture2D" uid="uid://cg3latg8bd8xs" path="res://UI/Inventory/Item/bebeb.jpg" id="5_1s1eu"]
+[ext_resource type="Script" uid="uid://dxmmva7ttevsx" path="res://UI/Inventory/Item/item_data.gd" id="5_6pllc"]
+[ext_resource type="Resource" uid="uid://co15xpsda7yt1" path="res://UI/Inventory/Item/main_quest_item.tres" id="7_e64di"]
+[ext_resource type="Resource" uid="uid://dkdw01y5vajfi" path="res://UI/Inventory/Item/test_item.tres" id="8_w06bh"]
+
+[sub_resource type="Resource" id="Resource_3s4q2"]
+script = ExtResource("2_jshga")
+item = ExtResource("3_h1f5f")
+count = 5
+
+[sub_resource type="Resource" id="Resource_katv8"]
+script = ExtResource("2_jshga")
+item = ExtResource("4_4674t")
+count = 4
+
+[sub_resource type="Resource" id="Resource_le1fo"]
+script = ExtResource("5_6pllc")
+type = 1
+item_name = "All mighty"
+health = 5
+mana = 5
+stackable = true
+count = 0
+item_description = "My only healer cus she's only mine"
+item_texture = ExtResource("5_1s1eu")
+
+[sub_resource type="Resource" id="Resource_tl4ol"]
+script = ExtResource("2_jshga")
+item = SubResource("Resource_le1fo")
+count = 1
+
+[sub_resource type="Resource" id="Resource_nmqq2"]
+script = ExtResource("2_jshga")
+item = ExtResource("7_e64di")
+count = 1
+
+[sub_resource type="Resource" id="Resource_wgcll"]
+script = ExtResource("2_jshga")
+item = ExtResource("8_w06bh")
+count = 2
+
+[sub_resource type="Resource" id="Resource_qs84e"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_4oo5t"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_nevxc"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_xy70m"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_1nv5a"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_mtaou"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_raipc"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_l1p3s"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_4oabj"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_y87qr"]
+script = ExtResource("2_jshga")
+count = 0
+
+[sub_resource type="Resource" id="Resource_1dsky"]
+script = ExtResource("2_jshga")
+count = 0
+
+[resource]
+script = ExtResource("4_64vkp")
+slots = Array[ExtResource("2_jshga")]([SubResource("Resource_3s4q2"), SubResource("Resource_katv8"), SubResource("Resource_tl4ol"), SubResource("Resource_nmqq2"), SubResource("Resource_wgcll"), SubResource("Resource_qs84e"), SubResource("Resource_4oo5t"), SubResource("Resource_nevxc"), SubResource("Resource_xy70m"), SubResource("Resource_1nv5a"), SubResource("Resource_mtaou"), SubResource("Resource_raipc"), SubResource("Resource_l1p3s"), SubResource("Resource_4oabj"), SubResource("Resource_y87qr"), SubResource("Resource_1dsky")])

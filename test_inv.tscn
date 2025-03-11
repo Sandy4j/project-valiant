@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdv5viod0ycty"]
+
+[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="2_4vcqa"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/collectable.gd" id="3_2cwqo"]
+[ext_resource type="Resource" path="res://UI/Inventory/Item/Health_potion.tres" id="4_inb2b"]
+[ext_resource type="Resource" path="res://UI/Inventory/Item/Mana_potion.tres" id="5_06yp6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqsm7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1qkaw"]
+size = Vector3(35, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iuyvd"]
+size = Vector3(35, 0.5, 20)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uhilu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wnbg5"]
+radius = 0.585406
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+
+[node name="Player" parent="." instance=ExtResource("2_4vcqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0571952, 0, 1.58268)
+JUMP_VELOCITY = 4.5
+MOUSE_SENSITIVITY = 0.05
+ROTATION_SPEED = 10.0
+
+[node name="Ground" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_gqsm7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_1qkaw")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_iuyvd")
+
+[node name="S_pot" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.275575, 0.513547, -3.67957)
+script = ExtResource("3_2cwqo")
+itemres = ExtResource("4_inb2b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="S_pot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265768, 0)
+mesh = SubResource("SphereMesh_uhilu")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="S_pot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301701, 0)
+shape = SubResource("SphereShape3D_wnbg5")
+
+[node name="M_pot" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675653, 3.34218)
+script = ExtResource("3_2cwqo")
+itemres = ExtResource("5_06yp6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="M_pot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.265768, 0)
+mesh = SubResource("SphereMesh_uhilu")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="M_pot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.301701, 0)
+shape = SubResource("SphereShape3D_wnbg5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.03655, 10.2295)
