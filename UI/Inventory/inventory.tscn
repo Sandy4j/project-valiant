@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://brjxuorjpqc2s"]
 
-[ext_resource type="Script" path="res://UI/Inventory/inventory.gd" id="1_lvyar"]
+[ext_resource type="Script" uid="uid://ciujmlugvftw1" path="res://UI/Inventory/inventory.gd" id="1_lvyar"]
 [ext_resource type="PackedScene" uid="uid://bxxa6jjyncar0" path="res://UI/Inventory/inv_slot.tscn" id="2_6atyy"]
 [ext_resource type="Texture2D" uid="uid://64evpbhpw54f" path="res://UI/Inventory/bg_desc.png" id="3_440fw"]
-[ext_resource type="Script" path="res://UI/Inventory/Item/item_desc.gd" id="3_y4eek"]
+[ext_resource type="Script" uid="uid://dchk8a4vmnjxi" path="res://UI/Inventory/Item/item_desc.gd" id="3_y4eek"]
 [ext_resource type="Texture2D" uid="uid://ddn4hsesxf1kt" path="res://icon.svg" id="5_23rnm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ydsr"]
@@ -210,4 +210,13 @@ offset_bottom = 797.341
 theme = SubResource("Theme_1eeaa")
 text = "ENTAH"
 
+[node name="Save_btn" type="Button" parent="Container/Item_desc"]
+layout_mode = 0
+offset_left = 29.8757
+offset_top = 46.2432
+offset_right = 92.8757
+offset_bottom = 85.2432
+text = "SAVE"
+
 [connection signal="pressed" from="Container/Item_desc/item_btn" to="." method="_on_item_btn_pressed"]
+[connection signal="pressed" from="Container/Item_desc/Save_btn" to="." method="_on_save_btn_pressed"]

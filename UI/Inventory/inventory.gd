@@ -4,7 +4,7 @@ extends Node
 @onready var slots:Array = $GridContainer.get_children() 
 @onready var grid = get_node("Grid")
 @onready var desc = $Container/Item_desc
-
+var inv_path = "res://UI/Inventory/Player_Inventory.tres"
 var cur_slot:Inv_Slots
 
 func _ready(): 
@@ -45,3 +45,7 @@ func _on_item_btn_pressed() -> void:
 		inv.update_inven()
 		desc.hide_ui()
 	update_slots()
+
+
+func _on_save_btn_pressed() -> void:
+	ResourceSaver.save(inv,inv_path)

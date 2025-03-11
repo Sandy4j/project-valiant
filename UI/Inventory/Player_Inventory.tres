@@ -1,23 +1,23 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=26 format=3 uid="uid://tlrcgvt877or"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=26 format=3 uid="uid://dft2i8qnn6cwt"]
 
-[ext_resource type="Script" path="res://UI/Inventory/inventory_slot.gd" id="2_jshga"]
+[ext_resource type="Script" uid="uid://caku4fapr8360" path="res://UI/Inventory/inventory_slot.gd" id="2_jshga"]
 [ext_resource type="Resource" uid="uid://bm0eivccpinja" path="res://UI/Inventory/Item/Health_potion.tres" id="3_h1f5f"]
-[ext_resource type="Script" path="res://UI/Inventory/inventory_main.gd" id="4_64vkp"]
+[ext_resource type="Script" uid="uid://bsrcxhtd5vyfq" path="res://UI/Inventory/inventory_main.gd" id="4_64vkp"]
 [ext_resource type="Resource" uid="uid://c2pj44sgpia2f" path="res://UI/Inventory/Item/Mana_potion.tres" id="4_4674t"]
 [ext_resource type="Texture2D" uid="uid://cg3latg8bd8xs" path="res://UI/Inventory/Item/bebeb.jpg" id="5_1s1eu"]
-[ext_resource type="Script" path="res://UI/Inventory/Item/item_data.gd" id="5_6pllc"]
+[ext_resource type="Script" uid="uid://dxmmva7ttevsx" path="res://UI/Inventory/Item/item_data.gd" id="5_6pllc"]
 [ext_resource type="Resource" uid="uid://co15xpsda7yt1" path="res://UI/Inventory/Item/main_quest_item.tres" id="7_e64di"]
 [ext_resource type="Resource" uid="uid://dkdw01y5vajfi" path="res://UI/Inventory/Item/test_item.tres" id="8_w06bh"]
 
 [sub_resource type="Resource" id="Resource_3s4q2"]
 script = ExtResource("2_jshga")
 item = ExtResource("3_h1f5f")
-count = 3
+count = 5
 
 [sub_resource type="Resource" id="Resource_katv8"]
 script = ExtResource("2_jshga")
 item = ExtResource("4_4674t")
-count = 2
+count = 4
 
 [sub_resource type="Resource" id="Resource_le1fo"]
 script = ExtResource("5_6pllc")

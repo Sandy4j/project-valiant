@@ -32,8 +32,9 @@ var is_hitted: bool
 @onready var weapon_system: WeaponSystem = $WeaponSystem
 @onready var ui_player: UI = %"UI Player"
 
-@onready var stats: PlayerStats = $Node
+@onready var stats: PlayerStats = $Stats
 var inv_op:bool = false
+var sts_op:bool = false
 var spawn_point = Vector3.ZERO
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -92,12 +93,14 @@ func _physics_process(delta):
 
 	
 	if Input.is_action_just_pressed("inven"):
-		inv_op = !inv_op
-		if inv_op:
-			ui_player.inv_open()
-		else:
-			ui_player.inv_clos()
+		sts_op = false
+		inv_op =!inv_op
+		check_menu()
 	
+	if Input.is_action_just_pressed("stats"):
+		inv_op = false
+		sts_op =! sts_op
+		check_menu()
 	
 	handle_weapon_system(delta)
 	move_and_slide()
@@ -109,6 +112,18 @@ func _physics_process(delta):
 	animation_tree["parameters/conditions/IsNotRunning"] = !is_running
 	animation_tree["parameters/conditions/IsDying"] = is_dying
 	animation_tree["parameters/conditions/IsHitted"] = is_hitted
+
+func check_menu():
+	if inv_op:
+		ui_player.inv_open()
+		print("lahlah")
+	else:
+		ui_player.inv_clos()
+	if sts_op:
+		ui_player.stats_open()
+		print("lah")
+	else :
+		ui_player.stats_close()
 
 func Hited(damage: int):
 	stats.take_damage(damage)

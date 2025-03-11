@@ -3,6 +3,7 @@ class_name  UI
 
 @onready var death = $IU/Death
 @onready var invt = $IU/Inventory
+@onready var stats = $IU/Stats
 @onready var current_floor_label = $IU/FLoorLabel
 
 var level_manager = LevelManager
@@ -33,3 +34,9 @@ func inv_open():
 
 func inv_clos():
 	invt.visible = false
+
+func stats_open():
+	stats.visible = true
+
+func stats_close():
+	stats.visible = false

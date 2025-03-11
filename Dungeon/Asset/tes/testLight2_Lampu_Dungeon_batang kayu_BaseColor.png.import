@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce7xh0hylvvx8"
+uid="uid://bw1tevbklpgde"
 path.s3tc="res://.godot/imported/testLight2_Lampu_Dungeon_batang kayu_BaseColor.png-1dbeedc0dab486f106dcea7575a61f5f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "fe4def42f2a246fb52f66ac1444e7b07"
 }
 
 [deps]
