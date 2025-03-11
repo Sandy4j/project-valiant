@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxri7toy8d8gj"]
+[gd_scene load_steps=8 format=3 uid="uid://bxri7toy8d8gj"]
 
 [ext_resource type="Script" uid="uid://cnwaoryu7751r" path="res://UI/ui.gd" id="1_ruohs"]
 [ext_resource type="PackedScene" uid="uid://brjxuorjpqc2s" path="res://UI/Inventory/inventory.tscn" id="2_l2hto"]
+[ext_resource type="Script" uid="uid://d2xc1hoswj203" path="res://Actor/Player/Magic/MagicUI.gd" id="3_xhthk"]
+[ext_resource type="Texture2D" uid="uid://du78hhh2x2cox" path="res://Actor/Player/Magic/fire-ball.png" id="4_ketxj"]
+[ext_resource type="Texture2D" uid="uid://c76be3l16c1ql" path="res://Actor/Player/Magic/blizzard.png" id="5_ukxds"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e141l"]
+
+[sub_resource type="Theme" id="Theme_ew6p7"]
 
 [node name="UI Player" type="Control"]
 layout_mode = 3
@@ -13,6 +18,7 @@ script = ExtResource("1_ruohs")
 [node name="IU" type="CanvasLayer" parent="."]
 
 [node name="Death" type="ColorRect" parent="IU"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -64,8 +70,72 @@ offset_bottom = 40.0
 [node name="Inventory" parent="IU" instance=ExtResource("2_l2hto")]
 
 [node name="FLoorLabel" type="Label" parent="IU"]
-offset_left = 16.0
-offset_top = 51.0
-offset_right = 113.0
-offset_bottom = 74.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -17.5
+offset_right = 97.0
+offset_bottom = 17.5
+grow_vertical = 2
 label_settings = SubResource("LabelSettings_e141l")
+
+[node name="MarginContainer" type="MarginContainer" parent="IU"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+script = ExtResource("3_xhthk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IU/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="SpellSlot1" type="VBoxContainer" parent="IU/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="IU/MarginContainer/HBoxContainer/SpellSlot1"]
+layout_mode = 2
+texture = ExtResource("4_ketxj")
+stretch_mode = 5
+
+[node name="cdBar" type="ProgressBar" parent="IU/MarginContainer/HBoxContainer/SpellSlot1"]
+layout_mode = 2
+theme = SubResource("Theme_ew6p7")
+max_value = 3.0
+
+[node name="ManaCost" type="Label" parent="IU/MarginContainer/HBoxContainer/SpellSlot1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "30"
+horizontal_alignment = 1
+
+[node name="SpellSlot2" type="VBoxContainer" parent="IU/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 120)
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="IU/MarginContainer/HBoxContainer/SpellSlot2"]
+layout_mode = 2
+texture = ExtResource("5_ukxds")
+stretch_mode = 5
+
+[node name="cdBar" type="ProgressBar" parent="IU/MarginContainer/HBoxContainer/SpellSlot2"]
+layout_mode = 2
+theme = SubResource("Theme_ew6p7")
+max_value = 5.0
+
+[node name="ManaCost" type="Label" parent="IU/MarginContainer/HBoxContainer/SpellSlot2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "40"
+horizontal_alignment = 1

@@ -21,7 +21,6 @@ var current_hp: float = max_hp
 @onready var detection_area: Area3D = $DetectionArea
 @onready var attack_raycast: RayCast3D = $AttackRaycast
 @onready var health_bar: ProgressBar3D = $ProgressBar3D
-@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var projectile_spawn: Marker3D = $ProjectileSpawn
 
 # State machine variables
@@ -43,33 +42,17 @@ func _ready():
 	health_bar.position = Vector3(0, 2, 0)
 	health_bar.billboard_mode = ProgressBar3D.BillboardMode.BILLBOARD_ENABLED
 	
-	# Setup NavigationAgent3D
-	nav_agent.path_desired_distance = 0.5
-	nav_agent.target_desired_distance = 0.5
-	nav_agent.path_height_offset = 0.0
-	
 	attack_raycast.enabled = true
-	attack_raycast.collision_mask = 1 # Sesuaikan dengan collision layer player
-	attack_raycast.target_position = Vector3(0, 0, detection_radius) # Panjang raycast sesuai detection_radius
+	attack_raycast.collision_mask = 1
+	attack_raycast.target_position = Vector3(0, 0, detection_radius)
 
 func _physics_process(delta: float) -> void:
-	# Aplikasi gravity
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
-		velocity.y = -0.1 # Sedikit negative force untuk "stick" ke lantai
+		velocity.y = -0.1
 	
-	match current_state:
-		EnemyState.IDLE:
-			idle_state()
-		EnemyState.CHASE:
-			chase_state(delta)
-		EnemyState.ATTACK:
-			attack_state()
-		EnemyState.DEAD:
-			dead_state()
-	
-	# Update health bar
+
 	health_bar.value = current_hp
 	move_and_slide()
 
@@ -110,17 +93,14 @@ func perform_ranged_attack() -> void:
 	
 	can_attack = false
 	
-	# Spawn projectile dari Marker3D
 	var projectile = projectile_scene.instantiate()
 	get_tree().current_scene.add_child(projectile)
 	projectile.global_position = projectile_spawn.global_position
 	
-	# Calculate direction to player with prediction
 	var direction = calculate_projectile_direction()
 	if projectile.has_method("initialize"):
 		projectile.initialize(direction, projectile_speed, attack_damage)
 	
-	# Start attack cooldown
 	start_attack_cooldown()
 
 func calculate_projectile_direction() -> Vector3:
@@ -140,7 +120,6 @@ func has_clear_line_of_sight() -> bool:
 		var collider = attack_raycast.get_collider()
 		return collider == player
 	
-	print("Raycast missed") # Debug print
 	return false
 
 func start_attack_cooldown() -> void:
@@ -151,22 +130,12 @@ func start_attack_cooldown() -> void:
 func move_towards_player(delta: float) -> void:
 	if !player:
 		return
-		
-	nav_agent.target_position = player.global_position
 	
-	if nav_agent.is_navigation_finished():
-		return
-		
-	var next_pos: Vector3 = nav_agent.get_next_path_position()
-	var direction: Vector3 = (next_pos - global_position)
-	direction.y = 0 # Abaikan vertical movement dari navigation
-	direction = direction.normalized()
-	
-	# Apply horizontal movement
+	var direction: Vector3 = (player.global_position - global_position).normalized()
+	direction.y = 0
 	velocity.x = direction.x * movement_speed
 	velocity.z = direction.z * movement_speed
 	
-	# Look at player (hanya rotasi Y)
 	var look_at_pos = Vector3(player.global_position.x, global_position.y, player.global_position.z)
 	look_at(look_at_pos)
 

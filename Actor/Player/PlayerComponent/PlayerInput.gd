@@ -4,11 +4,27 @@ class_name PlayerInputController
 signal camera_rotated(rotation)
 signal toggle_inventory(is_open)
 
+var magics: MagicSystem
 var camera_rotation: float = 0.0
 var inventory_open: bool = false
 
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			toggle_mouse_mode()
+
+func toggle_mouse_mode():
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 func _unhandled_input(event):
+	if Input.is_action_just_pressed("firebolt"):
+		magics.cast_spell("firebolt")
+	if Input.is_action_just_pressed("blizzard"):
+		magics.cast_spell("blizzard")
 	
 	if Input.is_action_just_pressed("suicide"):
 		get_parent().Hited(1000)

@@ -40,18 +40,6 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	# State machine
-	match current_state:
-		EnemyState.IDLE:
-			idle_state()
-		EnemyState.CHASE:
-			chase_state(delta)
-		EnemyState.ATTACK:
-			attack_state()
-		EnemyState.DEAD:
-			dead_state()
-	
-	# Update health bar
 	health_bar.value = current_hp
 
 func idle_state() -> void:
