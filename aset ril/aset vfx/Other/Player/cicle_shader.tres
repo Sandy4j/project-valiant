@@ -66,10 +66,10 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
 
 uniform vec4 circle_color : source_color;
-uniform float extra_opacity : hint_range(0, 1);
+uniform float extra_opacity : hint_range(0.0, 1.0);
 uniform vec2 speed;
 uniform sampler2D tex_frg_2 : source_color;
-uniform float Vanish : hint_range(0, 1);
+uniform float Vanish : hint_range(0.0, 1.0);
 uniform sampler2D tex_frg_10;
 
 
@@ -136,7 +136,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-321.765, -100.462)
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(1380, 200)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_lwx5p")

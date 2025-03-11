@@ -229,8 +229,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hf1vd"]
 _data = {
-"RESET": SubResource("Animation_xhksp"),
-"default": SubResource("Animation_mo6wu")
+&"RESET": SubResource("Animation_xhksp"),
+&"default": SubResource("Animation_mo6wu")
 }
 
 [node name="LEVEL UP" type="Node3D"]

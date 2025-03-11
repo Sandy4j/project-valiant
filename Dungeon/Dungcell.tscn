@@ -1,6 +1,6 @@
 [gd_scene load_steps=112 format=4 uid="uid://fnupmlaosr48"]
 
-[ext_resource type="Script" path="res://Dungeon/DungCell.gd" id="1_vn2o7"]
+[ext_resource type="Script" uid="uid://gfmhb60pu8wm" path="res://Dungeon/DungCell.gd" id="1_vn2o7"]
 [ext_resource type="Texture2D" uid="uid://b5dpopeit1d33" path="res://Dungeon/Asset/Tembok_polos_Tembok_Dungeon_DBingkai batu_BaseColor.png" id="2_knktr"]
 [ext_resource type="Texture2D" uid="uid://dxdjne33440ja" path="res://Dungeon/Asset/Tembok_polos_Tembok_Dungeon_DBingkai batu_Emissive.png" id="3_uhcwm"]
 [ext_resource type="Texture2D" uid="uid://bwjo1ljsngjeg" path="res://Dungeon/Asset/Tembok_polos_Tembok_Dungeon_DBingkai batu_Metallic.1001-Tembok_Dungeon_DBingkai batu_Roughness.png" id="4_p64r5"]
@@ -45,7 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://chxidlco01mn1" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Pintu_dungeon_dueon_Metallic.1001-Pintu_dungeon_dueon_Roughness.png" id="40_fbils"]
 [ext_resource type="Texture2D" uid="uid://ct2m83n0jyu0y" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Pintu_dungeon_dueon_Normal.png" id="41_g1p75"]
 [ext_resource type="Texture2D" uid="uid://8nnk0dslbpdm" path="res://Dungeon/Asset/Lantai_Lantai_Dungeon_Dlantai_Normal.png" id="41_q84rn"]
-[ext_resource type="Texture2D" uid="uid://bgntyo5wx52cg" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_BaseColor.png" id="42_yguyr"]
+[ext_resource type="Texture2D" uid="uid://cqccl7jqko7nl" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_BaseColor.png" id="42_yguyr"]
 [ext_resource type="Texture2D" uid="uid://co11xq6evru2x" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Emissive.png" id="43_huilf"]
 [ext_resource type="Texture2D" uid="uid://dr0bvha0l6bc5" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Metallic.1001-Banner_lOGO_Roughness.png" id="44_3jmq2"]
 [ext_resource type="Texture2D" uid="uid://basg6834fflmi" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Normal.png" id="45_0lhcc"]

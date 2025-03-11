@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://huc052xwvnuq"
+uid="uid://0s2m1nhmrgym"
 path.s3tc="res://.godot/imported/DunCell_TexturesCom_MixedMedievalBricks_1K_albedo.png-adac6bd8e46d02472c3050001c00326b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

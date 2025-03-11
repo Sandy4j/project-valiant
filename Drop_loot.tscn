@@ -1,16 +1,17 @@
-[gd_scene load_steps=21 format=3 uid="uid://bdhwrxmekiuem"]
+[gd_scene load_steps=22 format=3 uid="uid://bdhwrxmekiuem"]
 
 [ext_resource type="Shader" uid="uid://bqbc1sn1j0l85" path="res://S_blinkingaura.tres" id="1_ob1ka"]
 [ext_resource type="Texture2D" uid="uid://cgybgp3wqfuvj" path="res://aset ril/aset vfx/Referensi/T_VFX_Flare_251.jpg" id="2_nsnn8"]
 [ext_resource type="Texture2D" uid="uid://lt2nd7mirls7" path="res://aset ril/aset vfx/Referensi/T_flare81.png" id="3_towxb"]
 [ext_resource type="Texture2D" uid="uid://bs2icbpil5md6" path="res://aset ril/aset vfx/Referensi/Circle03.png" id="4_x3e0s"]
+[ext_resource type="PackedScene" uid="uid://cstt2f67kju2m" path="res://FLASK.glb" id="5_kcqby"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vh1dy"]
 render_priority = 0
 shader = ExtResource("1_ob1ka")
 shader_parameter/Main_Color = Color(1, 0.5, 0.5, 1)
-shader_parameter/blinking_speed = 8.0
 shader_parameter/Transparency_texture = ExtResource("2_nsnn8")
+shader_parameter/blinking_speed = 8.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_sup6r"]
 size = Vector2(3, 5)
@@ -41,6 +42,7 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 1.0
 emission_ring_radius = 0.3
 emission_ring_inner_radius = 0.2
+emission_ring_cone_angle = 90.0
 angle_min = -180.0
 angle_max = 180.0
 direction = Vector3(0, 1, 0)
@@ -66,18 +68,17 @@ albedo_texture_msdf = true
 use_particle_trails = true
 
 [sub_resource type="Curve" id="Curve_vol6w"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_qaxbu"]
-min_value = -2.0
-max_value = 2.0
+_limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_r8rn5"]
-max_value = 2.0
+_limits = [0.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -100,6 +101,7 @@ emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.2
 emission_ring_radius = 0.6
 emission_ring_inner_radius = 0.4
+emission_ring_cone_angle = 90.0
 direction = Vector3(0, 1, 0)
 spread = 0.0
 initial_velocity_min = 0.2
@@ -120,7 +122,7 @@ section_segments = 4
 [node name="Node" type="Node"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00575763, 2.03295, 0.00956082)
+transform = Transform3D(1.46922, 0, 0, 0, 0.653608, 0, 0, 0, 1.8033, 0.00575763, 1.8825, 0.00956082)
 material_override = SubResource("ShaderMaterial_vh1dy")
 mesh = SubResource("QuadMesh_sup6r")
 
@@ -142,3 +144,6 @@ trail_enabled = true
 trail_lifetime = 0.7
 process_material = SubResource("ParticleProcessMaterial_peio4")
 draw_pass_1 = SubResource("RibbonTrailMesh_a13dk")
+
+[node name="FLASK" parent="." instance=ExtResource("5_kcqby")]
+transform = Transform3D(0.0947308, -0.0377015, 0, 0.0332021, 0.107568, 0, 0, 0, 0.0988341, 0.0490425, 1.73999, 0.0124203)

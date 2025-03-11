@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bihpd3yio2n8r" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Pintu_dungeon_dueon_Emissive.png" id="54_x4rup"]
 [ext_resource type="Texture2D" uid="uid://chxidlco01mn1" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Pintu_dungeon_dueon_Metallic.1001-Pintu_dungeon_dueon_Roughness.png" id="55_2crkg"]
 [ext_resource type="Texture2D" uid="uid://ct2m83n0jyu0y" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Pintu_dungeon_dueon_Normal.png" id="56_vxqgf"]
-[ext_resource type="Texture2D" uid="uid://bgntyo5wx52cg" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_BaseColor.png" id="57_ypn35"]
+[ext_resource type="Texture2D" uid="uid://cqccl7jqko7nl" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_BaseColor.png" id="57_ypn35"]
 [ext_resource type="Texture2D" uid="uid://co11xq6evru2x" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Emissive.png" id="58_dh2jm"]
 [ext_resource type="Texture2D" uid="uid://dr0bvha0l6bc5" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Metallic.1001-Banner_lOGO_Roughness.png" id="59_ybhvd"]
 [ext_resource type="Texture2D" uid="uid://basg6834fflmi" path="res://Dungeon/Asset/pintu_tembok_dungeon2_Banner_lOGO_Normal.png" id="60_5aulg"]

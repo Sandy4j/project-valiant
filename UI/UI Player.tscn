@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxri7toy8d8gj"]
 
-[ext_resource type="Script" path="res://UI/ui.gd" id="1_ruohs"]
+[ext_resource type="Script" uid="uid://cskp68o0o11mt" path="res://UI/ui.gd" id="1_ruohs"]
 [ext_resource type="PackedScene" uid="uid://brjxuorjpqc2s" path="res://UI/Inventory/inventory.tscn" id="2_l2hto"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e141l"]

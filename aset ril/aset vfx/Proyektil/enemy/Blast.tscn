@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://cwq588t585ofo" path="res://aset ril/aset vfx/Proyektil/enemy/Blast_head_shader.tres" id="3_8rpqq"]
 [ext_resource type="Texture2D" uid="uid://volxb5t2rbl" path="res://aset ril/aset vfx/Referensi/T_VFX_basic1.PNG" id="5_27jem"]
 [ext_resource type="Material" uid="uid://dxua71q5nsj6q" path="res://aset ril/aset vfx/Proyektil/enemy/M_Blast_Trail.tres" id="5_744ag"]
-[ext_resource type="Script" path="res://aset ril/aset vfx/Proyektil/enemy/Trail3D.gd" id="6_xk3rd"]
+[ext_resource type="Script" uid="uid://b7xmi23js487u" path="res://aset ril/aset vfx/Proyektil/enemy/Trail3D.gd" id="6_xk3rd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srplh"]
 render_priority = 0
@@ -92,8 +92,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5yso3"]
 _data = {
-"RESET": SubResource("Animation_pmiql"),
-"bobola api": SubResource("Animation_vv58m")
+&"RESET": SubResource("Animation_pmiql"),
+&"bobola api": SubResource("Animation_vv58m")
 }
 
 [node name="Blast" type="Node3D"]

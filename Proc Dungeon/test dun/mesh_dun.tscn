@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://cdh76gm5vwwb0"]
 
-[ext_resource type="Script" path="res://Proc Dungeon/test dun/mesh_dun.gd" id="1_jbcqu"]
+[ext_resource type="Script" uid="uid://c006dbg68v3rk" path="res://Proc Dungeon/test dun/mesh_dun.gd" id="1_jbcqu"]
 [ext_resource type="Texture2D" uid="uid://426bnrrm8fgf" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/floor_tile_large_dungeon_texture.png" id="1_jpl6u"]
 [ext_resource type="Texture2D" uid="uid://cyovvol1okvrc" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/wall_doorway_dungeon_texture.png" id="2_ne4a0"]
 [ext_resource type="Texture2D" uid="uid://dqw7h40jiff8b" path="res://asset nyolong/TutorWong/KayKit_DungeonRemastered_1.0_FREE/KayKit_DungeonRemastered_1.0_FREE/Assets/gltf/wall_arched_dungeon_texture.png" id="3_4ytiu"]

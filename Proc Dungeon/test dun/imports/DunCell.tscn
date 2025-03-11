@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=4 uid="uid://cbed6efcl7lu7"]
 
-[ext_resource type="Script" path="res://Proc Dungeon/test dun/imports/DunCell.gd" id="1_32hn5"]
+[ext_resource type="Script" uid="uid://c7ekkqsvexc5d" path="res://Proc Dungeon/test dun/imports/DunCell.gd" id="1_32hn5"]
 [ext_resource type="Material" uid="uid://dgw3ja14i3vne" path="res://Proc Dungeon/test dun/imports/floor.tres" id="2_megmu"]
 [ext_resource type="Material" uid="uid://cmx524f0yfom0" path="res://Proc Dungeon/test dun/imports/walls.tres" id="3_ig04n"]
 

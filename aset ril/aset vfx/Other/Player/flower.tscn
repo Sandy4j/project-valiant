@@ -29,7 +29,7 @@ texture_mode = 1
 curve = SubResource("Curve_56v70")
 
 [sub_resource type="Curve" id="Curve_ssrdj"]
-max_value = 14.74
+_limits = [0.0, 14.74, 0.0, 1.0]
 _data = [Vector2(0, 0.508028), 0.0, 0.0, 0, 0, Vector2(1, 13.7511), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -44,6 +44,7 @@ emission_ring_axis = Vector3(0, 2, 0)
 emission_ring_height = 0.0
 emission_ring_radius = 4.0
 emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
 direction = Vector3(0, 0, 0)
 spread = 0.0
 gravity = Vector3(0, 0, 0)
@@ -68,6 +69,7 @@ emission_ring_axis = Vector3(0, 2, 0)
 emission_ring_height = 0.0
 emission_ring_radius = 4.0
 emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
 velocity_pivot = Vector3(0, 1, 0)
 direction = Vector3(0, 4, 0)
 spread = 0.0
@@ -327,17 +329,17 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ci0fe"]
 _data = {
-"Heal_area": SubResource("Animation_e06u3"),
-"RESET": SubResource("Animation_mc4ep")
+&"Heal_area": SubResource("Animation_e06u3"),
+&"RESET": SubResource("Animation_mc4ep")
 }
 
 [node name="Node3D" type="Node3D"]
 
 [node name="FlowerMesh1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181855, 0.615373, -0.191421)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.198258, 0.576994, -0.15152)
 mesh = ExtResource("1_l05yn")
-blend_shapes/DISSOLVE = 1.0
 blend_shapes/Shrinkwrap = 1.0
+blend_shapes/DISSOLVE = 1.0
 
 [node name="CircleMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.06055, 0, 0, 0, 1.26469, 0, 0, 0, 3.83424, -0.0361689, 0.339115, -0.494836)
@@ -368,5 +370,5 @@ draw_pass_1 = SubResource("QuadMesh_vw7wx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ci0fe")
+&"": SubResource("AnimationLibrary_ci0fe")
 }

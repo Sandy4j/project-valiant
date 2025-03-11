@@ -1,7 +1,7 @@
 [gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://bqbc1sn1j0l85"]
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_eceuc"]
-size = Vector2(1064, 568)
+size = Vector2(1064, 422)
 title = "Blinkingpart"
 tint_color_enabled = true
 tint_color = Color(0.738281, 0.344447, 0.207642, 0.75)
@@ -148,7 +148,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1078.29, 367.094)
 modes/cull = 2
 flags/unshaded = true
 flags/shadows_disabled = true
@@ -158,7 +157,7 @@ nodes/vertex/connections = PackedInt32Array(2, 0, 0, 10)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_jjjay")
 nodes/fragment/2/position = Vector2(-1500, 500)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_e6rkh")
-nodes/fragment/3/position = Vector2(-1500, 260)
+nodes/fragment/3/position = Vector2(-1500, 200)
 nodes/fragment/4/node = SubResource("VisualShaderNodeColorParameter_em4eb")
 nodes/fragment/4/position = Vector2(-420, -20)
 nodes/fragment/5/node = SubResource("VisualShaderNodeInput_x048b")

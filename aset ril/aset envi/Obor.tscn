@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dk030o77an8rp"]
 
-[ext_resource type="PackedScene" uid="uid://b8a8xplnw60gn" path="res://aset ril/Obor 99.glb" id="1_iobw1"]
+[ext_resource type="PackedScene" uid="uid://b8a8xplnw60gn" path="res://aset ril/aset envi/Obor 99.glb" id="1_iobw1"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f7pgc"]
 lifetime_randomness = 0.09

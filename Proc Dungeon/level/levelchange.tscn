@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb3ynxjhhmnfn"]
 
-[ext_resource type="Script" path="res://Proc Dungeon/level/levelchange.gd" id="1_p0ga5"]
+[ext_resource type="Script" uid="uid://ch4dps8v5m2lu" path="res://Proc Dungeon/level/levelchange.gd" id="1_p0ga5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_mqm8t"]
 

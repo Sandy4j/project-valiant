@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cskeddtwo45am"
+uid="uid://ckwn3jypvyh3m"
 path.s3tc="res://.godot/imported/Barrel_Barrel_Barrel_Emissive.png-7cc75d042b306726732e98a3595a9c7c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "d1dd210d6b1312cb342b56d02bd5e651"
 }
 
 [deps]

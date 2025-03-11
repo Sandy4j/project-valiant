@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://fn7ac4wnynjq"]
 
 [ext_resource type="Texture2D" uid="uid://bj3eqm4yx8jst" path="res://UI/Menu.png" id="1_hknlv"]
-[ext_resource type="Script" path="res://Scene/main_menu.gd" id="1_xclmx"]
+[ext_resource type="Script" uid="uid://cfxym4704ojek" path="res://Scene/main_menu.gd" id="1_xclmx"]
 [ext_resource type="Texture2D" uid="uid://cm67exoxnts8r" path="res://UI/Start1.png" id="2_l3u7c"]
 [ext_resource type="Texture2D" uid="uid://bemkqu546slcg" path="res://UI/Play1.png" id="2_vkctl"]
 [ext_resource type="Texture2D" uid="uid://dx3s8sjofcd2k" path="res://UI/Play2.png" id="3_clvyb"]
@@ -87,6 +87,46 @@ tracks/5/keys = {
 "values": [Vector2(0.55, 0.55), Vector2(0.55, 0.55), Vector2(0.45, 0.45)]
 }
 
+[sub_resource type="Animation" id="Animation_livje"]
+resource_name = "Intro_act"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.95, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(590, 350), Vector2(144, 258), Vector2(144, 258), Vector2(178, 164)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Logo:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 2.95, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.01, 0.01), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.55, 0.55)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/Entry_Btn:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.2, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(450.5, 653), Vector2(450.5, 463)]
+}
+
 [sub_resource type="Animation" id="Animation_36w08"]
 length = 0.001
 tracks/0/type = "value"
@@ -162,51 +202,11 @@ tracks/5/keys = {
 "values": [Vector2(0.45, 0.45)]
 }
 
-[sub_resource type="Animation" id="Animation_livje"]
-resource_name = "Intro_act"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/Logo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.95, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(590, 350), Vector2(144, 258), Vector2(144, 258), Vector2(178, 164)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/Logo:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.95, 4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0.01, 0.01), Vector2(0.6, 0.6), Vector2(0.6, 0.6), Vector2(0.55, 0.55)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect/Entry_Btn:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(3.2, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(450.5, 653), Vector2(450.5, 463)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_siavp"]
 _data = {
-"Entry_act": SubResource("Animation_fq6sw"),
-"Intro_act": SubResource("Animation_livje"),
-"RESET": SubResource("Animation_36w08")
+&"Entry_act": SubResource("Animation_fq6sw"),
+&"Intro_act": SubResource("Animation_livje"),
+&"RESET": SubResource("Animation_36w08")
 }
 
 [node name="Main_Menu" type="Control"]

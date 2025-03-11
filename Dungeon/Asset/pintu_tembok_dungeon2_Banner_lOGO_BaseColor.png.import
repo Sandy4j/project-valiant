@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgntyo5wx52cg"
+uid="uid://cqccl7jqko7nl"
 path.s3tc="res://.godot/imported/pintu_tembok_dungeon2_Banner_lOGO_BaseColor.png-68ddaac457cedb320cf4805d67c2b411.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "36d16ebb31b8de4ebd618b222f406a63"
 }
 
 [deps]

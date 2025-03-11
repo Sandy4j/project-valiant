@@ -211,8 +211,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l7jbw"]
 _data = {
-"RESET": SubResource("Animation_j6ph5"),
-"hit": SubResource("Animation_dl0ts")
+&"RESET": SubResource("Animation_j6ph5"),
+&"hit": SubResource("Animation_dl0ts")
 }
 
 [node name="Hit" type="Node3D"]

@@ -268,8 +268,8 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86usa"]
 _data = {
-"Bledek": SubResource("Animation_15dfe"),
-"RESET": SubResource("Animation_yvng7")
+&"Bledek": SubResource("Animation_15dfe"),
+&"RESET": SubResource("Animation_yvng7")
 }
 
 [node name="Lightning" type="Node3D"]
