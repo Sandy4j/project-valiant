@@ -38,14 +38,14 @@ mesh = SubResource("BoxMesh_klrw2")
 shape = SubResource("BoxShape3D_sl8mj")
 
 [node name="Player" parent="." instance=ExtResource("1_0n8d5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55517, 33.13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55517, 0)
 
-[node name="EnemyMelee" parent="." groups=["enemy"] instance=ExtResource("2_4s7vw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.034, 2.93366, 14.5873)
+[node name="EnemyMelee" parent="." instance=ExtResource("2_4s7vw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93366, 14.5873)
 movement_speed = 1.0
 
-[node name="EnemyRanged" parent="." groups=["enemy"] instance=ExtResource("3_y4jyy")]
+[node name="EnemyRanged" parent="." instance=ExtResource("3_y4jyy")]
 transform = Transform3D(0.83943, 0, -0.543467, 0, 1, 0, 0.543467, 0, 0.83943, -12.1892, 2.416, 15.2523)
 projectile_scene = ExtResource("4_y4jyy")
-movement_speed = 10.0
+movement_speed = 1.0
 is_magic_damage = true

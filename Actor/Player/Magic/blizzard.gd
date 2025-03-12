@@ -1,34 +1,44 @@
 extends Node3D
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var area: Area3D = $Area3D  # Ganti RayCast3D dengan Area3D
 
 var damage: int = 0
 var debuff_type: String = "cold"
 var penetration: bool = false
 var delay: float = 2.0
-var penetrated_targets: Array = []
 var is_magic_damage = true
-@onready var raycast = $RayCast3D
+var current_targets: Array = []  # Untuk melacak musuh di dalam area
 
 func _ready():
 	anim_player.play("beam")
 	$Beam.emitting = true
-	$Timer.wait_time = 1.0
+	$Timer.wait_time = delay  # Pastikan Timer menggunakan delay
 	$Timer.start()
 	
 	$sprinkle.emitting = true
 	if penetration:
 		$sprinkle.amount = 100
+	
+	# Setup Area3D
+	area.body_entered.connect(_on_body_entered)
+	area.body_exited.connect(_on_body_exited)
+	
+	# Timer untuk damage berulang
+	$DamageTimer.wait_time = 0.5  # Interval damage (0.5 detik)
+	$DamageTimer.start()
 
-func _process(delta):
-	update_beam()
+func _on_body_entered(body: Node3D):
+	if body.is_in_group("enemy"):
+		current_targets.append(body)
 
-func update_beam():
-	if raycast.is_colliding():
-		var target = raycast.get_collider()
-		if target.is_in_group("enemy") && !penetrated_targets.has(target):
-			apply_damage(target)
-			penetrated_targets.append(target)
+func _on_body_exited(body: Node3D):
+	if body in current_targets:
+		current_targets.erase(body)
+
+func _on_damage_timer_timeout():
+	for target in current_targets:
+		apply_damage(target)
 
 func apply_damage(target):
 	if target.has_method("take_damage"):
@@ -41,7 +51,6 @@ func apply_damage(target):
 	
 	if target.has_method("apply_debuff"):
 		target.apply_debuff(debuff_type)
-
 		if target.has_method("update_speed"):
 			target.update_speed()
 
