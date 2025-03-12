@@ -26,7 +26,6 @@ func _ready():
 	combat_controller.connect("attack_performed", Callable(animation_controller, "play_attack"))
 
 func _physics_process(delta):
-	# Terapkan gravitasi
 	if not is_on_floor():
 		velocity += Vector3.DOWN * gravity * delta
 		

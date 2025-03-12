@@ -1,5 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3vvgmfe7xqe7"]
+[gd_scene load_steps=38 format=3 uid="uid://c3vvgmfe7xqe7"]
 
+[ext_resource type="Script" uid="uid://crtupf8hkc3r4" path="res://Actor/Player/Magic/blizzard.gd" id="1_40om7"]
 [ext_resource type="Shader" uid="uid://ceubty8qhit5b" path="res://aset ril/aset vfx/Proyektil/player/beam/s_dynamic_shader.tres" id="1_iu4f8"]
 [ext_resource type="Texture2D" uid="uid://dch72h2hfrbrr" path="res://aset ril/aset vfx/Referensi/T_PerlinNoise_46_inv.png" id="2_e72my"]
 [ext_resource type="ArrayMesh" uid="uid://lv43cfu6qci2" path="res://aset ril/aset vfx/Proyektil/player/beam/silinder_beam.obj" id="2_fyfl6"]
@@ -254,8 +255,10 @@ _data = {
 }
 
 [node name="kamehamehAAAA" type="Node3D"]
+script = ExtResource("1_40om7")
 
 [node name="Beam" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 2, 0)
 material_override = SubResource("ShaderMaterial_agrv5")
 amount = 1
 lifetime = 2.0
@@ -265,7 +268,7 @@ process_material = SubResource("ParticleProcessMaterial_jb51a")
 draw_pass_1 = ExtResource("2_fyfl6")
 
 [node name="mini beam" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0113912, 1.14785, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 1, 0)
 material_override = SubResource("ShaderMaterial_v4dw8")
 amount = 1
 lifetime = 2.0
@@ -275,7 +278,7 @@ process_material = SubResource("ParticleProcessMaterial_t5wko")
 draw_pass_1 = ExtResource("2_fyfl6")
 
 [node name="Splash" type="GPUParticles3D" parent="."]
-transform = Transform3D(1.66792, 0, 0, 0, 1.47932, 0, 0, 0, 4.47408, 0, 0, 0)
+transform = Transform3D(1.66792, 0, 0, 0, -1.47932, 3.91136e-07, 0, -1.29326e-07, -4.47408, 0, 2, 0)
 material_override = SubResource("ShaderMaterial_e3dym")
 amount = 1
 lifetime = 2.0
@@ -285,7 +288,7 @@ process_material = SubResource("ParticleProcessMaterial_01qau")
 draw_pass_1 = ExtResource("5_1ijl7")
 
 [node name="sprinkle" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51617, 0.639225)
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 1, 0)
 material_override = SubResource("ShaderMaterial_78b5e")
 amount = 50
 lifetime = 2.0
@@ -294,7 +297,13 @@ explosiveness = 0.2
 process_material = SubResource("ParticleProcessMaterial_vslf1")
 draw_pass_1 = SubResource("QuadMesh_43dh6")
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 15)
+collision_mask = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_eav42")
+&"": SubResource("AnimationLibrary_eav42")
 }
+
+[node name="Timer" type="Timer" parent="."]

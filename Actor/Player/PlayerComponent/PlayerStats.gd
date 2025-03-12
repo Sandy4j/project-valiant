@@ -10,7 +10,7 @@ signal level_changed(new_level)
 signal Pdied
 
 var base_hp: int = 100
-var base_mana: int = 50
+var base_mana: int = 1000
 var base_physical_attack: int = 20
 var base_magical_attack: int = 25
 var base_physical_defense: int = 15

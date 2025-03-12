@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5em5m2br0iom"]
+[gd_scene load_steps=18 format=3 uid="uid://c5em5m2br0iom"]
 
 [ext_resource type="Shader" uid="uid://c1v1gn67ialcx" path="res://aset ril/aset vfx/Proyektil/enemy/Blast_shader.tres" id="1_bblqc"]
+[ext_resource type="Script" uid="uid://bg3ylmblky0nk" path="res://Actor/Player/Magic/firebolt.gd" id="1_isoai"]
 [ext_resource type="ArrayMesh" uid="uid://c0byh8i1klv2r" path="res://aset ril/aset vfx/Proyektil/enemy/Ujung.obj" id="2_jr4ds"]
 [ext_resource type="Shader" uid="uid://cwq588t585ofo" path="res://aset ril/aset vfx/Proyektil/enemy/Blast_head_shader.tres" id="3_8rpqq"]
 [ext_resource type="Texture2D" uid="uid://volxb5t2rbl" path="res://aset ril/aset vfx/Referensi/T_VFX_basic1.PNG" id="5_27jem"]
@@ -21,8 +22,6 @@ shader_parameter/FloatParameter = 2.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_62fr8"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_yhkds"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tekit"]
 blend_mode = 1
 cull_mode = 2
@@ -32,6 +31,7 @@ disable_fog = true
 vertex_color_use_as_albedo = true
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("5_27jem")
+disable_receive_shadows = true
 
 [sub_resource type="Curve" id="Curve_1l0td"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -58,46 +58,12 @@ color = Color(2, 1.3, 0.5, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_f3g1k"]
 size = Vector2(0.1, 0.5)
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_648ep"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_isoai"]
 
-[sub_resource type="Animation" id="Animation_pmiql"]
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-2.64458, 1.83651, 21.343), Vector3(-2.645, 1.837, 50)]
-}
-
-[sub_resource type="Animation" id="Animation_vv58m"]
-resource_name = "bobola api"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.6277, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-2.64458, 1.83651, 21.343), Vector3(-2.645, 1.837, 22), Vector3(-2.645, 1.837, 30), Vector3(-2.645, 1.837, 31)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5yso3"]
-_data = {
-&"RESET": SubResource("Animation_pmiql"),
-&"bobola api": SubResource("Animation_vv58m")
-}
+[sub_resource type="SphereShape3D" id="SphereShape3D_isoai"]
 
 [node name="Blast" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.64458, 1.83651, 21.343)
+script = ExtResource("1_isoai")
 
 [node name="Ujung" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.178553, -0.454643, 2.19261)
@@ -108,31 +74,41 @@ mesh = ExtResource("2_jr4ds")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.168178, -0.454909, 2.34896)
 material_override = SubResource("ShaderMaterial_wkqod")
+cast_shadow = 0
 mesh = SubResource("SphereMesh_62fr8")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1.44157e-07, -1, 4.37114e-08, 0, -4.37114e-08, -1, 3.29793, -4.37114e-08, 1.91069e-15, 4.76837e-07, -0.488159, 0.877804)
-mesh = SubResource("QuadMesh_yhkds")
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.203456, -0.474387, 1.47722)
 material_override = SubResource("StandardMaterial3D_tekit")
+cast_shadow = 0
 lifetime = 0.3
 explosiveness = 0.4
 process_material = SubResource("ParticleProcessMaterial_o2b75")
 draw_pass_1 = SubResource("QuadMesh_f3g1k")
 
 [node name="Trail3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.677326, 0.735683, -1.43816e-05, -0.735683, -0.677326, 1.92537e-11, -9.74101e-06, 1.05803e-05, 1, -0.231214, -0.45314, 2.25067)
+transform = Transform3D(0.672185, -0.7301, 0.122968, -0.735683, -0.677326, 1.72142e-11, 0.0832895, -0.0904656, -0.992411, -0.231214, -0.45314, 2.25067)
+visible = false
 material_override = ExtResource("5_744ag")
-mesh = SubResource("ImmediateMesh_648ep")
+cast_shadow = 0
+mesh = SubResource("ImmediateMesh_isoai")
 script = ExtResource("6_xk3rd")
 toWidth = 1.0
 lifespan = 0.3
 startColor = Color(3, 1.5, 0.2, 1)
 endColor = Color(1, 0, 0, 0.580392)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_5yso3")
-}
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12892, -0.401061, 2.3344)
+shape = SubResource("SphereShape3D_isoai")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

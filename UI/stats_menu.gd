@@ -26,7 +26,6 @@ var tx: Dictionary = {}
 
 func _ready() -> void:
 	stats = self.get_parent().get_parent().get_parent().get_child(0).get_child(1)
-	print(stats.name)
 	connect_condition()
 	connect_basic_stats()
 	connect_offensive_stats()
@@ -78,10 +77,9 @@ func connect_offensive_stats():
 			print("NodePath untuk {key} belum diatur.")
 	tx["label1"].text = str(stats.physical_attack)
 	tx["label2"].text = "50%"
-	#tx["label3"].text = str(stats.physical_penetration)
 	tx["label4"].text = str(stats.magical_attack)
 	tx["label5"].text = "150%"
-	#tx["label6"].text = str(stats.magical_penetration)
+
 
 func connect_defensive_stats():
 	for key in deffensive_stat:
@@ -103,21 +101,20 @@ func connect_regen_stats():
 			print("NodePath untuk {key} belum diatur.")
 	tx["label1"].text = str(stats.max_stamina)
 	tx["label2"].text = str(stats.stamina_regen)
-	#tx["label3"].text = str(stats.mana_regen)
 	tx["label4"].text = str(stats.move_speed)
 
 
 func _on_str_btn_pressed() -> void:
-	pass 
+	stats.add_attribute_point("str")
 
 func _on_int_btn_pressed() -> void:
-	pass # Replace with function body.
+	stats.add_attribute_point("int")
 
 func _on_agi_btn_pressed() -> void:
-	pass # Replace with function body.
+	stats.add_attribute_point("agi")
 
 func _on_end_btn_pressed() -> void:
-	pass # Replace with function body.
+	stats.add_attribute_point("end")
 
 func _on_vit_btn_pressed() -> void:
-	pass # Replace with function body.
+	stats.add_attribute_point("vit")

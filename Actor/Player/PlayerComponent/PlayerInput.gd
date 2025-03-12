@@ -4,9 +4,11 @@ class_name PlayerInputController
 signal camera_rotated(rotation)
 signal toggle_inventory(is_open)
 
-var magics: MagicSystem
+@export var magics = Node
 var camera_rotation: float = 0.0
 var inventory_open: bool = false
+
+
 
 func _input(event):
 	if event is InputEventKey and event.pressed:

@@ -40,7 +40,7 @@ var spell_data: Dictionary = {
 
 @onready var stats: PlayerStatsController = get_parent().get_node("PlayerStats")
 @onready var spawn_point: Node3D = get_node(spell_spawn_point)
-@onready var camera: Camera3D = get_node(camera_controller)
+@onready var camera: Node3D = get_node(camera_controller)
 var current_cooldowns: Dictionary = {}
 
 func _ready():
@@ -109,7 +109,6 @@ func calculate_spell_damage(spell: Dictionary) -> int:
 	return int(spell["damage_base"] + (stats.get_magical_attack() * spell["damage_multiplier"]))
 
 func setup_spell_instance(instance: Node, spell_name: String, damage: int):
-	# Common setup
 	instance.global_transform = camera.global_transform
 	instance.transform.origin = spawn_point.global_position
    
@@ -125,6 +124,8 @@ func setup_spell_instance(instance: Node, spell_name: String, damage: int):
 			instance.debuff_type = spell_data[spell_name]["debuff"]
 			instance.penetration = spell_data[spell_name]["penetration"]
 			instance.delay = spell_data[spell_name]["delay"]
+			#var anim_speed = instance.anim_player.get_animation("beam").length / spell_data[spell_name]["delay"]
+			#instance.anim_player.speed_scale = anim_speed
 
 func start_cooldown(spell_name: String, duration: float):
 	current_cooldowns[spell_name]["remaining"] = duration

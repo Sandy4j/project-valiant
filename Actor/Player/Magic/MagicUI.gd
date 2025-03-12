@@ -6,7 +6,7 @@ extends MarginContainer
 func _ready():
 	update_spell_ui()
 	
-	var magic_system = get_parent().get_node("PlayerFunction").get_node("MagicSystem")
+	var magic_system = self.get_parent().get_parent().get_parent().get_child(0).get_child(4)
 
 	if magic_system:
 		magic_system.spell_cooldown_updated.connect(update_cooldown)

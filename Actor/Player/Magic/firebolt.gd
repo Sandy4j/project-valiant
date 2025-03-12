@@ -1,10 +1,10 @@
-# firebolt.gd
 extends Node3D
 
 var speed = 15.0
 var damage = 0
 var debuff_type = "burn"
 var aoe_radius = 2.0
+var is_magic_damage = true
 
 func _physics_process(delta):
 	global_translate(Vector3.FORWARD * speed * delta)
@@ -16,7 +16,16 @@ func _on_area_3d_body_entered(body):
 		queue_free()
 
 func apply_damage(target):
-	target.take_damage(damage)
+	if target.has_method("take_damage"):
+		# Try to call with two parameters, fall back to one if it fails
+		var success = false
+		if target.has_method("is_magic_damager"):  # Check if target has a method to determine damage type
+			target.take_damage(damage, is_magic_damage)
+			success = true
+		else:
+			# For backward compatibility with older enemy types
+			target.take_damage(damage)
+
 	if target.has_method("apply_debuff"):
 		target.apply_debuff(debuff_type)
 
@@ -31,7 +40,13 @@ func explode():
 	aoe.global_transform = global_transform
 	
 	for body in aoe.get_overlapping_bodies():
-		if body.is_in_group("enemy"):
+		if body.is_in_group("enemy") and body != get_collider():
 			apply_damage(body)
 	
 	aoe.queue_free()
+
+func get_collider():
+	return get_node("Area3D").get_overlapping_bodies()[0] if get_node("Area3D").get_overlapping_bodies().size() > 0 else null
+
+func _on_timer_timeout() -> void:
+	queue_free()
