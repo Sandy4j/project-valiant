@@ -4,6 +4,7 @@ extends Node
 @onready var Player
 @onready var Stats = "res://Actor/Player/StatsPlayer.gd"
 
+var ui_show:bool 
 var intro:bool = true
 
 var items = {

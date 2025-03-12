@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=3 uid="uid://bajfgbkc11fx0"]
+
+[ext_resource type="Script" uid="uid://o1nn1e5snrci" path="res://UI/Dialogue/dialogue_box.gd" id="1_d88oa"]
+[ext_resource type="Texture2D" uid="uid://b7g7uxb7l6caw" path="res://icon.svg" id="2_uij8g"]
+[ext_resource type="Script" uid="uid://bc2f3wwgitgqt" path="res://UI/Dialogue/dialogue_pop_up.gd" id="3_j57jb"]
+
+[sub_resource type="Animation" id="Animation_fsmjl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_71ttv"]
+resource_name = "dialogue_appear"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bg:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pipyq"]
+_data = {
+&"RESET": SubResource("Animation_fsmjl"),
+&"dialogue_appear": SubResource("Animation_71ttv")
+}
+
+[node name="Chatbox" type="CanvasLayer"]
+
+[node name="DialogueBox" type="Node2D" parent="."]
+script = ExtResource("1_d88oa")
+
+[node name="bg" type="Sprite2D" parent="DialogueBox"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(575, 502)
+scale = Vector2(8.84, 2.12)
+texture = ExtResource("2_uij8g")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueBox"]
+libraries = {
+&"": SubResource("AnimationLibrary_pipyq")
+}
+
+[node name="DialoguePopUp" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_j57jb")
+
+[node name="Dialogue" type="RichTextLabel" parent="DialoguePopUp"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 374.0
+offset_right = 1132.0
+offset_bottom = 637.0
+bbcode_enabled = true
+text = "asdadawdsad"
+
+[node name="DialogueIndicator" type="Button" parent="DialoguePopUp"]
+layout_mode = 0
+offset_right = 24.0
+offset_bottom = 16.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialoguePopUp"]
+
+[connection signal="pressed" from="DialoguePopUp/DialogueIndicator" to="DialoguePopUp" method="_on_dialogue_indicator_pressed"]

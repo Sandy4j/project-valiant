@@ -2,24 +2,30 @@ extends Node
 class_name PlayerInputController
 
 signal camera_rotated(rotation)
-signal toggle_inventory(is_open)
+signal UI_Change(state)
+signal talk(indx)
 
-@export var magics = Node
+var mouse_show:bool
+var ui_open:bool
+var ui_closed:bool
+var magics: MagicSystem
+
 var camera_rotation: float = 0.0
-var inventory_open: bool = false
 
 
 
 func _input(event):
-	if event is InputEventKey and event.pressed:
+	if event is InputEventKey and event.pressed && !GlobalSignal.ui_show:
 		if event.keycode == KEY_ESCAPE:
 			toggle_mouse_mode()
 
 func toggle_mouse_mode():
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		mouse_show = true
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		mouse_show = false
 
 
 func _unhandled_input(event):
@@ -27,16 +33,34 @@ func _unhandled_input(event):
 		magics.cast_spell("firebolt")
 	if Input.is_action_just_pressed("blizzard"):
 		magics.cast_spell("blizzard")
-	
 	if Input.is_action_just_pressed("suicide"):
 		get_parent().Hited(1000)
-		
-	if Input.is_action_just_pressed("inven"):
-		inventory_open = !inventory_open
-		emit_signal("toggle_inventory", inventory_open)
+	if Input.is_action_just_pressed("inven"): 
+		emit_signal("UI_Change",1)
+		if !mouse_show:
+			toggle_mouse_mode()
+			ui_open = true
+		elif !ui_open && mouse_show:
+			ui_open = true
+		elif ui_closed:
+			ui_closed = false
+			ui_open = false
+			toggle_mouse_mode()
 	if Input.is_action_just_pressed("stats"):
-		
-		pass
+		emit_signal("UI_Change",2)
+		if !mouse_show:
+			toggle_mouse_mode()
+			ui_open = true
+		elif !ui_open && mouse_show:
+			ui_open = true
+		elif ui_closed:
+			ui_closed = false
+			ui_open = false
+			toggle_mouse_mode()
+	if Input.is_action_just_pressed("Talk"):
+		emit_signal("talk",1)
+
+
 
 func get_movement_direction(cam_rotation: float) -> Vector3:
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")

@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="2_4vcqa"]
 [ext_resource type="Script" path="res://UI/Inventory/Item/collectable.gd" id="3_2cwqo"]
-[ext_resource type="Resource" path="res://UI/Inventory/Item/Health_potion.tres" id="4_inb2b"]
-[ext_resource type="Resource" path="res://UI/Inventory/Item/Mana_potion.tres" id="5_06yp6"]
+[ext_resource type="Resource" uid="uid://bm0eivccpinja" path="res://UI/Inventory/Item/Health_potion.tres" id="4_inb2b"]
+[ext_resource type="Resource" uid="uid://c2pj44sgpia2f" path="res://UI/Inventory/Item/Mana_potion.tres" id="5_06yp6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqsm7"]
 
@@ -22,9 +22,6 @@ radius = 0.585406
 
 [node name="Player" parent="." instance=ExtResource("2_4vcqa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0571952, 0, 1.58268)
-JUMP_VELOCITY = 4.5
-MOUSE_SENSITIVITY = 0.05
-ROTATION_SPEED = 10.0
 
 [node name="Ground" type="StaticBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_gqsm7")

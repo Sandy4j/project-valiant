@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3vr1r8qisb8l"
+uid="uid://dg6qqry1hk4d"
 path.s3tc="res://.godot/imported/Tangga_Tangga_Tembok_BaseColor.png-f194f3505054cfddeade3114e0e59e50.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "b07135540f579afeb1fbe13999c46322"
 }
 
 [deps]

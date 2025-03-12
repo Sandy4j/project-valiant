@@ -9,6 +9,9 @@ class_name Player
 @onready var stats_controller: PlayerStatsController = $PlayerFunction/PlayerStats
 @onready var input_controller: PlayerInputController = $PlayerFunction/PlayerInput
 @onready var combat_controller: PlayerPhysicalCombatController = $PlayerFunction/PlayerCombat
+@onready var UI_Player: = %"UI Player"
+@onready var Dialogbox = $"UI Player/Chatbox/DialogueBox"
+@onready var Dialog = $"UI Player/Chatbox/DialoguePopUp"
 @onready var magic_system: MagicSystem = $PlayerFunction/MagicSystem
 @onready var spell_spawn_point = $Rogue/SpellSpawn
 @onready var model = $Rogue
@@ -24,6 +27,8 @@ func _ready():
 	stats_controller.connect("Pdied", Callable(self, "died"))
 	input_controller.connect("camera_rotated", Callable(self, "update_camera_rotation"))
 	combat_controller.connect("attack_performed", Callable(animation_controller, "play_attack"))
+	input_controller.connect("UI_Change",Callable(UI_Player,"UI_State"))
+	input_controller.connect("talk",self.Talking)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -72,3 +77,7 @@ func respawn() -> void:
 			if current_parent:
 				current_parent.remove_child(self)
 		dungeon_manager.spawn_player()
+
+func Talking(indx:int):
+	Dialogbox.dial_show()
+	Dialog.load_dialogue(indx)

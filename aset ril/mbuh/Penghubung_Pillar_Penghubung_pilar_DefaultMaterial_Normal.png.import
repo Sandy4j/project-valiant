@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c85lle5cb1g16"
+uid="uid://dx12vlbtohjl8"
 path.s3tc="res://.godot/imported/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png-06042ba6f65bf4e9f033cb7d360c1968.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "d12b2787b43e7e21f28140bb584411b3"
 }
 
 [deps]
@@ -28,7 +25,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Dungeon/Acc/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png"
+roughness/src_normal="res://aset ril/mbuh/Penghubung_Pillar_Penghubung_pilar_DefaultMaterial_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

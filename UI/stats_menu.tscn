@@ -287,7 +287,7 @@ size_flags_horizontal = 3
 
 [node name="SP_Count" type="Label" parent="stat_menu/left_cont/Spacer_SP/SP_Con/con"]
 layout_mode = 2
-text = "1"
+text = "3"
 horizontal_alignment = 2
 
 [node name="STR_Box" type="TextureRect" parent="stat_menu/left_cont"]
