@@ -8,11 +8,12 @@ var penetration: bool = false
 var delay: float = 2.0
 var penetrated_targets: Array = []
 var is_magic_damage = true
+@onready var raycast = $RayCast3D
 
 func _ready():
 	anim_player.play("beam")
 	$Beam.emitting = true
-	$Timer.wait_time = 2.0
+	$Timer.wait_time = 1.0
 	$Timer.start()
 	
 	$sprinkle.emitting = true
@@ -23,21 +24,19 @@ func _process(delta):
 	update_beam()
 
 func update_beam():
-	if $RayCast3D.is_colliding():
-		var target = $RayCast3D.get_collider()
+	if raycast.is_colliding():
+		var target = raycast.get_collider()
 		if target.is_in_group("enemy") && !penetrated_targets.has(target):
 			apply_damage(target)
 			penetrated_targets.append(target)
 
 func apply_damage(target):
 	if target.has_method("take_damage"):
-		# Try to call with two parameters, fall back to one if it fails
 		var success = false
-		if target.has_method("is_magic_damager"):  # Check if target has a method to determine damage type
+		if target.has_method("is_magic_damager"):
 			target.take_damage(damage, is_magic_damage)
 			success = true
 		else:
-			# For backward compatibility with older enemy types
 			target.take_damage(damage)
 	
 	if target.has_method("apply_debuff"):

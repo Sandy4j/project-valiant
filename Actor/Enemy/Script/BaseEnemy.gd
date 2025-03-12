@@ -19,6 +19,7 @@ var original_speed: float = movement_speed
 
 @onready var health_bar: ProgressBar3D = $ProgressBar3D
 @onready var attack_raycast: RayCast3D = $AttackRaycast
+@onready var debuff_system = get_node("/root/Debuff")
 
 enum EnemyState { IDLE, CHASE, ATTACK, DEAD }
 var current_state: EnemyState = EnemyState.IDLE
@@ -161,22 +162,19 @@ func get_physical_defense() -> float:
 	return physical_defense
 
 func apply_debuff(debuff_type: String) -> void:
-	var debuff_system = get_tree().get_first_node_in_group("player").get_node("PlayerFunction/MagicSystem")
 	if debuff_system and debuff_system.has_method("apply_debuff"):
 		debuff_system.apply_debuff(self, debuff_type)
 		active_debuffs[debuff_type] = true
 
 func update_speed() -> void:
 	var cold_stacks = 0
-	var debuff_system = get_tree().get_first_node_in_group("player").get_node("PlayerFunction/MagicSystem")
 	
 	if debuff_system and active_debuffs.has("cold"):
-		var player_debuff_system = debuff_system.get_parent().get_node("DebuffSystem")
-		if player_debuff_system and player_debuff_system.active_debuffs.has(self) and player_debuff_system.active_debuffs[self].has("cold"):
-			cold_stacks = player_debuff_system.active_debuffs[self]["cold"]["stacks"]
-	
+		if debuff_system and debuff_system.active_debuffs.has(self) and debuff_system.active_debuffs[self].has("cold"):
+			cold_stacks = debuff_system.active_debuffs[self]["cold"]["stacks"]
 	var slowdown_factor = max(0.5, 1.0 - (0.1 * cold_stacks))
 	movement_speed = original_speed * slowdown_factor
+	print("slowed")
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
