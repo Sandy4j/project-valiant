@@ -102,8 +102,11 @@ text = "asdadawdsad"
 
 [node name="DialogueIndicator" type="Button" parent="DialoguePopUp"]
 layout_mode = 0
-offset_right = 24.0
-offset_bottom = 16.0
+offset_left = 915.0
+offset_top = 580.0
+offset_right = 1050.0
+offset_bottom = 619.0
+text = "NEXT BUTTON"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialoguePopUp"]
 
