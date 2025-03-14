@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://b2acm2daicedc" path="res://UI/Inventory/Item/collectable.gd" id="3_2cwqo"]
 [ext_resource type="Resource" uid="uid://bm0eivccpinja" path="res://UI/Inventory/Item/Health_potion.tres" id="4_inb2b"]
 [ext_resource type="Resource" uid="uid://c2pj44sgpia2f" path="res://UI/Inventory/Item/Mana_potion.tres" id="5_06yp6"]
-[ext_resource type="Script" uid="uid://mmc2gqpyh1j6" path="res://Skrip/Dialogue_Component.gd" id="5_ptxpm"]
-[ext_resource type="Script" uid="uid://d2tmqdgdx7who" path="res://Skrip/Convo_Resource.gd" id="6_8j0fi"]
-[ext_resource type="Script" uid="uid://dcbvtlqrwdhcc" path="res://Skrip/Dialogue_Resource.gd" id="6_hlhq2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gqsm7"]
 

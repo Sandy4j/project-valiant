@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalSignal="*res://Skrip/GlobalSignal.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+Debuff="*res://Actor/Player/Magic/debuff.gd"
 
 [debug]
 

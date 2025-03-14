@@ -99,5 +99,5 @@ text = "Loading"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jwt12")
+&"": SubResource("AnimationLibrary_jwt12")
 }

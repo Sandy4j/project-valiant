@@ -6,12 +6,10 @@ signal spell_cast(spell_name: String)
 signal spell_cooldown_updated(spell_name: String, cooldown: float)
 signal spell_failed(reason: String)
 
-# Exports
 @export_category("Spell Settings")
 @export var spell_spawn_point: NodePath
 @export var camera_controller: NodePath
 
-# Spell Data Configuration
 var spell_data: Dictionary = {
 	"firebolt": {
 		"name": "Firebolt",
@@ -27,7 +25,7 @@ var spell_data: Dictionary = {
 	"blizzard": {
 		"name": "Blizzard Beam",
 		"scene": preload("res://aset ril/aset vfx/Proyektil/player/beam/beam.tscn"),
-		"damage_base": 45,
+		"damage_base": 15,
 		"damage_multiplier": 1.0,
 		"mana_cost": 45,
 		"cooldown": 5.0,
@@ -36,7 +34,6 @@ var spell_data: Dictionary = {
 		"delay": 2.0
 	}
 }
-
 
 @onready var stats: PlayerStatsController = get_parent().get_node("PlayerStats")
 @onready var spawn_point: Node3D = get_node(spell_spawn_point)

@@ -20,21 +20,9 @@ func _ready():
 	if penetration:
 		$sprinkle.amount = 100
 	
-	# Setup Area3D
-	area.body_entered.connect(_on_body_entered)
-	area.body_exited.connect(_on_body_exited)
-	
 	# Timer untuk damage berulang
 	$DamageTimer.wait_time = 0.5  # Interval damage (0.5 detik)
 	$DamageTimer.start()
-
-func _on_body_entered(body: Node3D):
-	if body.is_in_group("enemy"):
-		current_targets.append(body)
-
-func _on_body_exited(body: Node3D):
-	if body in current_targets:
-		current_targets.erase(body)
 
 func _on_damage_timer_timeout():
 	for target in current_targets:
@@ -58,3 +46,12 @@ func _on_timer_timeout():
 	anim_player.play_backwards("beam")
 	await anim_player.animation_finished
 	queue_free()
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("enemy"):
+		current_targets.append(body)
+
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body in current_targets:
+		current_targets.erase(body)
