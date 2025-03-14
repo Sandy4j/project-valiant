@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
+@export var inv:Inventory
 @export var JUMP_VELOCITY = 4.5
 @export var MOUSE_SENSITIVITY = 0.05
 @export var ROTATION_SPEED = 10.0
@@ -28,7 +29,7 @@ func _ready():
 	input_controller.connect("camera_rotated", Callable(self, "update_camera_rotation"))
 	combat_controller.connect("attack_performed", Callable(animation_controller, "play_attack"))
 	input_controller.connect("UI_Change",Callable(UI_Player,"UI_State"))
-	input_controller.connect("talk",self.Talking)
+	#input_controller.connect("talk",self.Talking)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -78,6 +79,17 @@ func respawn() -> void:
 				current_parent.remove_child(self)
 		dungeon_manager.spawn_player()
 
-func Talking(indx:int):
+func Talking(indx:Dialog_Convo):
 	Dialogbox.dial_show()
 	Dialog.load_dialogue(indx)
+	print("DIalog terpanggil")
+
+
+func _on_player_area_entered(area: Area3D) -> void:
+	if area.has_method("collect"):
+		area.collect(inv)
+
+
+
+func _on_npc_area_entered(area: Area3D) -> void:
+	pass # Replace with function body.

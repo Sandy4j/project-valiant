@@ -12,24 +12,25 @@ var dialogue_to_me = [
 	"Berdoalah dia tetap memilikinya",
 	"otherwise it's all useless"
 ]
-
+var ftime:bool = true
 var dialogue_conv = []
 var dialogue_index = 0
 var dialogue_finished:bool = false
 var dialogue_stopper = 0
-var convo_index
+var convo:Dialog_Convo
 
 func _ready():
 	#Dialogue.rect_global_position = Vector2(-13,700)
 	Dialogue.visible = false
+	Indicator.visible = false
 
-func load_dialogue(index:int):
-	convo_index = index
-	match index:
-		1:
-			dialogue_conv = dialogue_to_me
-			
-		
+func load_dialogue(index:Dialog_Convo):
+	if ftime:
+		print("first time = " + index.resource_name)
+		convo = index
+		dialogue_conv = index.lines
+		ftime = false
+	
 	
 	Dialogue.visible = true
 	Indicator.visible = false
@@ -47,14 +48,16 @@ func load_dialogue(index:int):
 		Dialogue.visible = false
 		DialogueBox.dial_hide()
 		dialogue_index = -1
-		convo_index = -1
+		convo = null
 		dialogue_stopper = 0
+		ftime = true
 	dialogue_index += 1
 
 func on_tween_finished():
 	print("conv done")
 	dialogue_finished = true
 	Indicator.visible = true
+	Indicator.grab_focus()
 
 func _on_dialogue_indicator_pressed() -> void:
-	load_dialogue(convo_index)
+	load_dialogue(convo)
