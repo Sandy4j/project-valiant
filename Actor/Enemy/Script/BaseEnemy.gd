@@ -26,6 +26,7 @@ var player: Node3D = null
 var can_attack: bool = true
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@onready var debuff_system = get_node("/root/Debuff")
 var active_debuffs = {}
 
 func _ready():
@@ -161,14 +162,12 @@ func get_physical_defense() -> float:
 	return physical_defense
 
 func apply_debuff(debuff_type: String) -> void:
-	var debuff_system = get_tree().get_first_node_in_group("player").get_node("PlayerFunction/MagicSystem")
 	if debuff_system and debuff_system.has_method("apply_debuff"):
 		debuff_system.apply_debuff(self, debuff_type)
 		active_debuffs[debuff_type] = true
 
 func update_speed() -> void:
 	var cold_stacks = 0
-	var debuff_system = get_tree().get_first_node_in_group("player").get_node("PlayerFunction/MagicSystem")
 	
 	if debuff_system and active_debuffs.has("cold"):
 		var player_debuff_system = debuff_system.get_parent().get_node("DebuffSystem")

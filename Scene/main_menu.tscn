@@ -296,7 +296,7 @@ texture_normal = ExtResource("2_l3u7c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_siavp")
+&"": SubResource("AnimationLibrary_siavp")
 }
 
 [connection signal="pressed" from="ColorRect/Menu_Btn/Play_Btn" to="." method="_on_play_btn_pressed"]

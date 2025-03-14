@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1hbw8esat7i6"]
+
+[ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="146_my81u"]
+
+[sub_resource type="Environment" id="Environment_d2sgl"]
+ambient_light_source = 1
+reflected_light_source = 1
+
+[node name="Lobby" type="WorldEnvironment"]
+environment = SubResource("Environment_d2sgl")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.51698, -0.713292, 0)
+
+[node name="Player" parent="." instance=ExtResource("146_my81u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.539049, -0.7585, -12.6124)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.112856, 0.993611, 0, -0.993611, -0.112856, 0, 0, 0, 1, 4.10534, 15.9721, 0)

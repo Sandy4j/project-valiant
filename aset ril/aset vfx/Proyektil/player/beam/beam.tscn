@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c3vvgmfe7xqe7"]
+[gd_scene load_steps=39 format=3 uid="uid://c3vvgmfe7xqe7"]
 
 [ext_resource type="Script" uid="uid://crtupf8hkc3r4" path="res://Actor/Player/Magic/blizzard.gd" id="1_40om7"]
 [ext_resource type="Shader" uid="uid://ceubty8qhit5b" path="res://aset ril/aset vfx/Proyektil/player/beam/s_dynamic_shader.tres" id="1_iu4f8"]
@@ -254,6 +254,9 @@ _data = {
 &"beam": SubResource("Animation_2vp5s")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_40om7"]
+size = Vector3(1, 1, 15)
+
 [node name="kamehamehAAAA" type="Node3D"]
 script = ExtResource("1_40om7")
 
@@ -307,3 +310,18 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="DamageTimer" type="Timer" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.578826, -0.90608)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.59296)
+shape = SubResource("BoxShape3D_40om7")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
