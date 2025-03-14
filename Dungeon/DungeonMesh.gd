@@ -1,5 +1,6 @@
 @tool
 extends Node3D
+class_name DungeonMesh
 
 @export var grid_map_path : NodePath
 @onready var grid_map : GridMap = get_node(grid_map_path)

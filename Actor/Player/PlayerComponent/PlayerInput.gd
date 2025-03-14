@@ -8,7 +8,7 @@ signal talk(indx)
 var mouse_show:bool
 var ui_open:bool
 var ui_closed:bool
-var magics: MagicSystem
+@export var magics = Node
 
 var camera_rotation: float = 0.0
 

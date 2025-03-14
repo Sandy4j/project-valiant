@@ -5,9 +5,12 @@ class_name  UI
 @onready var invt = $IU/Inventory
 @onready var stats = $IU/Stats
 @onready var current_floor_label = $IU/FLoorLabel
+@onready var Stats: PlayerStatsController
+@onready var Inv_Item:Inv_Slots
 
 var inv_show:bool
 var sts_show:bool
+var ui_show:bool
 
 func _ready() -> void:
 	death.hide()

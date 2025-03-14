@@ -168,12 +168,7 @@ func apply_debuff(debuff_type: String) -> void:
 
 func update_speed() -> void:
 	var cold_stacks = 0
-	
-	if debuff_system and active_debuffs.has("cold"):
-		var player_debuff_system = debuff_system.get_parent().get_node("DebuffSystem")
-		if player_debuff_system and player_debuff_system.active_debuffs.has(self) and player_debuff_system.active_debuffs[self].has("cold"):
-			cold_stacks = player_debuff_system.active_debuffs[self]["cold"]["stacks"]
-	
+		
 	var slowdown_factor = max(0.5, 1.0 - (0.1 * cold_stacks))
 	movement_speed = original_speed * slowdown_factor
 

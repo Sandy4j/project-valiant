@@ -7,7 +7,7 @@ var aoe_radius = 2.0
 var is_magic_damage = true
 
 func _physics_process(delta):
-	global_translate(Vector3.FORWARD * speed * delta)
+	global_translate(-global_transform.basis.z * speed * delta)
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("enemy"):
@@ -17,13 +17,11 @@ func _on_area_3d_body_entered(body):
 
 func apply_damage(target):
 	if target.has_method("take_damage"):
-		# Try to call with two parameters, fall back to one if it fails
 		var success = false
-		if target.has_method("is_magic_damager"):  # Check if target has a method to determine damage type
+		if target.has_method("is_magic_damager"):
 			target.take_damage(damage, is_magic_damage)
 			success = true
 		else:
-			# For backward compatibility with older enemy types
 			target.take_damage(damage)
 
 	if target.has_method("apply_debuff"):

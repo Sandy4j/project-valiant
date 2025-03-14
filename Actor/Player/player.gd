@@ -110,12 +110,9 @@ func Talking(indx:Dialog_Convo):
 	Dialog.load_dialogue(indx)
 	print("DIalog terpanggil")
 
-
 func _on_player_area_entered(area: Area3D) -> void:
 	if area.has_method("collect"):
 		area.collect(inv)
-
-
 
 func _on_npc_area_entered(area: Area3D) -> void:
 	pass # Replace with function body.

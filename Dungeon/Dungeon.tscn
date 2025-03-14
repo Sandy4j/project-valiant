@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://chqs04p1lckav"]
+[gd_scene load_steps=11 format=3 uid="uid://chqs04p1lckav"]
 
 [ext_resource type="Script" uid="uid://bl8n62203ow4j" path="res://Dungeon/test_dung.gd" id="1_jtj4d"]
 [ext_resource type="Script" uid="uid://durvau03omxx5" path="res://Skrip/level_manager.gd" id="2_aqih3"]
 [ext_resource type="PackedScene" uid="uid://cu182v5sdcr0i" path="res://Dungeon/DungeonManager.tscn" id="3_q1v2f"]
+[ext_resource type="Script" uid="uid://cb7oh5u0p6mdv" path="res://Skrip/enemy_spawner.gd" id="4_esaj7"]
+[ext_resource type="PackedScene" uid="uid://43otwk7lfe2r" path="res://Actor/Enemy/enemy_melee.tscn" id="5_olpt0"]
+[ext_resource type="PackedScene" uid="uid://csbleyqdl1j3o" path="res://Actor/Enemy/Enemy_Ranged.tscn" id="6_qpp0o"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
 
@@ -12,6 +15,10 @@ sky_material = SubResource("PhysicalSkyMaterial_kr04x")
 [sub_resource type="Environment" id="Environment_3tu5o"]
 background_mode = 2
 sky = SubResource("Sky_m2eo6")
+
+[sub_resource type="Curve" id="Curve_uohym"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.246644, 0.236939), 0.0, 0.0, 0, 0, Vector2(0.496644, 0.492624), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [node name="Dungeon" type="WorldEnvironment"]
 environment = SubResource("Environment_3tu5o")
@@ -27,13 +34,37 @@ transform = Transform3D(0.258819, -0.670224, -0.695566, -1.43934e-08, -0.720103,
 light_energy = 2.0
 shadow_enabled = true
 
+[node name="EnemySpawner" type="Node3D" parent="."]
+script = ExtResource("4_esaj7")
+enemy_scenes = Array[PackedScene]([ExtResource("5_olpt0"), ExtResource("6_qpp0o")])
+difficulty_curve = SubResource("Curve_uohym")
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="FloorLabel" type="Label" parent="UI"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -17.5
 offset_right = 132.0
-offset_bottom = 35.0
+offset_bottom = 17.5
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 132.0
+offset_bottom = 15.0
+grow_vertical = 2
+color = Color(0.176419, 0.176419, 0.176419, 1)

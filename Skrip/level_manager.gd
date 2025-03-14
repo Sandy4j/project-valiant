@@ -1,4 +1,5 @@
 extends Node
+class_name LevelManager
 
 signal floor_changed(new_floor: int)
 signal checkpoint_reached(floor: int)

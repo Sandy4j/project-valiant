@@ -75,10 +75,9 @@ func cast_spell(spell_name: String):
 	if not spell_data.has(spell_name):
 		emit_signal("spell_failed", "Invalid spell")
 		return
-	
+
 	var spell = spell_data[spell_name]
 	
-	# Cooldown check
 	if current_cooldowns[spell_name]["remaining"] > 0:
 		emit_signal("spell_failed", "Spell on cooldown")
 		return
@@ -87,18 +86,10 @@ func cast_spell(spell_name: String):
 	if not stats.use_mana(spell["mana_cost"]):
 		emit_signal("spell_failed", "Not enough mana")
 		return
-	
-	# Calculate final damage
+		
 	var damage = calculate_spell_damage(spell)
-	
-	# Instantiate spell scene
 	var spell_instance = spell["scene"].instantiate()
 	setup_spell_instance(spell_instance, spell_name, damage)
-	
-	# Add to scene tree
-	get_tree().current_scene.add_child(spell_instance)
-	
-	# Start cooldown
 	start_cooldown(spell_name, spell["cooldown"])
 	emit_signal("spell_cast", spell_name)
 
@@ -106,8 +97,17 @@ func calculate_spell_damage(spell: Dictionary) -> int:
 	return int(spell["damage_base"] + (stats.get_magical_attack() * spell["damage_multiplier"]))
 
 func setup_spell_instance(instance: Node, spell_name: String, damage: int):
-	instance.global_transform = camera.global_transform
-	instance.transform.origin = spawn_point.global_position
+	var player = get_tree().get_first_node_in_group("player")
+	var model = player.get_node("Rogue")
+
+	var spawn_transform = Transform3D()
+	spawn_transform.origin = spawn_point.global_position
+	var model_basis = model.global_transform.basis
+	spawn_transform.basis = model_basis.rotated(Vector3.UP, PI)
+
+	get_tree().current_scene.add_child(instance)
+
+	instance.global_transform = spawn_transform
    
 	match spell_name:
 		"firebolt":
