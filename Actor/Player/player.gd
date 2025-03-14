@@ -6,6 +6,10 @@ class_name Player
 @export var MOUSE_SENSITIVITY = 0.05
 @export var ROTATION_SPEED = 10.0
 
+@onready var HP_BAR = $"UI Player/IU/HP"
+@onready var MANA_BAR = $"UI Player/IU/Mana"
+@onready var EXP_BAR = $"UI Player/IU/Exp_Bar"
+@onready var Lvl = $"UI Player/IU/Exp_Bar/Lvl"
 @onready var animation_controller: PlayerAnimationController = $PlayerFunction/PlayerAnim
 @onready var stats_controller: PlayerStatsController = $PlayerFunction/PlayerStats
 @onready var input_controller: PlayerInputController = $PlayerFunction/PlayerInput
@@ -23,13 +27,35 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	add_to_group("player")
-	
+	connect_stat()
 	#magic_system.stats_controller = stats_controller
 	stats_controller.connect("Pdied", Callable(self, "died"))
 	input_controller.connect("camera_rotated", Callable(self, "update_camera_rotation"))
 	combat_controller.connect("attack_performed", Callable(animation_controller, "play_attack"))
 	input_controller.connect("UI_Change",Callable(UI_Player,"UI_State"))
 	#input_controller.connect("talk",self.Talking)
+	stats_controller.connect("hp_changed", Callable(self, "connect_hp"))
+	stats_controller.connect("mana_changed", Callable(self, "connect_mana"))
+	stats_controller.connect("exp_changed", Callable(self, "connect_exp"))
+	stats_controller.connect("level_changed", Callable(self, "connect_stat"))
+
+func connect_stat():
+	connect_hp()
+	connect_mana()
+	connect_exp()
+
+func connect_hp():
+	HP_BAR.max_value = stats_controller.max_hp
+	HP_BAR.value = stats_controller.current_hp
+
+func connect_mana():
+	MANA_BAR.max_value = stats_controller.max_mana
+	MANA_BAR.value = stats_controller.current_mana
+
+func connect_exp():
+	EXP_BAR.max_value = stats_controller.xp_to_next_level
+	EXP_BAR.value = stats_controller.player_xp
+	Lvl.text = str(stats_controller.player_level)
 
 func _physics_process(delta):
 	if not is_on_floor():

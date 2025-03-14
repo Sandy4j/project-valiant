@@ -29,7 +29,6 @@ func update_inven():
 			slots[i+1].item = null
 			slots[i+1].count = 0
 
-
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if (event.button_index == 1) and (event.button_mask == 1):

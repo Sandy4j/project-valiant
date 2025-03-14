@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxxa6jjyncar0"]
 
-[ext_resource type="Script" uid="uid://b5uiqb54aigo7" path="res://UI/Inventory/inventory_slot_ui.gd" id="1_k50as"]
+[ext_resource type="Script" path="res://UI/Inventory/inventory_slot_ui.gd" id="1_k50as"]
 [ext_resource type="Texture2D" uid="uid://ddoxufw1yhq6a" path="res://UI/Inventory/bg_slot.png" id="2_2b68y"]
 [ext_resource type="Texture2D" uid="uid://eyas5v3x6skc" path="res://UI/Inventory/Item/bebeb3.jpg" id="3_bvvfq"]
 

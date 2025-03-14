@@ -1,8 +1,9 @@
 extends Node
 class_name PlayerStatsController
 
-signal hp_changed(new_hp)
-signal mana_changed(new_mana)
+signal hp_changed()
+signal mana_changed()
+signal exp_changed()
 signal stamina_changed(new_stamina)
 signal stat_point_changed(new_points)
 signal attribute_changed(attribute_name, new_value)
@@ -43,9 +44,9 @@ var magic_cd: float
 
 
 var player_level: int = 1
-var player_xp: int = 0
+var player_xp: int = 50
 var xp_to_next_level: int = 100
-var stat_points: int = 0 
+var stat_points: int = 3 
 var stat_points_per_level: int = 2
 
 var move_speed: float = 5.0
@@ -58,11 +59,12 @@ var regen_timer: float = 0.0
 func _ready():
 	calculate_stats()
 
-	current_hp = max_hp
-	current_mana = max_mana
+	current_hp = max_hp - 50
+	current_mana = max_mana - 500
 	current_stamina = max_stamina
+	connect("heal_pot", Callable(self,"heal"))
+	connect("mana_pot", Callable(self,"restore_mana"))
 	
-
 	#hp_bar.max_value = max_hp
 	#hp_bar.value = current_hp
 	# mana_bar.max_value = max_mana
@@ -78,7 +80,7 @@ func _process(delta):
 
 		if current_hp < max_hp:
 			current_hp = min(max_hp, current_hp + int(hp_regen))
-			emit_signal("hp_changed", current_hp)
+			emit_signal("hp_changed")
 			
 		if current_stamina < max_stamina:
 			var stamina_to_regen = (max_stamina * stamina_regen) / 100.0
@@ -96,8 +98,8 @@ func calculate_stats():
 
 	physical_defense = base_physical_defense + (end_points * 1.5)
 	magical_defense = base_magical_defense + (end_points * 1.5)
-
 	hp_regen = base_hp_regen + (end_points * 0.5)
+
 	stamina_regen = base_stamina_regen_percent + (agi_points * 0.5)
 
 	magic_cd = agi_points * 2.0
@@ -139,7 +141,7 @@ func take_damage(damage: int) -> void:
 	var actual_damage = max(1, damage - physical_defense)
 	
 	current_hp = max(0, current_hp - actual_damage)
-	emit_signal("hp_changed", current_hp)
+	emit_signal("hp_changed")
 	
 	if current_hp <= 0:
 		emit_signal("Pdied")
@@ -147,7 +149,7 @@ func take_damage(damage: int) -> void:
 func use_mana(amount: int) -> bool:
 	if current_mana >= amount:
 		current_mana -= amount
-		emit_signal("mana_changed", current_mana)
+		emit_signal("mana_changed")
 		return true
 	return false
 
@@ -159,12 +161,16 @@ func use_stamina(amount: int) -> bool:
 	return false
 
 func heal(amount: int) -> void:
+	print("Healing player by:", amount)
 	current_hp = min(max_hp, current_hp + amount)
-	emit_signal("hp_changed", current_hp)
+	emit_signal("hp_changed")
+
 
 func restore_mana(amount: int) -> void:
+	print("Mana restored by:", amount)
 	current_mana = min(max_mana, current_mana + amount)
-	emit_signal("mana_changed", current_mana)
+	emit_signal("mana_changed")
+
 
 func restore_stamina(amount: int) -> void:
 	current_stamina = min(max_stamina, current_stamina + amount)
@@ -175,7 +181,9 @@ func add_xp(amount: int) -> void:
 	
 	if player_xp >= xp_to_next_level:
 		level_up()
-		
+	
+	emit_signal("exp_changed")
+
 func level_up() -> void:
 	player_level += 1
 	player_xp -= xp_to_next_level
@@ -183,15 +191,15 @@ func level_up() -> void:
 	
 	stat_points += stat_points_per_level
 	
-	emit_signal("level_changed", player_level)
+	emit_signal("level_changed")
 	emit_signal("stat_point_changed", stat_points)
 	
 	current_hp = max_hp
 	current_mana = max_mana
 	current_stamina = max_stamina
 	
-	emit_signal("hp_changed", current_hp)
-	emit_signal("mana_changed", current_mana)
+	emit_signal("hp_changed")
+	emit_signal("mana_changed")
 	emit_signal("stamina_changed", current_stamina)
 
 func calculate_next_level_xp() -> int:
@@ -241,8 +249,8 @@ func reset_stats() -> void:
 	current_mana = max_mana
 	current_stamina = max_stamina
 	
-	emit_signal("hp_changed", current_hp)
-	emit_signal("mana_changed", current_mana)
+	emit_signal("hp_changed")
+	emit_signal("mana_changed")
 	emit_signal("stamina_changed", current_stamina)
 
 func get_max_hp() -> int: return max_hp

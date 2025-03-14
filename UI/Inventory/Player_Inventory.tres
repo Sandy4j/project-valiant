@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bsrcxhtd5vyfq" path="res://UI/Inventory/inventory_main.gd" id="4_64vkp"]
 [ext_resource type="Resource" uid="uid://c2pj44sgpia2f" path="res://UI/Inventory/Item/Mana_potion.tres" id="4_4674t"]
 [ext_resource type="Texture2D" uid="uid://cg3latg8bd8xs" path="res://UI/Inventory/Item/bebeb.jpg" id="5_1s1eu"]
-[ext_resource type="Script" uid="uid://dxmmva7ttevsx" path="res://UI/Inventory/Item/item_data.gd" id="5_6pllc"]
+[ext_resource type="Script" path="res://UI/Inventory/Item/item_data.gd" id="5_6pllc"]
 [ext_resource type="Resource" uid="uid://co15xpsda7yt1" path="res://UI/Inventory/Item/main_quest_item.tres" id="7_e64di"]
 [ext_resource type="Resource" uid="uid://dkdw01y5vajfi" path="res://UI/Inventory/Item/test_item.tres" id="8_w06bh"]
 

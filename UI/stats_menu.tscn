@@ -57,8 +57,8 @@ basic_stat = {
 "label2": NodePath("stat_menu/left_cont/INT_Box/con/INT"),
 "label3": NodePath("stat_menu/left_cont/END_Box/con/DEX"),
 "label4": NodePath("stat_menu/left_cont/AGI_Box/con/AGI"),
-"label5": NodePath("stat_menu/left_cont/VIT_Box/con/STR"),
-"label6": NodePath(""),
+"label5": NodePath("stat_menu/left_cont/VIT_Box/con/VIT"),
+"label6": NodePath("stat_menu/left_cont/Spacer_SP/SP_Con/con/SP_Count"),
 "label7": NodePath("")
 }
 offensive_stat = {
@@ -287,7 +287,7 @@ size_flags_horizontal = 3
 
 [node name="SP_Count" type="Label" parent="stat_menu/left_cont/Spacer_SP/SP_Con/con"]
 layout_mode = 2
-text = "3"
+text = "212412"
 horizontal_alignment = 2
 
 [node name="STR_Box" type="TextureRect" parent="stat_menu/left_cont"]
@@ -489,7 +489,7 @@ text = "VIT"
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="STR" type="Label" parent="stat_menu/left_cont/VIT_Box/con"]
+[node name="VIT" type="Label" parent="stat_menu/left_cont/VIT_Box/con"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "123"

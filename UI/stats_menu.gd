@@ -26,11 +26,16 @@ var tx: Dictionary = {}
 
 func _ready() -> void:
 	stats = self.get_parent().get_parent().get_parent().get_child(0).get_child(1)
-	connect_condition()
-	connect_basic_stats()
-	connect_offensive_stats()
-	connect_defensive_stats()
-	connect_regen_stats()
+	if stats:
+		connect_condition()
+		connect_basic_stats()
+		connect_offensive_stats()
+		connect_defensive_stats()
+		connect_regen_stats()
+	stats.hp_changed.connect(connect_condition)
+	stats.mana_changed.connect(connect_condition)
+	stats.exp_changed.connect(connect_condition)
+	stats.level_changed.connect(connect_basic_stats)
 
 func connect_condition():
 	for key in condition:
@@ -60,12 +65,12 @@ func connect_basic_stats():
 			tx[key] = get_node(path)
 		else:
 			print("NodePath untuk {key} belum diatur.")
-	#tx["label1"].text = str(stats.level)
-	#tx["label2"].text = str(stats.current_exp)
-	#tx["label3"].text = str(stats.max_exp)
-	#tx["label4"].text = str(stats.current_hp)
-	#tx["label5"].text = str(stats.max_hp)
-	#tx["label6"].text = str(stats.current_mana)
+	tx["label1"].text = str(stats.str_points)
+	tx["label2"].text = str(stats.int_points)
+	tx["label3"].text = str(stats.end_points)
+	tx["label4"].text = str(stats.agi_points)
+	tx["label5"].text = str(stats.vit_points)
+	tx["label6"].text = str(stats.stat_points)
 	#tx["label7"].text = str(stats.max_mana)
 
 func connect_offensive_stats():
@@ -106,15 +111,26 @@ func connect_regen_stats():
 
 func _on_str_btn_pressed() -> void:
 	stats.add_attribute_point("str")
+	connect_basic_stats()
+	connect_offensive_stats()
 
 func _on_int_btn_pressed() -> void:
 	stats.add_attribute_point("int")
+	connect_basic_stats()
+	connect_offensive_stats()
+	connect_condition()
 
 func _on_agi_btn_pressed() -> void:
 	stats.add_attribute_point("agi")
+	connect_basic_stats()
+	connect_regen_stats()
 
 func _on_end_btn_pressed() -> void:
 	stats.add_attribute_point("end")
+	connect_basic_stats()
+	connect_defensive_stats()
 
 func _on_vit_btn_pressed() -> void:
 	stats.add_attribute_point("vit")
+	connect_basic_stats()
+	connect_condition()

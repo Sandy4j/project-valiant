@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 GlobalSignal="*res://Skrip/GlobalSignal.gd"
 Debuff="*res://Actor/Player/Magic/debuff.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [debug]
 

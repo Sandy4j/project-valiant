@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnlhfeoge6mt8"]
+[gd_scene load_steps=20 format=3 uid="uid://dnlhfeoge6mt8"]
 
 [ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="1_0n8d5"]
 [ext_resource type="PackedScene" uid="uid://43otwk7lfe2r" path="res://Actor/Enemy/enemy_melee.tscn" id="2_4s7vw"]
 [ext_resource type="PackedScene" uid="uid://csbleyqdl1j3o" path="res://Actor/Enemy/Enemy_Ranged.tscn" id="3_y4jyy"]
 [ext_resource type="PackedScene" uid="uid://0w4ml57kcrn4" path="res://Actor/Enemy/Projectile.tscn" id="4_y4jyy"]
+[ext_resource type="Script" uid="uid://mmc2gqpyh1j6" path="res://Skrip/Dialogue_Component.gd" id="5_sl8mj"]
+[ext_resource type="Script" uid="uid://d2tmqdgdx7who" path="res://Skrip/Convo_Resource.gd" id="6_ltkwl"]
+[ext_resource type="Script" uid="uid://dcbvtlqrwdhcc" path="res://Skrip/Dialogue_Resource.gd" id="7_3rbyb"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
 
@@ -19,6 +22,35 @@ size = Vector3(10, 0.5, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sl8mj"]
 size = Vector3(10, 0.5, 10)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y4jyy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j4kad"]
+
+[sub_resource type="Resource" id="Resource_sl8mj"]
+script = ExtResource("7_3rbyb")
+lines = ["Hi ", "this is a first time dialog"]
+metadata/_custom_type_script = "uid://dcbvtlqrwdhcc"
+
+[sub_resource type="Resource" id="Resource_ltkwl"]
+script = ExtResource("6_ltkwl")
+convo = SubResource("Resource_sl8mj")
+onetime = true
+metadata/_custom_type_script = "uid://d2tmqdgdx7who"
+
+[sub_resource type="Resource" id="Resource_3rbyb"]
+script = ExtResource("7_3rbyb")
+lines = ["Tes", "yoo", "doa lorem ipsum dolor sit amet"]
+metadata/_custom_type_script = "uid://dcbvtlqrwdhcc"
+
+[sub_resource type="Resource" id="Resource_1ew8a"]
+script = ExtResource("6_ltkwl")
+convo = SubResource("Resource_3rbyb")
+onetime = false
+metadata/_custom_type_script = "uid://d2tmqdgdx7who"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klrw2"]
+size = Vector3(4.61353, 0.446777, 3.48438)
 
 [node name="Dungeon" type="WorldEnvironment"]
 environment = SubResource("Environment_3tu5o")
@@ -49,3 +81,20 @@ transform = Transform3D(0.83943, 0, -0.543467, 0, 1, 0, 0.543467, 0, 0.83943, -1
 projectile_scene = ExtResource("4_y4jyy")
 movement_speed = 1.0
 is_magic_damage = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3351, 3.97025, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_y4jyy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_j4kad")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.501731, 0)
+script = ExtResource("5_sl8mj")
+conversations = Array[ExtResource("6_ltkwl")]([SubResource("Resource_ltkwl"), SubResource("Resource_1ew8a")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+shape = SubResource("BoxShape3D_klrw2")

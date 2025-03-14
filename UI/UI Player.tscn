@@ -20,6 +20,10 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_ruohs")
 
+[node name="MagicUI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" parent="MagicUI" instance=ExtResource("11_1dmeh")]
+
 [node name="IU" type="CanvasLayer" parent="."]
 
 [node name="Death" type="ColorRect" parent="IU"]
@@ -133,7 +137,3 @@ label_settings = SubResource("LabelSettings_e141l")
 visible = false
 
 [node name="Chatbox" parent="." instance=ExtResource("11_yxbk2")]
-
-[node name="MagicUI" type="CanvasLayer" parent="."]
-
-[node name="MarginContainer" parent="MagicUI" instance=ExtResource("11_1dmeh")]
