@@ -33,11 +33,14 @@ func _ready():
 	input_controller.connect("camera_rotated", Callable(self, "update_camera_rotation"))
 	combat_controller.connect("attack_performed", Callable(animation_controller, "play_attack"))
 	input_controller.connect("UI_Change",Callable(UI_Player,"UI_State"))
+	input_controller.connect("paused",Callable(UI_Player,"paused"))
+	UI_Player.Resume_Btn.pressed.connect(Callable(input_controller,"toggle_mouse_mode"))
 	#input_controller.connect("talk",self.Talking)
 	stats_controller.connect("hp_changed", Callable(self, "connect_hp"))
 	stats_controller.connect("mana_changed", Callable(self, "connect_mana"))
 	stats_controller.connect("exp_changed", Callable(self, "connect_exp"))
 	stats_controller.connect("level_changed", Callable(self, "connect_stat"))
+	
 
 func connect_stat():
 	connect_hp()

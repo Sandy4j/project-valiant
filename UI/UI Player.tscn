@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxri7toy8d8gj"]
+[gd_scene load_steps=22 format=3 uid="uid://bxri7toy8d8gj"]
 
 [ext_resource type="Script" uid="uid://dvmpcc28slp8j" path="res://UI/ui.gd" id="1_ruohs"]
 [ext_resource type="PackedScene" uid="uid://brjxuorjpqc2s" path="res://UI/Inventory/inventory.tscn" id="2_l2hto"]
@@ -12,6 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://71u7x87ne3qt" path="res://UI/stats_menu.tscn" id="10_eqmgj"]
 [ext_resource type="PackedScene" uid="uid://b6imu13f8jy62" path="res://Actor/Player/ActionBartscn.tscn" id="11_1dmeh"]
 [ext_resource type="PackedScene" uid="uid://bajfgbkc11fx0" path="res://UI/Dialogue/chatbox.tscn" id="11_yxbk2"]
+[ext_resource type="Texture2D" uid="uid://c3kds0146amni" path="res://UI/Pause/Bg_pause.png" id="12_71ttv"]
+[ext_resource type="Texture2D" uid="uid://ipjise3k0bs0" path="res://UI/Pause/Paused_Text.png" id="13_bu78o"]
+[ext_resource type="Texture2D" uid="uid://bkmosiyswsx3c" path="res://UI/Pause/Resume_Normal.png" id="14_hybdm"]
+[ext_resource type="Texture2D" uid="uid://chuipuwlfv4r1" path="res://UI/Pause/Resume_Hover.png" id="15_3oim8"]
+[ext_resource type="Texture2D" uid="uid://ce3n2i5tuuh8o" path="res://UI/Pause/Options_Normal.png" id="16_w7pp4"]
+[ext_resource type="Texture2D" uid="uid://bksgvolctwre7" path="res://UI/Pause/Options_Hover.png" id="17_08lln"]
+[ext_resource type="Texture2D" uid="uid://di3vxb4xqejxv" path="res://UI/Pause/MainMenu_Normal.png" id="18_kmtjo"]
+[ext_resource type="Texture2D" uid="uid://dtil27gyn3ksq" path="res://UI/Pause/MainMenu_Hover.png" id="19_oa7xb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e141l"]
 
@@ -136,4 +144,98 @@ label_settings = SubResource("LabelSettings_e141l")
 [node name="Stats" parent="IU" instance=ExtResource("10_eqmgj")]
 visible = false
 
+[node name="Pause" type="Control" parent="IU"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="TextureRect" parent="IU/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -157.0
+offset_right = 576.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_71ttv")
+
+[node name="lg" type="TextureRect" parent="IU/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.5
+offset_top = -130.5
+offset_right = 68.5
+offset_bottom = -75.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_bu78o")
+
+[node name="Resume" type="TextureButton" parent="IU/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -48.0
+offset_right = 73.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("14_hybdm")
+texture_hover = ExtResource("15_3oim8")
+texture_focused = ExtResource("15_3oim8")
+
+[node name="Option" type="TextureButton" parent="IU/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = 3.0
+offset_right = 73.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("16_w7pp4")
+texture_hover = ExtResource("17_08lln")
+texture_focused = ExtResource("17_08lln")
+
+[node name="Quit" type="TextureButton" parent="IU/Pause"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 57.0
+offset_right = 83.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("18_kmtjo")
+texture_hover = ExtResource("19_oa7xb")
+texture_focused = ExtResource("19_oa7xb")
+
 [node name="Chatbox" parent="." instance=ExtResource("11_yxbk2")]
+
+[connection signal="pressed" from="IU/Pause/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="IU/Pause/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="IU/Pause/Quit" to="." method="_on_quit_pressed"]

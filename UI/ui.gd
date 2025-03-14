@@ -7,6 +7,8 @@ class_name  UI
 @onready var current_floor_label = $IU/FLoorLabel
 @onready var Stats: PlayerStatsController
 @onready var Inv_Item:Inv_Slots
+@onready var PauseM = $IU/Pause
+@onready var Resume_Btn = $IU/Pause/Resume
 
 var inv_show:bool
 var sts_show:bool
@@ -16,7 +18,8 @@ func _ready() -> void:
 	death.hide()
 	inv_clos()
 	#invt.hide()
-	
+	PauseM.hide()
+
 func update_floor_label(new_floor: int) -> void:
 	current_floor_label.text = "Current Floor: " + str(new_floor)
 
@@ -65,3 +68,18 @@ func stats_close():
 	GlobalSignal.ui_show = false
 	sts_show = false
 	stats.visible = false
+
+func paused():
+	PauseM.visible = !PauseM.visible
+	get_tree().paused = PauseM.visible
+
+func _on_resume_pressed() -> void:
+	PauseM.visible = false
+	get_tree().paused = PauseM.visible
+
+func _on_option_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_quit_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scene/main_menu.tscn")

@@ -4,6 +4,7 @@ class_name PlayerInputController
 signal camera_rotated(rotation)
 signal UI_Change(state)
 signal talk(indx)
+signal paused
 
 var mouse_show:bool
 var ui_open:bool
@@ -16,7 +17,7 @@ var camera_rotation: float = 0.0
 
 func _input(event):
 	if event is InputEventKey and event.pressed && !GlobalSignal.ui_show:
-		if event.keycode == KEY_ESCAPE:
+		if event.keycode == KEY_M:
 			toggle_mouse_mode()
 
 func toggle_mouse_mode():
@@ -57,10 +58,9 @@ func _unhandled_input(event):
 			ui_closed = false
 			ui_open = false
 			toggle_mouse_mode()
-	if Input.is_action_just_pressed("Talk"):
-		emit_signal("talk",1)
-
-
+	if Input.is_action_just_pressed("Pause") && !GlobalSignal.impaused:
+		emit_signal("paused")
+		toggle_mouse_mode()
 
 func get_movement_direction(cam_rotation: float) -> Vector3:
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")

@@ -5,6 +5,7 @@ extends Node
 @onready var Stats: PlayerStatsController
 @onready var Inv_Item:Inv_Slots
 
+var impaused:bool = false
 var ui_show:bool 
 var intro:bool = true
 

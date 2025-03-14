@@ -4,7 +4,7 @@ var tween
 @onready var DialogueBox = get_parent().get_node("DialogueBox")
 @onready var Dialogue = $Dialogue
 @onready var Indicator = $DialogueIndicator
-
+@onready var timer = $Timer
 
 var dialogue_to_me = [
 	"Halo diriku yang ada disana?",
@@ -23,6 +23,7 @@ func _ready():
 	#Dialogue.rect_global_position = Vector2(-13,700)
 	Dialogue.visible = false
 	Indicator.visible = false
+	$Timer.timeout.connect(on_timer_timeout)
 
 func load_dialogue(index:Dialog_Convo):
 	if ftime:
@@ -30,6 +31,8 @@ func load_dialogue(index:Dialog_Convo):
 		convo = index
 		dialogue_conv = index.lines
 		ftime = false
+		get_tree().paused = true
+		GlobalSignal.impaused = true
 	
 	
 	Dialogue.visible = true
@@ -51,13 +54,19 @@ func load_dialogue(index:Dialog_Convo):
 		convo = null
 		dialogue_stopper = 0
 		ftime = true
+		get_tree().paused = false
+		GlobalSignal.impaused = false
 	dialogue_index += 1
 
 func on_tween_finished():
-	print("conv done")
 	dialogue_finished = true
 	Indicator.visible = true
+	$Timer.start()
+	
+
+func on_timer_timeout():
 	Indicator.grab_focus()
+	print("conv done")
 
 func _on_dialogue_indicator_pressed() -> void:
 	load_dialogue(convo)
