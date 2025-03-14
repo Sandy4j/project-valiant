@@ -2,7 +2,7 @@ extends Area3D
 class_name Dialogue_Component
 
 @export var conversations: Array[Convo_Res] = []
-
+@onready var Trigger = $Trigger
 var player_in_area: bool = false  # Apakah pemain berada di area
 var player: Node = null  # Referensi ke pemain
 
@@ -10,18 +10,21 @@ func _ready():
 	# Hubungkan sinyal area_entered dan area_exited
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
+	Trigger.visible = false
 
 func _on_body_entered(body: Node):
 	# Cek apakah objek yang masuk adalah pemain
-	if body.has_method("Talking"):  # Misalnya, pemain memiliki metode "talking"
+	if body.has_method("Talking") :  # Misalnya, pemain memiliki metode "talking"
 		player_in_area = true
 		player = body
+		Trigger.visible = true
 
 func _on_body_exited(body: Node):
 	# Cek apakah objek yang keluar adalah pemain
 	if body == player:
 		player_in_area = false
 		player = null
+		Trigger.visible = false
 
 func _process(delta):
 	# Cek jika pemain berada di area dan menekan tombol "Talk"

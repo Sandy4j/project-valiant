@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://chbh7aipl4sog"]
+
+[ext_resource type="Script" uid="uid://mmc2gqpyh1j6" path="res://Skrip/Dialogue_Component.gd" id="1_pi7t0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7325j"]
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_pi7t0")
+
+[node name="Trigger" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.378317, 0, 0, 0, 0.619905, 0, 0, 0, 0.458175, 0, 2.06875, 0)
+mesh = SubResource("CapsuleMesh_7325j")
