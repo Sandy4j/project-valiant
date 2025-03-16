@@ -5,7 +5,7 @@ var scene
 var scene_load_status = 0
 
 func _ready() -> void:
-	scene = "res://main.tscn"
+	scene = "res://Scene/Lobby.tscn"
 	$AnimationPlayer.play("loding")
 	ResourceLoader.load_threaded_request(scene)
 
