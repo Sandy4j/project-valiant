@@ -1,11 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnlhfeoge6mt8"]
+[gd_scene load_steps=9 format=3 uid="uid://dnlhfeoge6mt8"]
 
 [ext_resource type="PackedScene" uid="uid://cyjg4fqhqnorc" path="res://Actor/Player/Player.tscn" id="1_0n8d5"]
 [ext_resource type="PackedScene" uid="uid://43otwk7lfe2r" path="res://Actor/Enemy/enemy_melee.tscn" id="2_4s7vw"]
 [ext_resource type="PackedScene" uid="uid://csbleyqdl1j3o" path="res://Actor/Enemy/Enemy_Ranged.tscn" id="3_y4jyy"]
-[ext_resource type="PackedScene" uid="uid://chbh7aipl4sog" path="res://Scene/Dialogue_Component.tscn" id="4_y4jyy"]
-[ext_resource type="Script" uid="uid://d2tmqdgdx7who" path="res://Skrip/Convo_Resource.gd" id="5_klrw2"]
-[ext_resource type="Script" uid="uid://dcbvtlqrwdhcc" path="res://Skrip/Dialogue_Resource.gd" id="6_sl8mj"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kr04x"]
 
@@ -21,36 +18,6 @@ size = Vector3(10, 0.5, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sl8mj"]
 size = Vector3(10, 0.5, 10)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_4s7vw"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y4jyy"]
-
-[sub_resource type="Resource" id="Resource_ltkwl"]
-script = ExtResource("6_sl8mj")
-lines = ["Tes", "Dialog first shot"]
-metadata/_custom_type_script = "uid://dcbvtlqrwdhcc"
-
-[sub_resource type="Resource" id="Resource_3rbyb"]
-script = ExtResource("5_klrw2")
-convo = SubResource("Resource_ltkwl")
-onetime = true
-metadata/_custom_type_script = "uid://d2tmqdgdx7who"
-
-[sub_resource type="Resource" id="Resource_1ew8a"]
-script = ExtResource("6_sl8mj")
-lines = ["Dialog", "Template"]
-metadata/_custom_type_script = "uid://dcbvtlqrwdhcc"
-
-[sub_resource type="Resource" id="Resource_vqgy7"]
-script = ExtResource("5_klrw2")
-convo = SubResource("Resource_1ew8a")
-onetime = false
-metadata/_custom_type_script = "uid://d2tmqdgdx7who"
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_j4kad"]
-height = 0.719727
-radius = 3.021
 
 [node name="Dungeon" type="WorldEnvironment"]
 environment = SubResource("Environment_3tu5o")
@@ -80,19 +47,3 @@ movement_speed = 1.0
 transform = Transform3D(0.83943, 0, -0.543467, 0, 1, 0, 0.543467, 0, 0.83943, -12.1892, 2.416, 15.2523)
 movement_speed = 1.0
 is_magic_damage = true
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.22307, -12.0397)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_4s7vw")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_y4jyy")
-
-[node name="Dialogue_Component" parent="CharacterBody3D" instance=ExtResource("4_y4jyy")]
-conversations = Array[ExtResource("5_klrw2")]([SubResource("Resource_3rbyb"), SubResource("Resource_vqgy7")])
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D/Dialogue_Component"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0744629, -0.640137, -0.0177612)
-shape = SubResource("CylinderShape3D_j4kad")

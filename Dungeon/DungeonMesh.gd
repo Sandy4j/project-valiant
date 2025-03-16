@@ -31,9 +31,9 @@ var room_types : Dictionary = {
 func calculate_grid_to_world(grid_pos: Vector3) -> Vector3:
 	var cell_size = grid_map.cell_size
 	return Vector3(
-		grid_pos.x * cell_size.x + cell_size.x * 0.5,
+		grid_pos.x * cell_size.x,
 		0,
-		grid_pos.z * cell_size.z + cell_size.z * 0.5
+		grid_pos.z * cell_size.z
 	)
 
 func instantiate_start_room(start_pos: Vector3):
@@ -99,14 +99,13 @@ func create_dungeon():
 				leftmost_start_x = cell.x
 		elif cell_index == 5:
 			end_cells.append(cell)
-			if cell.x > rightmost_end_x:  # Cari posisi x paling kanan untuk end room
+			if cell.x > rightmost_end_x:
 				rightmost_end_x = cell.x
 	
 	if start_cells.size() > 0:
 		instantiate_start_room(Vector3(start_cells[0]))
 	
 	if end_cells.size() > 0:
-		# Cari end cell yang memiliki posisi x paling kanan
 		var rightmost_end_cell = null
 		for end_cell in end_cells:
 			if end_cell.x == rightmost_end_x:
@@ -138,7 +137,7 @@ func create_dungeon():
 					dun_cell.call("remove_door_left")
 			elif cell_index == 5:  # Untuk end room
 				if cell.x == rightmost_end_x:
-					dun_cell.call("remove_wall_right")  # Hapus dinding kanan untuk end room paling kanan
+					dun_cell.call("remove_wall_right")
 					dun_cell.call("remove_door_right")
 
 			add_child(dun_cell)
@@ -152,7 +151,7 @@ func create_dungeon():
 			
 				if cell_index == 4 and cell.x == leftmost_start_x and dir == "left":
 					continue
-				if cell_index == 5 and cell.x == rightmost_end_x and dir == "right":  # Kondisi khusus untuk end room paling kanan
+				if cell_index == 5 and cell.x == rightmost_end_x and dir == "right":
 					continue
 				
 				if cell_n_index == -1 || cell_n_index == 3:

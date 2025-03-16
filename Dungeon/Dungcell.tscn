@@ -1480,6 +1480,7 @@ mesh = SubResource("ArrayMesh_qdt3e")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Lantai/Lantai_dungeon"]
+collision_mask = 15
 physics_material_override = SubResource("PhysicsMaterial_n64io")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lantai/Lantai_dungeon/StaticBody3D"]

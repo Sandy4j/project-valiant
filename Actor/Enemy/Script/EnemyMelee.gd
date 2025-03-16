@@ -4,7 +4,7 @@ class_name EnemyMelee
 @export var attack_radius: float = 2.0
 
 func _init_child() -> void:
-	attack_raycast.target_position = Vector3(0, 0, -attack_radius)
+	attack_raycast.target_position = Vector3(0, 0, attack_radius)
 	detection_radius = attack_radius
 	is_magic_damage = false
 	

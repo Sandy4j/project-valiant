@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name BaseEnemy
 
+signal enemy_died(enemy: BaseEnemy)
+
 @export_group("Base Stats")
 @export var max_hp: float = 100.0
 var current_hp: float = max_hp
@@ -18,7 +20,7 @@ var original_speed: float = movement_speed
 @export var magic_defense: float = 0.0
 
 @onready var health_bar: ProgressBar3D = $ProgressBar3D
-@onready var attack_raycast: RayCast3D = $AttackRaycast
+@onready var attack_raycast: RayCast3D = $Model/AttackRaycast
 
 enum EnemyState { IDLE, CHASE, ATTACK, DEAD }
 var current_state: EnemyState = EnemyState.IDLE
@@ -131,6 +133,7 @@ func dead_state() -> void:
 	var player_stats = get_tree().get_first_node_in_group("player").get_node("PlayerFunction/PlayerStats")
 	if player_stats and player_stats.has_method("add_xp"):
 		player_stats.add_xp(get_xp_reward())
+	emit_signal("enemy_died", self)
 	queue_free()
 
 func get_xp_reward() -> int:

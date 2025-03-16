@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://chqs04p1lckav"]
 
 [ext_resource type="Script" uid="uid://bl8n62203ow4j" path="res://Dungeon/test_dung.gd" id="1_jtj4d"]
-[ext_resource type="Script" uid="uid://durvau03omxx5" path="res://Skrip/level_manager.gd" id="2_aqih3"]
+[ext_resource type="Script" uid="uid://durvau03omxx5" path="res://Dungeon/level_manager.gd" id="2_aqih3"]
 [ext_resource type="PackedScene" uid="uid://cu182v5sdcr0i" path="res://Dungeon/DungeonManager.tscn" id="3_q1v2f"]
-[ext_resource type="Script" uid="uid://cb7oh5u0p6mdv" path="res://Skrip/enemy_spawner.gd" id="4_esaj7"]
+[ext_resource type="Script" uid="uid://cb7oh5u0p6mdv" path="res://Dungeon/enemy_spawner.gd" id="4_esaj7"]
 [ext_resource type="PackedScene" uid="uid://43otwk7lfe2r" path="res://Actor/Enemy/enemy_melee.tscn" id="5_olpt0"]
 [ext_resource type="PackedScene" uid="uid://csbleyqdl1j3o" path="res://Actor/Enemy/Enemy_Ranged.tscn" id="6_qpp0o"]
 
@@ -47,17 +47,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FloorLabel" type="Label" parent="UI"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -17.5
-offset_right = 132.0
-offset_bottom = 17.5
-grow_vertical = 2
-horizontal_alignment = 1
-
 [node name="ColorRect" type="ColorRect" parent="UI"]
 layout_mode = 1
 anchors_preset = 4
@@ -68,3 +57,14 @@ offset_right = 132.0
 offset_bottom = 15.0
 grow_vertical = 2
 color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[node name="FloorLabel" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -17.5
+offset_right = 132.0
+offset_bottom = 17.5
+grow_vertical = 2
+horizontal_alignment = 1
