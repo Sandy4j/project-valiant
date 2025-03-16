@@ -54,22 +54,22 @@ func perform_attack() -> void:
 	# Optional: Handle attack animation
 	# If animation_controller has these methods, use them
 	# Otherwise, use the play_attack method from the existing code
-	# match current_combo:
-		# 1:
-			# if animation_controller.has_method("play_attack1"):
-				# animation_controller.play_attack1()
-			# else:
-				# animation_controller.play_attack()
-		# 2:
-			# if animation_controller.has_method("play_attack2"):
-				# animation_controller.play_attack2()
-			# else:
-				# animation_controller.play_attack()
-		# 3:
-			# if animation_controller.has_method("play_attack3"):
-				# animation_controller.play_attack3()
-			# else:
-				# animation_controller.play_attack()
+	match current_combo:
+		1:
+			if animation_controller.has_method("play_attack1"):
+				animation_controller.play_attack1()
+			else:
+				animation_controller.play_attack()
+		2:
+			if animation_controller.has_method("play_attack2"):
+				animation_controller.play_attack2()
+			else:
+				animation_controller.play_attack()
+		3:
+			if animation_controller.has_method("play_attack3"):
+				animation_controller.play_attack3()
+			else:
+				animation_controller.play_attack()
 
 	attack_cooldown = BASE_ATTACK_COOLDOWN
 	can_attack = false

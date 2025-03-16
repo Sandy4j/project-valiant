@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bajfgbkc11fx0"]
+[gd_scene load_steps=9 format=3 uid="uid://bajfgbkc11fx0"]
 
 [ext_resource type="Script" uid="uid://o1nn1e5snrci" path="res://UI/Dialogue/dialogue_box.gd" id="1_d88oa"]
-[ext_resource type="Texture2D" uid="uid://b7g7uxb7l6caw" path="res://icon.svg" id="2_uij8g"]
+[ext_resource type="Texture2D" uid="uid://cuabiwuvvinpg" path="res://UI/Dialogue/BG_Chat.png" id="2_uij8g"]
 [ext_resource type="Script" uid="uid://bc2f3wwgitgqt" path="res://UI/Dialogue/dialogue_pop_up.gd" id="3_j57jb"]
+[ext_resource type="Texture2D" uid="uid://du6ahvnie4pfd" path="res://UI/Dialogue/Next_Idle.png" id="4_j57jb"]
+[ext_resource type="Texture2D" uid="uid://btyqn6igkvj4j" path="res://UI/Dialogue/Next_Hover.png" id="5_j57jb"]
 
 [sub_resource type="Animation" id="Animation_fsmjl"]
 length = 0.001
@@ -75,7 +77,6 @@ script = ExtResource("1_d88oa")
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(575, 502)
-scale = Vector2(8.84, 2.12)
 texture = ExtResource("2_uij8g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialogueBox"]
@@ -95,20 +96,23 @@ script = ExtResource("3_j57jb")
 
 [node name="Dialogue" type="RichTextLabel" parent="DialoguePopUp"]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 374.0
-offset_right = 1132.0
-offset_bottom = 637.0
+offset_left = 88.0
+offset_top = 436.0
+offset_right = 1062.0
+offset_bottom = 568.0
 bbcode_enabled = true
 text = "asdadawdsad"
 
-[node name="DialogueIndicator" type="Button" parent="DialoguePopUp"]
+[node name="DialogueIndicator" type="TextureButton" parent="DialoguePopUp"]
 layout_mode = 0
-offset_left = 915.0
-offset_top = 580.0
-offset_right = 1050.0
-offset_bottom = 619.0
-text = "NEXT BUTTON"
+offset_left = 1006.0
+offset_top = 543.0
+offset_right = 1034.0
+offset_bottom = 564.0
+texture_normal = ExtResource("4_j57jb")
+texture_hover = ExtResource("5_j57jb")
+texture_focused = ExtResource("5_j57jb")
+stretch_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialoguePopUp"]
 

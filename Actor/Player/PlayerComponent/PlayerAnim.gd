@@ -7,6 +7,8 @@ var walk_node_name: String = "Walk"
 var run_node_name: String = "Run"
 var jump_node_name: String = "Jump"
 var attacku1_node_name: String = "AttackU1"
+var attacku2_node_name:String = "AttackU2"
+var attacku3_node_name:String = "AttackU3"
 var death_node_name: String = "Death"
 var hitted_node_name: String = "Hitted"
 
@@ -33,6 +35,10 @@ func update_animation_parameters(on_floor: bool) -> void:
 
 	if (attacku1_node_name in playback.get_current_node()): 
 		is_attacking = true
+	elif (attacku2_node_name in playback.get_current_node()):
+		is_attacking = true
+	elif (attacku3_node_name in playback.get_current_node()):
+		is_attacking = true
 	else: 
 		is_attacking = false
 
@@ -50,7 +56,16 @@ func set_hit(hit: bool) -> void:
 	
 func play_attack() -> void:
 	playback.travel(attacku1_node_name)
-	
+
+func play_attack1() -> void:
+	playback.travel(attacku1_node_name)
+
+func play_attack2() -> void:
+	playback.travel(attacku2_node_name)
+
+func play_attack3() -> void:
+	playback.travel(attacku3_node_name)
+
 func play_hit() -> void:
 	playback.travel(hitted_node_name)
 	

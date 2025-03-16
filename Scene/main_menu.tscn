@@ -1,16 +1,19 @@
-[gd_scene load_steps=16 format=3 uid="uid://fn7ac4wnynjq"]
+[gd_scene load_steps=17 format=3 uid="uid://fn7ac4wnynjq"]
 
-[ext_resource type="Texture2D" uid="uid://bj3eqm4yx8jst" path="res://UI/Menu.png" id="1_hknlv"]
+[ext_resource type="Texture2D" uid="uid://bj3eqm4yx8jst" path="res://UI/Main_Menu/Menu.png" id="1_hknlv"]
 [ext_resource type="Script" uid="uid://cajwrkocf4ee2" path="res://Scene/main_menu.gd" id="1_xclmx"]
-[ext_resource type="Texture2D" uid="uid://cm67exoxnts8r" path="res://UI/Start1.png" id="2_l3u7c"]
-[ext_resource type="Texture2D" uid="uid://bemkqu546slcg" path="res://UI/Play1.png" id="2_vkctl"]
-[ext_resource type="Texture2D" uid="uid://dx3s8sjofcd2k" path="res://UI/Play2.png" id="3_clvyb"]
-[ext_resource type="Texture2D" uid="uid://dfyjquk3va2a1" path="res://UI/Options1.png" id="4_ihlw6"]
-[ext_resource type="Texture2D" uid="uid://gpryp8dlyp15" path="res://UI/Options2.png" id="5_2i844"]
-[ext_resource type="Texture2D" uid="uid://bajywtopb42k" path="res://UI/Credit1.png" id="6_qmx1f"]
-[ext_resource type="Texture2D" uid="uid://cb0bnjaorrvh7" path="res://UI/Credit2.png" id="7_5ib6t"]
-[ext_resource type="Texture2D" uid="uid://bwghuyuhmab1a" path="res://UI/Exit1.png" id="8_15x75"]
-[ext_resource type="Texture2D" uid="uid://brug5km8q8sgm" path="res://UI/Exit2.png" id="9_rbh3j"]
+[ext_resource type="Texture2D" uid="uid://cm67exoxnts8r" path="res://UI/Main_Menu/Start1.png" id="2_l3u7c"]
+[ext_resource type="Texture2D" uid="uid://bemkqu546slcg" path="res://UI/Main_Menu/Play1.png" id="2_vkctl"]
+[ext_resource type="Texture2D" uid="uid://dx3s8sjofcd2k" path="res://UI/Main_Menu/Play2.png" id="3_clvyb"]
+[ext_resource type="Texture2D" uid="uid://dfyjquk3va2a1" path="res://UI/Main_Menu/Options1.png" id="4_ihlw6"]
+[ext_resource type="Texture2D" uid="uid://gpryp8dlyp15" path="res://UI/Main_Menu/Options2.png" id="5_2i844"]
+[ext_resource type="Texture2D" uid="uid://bajywtopb42k" path="res://UI/Main_Menu/Credit1.png" id="6_qmx1f"]
+[ext_resource type="Texture2D" uid="uid://cb0bnjaorrvh7" path="res://UI/Main_Menu/Credit2.png" id="7_5ib6t"]
+[ext_resource type="Texture2D" uid="uid://bwghuyuhmab1a" path="res://UI/Main_Menu/Exit1.png" id="8_15x75"]
+[ext_resource type="Texture2D" uid="uid://brug5km8q8sgm" path="res://UI/Main_Menu/Exit2.png" id="9_rbh3j"]
+
+[sub_resource type="Animation" id="Animation_klvvj"]
+resource_name = "Button_Hide"
 
 [sub_resource type="Animation" id="Animation_fq6sw"]
 resource_name = "Entry_act"
@@ -24,7 +27,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(178, 164), Vector2(178, 164), Vector2(464, 131)]
+"values": [Vector2(178, 164), Vector2(178, 164), Vector2(290.5, 125.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,10 +36,10 @@ tracks/1/path = NodePath("ColorRect/Menu_Btn:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1150, 283.5), Vector2(1150, 283.5), Vector2(913, 283.5)]
+"values": [Vector2(495.5, 283.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -81,10 +84,10 @@ tracks/5/path = NodePath("ColorRect/Logo:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.266667, 1),
+"times": PackedFloat32Array(0, 0.3, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.55, 0.55), Vector2(0.55, 0.55), Vector2(0.45, 0.45)]
+"values": [Vector2(0.55, 0.55), Vector2(0.55, 0.55), Vector2(0.4, 0.4)]
 }
 
 [sub_resource type="Animation" id="Animation_livje"]
@@ -204,6 +207,7 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_siavp"]
 _data = {
+&"Button_Hide": SubResource("Animation_klvvj"),
 &"Entry_act": SubResource("Animation_fq6sw"),
 &"Intro_act": SubResource("Animation_livje"),
 &"RESET": SubResource("Animation_36w08")
@@ -246,16 +250,16 @@ texture = ExtResource("1_hknlv")
 [node name="Menu_Btn" type="VBoxContainer" parent="ColorRect"]
 visible = false
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -239.0
+offset_left = 337.0
 offset_top = -40.5
-offset_right = 32.0
+offset_right = 608.0
 offset_bottom = 330.5
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.6)
 

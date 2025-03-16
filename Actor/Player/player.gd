@@ -6,6 +6,9 @@ class_name Player
 @export var MOUSE_SENSITIVITY = 0.05
 @export var ROTATION_SPEED = 10.0
 
+@onready var tween1: Tween = create_tween()
+@onready var tween2: Tween = create_tween()
+@onready var tween3: Tween = create_tween()
 @onready var HP_BAR = $"UI Player/IU/HP"
 @onready var MANA_BAR = $"UI Player/IU/Mana"
 @onready var EXP_BAR = $"UI Player/IU/Exp_Bar"
@@ -19,7 +22,7 @@ class_name Player
 @onready var Dialog = $"UI Player/Chatbox/DialoguePopUp"
 @onready var magic_system: MagicSystem = $PlayerFunction/MagicSystem
 @onready var spell_spawn_point = $Rogue/SpellSpawn
-@onready var model = $Rogue
+@onready var model = $OrphusAnimation
 
 var saved_stats: Dictionary = {}
 var camera_rotation: float = 0.0
@@ -49,15 +52,18 @@ func connect_stat():
 
 func connect_hp():
 	HP_BAR.max_value = stats_controller.max_hp
-	HP_BAR.value = stats_controller.current_hp
+	tween1 = create_tween() 
+	tween1.tween_property(HP_BAR, "value", stats_controller.current_hp, 1.0)
 
 func connect_mana():
 	MANA_BAR.max_value = stats_controller.max_mana
-	MANA_BAR.value = stats_controller.current_mana
+	tween1 = create_tween() 
+	tween1.tween_property(MANA_BAR, "value", stats_controller.current_mana, 1.0)
 
 func connect_exp():
 	EXP_BAR.max_value = stats_controller.xp_to_next_level
-	EXP_BAR.value = stats_controller.player_xp
+	tween3 = create_tween() 
+	tween3.tween_property(EXP_BAR, "value", stats_controller.player_xp, 1.0)
 	Lvl.text = str(stats_controller.player_level)
 
 func _physics_process(delta):
