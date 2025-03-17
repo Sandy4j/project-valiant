@@ -35,14 +35,14 @@ func set_border_size(val : int)->void:
 @export var room_recursion: int = 50
 @export var room_height: float = 4.0
 @export var min_room_size: int = 2
-@export var max_room_size: int = 6
+@export var max_room_size: int = 4
 @export_multiline var custom_seed: String = "" : set = set_custom_seed
 func set_custom_seed(val: String) -> void:
 	custom_seed = val
 	custom_seed_changed.emit(val)
 	
 @export_group("Floor Difficulty Scaling")
-@export var base_room_number: int = 4
+@export var base_room_number: int = 2
 @export var rooms_per_floor_increase: float = 0.5
 @export var base_survival_chance: float = 0.25
 @export var survival_chance_per_floor_decrease: float = 0.01
@@ -102,10 +102,18 @@ func spawn_floor_content() -> void:
 	pass
 
 func new_floor() -> void:
+	if player_instance:
+		var stats = player_instance.get_node_or_null("PlayerFunction/PlayerStats") 
+		if stats && GlobalSignal.saved_stats.is_empty():
+			GlobalSignal.saved_stats = stats.save_stats()
+			print("DungeonManager: Saved player stats before new floor: ", GlobalSignal.saved_stats)
+	
 	cleanup_dungeon()
+	
 	if player_instance:
 		player_instance.queue_free()
 		player_instance = null
+	
 	custom_seed = ""
 	
 	await regenerate()
@@ -116,24 +124,29 @@ func spawn_player(y_offset: float = 2.0) -> void:
 		await dungeon_generation_completed
 	
 	var start_room = dungeon_mesh.start_room_instance
-
 	var spawn_point = start_room.get_node_or_null("din/pintu/spawnpoint")
-	if !spawn_point:
-		push_error("SpawnPoint node not found")
-		return
 		
 	if player_instance:
+		var stats = player_instance.get_node_or_null("PlayerFunction/PlayerStats")
+		if stats:
+			GlobalSignal.saved_stats = stats.save_stats()
+			print("Stats saved to GlobalSignal: ", GlobalSignal.saved_stats)
 		player_instance.queue_free()
 		player_instance = null
 
+# Setelah instantiate player baru dan sebelum mengatur posisi
 	player_instance = player_scene.instantiate()
 	add_child(player_instance)
 	player_instance.add_to_group("player")
 
 	await get_tree().process_frame
+	var new_stats = player_instance.get_node_or_null("PlayerFunction/PlayerStats")
+	if new_stats && !GlobalSignal.saved_stats.is_empty():
+		print("Loading stats from GlobalSignal: ", GlobalSignal.saved_stats)
+		new_stats.load_stats(GlobalSignal.saved_stats)
 	player_instance.global_position = spawn_point.global_position
 	
-	var model = player_instance.get_node_or_null("Rogue")
+	var model = player_instance.get_node_or_null("Orphus")
 	if model:
 		model.rotation.y = deg_to_rad(90)
 
@@ -141,4 +154,5 @@ func regenerate() -> void:
 	cleanup_dungeon()
 	generate_dungeon()
 	await dungeon_generation_completed
+	print("DungeonManager: regenerate - About to spawn player with saved stats: ", GlobalSignal.saved_stats)
 	spawn_player()

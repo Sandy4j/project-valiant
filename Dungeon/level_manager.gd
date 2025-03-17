@@ -10,7 +10,7 @@ var current_floor: int = 1
 var last_checkpoint_floor: int = 1
 var player: CharacterBody3D = null
 var dungeon_manager: DungeonM = null
-var stats: PlayerStatsController
+@onready var stats: PlayerStatsController = $PlayerFunction/PlayerStats
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -25,15 +25,27 @@ func advance_floor() -> void:
 	if enemy_spawner and enemy_spawner.has_method("cleanup_enemies"):
 		enemy_spawner.cleanup_enemies()
 	
+	# Simpan statistik player sebelum dihapus
 	if player:
-		GlobalSignal.saved_stats = stats.save_stats()
+		var player_stats = player.get_node_or_null("PlayerFunction/PlayerStats")
+		if player_stats:
+			GlobalSignal.saved_stats = player_stats.save_stats()
+			print("LevelManager: Saved player stats before advancing floor: ", GlobalSignal.saved_stats)
+		else:
+			print("LevelManager: Could not find PlayerStats node")
+			
 		player.queue_free() 
 		await player.tree_exited
 		player = null
 
 	current_floor += 1
 	floor_changed.emit(current_floor)
-	dungeon_manager.new_floor()
+	
+	# Pastikan custom_seed kosong untuk menghasilkan floor baru
+	if dungeon_manager:
+		dungeon_manager.custom_seed = ""
+		dungeon_manager.new_floor()
+		
 	print("lantai :", current_floor)
 	if current_floor % CHECKPOINT_INTERVAL == 0:
 		save_checkpoint()

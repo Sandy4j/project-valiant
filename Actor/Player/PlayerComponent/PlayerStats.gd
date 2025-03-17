@@ -49,7 +49,7 @@ var xp_to_next_level: int = 100
 var stat_points: int = 3 
 var stat_points_per_level: int = 2
 
-var move_speed: float = 5.0
+var move_speed: float = 10.0
 var regen_timer: float = 0.0
 
 # @onready var hp_bar = $IU/HP
@@ -58,10 +58,17 @@ var regen_timer: float = 0.0
 
 func _ready():
 	calculate_stats()
-
-	current_hp = max_hp - 50
-	current_mana = max_mana - 500
-	current_stamina = max_stamina
+	
+	# Coba muat dari GlobalSignal jika ada data
+	if !GlobalSignal.saved_stats.is_empty():
+		print("PlayerStats:_ready - Loading saved stats from GlobalSignal")
+		load_stats(GlobalSignal.saved_stats)
+	else:
+		print("PlayerStats:_ready - No saved stats found, using defaults")
+		current_hp = max_hp
+		current_mana = max_mana
+		current_stamina = max_stamina
+	
 	connect("heal_pot", Callable(self,"heal"))
 	connect("mana_pot", Callable(self,"restore_mana"))
 	

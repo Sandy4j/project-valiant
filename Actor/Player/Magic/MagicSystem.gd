@@ -8,7 +8,6 @@ signal spell_failed(reason: String)
 
 @export_category("Spell Settings")
 @export var spell_spawn_point: NodePath
-@export var camera_controller: NodePath
 
 var spell_data: Dictionary = {
 	"firebolt": {
@@ -37,7 +36,6 @@ var spell_data: Dictionary = {
 
 @onready var stats: PlayerStatsController = get_parent().get_node("PlayerStats")
 @onready var spawn_point: Node3D = get_node(spell_spawn_point)
-@onready var camera: Node3D = get_node(camera_controller)
 var current_cooldowns: Dictionary = {}
 
 func _ready():
@@ -98,7 +96,7 @@ func calculate_spell_damage(spell: Dictionary) -> int:
 
 func setup_spell_instance(instance: Node, spell_name: String, damage: int):
 	var player = get_tree().get_first_node_in_group("player")
-	var model = player.get_node("Rogue")
+	var model = player.get_node("Orphus")
 
 	var spawn_transform = Transform3D()
 	spawn_transform.origin = spawn_point.global_position

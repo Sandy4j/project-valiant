@@ -17,7 +17,7 @@ signal combo_updated(combo_count)
 
 @onready var stats_controller = get_parent().get_node("PlayerStats")
 @onready var animation_controller = get_parent().get_node("PlayerAnim")
-@onready var attack_raycast = $"../../Rogue/AttackRaycast"
+@onready var attack_raycast = $"../../Orphus/AttackRaycast"
 
 var current_combo = 0
 var combo_timer = 0.0

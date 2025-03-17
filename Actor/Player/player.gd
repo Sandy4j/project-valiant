@@ -21,8 +21,7 @@ class_name Player
 @onready var Dialogbox = $"UI Player/Chatbox/DialogueBox"
 @onready var Dialog = $"UI Player/Chatbox/DialoguePopUp"
 @onready var magic_system: MagicSystem = $PlayerFunction/MagicSystem
-@onready var spell_spawn_point = $Rogue/SpellSpawn
-@onready var model = $OrphusAnimation
+@onready var model = $Orphus
 
 var saved_stats: Dictionary = {}
 var camera_rotation: float = 0.0
@@ -30,6 +29,13 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	add_to_group("player")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	# Coba muat stats yang tersimpan
+	if !GlobalSignal.saved_stats.is_empty():
+		print("Player:_ready - Loading saved stats")
+		stats_controller.load_stats(GlobalSignal.saved_stats)
 	connect_stat()
 	#magic_system.stats_controller = stats_controller
 	stats_controller.connect("Pdied", Callable(self, "died"))
@@ -69,8 +75,7 @@ func connect_exp():
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity += Vector3.DOWN * gravity * delta
-		
-	# Proses input gerakan dari controller input
+
 	var direction = input_controller.get_movement_direction(camera_rotation)
 	
 	if direction != Vector3.ZERO:
@@ -99,11 +104,11 @@ func Hited(damage: int):
 
 func died():
 	var level_manager = get_tree().get_first_node_in_group("level_manager")
-	saved_stats = stats_controller.save_stats()
+	GlobalSignal.saved_stats = stats_controller.save_stats()
 	level_manager.reset_to_checkpoint()
 
 func respawn() -> void:
-	stats_controller.load_stats(saved_stats)
+	stats_controller.load_stats(GlobalSignal.saved_stats)
 	velocity = Vector3.ZERO
 	stats_controller.reset_stats()
 	var dungeon_manager = get_tree().get_first_node_in_group("dungeon_manager")

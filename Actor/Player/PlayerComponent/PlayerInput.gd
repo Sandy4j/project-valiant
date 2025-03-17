@@ -13,8 +13,6 @@ var ui_closed:bool
 
 var camera_rotation: float = 0.0
 
-
-
 func _input(event):
 	if event is InputEventKey and event.pressed && !GlobalSignal.ui_show:
 		if event.keycode == KEY_M:
@@ -34,8 +32,8 @@ func _unhandled_input(event):
 		magics.cast_spell("firebolt")
 	if Input.is_action_just_pressed("blizzard"):
 		magics.cast_spell("blizzard")
-	if Input.is_action_just_pressed("suicide"):
-		get_parent().Hited(1000)
+	#if Input.is_action_just_pressed("suicide"):
+		#get_parent().Hited(1000)
 	if Input.is_action_just_pressed("inven"): 
 		emit_signal("UI_Change",1)
 		if !mouse_show:

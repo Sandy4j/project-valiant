@@ -6,7 +6,7 @@ class_name EnemySpawner
 @export var max_active_enemies: int = 10
 @export var pool_size: int = 15
 @export var spawn_points_per_room: int = 3
-@export var min_spawn_distance_from_wall: float = 1.5
+@export var min_spawn_distance_from_player: float = 5.0
 
 @export_category("Difficulty Settings")
 @export var base_spawn_chance: float = 0.7
@@ -21,7 +21,6 @@ var level_manager: LevelManager
 var enemy_pool: Dictionary = {}
 var active_enemies: Array = []
 var spawn_points: Array[Vector3] = []
-var room_bounds: Dictionary = {}
 
 func _ready():
 	add_to_group("enemy_spawner")
@@ -54,88 +53,123 @@ func _on_dungeon_generated():
 
 func generate_spawn_points():
 	spawn_points.clear()
-	room_bounds.clear()
 	
-	# Identifikasi batas setiap ruangan
-	var rooms = grid_map.get_used_cells().filter(
-		func(cell): return grid_map.get_cell_item(cell) == 0
-	)
+	# Get all cells with normal rooms (cell type 0)
+	var room_cells = grid_map.get_used_cells_by_item(0)
 	
-	for cell in rooms:
-		var room_id = find_room_id(cell)
-		if not room_bounds.has(room_id):
-			room_bounds[room_id] = {
-				"min_x": cell.x, "max_x": cell.x,
-				"min_z": cell.z, "max_z": cell.z
-			}
-		else:
-			room_bounds[room_id].min_x = min(room_bounds[room_id].min_x, cell.x)
-			room_bounds[room_id].max_x = max(room_bounds[room_id].max_x, cell.x)
-			room_bounds[room_id].min_z = min(room_bounds[room_id].min_z, cell.z)
-			room_bounds[room_id].max_z = max(room_bounds[room_id].max_z, cell.z)
+	# Skip if no rooms found
+	if room_cells.is_empty():
+		push_warning("No room cells found in the dungeon!")
+		return
 	
-	# Generate titik spawn untuk setiap ruangan
-	for room in room_bounds.values():
-		for _i in range(spawn_points_per_room):
-			var spawn_pos = generate_valid_spawn_position(room)
-			if spawn_pos:
-				spawn_points.append(spawn_pos)
-
-func generate_valid_spawn_position(room: Dictionary) -> Vector3:
-	var cell_size = grid_map.cell_size
-	var attempts = 5
+	# Step 1: Identify unique rooms by flood-fill algorithm
+	var rooms = identify_unique_rooms(room_cells)
 	
-	var world_3d = dungeon_mesh.get_world_3d()
-	if not world_3d:
-		push_error("Failed to get 3D world!")
-		return Vector3.ZERO
+	# Step 2: Skip start and end rooms
+	var start_cells = grid_map.get_used_cells_by_item(4)
+	var end_cells = grid_map.get_used_cells_by_item(5)
+	var excluded_cells = []
 	
-	for _j in range(attempts):
-
-		var x = randf_range(
-			room.min_x + min_spawn_distance_from_wall,
-			room.max_x + 1 - min_spawn_distance_from_wall
-		)
-		var z = randf_range(
-			room.min_z + min_spawn_distance_from_wall,
-			room.max_z + 1 - min_spawn_distance_from_wall
-		)
-		
-		var grid_pos = Vector3(x, 0, z)
-		var world_pos = dungeon_mesh.calculate_grid_to_world(grid_pos)
-
-		var space_state = world_3d.direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(
-			world_pos + Vector3.UP * 2,
-			world_pos - Vector3.UP * 2
-		)
-		query.collision_mask = 1 # Sesuaikan dengan layer collision yang diperlukan
-		
-		var result = space_state.intersect_ray(query)
-		
-		if result.is_empty():
-			return world_pos
+	# Add buffer zones around start/end rooms (don't spawn too close)
+	for cell in start_cells:
+		excluded_cells.append(cell)
+		for x in range(-2, 3):
+			for z in range(-2, 3):
+				excluded_cells.append(Vector3i(cell.x + x, cell.y, cell.z + z))
+				
+	for cell in end_cells:
+		excluded_cells.append(cell)
+		for x in range(-2, 3):
+			for z in range(-2, 3):
+				excluded_cells.append(Vector3i(cell.x + x, cell.y, cell.z + z))
 	
-	return Vector3.ZERO
-
-# Di EnemySpawner.gd (fungsi find_room_id)
-func find_room_id(cell: Vector3i) -> int:
-	var visited = []
-	var to_check = [cell]
-	var room_id = 0
-	
-	while not to_check.is_empty():
-		var current = to_check.pop_back()
-		if visited.has(current):
+	for room in rooms:
+		var valid_room_cells = []
+		for cell in room:
+			if not excluded_cells.has(cell):
+				valid_room_cells.append(cell)
+		if valid_room_cells.size() < 2:
 			continue
+			
+		# Calculate center point of the room
+		var center = Vector3i.ZERO
+		for cell in valid_room_cells:
+			center += cell
+		center = Vector3i(center.x / valid_room_cells.size(), 0, center.z / valid_room_cells.size())
 		
-		visited.append(current)
-		for dir in [Vector3i.RIGHT, Vector3i.LEFT, Vector3i.FORWARD, Vector3i.BACK]:
-			var neighbor = current + dir
-			if grid_map.get_cell_item(neighbor) == 0 and not visited.has(neighbor):
-				to_check.append(neighbor)
+		# Generate spawn points based on room size
+		var points_to_generate = min(spawn_points_per_room, valid_room_cells.size() / 2)
+		var attempts = points_to_generate * 5  # Allow multiple attempts per point
+		var room_points = []
+		
+		for _i in range(attempts):
+			if room_points.size() >= points_to_generate:
+				break
+				
+			# Pick a random cell from the room, preferring cells away from the edge
+			var valid_inner_cells = valid_room_cells.filter(func(cell): 
+				# Check if all adjacent cells are part of the room (inner cell)
+				var is_inner = true
+				for dir in [Vector3i.UP, Vector3i.DOWN, Vector3i.LEFT, Vector3i.RIGHT]:
+					if not valid_room_cells.has(cell + dir):
+						is_inner = false
+						break
+				return is_inner
+			)
+			
+			var spawn_cell
+			if valid_inner_cells.size() > 0:
+				spawn_cell = valid_inner_cells[randi() % valid_inner_cells.size()]
+			else:
+				spawn_cell = valid_room_cells[randi() % valid_room_cells.size()]
+			
+			# Calculate world position from grid position
+			var world_pos = dungeon_mesh.calculate_grid_to_world(Vector3(spawn_cell))
+			
+			# Check if this position is too close to existing spawn points
+			var too_close = false
+			for existing_point in room_points:
+				if world_pos.distance_to(existing_point) < 1.5:
+					too_close = true
+					break
+					
+			if not too_close:
+				room_points.append(world_pos)
+				spawn_points.append(world_pos)
 	
-	return visited.hash()
+	print("Generated ", spawn_points.size(), " enemy spawn points across ", rooms.size(), " rooms")
+
+# Identifies unique rooms using a simple flood fill algorithm
+func identify_unique_rooms(room_cells: Array) -> Array:
+	var rooms = []
+	var visited = []
+	
+	for cell in room_cells:
+		if visited.has(cell):
+			continue
+			
+		var room = []
+		var queue = [cell]
+		
+		while not queue.is_empty():
+			var current = queue.pop_front()
+			if visited.has(current):
+				continue
+				
+			visited.append(current)
+			room.append(current)
+			
+			# Check 4 adjacent cells (4-connectivity)
+			for direction in [Vector3i.RIGHT, Vector3i.LEFT, Vector3i.FORWARD, Vector3i.BACK]:
+				var neighbor = current + direction
+				if room_cells.has(neighbor) and not visited.has(neighbor):
+					queue.append(neighbor)
+		
+		# Only add rooms with at least 4 cells (to avoid tiny spaces)
+		if room.size() >= 4:
+			rooms.append(room)
+	
+	return rooms
 
 func calculate_difficulty():
 	var floor_factor = difficulty_curve.sample(level_manager.current_floor / 10.0)
@@ -144,6 +178,9 @@ func calculate_difficulty():
 func spawn_enemies():
 	var spawn_chance = base_spawn_chance * (1.0 + (level_manager.current_floor - 1) * 0.05)
 	
+	# Shuffle spawn points to ensure random distribution
+	spawn_points.shuffle()
+	
 	for point in spawn_points:
 		if active_enemies.size() >= max_active_enemies:
 			break
@@ -151,11 +188,10 @@ func spawn_enemies():
 		if randf() < spawn_chance:
 			spawn_random_enemy(point)
 
-# Complete cleanup function that handles everything properly
+
 func clear_all_enemies():
-	# First disconnect all signals and clean up active enemies
-	for i in range(active_enemies.size() - 1, -1, -1):  # Iterate backwards
-		if i < active_enemies.size():  # Double-check index
+	for i in range(active_enemies.size() - 1, -1, -1):
+		if i < active_enemies.size():
 			var enemy = active_enemies[i]
 			if is_instance_valid(enemy):
 				if enemy.has_signal("enemy_died") and enemy.enemy_died.is_connected(_on_enemy_died):
@@ -165,7 +201,6 @@ func clear_all_enemies():
 				enemy.global_position = Vector3.ZERO
 			active_enemies.remove_at(i)
 
-	# Reset all enemies in the pool
 	for scene in enemy_pool:
 		for enemy in enemy_pool[scene]:
 			if is_instance_valid(enemy):
@@ -175,7 +210,6 @@ func clear_all_enemies():
 				enemy.process_mode = Node.PROCESS_MODE_DISABLED
 				enemy.global_position = Vector3.ZERO
 
-# Rest of the functions remain the same, but we modify spawn_random_enemy:
 func spawn_random_enemy(position: Vector3):
 	if enemy_scenes.is_empty():
 		return
@@ -204,21 +238,22 @@ func spawn_random_enemy(position: Vector3):
 	enemy.max_hp *= floor_scale
 	enemy.attack_damage *= floor_scale
 
-# Safe version of on_enemy_died
 func _on_enemy_died(enemy):
 	if not is_instance_valid(enemy):
 		return
-		
-	# Find and remove from active_enemies
-	var index = active_enemies.find(enemy)
+
+	var index = -1
+	for i in range(active_enemies.size()):
+		if active_enemies[i] == enemy:
+			index = i
+			break
+			
 	if index != -1:
 		active_enemies.remove_at(index)
 	
-	# Disconnect signal if connected
-	if enemy.has_signal("enemy_died") and enemy.enemy_died.is_connected(_on_enemy_died):
+	if is_instance_valid(enemy) and enemy.has_signal("enemy_died") and enemy.enemy_died.is_connected(_on_enemy_died):
 		enemy.enemy_died.disconnect(_on_enemy_died)
 
-# Modified get_enemy_from_pool to be safer
 func get_enemy_from_pool(scene: PackedScene) -> BaseEnemy:
 	if not enemy_pool.has(scene):
 		return null

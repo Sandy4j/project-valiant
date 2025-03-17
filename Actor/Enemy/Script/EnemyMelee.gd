@@ -6,10 +6,6 @@ class_name EnemyMelee
 func _init_child() -> void:
 	attack_raycast.target_position = Vector3(0, 0, attack_radius)
 	detection_radius = attack_radius
-	is_magic_damage = false
-	
-	physical_defense = 0.3  # 30%
-	magic_defense = 0.1     # 10%
 
 func attack_state() -> void:
 	if !player:
