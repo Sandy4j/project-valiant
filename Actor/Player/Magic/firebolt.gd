@@ -6,6 +6,9 @@ var debuff_type = "burn"
 var aoe_radius = 2.0
 var is_magic_damage = true
 
+func _ready() -> void:
+	$AudioStreamPlayer3D.play(0.40)
+
 func _physics_process(delta):
 	global_translate(-global_transform.basis.z * speed * delta)
 

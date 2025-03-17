@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://p7ug15m5vp42"
+path="res://.godot/imported/FireBolt2.wav-aa40d30fb33df8be39750bfff3022cfd.sample"
+
+[deps]
+
+source_file="res://aset ril/aset sfx/FireBolt2.wav"
+dest_files=["res://.godot/imported/FireBolt2.wav-aa40d30fb33df8be39750bfff3022cfd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
