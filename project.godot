@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Project Valiant"
 config/tags=PackedStringArray("wpg")
-run/main_scene="res://main.tscn"
+run/main_scene="uid://fn7ac4wnynjq"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -51,6 +51,7 @@ var stat_points_per_level: int = 2
 
 var move_speed: float = 10.0
 var regen_timer: float = 0.0
+var no_regen_timer: float = 0.0
 
 # @onready var hp_bar = $IU/HP
 # @onready var mana_bar = get_parent().get_node("UI Player/IU/Mana")
@@ -61,10 +62,8 @@ func _ready():
 	
 	# Coba muat dari GlobalSignal jika ada data
 	if !GlobalSignal.saved_stats.is_empty():
-		print("PlayerStats:_ready - Loading saved stats from GlobalSignal")
 		load_stats(GlobalSignal.saved_stats)
 	else:
-		print("PlayerStats:_ready - No saved stats found, using defaults")
 		current_hp = max_hp
 		current_mana = max_mana
 		current_stamina = max_stamina
@@ -81,11 +80,13 @@ func _ready():
 
 func _process(delta):
 	regen_timer += delta
+	if no_regen_timer > 0:
+		no_regen_timer -= delta
 	
 	if regen_timer >= 1.0:
 		regen_timer = 0.0
 
-		if current_hp < max_hp:
+		if current_hp < max_hp and no_regen_timer <= 0:
 			current_hp = min(max_hp, current_hp + int(hp_regen))
 			emit_signal("hp_changed")
 			
@@ -150,6 +151,7 @@ func take_damage(damage: int) -> void:
 	current_hp = max(0, current_hp - actual_damage)
 	emit_signal("hp_changed")
 	
+	no_regen_timer = 5.0
 	if current_hp <= 0:
 		emit_signal("Pdied")
 
