@@ -13,12 +13,14 @@ class_name  UI
 var inv_show:bool
 var sts_show:bool
 var ui_show:bool
+var on_menu:bool
 
 func _ready() -> void:
 	death.hide()
 	inv_clos()
 	#invt.hide()
 	PauseM.hide()
+	$IU/Options/Backcon/Back.connect("pressed",Callable(self, "_on_option_back_pressed"))
 
 func update_floor_label(new_floor: int) -> void:
 	current_floor_label.text = "Current Floor: " + str(new_floor)
@@ -77,8 +79,19 @@ func _on_resume_pressed() -> void:
 	PauseM.visible = false
 	get_tree().paused = PauseM.visible
 
+func _unhandled_input(event):
+	if Input.is_key_pressed(KEY_E) && on_menu :
+		_on_option_back_pressed()
+
 func _on_option_pressed() -> void:
-	pass # Replace with function body.
+	$IU/Options.visible = true
+	on_menu = true
+	PauseM.visible = !PauseM.visible
+
+func _on_option_back_pressed() ->void:
+	$IU/Options.visible = false
+	on_menu = false
+	PauseM.visible = !PauseM.visible
 
 func _on_quit_pressed() -> void:
 	get_tree().paused = false
