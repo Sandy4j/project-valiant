@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkn3h263p7b4s"
+uid="uid://b4320aiywdgtp"
 path.s3tc="res://.godot/imported/lobby_Panggung_PilarTangga_Normal.png-9ee064f1f480210a525ce664a446f4cf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Panggung_PilarTangga_Normal.png"
+roughness/src_normal="res://lobby/lobby_Panggung_PilarTangga_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

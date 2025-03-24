@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqjntpu18hfc3"
+uid="uid://cc4tk3r4exti7"
 path.s3tc="res://.godot/imported/lobby_Tembok_Dungeon_DBingkai batu_Normal.png-0a4408e35eac7792bef1d0dd0a7dedf9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Tembok_Dungeon_DBingkai batu_Normal.png"
+roughness/src_normal="res://lobby/lobby_Tembok_Dungeon_DBingkai batu_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

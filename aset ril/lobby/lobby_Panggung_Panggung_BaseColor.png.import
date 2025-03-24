@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcwmioyeu5rgy"
-path.s3tc="res://.godot/imported/lobby_Panggung_Sirip ular_106.png-44d4b589ee5c366bd1804cd19ed0c51f.s3tc.ctex"
+uid="uid://dd68ffh1vfe65"
+path.s3tc="res://.godot/imported/lobby_Panggung_Panggung_BaseColor.png-ed18da6fbde1a6ac94b6e416fa096560.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "68b2b5001da4f9907de61e172a2ada33"
+"md5": "db0d5a9fbff431e8d4d73a75e686e0a7"
 }
 
 [deps]
 
-source_file="res://aset ril/lobby/lobby_Panggung_Sirip ular_106.png"
-dest_files=["res://.godot/imported/lobby_Panggung_Sirip ular_106.png-44d4b589ee5c366bd1804cd19ed0c51f.s3tc.ctex"]
+source_file="res://aset ril/lobby/lobby_Panggung_Panggung_BaseColor.png"
+dest_files=["res://.godot/imported/lobby_Panggung_Panggung_BaseColor.png-ed18da6fbde1a6ac94b6e416fa096560.s3tc.ctex"]
 
 [params]
 

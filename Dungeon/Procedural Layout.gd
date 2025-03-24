@@ -1,5 +1,6 @@
 @tool
 extends GridMap
+signal is_generating()
 
 @export var dunmesh_path: NodePath
 @onready var dunmesh: Node3D = get_node(dunmesh_path)
@@ -85,6 +86,7 @@ func visualize_border():
 		set_cell_item(Vector3i(-1, 0, i), 3)
 
 func generate():
+	emit_signal("is_generating")
 	room_tiles.clear()
 	room_positions.clear()
 	clear_room_instances()

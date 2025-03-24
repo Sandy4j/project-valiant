@@ -42,8 +42,8 @@ func connect_condition():
 		var path = condition[key]
 		if path:
 			tx[key] = get_node(path)
-		else:
-			print("NodePath untuk {key} belum diatur.")
+		#else:
+			#print("NodePath untuk {key} belum diatur.")
 	tx["label1"].text = "Lv." + str(stats.player_level)
 	tx["label2"].text = str(stats.player_xp)
 	tx["label3"].text = str(stats.xp_to_next_level)
@@ -63,8 +63,8 @@ func connect_basic_stats():
 		var path = basic_stat[key]
 		if path:
 			tx[key] = get_node(path)
-		else:
-			print("NodePath untuk {key} belum diatur.")
+		#else:
+			#print("NodePath untuk {key} belum diatur.")
 	tx["label1"].text = str(stats.str_points)
 	tx["label2"].text = str(stats.int_points)
 	tx["label3"].text = str(stats.end_points)
@@ -78,8 +78,8 @@ func connect_offensive_stats():
 		var path = offensive_stat[key]
 		if path:
 			tx[key] = get_node(path)
-		else:
-			print("NodePath untuk {key} belum diatur.")
+		#else:
+			#print("NodePath untuk {key} belum diatur.")
 	tx["label1"].text = str(stats.physical_attack)
 	tx["label2"].text = "50%"
 	tx["label4"].text = str(stats.magical_attack)
@@ -91,8 +91,8 @@ func connect_defensive_stats():
 		var path = deffensive_stat[key]
 		if path:
 			tx[key] = get_node(path)
-		else:
-			print("NodePath untuk {key} belum diatur.")
+		#else:
+			#print("NodePath untuk {key} belum diatur.")
 	tx["label1"].text = str(stats.physical_defense)
 	tx["label2"].text = str(stats.magical_defense)
 	tx["label3"].text = str(stats.hp_regen)
@@ -102,8 +102,8 @@ func connect_regen_stats():
 		var path = regen_stat[key]
 		if path:
 			tx[key] = get_node(path)
-		else:
-			print("NodePath untuk {key} belum diatur.")
+		#else:
+			#print("NodePath untuk {key} belum diatur.")
 	tx["label1"].text = str(stats.max_stamina)
 	tx["label2"].text = str(stats.stamina_regen)
 	tx["label4"].text = str(stats.move_speed)

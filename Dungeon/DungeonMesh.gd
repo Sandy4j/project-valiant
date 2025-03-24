@@ -2,6 +2,8 @@
 extends Node3D
 class_name DungeonMesh
 
+signal  is_creating()
+
 @export var grid_map_path : NodePath
 @onready var grid_map : GridMap = get_node(grid_map_path)
 @onready var parent = get_parent()
@@ -77,6 +79,8 @@ func clear_room_instances():
 		end_room_instance = null
 
 func create_dungeon():
+	
+	emit_signal("is_creating")
 	clear_room_instances()
 	
 	for c in get_children():

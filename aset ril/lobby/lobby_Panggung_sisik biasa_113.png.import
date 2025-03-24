@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbinriyv45yo1"
-path.s3tc="res://.godot/imported/lobby_Panggung_Buntut_113.png-a35a8b5933df153cc492f965ec246ca9.s3tc.ctex"
+uid="uid://b6thug1b0tbcr"
+path.s3tc="res://.godot/imported/lobby_Panggung_sisik biasa_113.png-cf60aec37b8358ab6adcdc3f7ccc6100.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "dd5983853ca5924943f34b59c847d7d8"
+"md5": "2af1fd9b7fdd06d386d761adb32383eb"
 }
 
 [deps]
 
-source_file="res://aset ril/lobby/lobby_Panggung_Buntut_113.png"
-dest_files=["res://.godot/imported/lobby_Panggung_Buntut_113.png-a35a8b5933df153cc492f965ec246ca9.s3tc.ctex"]
+source_file="res://aset ril/lobby/lobby_Panggung_sisik biasa_113.png"
+dest_files=["res://.godot/imported/lobby_Panggung_sisik biasa_113.png-cf60aec37b8358ab6adcdc3f7ccc6100.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Panggung_Buntut_113.png"
+roughness/src_normal="res://lobby/lobby_Panggung_sisik biasa_113.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

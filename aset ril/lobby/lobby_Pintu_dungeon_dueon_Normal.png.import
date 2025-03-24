@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7uaxa26o4sn5"
+uid="uid://fpg3exftkp7w"
 path.s3tc="res://.godot/imported/lobby_Pintu_dungeon_dueon_Normal.png-96a9fef7571dbba1e7af87f8f47a2574.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Pintu_dungeon_dueon_Normal.png"
+roughness/src_normal="res://lobby/lobby_Pintu_dungeon_dueon_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

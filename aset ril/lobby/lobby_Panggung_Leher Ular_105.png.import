@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vydnludjiapa"
-path.s3tc="res://.godot/imported/lobby_Panggung_Leher Ular_101.png-38806c811557673dd792cb5e9ede0722.s3tc.ctex"
+uid="uid://vg865ybn7rkv"
+path.s3tc="res://.godot/imported/lobby_Panggung_Leher Ular_105.png-41a8f18868b5f52ae3f13c4d52e0be47.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://aset ril/lobby/lobby_Panggung_Leher Ular_101.png"
-dest_files=["res://.godot/imported/lobby_Panggung_Leher Ular_101.png-38806c811557673dd792cb5e9ede0722.s3tc.ctex"]
+source_file="res://aset ril/lobby/lobby_Panggung_Leher Ular_105.png"
+dest_files=["res://.godot/imported/lobby_Panggung_Leher Ular_105.png-41a8f18868b5f52ae3f13c4d52e0be47.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Panggung_Leher Ular_101.png"
+roughness/src_normal="res://lobby/lobby_Panggung_Leher Ular_105.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

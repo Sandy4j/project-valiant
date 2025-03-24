@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx7jiwxfvnwd0"
+uid="uid://fsxjn7n7i1s7"
 path.s3tc="res://.godot/imported/lobby_Barrel_juga besi_Normal.png-933940501edd8d29556a31cfa5f7f9fd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Barrel_juga besi_Normal.png"
+roughness/src_normal="res://lobby/lobby_Barrel_juga besi_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

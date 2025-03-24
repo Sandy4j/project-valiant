@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cet10s5afxqh1"
+uid="uid://d17aapefwdx8j"
 path.s3tc="res://.godot/imported/lobby_stationery_stationery_Normal.png-8d1f242601514d0d32c58eac9d52d750.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_stationery_stationery_Normal.png"
+roughness/src_normal="res://lobby/lobby_stationery_stationery_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

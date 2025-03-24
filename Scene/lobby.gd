@@ -1,15 +1,33 @@
 extends WorldEnvironment
 
-@export var next_scene: PackedScene
-@export var input_action: String = "interact"
-@onready var sp = $lobby/pintu/Sprite3D
 
+@export var input_action: String = "interact"
+@onready var sp = $lobby/pintu_004/Sprite3D
+@export var playerscene: PackedScene
+
+var scene = ""
 var player_inside: bool = false
+var playerI: CharacterBody3D = null
+
+
+func _ready() -> void:
+	if scene == "":
+		scene = "res://Dungeon/Dungeon.tscn"
+	sp.visible = false
+	playerI = playerscene.instantiate()
+	add_child(playerI)
+	playerI.global_position = $Marker3D.global_position
+	ResourceLoader.load_threaded_request(scene)
 
 func _process(delta):
 	if player_inside and Input.is_action_just_pressed("interact"):
-		if next_scene:
-			get_tree().change_scene_to_packed(next_scene)
+		var loading_screen = preload("res://Scene/Loading.tscn").instantiate()
+		loading_screen.set_target_scene(scene)
+		get_tree().current_scene.add_child(loading_screen)
+
+		if playerI:
+			playerI.queue_free()
+			playerI = null
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

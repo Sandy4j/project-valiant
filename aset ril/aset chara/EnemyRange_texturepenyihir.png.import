@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6axm2feqkbdg"
-path.s3tc="res://.godot/imported/lobby_Panggung_Leher Ular_102.png-976c777a9b46b82b362cccbd5e6255d9.s3tc.ctex"
+uid="uid://c1vei5ojl0fhn"
+path.s3tc="res://.godot/imported/EnemyRange_texturepenyihir.png-c662be4fab4b1225c7a828b59890ee46.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "8cd783b352faf7bff7a0544d44c4671c"
+"md5": "bb7c0760219de18c7d6e49ef5e466aa9"
 }
 
 [deps]
 
-source_file="res://aset ril/lobby/lobby_Panggung_Leher Ular_102.png"
-dest_files=["res://.godot/imported/lobby_Panggung_Leher Ular_102.png-976c777a9b46b82b362cccbd5e6255d9.s3tc.ctex"]
+source_file="res://aset ril/aset chara/EnemyRange_texturepenyihir.png"
+dest_files=["res://.godot/imported/EnemyRange_texturepenyihir.png-c662be4fab4b1225c7a828b59890ee46.s3tc.ctex"]
 
 [params]
 

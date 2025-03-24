@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0743bd0gaa6o"
+uid="uid://dxaxwh4dtml2f"
 path.s3tc="res://.godot/imported/lobby_Banner_BESI_Normal.png-cefcbe87d88a47aee0cb04ac85ea921b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Banner_BESI_Normal.png"
+roughness/src_normal="res://lobby/lobby_Banner_BESI_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

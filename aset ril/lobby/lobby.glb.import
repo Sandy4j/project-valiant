@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bngb0o30qeibl"
+uid="uid://b8i0uf5sjnqwe"
 path="res://.godot/imported/lobby.glb-8350262aab1e19bbacdbfb1e9e2a96be.scn"
 
 [deps]
@@ -32,6 +32,19 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:PAnggung": {
+"generate/physics": true,
+"physics/physics_material_override": null,
+"physics/shape_type": 2
+},
+"PATH:PAnggung_001": {
+"generate/physics": true,
+"physics/physics_material_override": null,
+"physics/shape_type": 2
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

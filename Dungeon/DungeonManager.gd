@@ -66,16 +66,10 @@ func cleanup_dungeon():
 		for child in dungeon_mesh.get_children():
 			dungeon_mesh.remove_child(child)
 			child.queue_free()
-			
-	# Remove enemies, items, etc.
-	#var entities = get_tree().get_nodes_in_group("enemies") + get_tree().get_nodes_in_group("items")
-	#for entity in entities:
-		#entity.queue_free()
 
 func generate_dungeon() -> void:
 	cleanup_dungeon()
-	
-	# Set difficulty parameters based on floor number
+
 	if level_manager:
 		current_floor = level_manager.get_current_floor()
 
@@ -91,22 +85,16 @@ func generate_dungeon() -> void:
 		if dungeon_mesh:
 			dungeon_mesh.create_dungeon()
 			grid_map.hide()
+			emit_signal("dungeon_generation_completed")
 			await get_tree().create_timer(0.1).timeout
-			spawn_floor_content()
 			
-			dungeon_generation_completed.emit()
-
-func spawn_floor_content() -> void:
-	# This function would spawn enemies, items, etc. based on floor level
-	# Example: var enemy_count = base_enemies + (current_floor * 2)
-	pass
+			
 
 func new_floor() -> void:
 	if player_instance:
 		var stats = player_instance.get_node_or_null("PlayerFunction/PlayerStats") 
 		if stats && GlobalSignal.saved_stats.is_empty():
 			GlobalSignal.saved_stats = stats.save_stats()
-			print("DungeonManager: Saved player stats before new floor: ", GlobalSignal.saved_stats)
 	
 	cleanup_dungeon()
 	
@@ -130,11 +118,9 @@ func spawn_player(y_offset: float = 2.0) -> void:
 		var stats = player_instance.get_node_or_null("PlayerFunction/PlayerStats")
 		if stats:
 			GlobalSignal.saved_stats = stats.save_stats()
-			print("Stats saved to GlobalSignal: ", GlobalSignal.saved_stats)
 		player_instance.queue_free()
 		player_instance = null
 
-# Setelah instantiate player baru dan sebelum mengatur posisi
 	player_instance = player_scene.instantiate()
 	add_child(player_instance)
 	player_instance.add_to_group("player")
@@ -142,7 +128,6 @@ func spawn_player(y_offset: float = 2.0) -> void:
 	await get_tree().process_frame
 	var new_stats = player_instance.get_node_or_null("PlayerFunction/PlayerStats")
 	if new_stats && !GlobalSignal.saved_stats.is_empty():
-		print("Loading stats from GlobalSignal: ", GlobalSignal.saved_stats)
 		new_stats.load_stats(GlobalSignal.saved_stats)
 	player_instance.global_position = spawn_point.global_position
 	
@@ -150,9 +135,23 @@ func spawn_player(y_offset: float = 2.0) -> void:
 	if model:
 		model.rotation.y = deg_to_rad(90)
 
+func get_generation_progress() -> float:
+	var total_steps = 4
+	var current_step = 0
+	
+	if grid_map.is_generating:
+		current_step = 1
+	if dungeon_mesh.is_creating:
+		current_step = 2
+	if player_instance != null:
+		current_step = 3
+	if dungeon_generation_completed:
+		current_step = 4
+	
+	return float(current_step) / float(total_steps) * 100
+
 func regenerate() -> void:
 	cleanup_dungeon()
 	generate_dungeon()
 	await dungeon_generation_completed
-	print("DungeonManager: regenerate - About to spawn player with saved stats: ", GlobalSignal.saved_stats)
 	spawn_player()

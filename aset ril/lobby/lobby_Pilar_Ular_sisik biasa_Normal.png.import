@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d13b4qdfn33oo"
+uid="uid://cacrfdbick075"
 path.s3tc="res://.godot/imported/lobby_Pilar_Ular_sisik biasa_Normal.png-7371e954b889084a548b5ba5e6a435ff.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Pilar_Ular_sisik biasa_Normal.png"
+roughness/src_normal="res://lobby/lobby_Pilar_Ular_sisik biasa_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

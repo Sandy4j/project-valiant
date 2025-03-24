@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cg6yguo0bv2a3"
-path.s3tc="res://.godot/imported/lobby_Panggung_sisik biasa_109.png-95d8eda6664ea374a228e007c1f8742d.s3tc.ctex"
+uid="uid://b4cb2e3sfs0gb"
+path.s3tc="res://.godot/imported/lobby_Panggung_Panggung_Metallic.png-775e9706a0bc102c2b6739299d84c3aa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "2af1fd9b7fdd06d386d761adb32383eb"
+"md5": "398d06e6a11fe16b95cd759594c8a004"
 }
 
 [deps]
 
-source_file="res://aset ril/lobby/lobby_Panggung_sisik biasa_109.png"
-dest_files=["res://.godot/imported/lobby_Panggung_sisik biasa_109.png-95d8eda6664ea374a228e007c1f8742d.s3tc.ctex"]
+source_file="res://aset ril/lobby/lobby_Panggung_Panggung_Metallic.png"
+dest_files=["res://.godot/imported/lobby_Panggung_Panggung_Metallic.png-775e9706a0bc102c2b6739299d84c3aa.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +23,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Panggung_sisik biasa_109.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

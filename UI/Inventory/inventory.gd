@@ -2,7 +2,7 @@ extends Node
 
 @onready var inv: Inventory = preload("res://UI/Inventory/Player_Inventory.tres")
 @onready var slots:Array = $GridContainer.get_children() 
-@onready var grid = get_node("Grid")
+#@onready var grid = get_node("Grid")
 @onready var desc = $Container/Item_desc
 var inv_path = "res://UI/Inventory/Player_Inventory.tres"
 var cur_slot:Inv_Slots

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cswja2fhd8xfu"
-path.s3tc="res://.godot/imported/lobby_Panggung_Sirip ular_105.png-0e360dc32ef3590e5dd52e71a67929b3.s3tc.ctex"
+uid="uid://dvtt7prcf5y25"
+path.s3tc="res://.godot/imported/lobby_Panggung_Sirip ular_110.png-17f378cbc914b4f8d4e2edb9489e4b76.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "8b62685c6f572b36346b9edd4e757a38"
+"md5": "68b2b5001da4f9907de61e172a2ada33"
 }
 
 [deps]
 
-source_file="res://aset ril/lobby/lobby_Panggung_Sirip ular_105.png"
-dest_files=["res://.godot/imported/lobby_Panggung_Sirip ular_105.png-0e360dc32ef3590e5dd52e71a67929b3.s3tc.ctex"]
+source_file="res://aset ril/lobby/lobby_Panggung_Sirip ular_110.png"
+dest_files=["res://.godot/imported/lobby_Panggung_Sirip ular_110.png-17f378cbc914b4f8d4e2edb9489e4b76.s3tc.ctex"]
 
 [params]
 
@@ -23,12 +23,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Panggung_Sirip ular_105.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

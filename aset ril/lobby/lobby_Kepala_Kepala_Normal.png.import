@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gmv3kcdkwbv"
+uid="uid://8s3h8ibafhrp"
 path.s3tc="res://.godot/imported/lobby_Kepala_Kepala_Normal.png-b17ac2ebcc7e743e63e989011a5f1090.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Kepala_Kepala_Normal.png"
+roughness/src_normal="res://lobby/lobby_Kepala_Kepala_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddkrrr0dnfix4"
+uid="uid://cpln0nyoy1j7l"
 path.s3tc="res://.godot/imported/lobby_Banner_KAIN_Normal.png-d31eec9160052bfe6412222f35ba0962.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Banner_KAIN_Normal.png"
+roughness/src_normal="res://lobby/lobby_Banner_KAIN_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

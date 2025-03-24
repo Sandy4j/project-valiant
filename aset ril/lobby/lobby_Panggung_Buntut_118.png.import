@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o1prvjs7me0v"
-path.s3tc="res://.godot/imported/lobby_Panggung_sisik biasa_110.png-68f247790eea49ecb16abd0746ea76c2.s3tc.ctex"
+uid="uid://01m2506ugi0u"
+path.s3tc="res://.godot/imported/lobby_Panggung_Buntut_118.png-f0ca977280c88c66d5ace56d8e9fd646.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "4f9201013cbfb9a4ac37529c3f81ecc5"
+"md5": "bfeb01e1ca9fed8ca424d4a909235569"
 }
 
 [deps]
 
-source_file="res://aset ril/lobby/lobby_Panggung_sisik biasa_110.png"
-dest_files=["res://.godot/imported/lobby_Panggung_sisik biasa_110.png-68f247790eea49ecb16abd0746ea76c2.s3tc.ctex"]
+source_file="res://aset ril/lobby/lobby_Panggung_Buntut_118.png"
+dest_files=["res://.godot/imported/lobby_Panggung_Buntut_118.png-f0ca977280c88c66d5ace56d8e9fd646.s3tc.ctex"]
 
 [params]
 

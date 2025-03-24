@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb7bm1wok0g5w"
+uid="uid://61ck3s64yty0"
 path.s3tc="res://.godot/imported/lobby_Pilar_Ular_Pillar emas_Normal.png-15bc79fbec90fc2fb854f623cf7545f3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://aset ril/lobby/lobby_Pilar_Ular_Pillar emas_Normal.png"
+roughness/src_normal="res://lobby/lobby_Pilar_Ular_Pillar emas_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
